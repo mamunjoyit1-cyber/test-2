@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lago Bin – Carta dei Vini</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --burgundy: #5c1a1a;
@@ -19,7 +18,7 @@
     --border: rgba(201,164,85,0.25);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+  body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
 
   /* ── LANGUAGE BAR ── */
   .lang-bar {
@@ -57,12 +56,12 @@
   .header-eyebrow { color: var(--gold); font-size: 10px; letter-spacing: 6px; text-transform: uppercase; opacity: 0.8; margin-bottom: 14px; }
   .header h1 { font-family: 'Cormorant Garamond', serif; color: #f5ece0; font-size: clamp(38px, 9vw, 60px); font-weight: 300; letter-spacing: 6px; line-height: 1; }
   .header-rule { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 16px auto; }
-  .header h2 { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: clamp(14px, 3.5vw, 18px); font-weight: 400; letter-spacing: 3px; font-style: italic; }
+  .header h2 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: clamp(14px, 3.5vw, 18px); font-weight: 400; letter-spacing: 3px; font-style: italic; }
 
   /* ── SEARCH ── */
   .search-bar { background: var(--burgundy-deep); padding: 0 20px 22px; position: sticky; top: 0; z-index: 100; }
   .search-inner { max-width: 720px; margin: 0 auto; position: relative; }
-  .search-inner input { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(201,164,85,0.4); border-radius: 4px; padding: 11px 44px 11px 16px; color: #f5ece0; font-family: 'Jost', sans-serif; font-size: 13px; letter-spacing: 0.5px; outline: none; transition: border-color 0.2s, background 0.2s; }
+  .search-inner input { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(201,164,85,0.4); border-radius: 4px; padding: 11px 44px 11px 16px; color: #f5ece0; font-family: 'Lato', sans-serif; font-size: 13px; letter-spacing: 0.5px; outline: none; transition: border-color 0.2s, background 0.2s; }
   .search-inner input::placeholder { color: rgba(245,236,224,0.4); }
   .search-inner input:focus { border-color: var(--gold); background: rgba(255,255,255,0.1); }
   .search-icon { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--gold); opacity: 0.7; pointer-events: none; font-size: 16px; }
@@ -76,7 +75,7 @@
   .cat-header { background: var(--burgundy); color: #f5ece0; padding: 14px 20px; border-radius: 6px 6px 0 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; transition: background 0.2s; }
   .cat-header:not(.open) { border-radius: 6px; }
   .cat-header:hover { background: #6e2020; }
-  .cat-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 400; letter-spacing: 1.5px; display: flex; align-items: center; gap: 10px; }
+  .cat-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 400; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
   .cat-icon { font-size: 15px; opacity: 0.8; }
   .cat-arrow { color: var(--gold); font-size: 13px; transition: transform 0.3s; opacity: 0.8; }
   .cat-header.open .cat-arrow { transform: rotate(180deg); }
@@ -126,9 +125,9 @@
   }
 
   .wine-left { flex: 1; min-width: 0; }
-  .wine-name { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.3; }
+  .wine-name { font-family: 'Playfair Display', serif; font-size: 15.5px; font-weight: 500; color: var(--text); line-height: 1.3; letter-spacing: 0.2px; }
   .wine-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-  .wine-price { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 600; color: var(--burgundy); white-space: nowrap; }
+  .wine-price { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: var(--burgundy); white-space: nowrap; }
   .wine-chevron { color: var(--gold); font-size: 10px; transition: transform 0.3s; opacity: 0.7; }
   .wine-row.active .wine-chevron { transform: rotate(180deg); }
 
@@ -171,8 +170,8 @@
   .wine-tag { background: var(--cream-dark); border: 1px solid var(--border); border-radius: 3px; padding: 3px 9px; font-size: 11px; color: var(--text-muted); letter-spacing: 0.3px; }
   .wine-tag strong { color: var(--burgundy-deep); }
 
-  .wine-desc { font-family: 'Cormorant Garamond', serif; font-size: 14px; line-height: 1.75; color: #4a3828; font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px dotted #e8d5b7; }
-  .wine-vinif { font-size: 11.5px; color: var(--text-muted); line-height: 1.6; margin-top: 6px; }
+  .wine-desc { font-family: 'Cormorant Garamond', serif; font-size: 15px; line-height: 1.85; color: #4a3828; font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px dotted #e8d5b7; }
+  .wine-vinif { font-size: 12px; color: var(--text-muted); line-height: 1.6; margin-top: 6px; letter-spacing: 0.2px; }
   .wine-vinif strong { color: #4a2e1a; }
 
   /* ── LIGHTBOX / ZOOM ── */
@@ -238,7 +237,16 @@
   <button class="lang-btn" onclick="setLang('en')">EN</button>
   <button class="lang-btn" onclick="setLang('fr')">FR</button>
   <button class="lang-btn" onclick="setLang('de')">DE</button>
+  <button class="lang-btn" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" onclick="setLang('pt')">PT</button>
+  <button class="lang-btn" onclick="setLang('nl')">NL</button>
+  <button class="lang-btn" onclick="setLang('pl')">PL</button>
+  <button class="lang-btn" onclick="setLang('cs')">CS</button>
   <button class="lang-btn" onclick="setLang('ru')">RU</button>
+  <button class="lang-btn" onclick="setLang('zh')">中文</button>
+  <button class="lang-btn" onclick="setLang('ja')">日本</button>
+  <button class="lang-btn" onclick="setLang('ar')">AR</button>
+  <button class="lang-btn" onclick="setLang('tr')">TR</button>
 </div>
 
 <!-- ── HEADER ── -->
@@ -618,319 +626,141 @@
   </div>
   </div>
 
- <!-- ═══════════ VINI DEL LAGO BIN ═══════════ -->
-<div class="cat-wrap">
+  <!-- ═══════════ VINI DEL LAGO BIN ═══════════ -->
+  <div class="cat-wrap">
   <div class="cat-header" onclick="toggleCat(this)">
-    <span class="cat-title"><span class="cat-icon">🍷</span> Vini del Lago Bin</span>
+    <span class="cat-title"><span class="cat-icon">🍾</span> <span data-i18n="cat_lago">Vini del Lago Bin</span></span>
     <span class="cat-arrow">▾</span>
   </div>
-
   <div class="cat-body">
-    <div class="subcat-header" onclick="toggleSubcat(this)">
-      Selezione Vini del Lago Bin <span class="subcat-arrow">›</span>
-    </div>
-
+    <div class="subcat-header" onclick="toggleSubcat(this)"><span data-i18n="sub_lago">Selezione Vini Lago Bin</span> <span class="subcat-arrow">›</span></div>
     <div class="subcat-body">
 
-      <!-- 1 -->
-      <div class="wine-item" data-name="Le Bollicine del Lago Chardonnay Veneto frizzante" data-cat="Vini del Lago Bin" data-price="16" data-img="images/le-bollicine-del-lago.png">
-
+      <div class="wine-item" data-name="Le Bollicine del Lago Chardonnay frizzante" data-cat="Vini del Lago Bin" data-price="16" data-img="images/le-bollicine-del-lago.png">
         <div class="wine-row" onclick="toggleWine(this)">
           <img class="wine-thumb" src="images/le-bollicine-del-lago.png" alt="" onerror="this.style.display='none'">
-
-          <div class="wine-left">
-            <div class="wine-name">Le Bollicine del Lago</div>
-          </div>
-
-          <div class="wine-right">
-            <span class="wine-price">€ 16,00</span>
-            <span class="wine-chevron">▾</span>
-          </div>
+          <div class="wine-left"><div class="wine-name">Le Bollicine del Lago</div></div>
+          <div class="wine-right"><span class="wine-price">€ 16,00</span><span class="wine-chevron">▾</span></div>
         </div>
-
         <div class="wine-detail">
           <div class="wine-detail-inner">
-
             <div class="wine-detail-text">
-
               <div class="wine-tags">
-                <span class="wine-tag"><strong>Paese:</strong> Italia</span>
-                <span class="wine-tag"><strong>Regione:</strong> Veneto</span>
-                <span class="wine-tag"><strong>Gradazione:</strong> 11.5%</span>
-                <span class="wine-tag"><strong>Uve:</strong> Chardonnay Veneto</span>
-                <span class="wine-tag"><strong>Colore:</strong> Giallo paglierino con riflessi verdolini</span>
+                <span class="wine-tag"><strong data-i18n="regione">Regione:</strong> Veneto</span>
+                <span class="wine-tag"><strong data-i18n="gradazione">Gradazione:</strong> 11,5%</span>
+                <span class="wine-tag"><strong data-i18n="uve">Uve:</strong> Chardonnay Veneto</span>
+                <span class="wine-tag"><strong data-i18n="colore">Colore:</strong> Giallo paglierino con riflessi verdolini</span>
               </div>
-
-              <div class="wine-desc">
-                Un vino bianco frizzante che esprime note floreali fresche e fruttate che ricordano sensazioni esotiche e mediterranee.
-              </div>
-
-              <div class="wine-vinif">
-                <strong>Vinificazione:</strong> Fermentazione naturale, 2 mesi in vasca prima dell’imbottigliamento.
-              </div>
-
+              <div class="wine-desc">Un vino bianco frizzante che esprime note floreali fresche e fruttate che ricordano sensazioni esotiche e mediterranee.</div>
+              <div class="wine-vinif"><strong data-i18n="vinif">Vinificazione:</strong> Fermentazione naturale. Sosta in vasca due mesi prima dell'imbottigliamento.</div>
             </div>
-
             <div class="wine-detail-img-wrap">
-              <img class="wine-detail-img"
-                   src="images/le-bollicine-del-lago.png"
-                   alt=""
-                   onclick="openLightbox(this)"
-                   onerror="this.parentElement.style.display='none'">
-
-              <div class="zoom-hint">🔍 clicca per ingrandire</div>
+              <img class="wine-detail-img" src="images/le-bollicine-del-lago.png" alt="" onclick="openLightbox(this)" onerror="this.parentElement.style.display='none'">
+              <div class="zoom-hint" data-i18n="zoom_hint">🔍 clicca per ingrandire</div>
             </div>
-
           </div>
         </div>
-
       </div>
 
-      <!-- 2 -->
-      <div class="wine-item" data-name="Lago Bianco Pinot Grigio Veneto" data-cat="Vini del Lago Bin" data-price="12" data-img="images/lago-bianco.png">
-
+      <div class="wine-item" data-name="Lago Bianco Pinot Grigio" data-cat="Vini del Lago Bin" data-price="12" data-img="images/lago-bianco.png">
         <div class="wine-row" onclick="toggleWine(this)">
           <img class="wine-thumb" src="images/lago-bianco.png" alt="" onerror="this.style.display='none'">
-
-          <div class="wine-left">
-            <div class="wine-name">Lago Bianco</div>
-          </div>
-
-          <div class="wine-right">
-            <span class="wine-price">€ 12,00</span>
-            <span class="wine-chevron">▾</span>
-          </div>
+          <div class="wine-left"><div class="wine-name">Lago Bianco</div></div>
+          <div class="wine-right"><span class="wine-price">€ 12,00</span><span class="wine-chevron">▾</span></div>
         </div>
-
         <div class="wine-detail">
           <div class="wine-detail-inner">
-
             <div class="wine-detail-text">
               <div class="wine-tags">
-                <span class="wine-tag"><strong>Paese:</strong> Italia</span>
-                <span class="wine-tag"><strong>Regione:</strong> Veneto</span>
-                <span class="wine-tag"><strong>Gradazione:</strong> 12.5%</span>
-                <span class="wine-tag"><strong>Uve:</strong> Pinot Grigio</span>
-                <span class="wine-tag"><strong>Colore:</strong> Giallo paglierino con riflessi ramati</span>
+                <span class="wine-tag"><strong data-i18n="regione">Regione:</strong> Veneto</span>
+                <span class="wine-tag"><strong data-i18n="gradazione">Gradazione:</strong> 12,5%</span>
+                <span class="wine-tag"><strong data-i18n="uve">Uve:</strong> Pinot Grigio</span>
               </div>
-
-              <div class="wine-desc">
-                Profumo delicato, fruttato e dal gusto asciutto ed armonico.
-              </div>
-
-              <div class="wine-vinif">
-                <strong>Vinificazione:</strong> Fermentazione controllata in acciaio, 2 mesi di sosta.
-              </div>
+              <div class="wine-desc">Profumo delicato, fruttato e dal gusto asciutto ed armonico. Piacevoli sensazioni minerali e di frutta fresca.</div>
             </div>
-
             <div class="wine-detail-img-wrap">
-              <img class="wine-detail-img"
-                   src="images/lago-bianco.png"
-                   onclick="openLightbox(this)"
-                   onerror="this.parentElement.style.display='none'">
-
-              <div class="zoom-hint">🔍 clicca per ingrandire</div>
+              <img class="wine-detail-img" src="images/lago-bianco.png" alt="" onclick="openLightbox(this)" onerror="this.parentElement.style.display='none'">
+              <div class="zoom-hint" data-i18n="zoom_hint">🔍 clicca per ingrandire</div>
             </div>
-
           </div>
         </div>
-
       </div>
 
-      <!-- 3 -->
-      <div class="wine-item" data-name="Lago Rosè Raboso Veneto" data-cat="Vini del Lago Bin" data-price="12" data-img="images/lago-rose.png">
-
+      <div class="wine-item" data-name="Lago Rosè Raboso rosato" data-cat="Vini del Lago Bin" data-price="12" data-img="images/lago-rose.png">
         <div class="wine-row" onclick="toggleWine(this)">
           <img class="wine-thumb" src="images/lago-rose.png" alt="" onerror="this.style.display='none'">
-
-          <div class="wine-left">
-            <div class="wine-name">Lago Rosè</div>
-          </div>
-
-          <div class="wine-right">
-            <span class="wine-price">€ 12,00</span>
-            <span class="wine-chevron">▾</span>
-          </div>
+          <div class="wine-left"><div class="wine-name">Lago Rosè</div></div>
+          <div class="wine-right"><span class="wine-price">€ 12,00</span><span class="wine-chevron">▾</span></div>
         </div>
-
         <div class="wine-detail">
           <div class="wine-detail-inner">
-
             <div class="wine-detail-text">
               <div class="wine-tags">
-                <span class="wine-tag"><strong>Paese:</strong> Italia</span>
-                <span class="wine-tag"><strong>Regione:</strong> Veneto</span>
-                <span class="wine-tag"><strong>Gradazione:</strong> 11.5%</span>
-                <span class="wine-tag"><strong>Uve:</strong> Raboso</span>
-                <span class="wine-tag"><strong>Colore:</strong> Cerasuolo acceso e brillante</span>
+                <span class="wine-tag"><strong data-i18n="regione">Regione:</strong> Veneto</span>
+                <span class="wine-tag"><strong data-i18n="gradazione">Gradazione:</strong> 11,5%</span>
+                <span class="wine-tag"><strong data-i18n="uve">Uve:</strong> Raboso</span>
+                <span class="wine-tag"><strong data-i18n="colore">Colore:</strong> Cerasuolo acceso e brillante</span>
               </div>
-
-              <div class="wine-desc">
-                Molto gradevole, morbido e piacevolmente rotondo.
-              </div>
-
-              <div class="wine-vinif">
-                <strong>Vinificazione:</strong> Fermentazione naturale con profumi floreali.
-              </div>
+              <div class="wine-desc">Al palato è molto gradevole, morbido e piacevolmente rotondo. Profumi di rosa, glicine, biancospino e sambuco.</div>
             </div>
-
             <div class="wine-detail-img-wrap">
-              <img class="wine-detail-img"
-                   src="images/lago-rose.png"
-                   onclick="openLightbox(this)"
-                   onerror="this.parentElement.style.display='none'">
-
-              <div class="zoom-hint">🔍 clicca per ingrandire</div>
+              <img class="wine-detail-img" src="images/lago-rose.png" alt="" onclick="openLightbox(this)" onerror="this.parentElement.style.display='none'">
+              <div class="zoom-hint" data-i18n="zoom_hint">🔍 clicca per ingrandire</div>
             </div>
-
           </div>
         </div>
-
       </div>
 
-      <!-- 4 -->
-      <div class="wine-item" data-name="Lago Rosso Veneto" data-cat="Vini del Lago Bin" data-price="12" data-img="images/lago-rosso.png">
-
+      <div class="wine-item" data-name="Lago Rosso rosso" data-cat="Vini del Lago Bin" data-price="12" data-img="images/lago-rosso.png">
         <div class="wine-row" onclick="toggleWine(this)">
           <img class="wine-thumb" src="images/lago-rosso.png" alt="" onerror="this.style.display='none'">
-
-          <div class="wine-left">
-            <div class="wine-name">Lago Rosso</div>
-          </div>
-
-          <div class="wine-right">
-            <span class="wine-price">€ 12,00</span>
-            <span class="wine-chevron">▾</span>
-          </div>
+          <div class="wine-left"><div class="wine-name">Lago Rosso</div></div>
+          <div class="wine-right"><span class="wine-price">€ 12,00</span><span class="wine-chevron">▾</span></div>
         </div>
-
         <div class="wine-detail">
           <div class="wine-detail-inner">
-
             <div class="wine-detail-text">
               <div class="wine-tags">
-                <span class="wine-tag"><strong>Paese:</strong> Italia</span>
-                <span class="wine-tag"><strong>Regione:</strong> Veneto</span>
-                <span class="wine-tag"><strong>Gradazione:</strong> —</span>
-                <span class="wine-tag"><strong>Colore:</strong> Rosso</span>
+                <span class="wine-tag"><strong data-i18n="regione">Regione:</strong> Veneto</span>
+                <span class="wine-tag"><strong data-i18n="colore">Colore:</strong> Rosso</span>
               </div>
-
-              <div class="wine-desc">
-                Vino rosso semplice e tradizionale del territorio.
-              </div>
-
-              <div class="wine-vinif">
-                <strong>Vinificazione:</strong> Fermentazione alcolica e malolattica, 5 mesi in acciaio.
-              </div>
+              <div class="wine-vinif"><strong data-i18n="vinif">Vinificazione:</strong> Fermentazione alcolica seguita da malolattica, riposo circa 5 mesi in vasche d'acciaio.</div>
             </div>
-
             <div class="wine-detail-img-wrap">
-              <img class="wine-detail-img"
-                   src="images/lago-rosso.png"
-                   onclick="openLightbox(this)"
-                   onerror="this.parentElement.style.display='none'">
-
-              <div class="zoom-hint">🔍 clicca per ingrandire</div>
+              <img class="wine-detail-img" src="images/lago-rosso.png" alt="" onclick="openLightbox(this)" onerror="this.parentElement.style.display='none'">
+              <div class="zoom-hint" data-i18n="zoom_hint">🔍 clicca per ingrandire</div>
             </div>
-
           </div>
         </div>
-
       </div>
 
-      <!-- 5 -->
-      <div class="wine-item" data-name="Le Bolle del Lago Glera Veneto" data-cat="Vini del Lago Bin" data-price="21" data-img="images/le-bolle-del-lago.png">
-
+      <div class="wine-item" data-name="Le Bolle del Lago Glera Prosecco" data-cat="Vini del Lago Bin" data-price="21" data-img="images/le-bolle-del-lago.png">
         <div class="wine-row" onclick="toggleWine(this)">
           <img class="wine-thumb" src="images/le-bolle-del-lago.png" alt="" onerror="this.style.display='none'">
-
-          <div class="wine-left">
-            <div class="wine-name">Le Bolle del Lago</div>
-          </div>
-
-          <div class="wine-right">
-            <span class="wine-price">€ 21,00</span>
-            <span class="wine-chevron">▾</span>
-          </div>
-        </div>
-
-        <div class="wine-detail">
-          <div class="wine-detail-inner">
-
-            <div class="wine-detail-text">
-              <div class="wine-tags">
-                <span class="wine-tag"><strong>Paese:</strong> Italia</span>
-                <span class="wine-tag"><strong>Regione:</strong> Veneto</span>
-                <span class="wine-tag"><strong>Gradazione:</strong> 11%</span>
-                <span class="wine-tag"><strong>Uve:</strong> Glera</span>
-                <span class="wine-tag"><strong>Colore:</strong> Giallo paglierino</span>
-                <span class="wine-tag"><strong>Gusto:</strong> Fine, elegante, sapido</span>
-              </div>
-
-              <div class="wine-desc">
-                Note minerali e floreali delicate.
-              </div>
-
-              <div class="wine-vinif">
-                <strong>Vinificazione:</strong> Rifermentazione in autoclave per 2 mesi.
-              </div>
-            </div>
-
-            <div class="wine-detail-img-wrap">
-              <img class="wine-detail-img"
-                   src="images/le-bolle-del-lago.png"
-                   onclick="openLightbox(this)"
-                   onerror="this.parentElement.style.display='none'">
-
-              <div class="zoom-hint">🔍 clicca per ingrandire</div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</div>
-
-      <!-- 5 -->
-      <div class="wine-item" data-name="Le Bolle del Lago Glera Veneto spumante" data-cat="Vini del Lago Bin" data-price="21">
-        <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Le Bolle del Lago</div></div>
           <div class="wine-right"><span class="wine-price">€ 21,00</span><span class="wine-chevron">▾</span></div>
         </div>
-
         <div class="wine-detail">
           <div class="wine-detail-inner">
-
             <div class="wine-detail-text">
               <div class="wine-tags">
-                <span class="wine-tag"><strong>Paese:</strong> Italia</span>
-                <span class="wine-tag"><strong>Regione:</strong> Veneto</span>
-                <span class="wine-tag"><strong>Gradazione:</strong> 11%</span>
-                <span class="wine-tag"><strong>Uve:</strong> Glera</span>
-                <span class="wine-tag"><strong>Colore:</strong> Giallo paglierino</span>
-                <span class="wine-tag"><strong>Gusto:</strong> Fine, elegante, sapido, delicato</span>
+                <span class="wine-tag"><strong data-i18n="regione">Regione:</strong> Veneto</span>
+                <span class="wine-tag"><strong data-i18n="gradazione">Gradazione:</strong> 11%</span>
+                <span class="wine-tag"><strong data-i18n="uve">Uve:</strong> Glera</span>
               </div>
-
-              <div class="wine-desc">
-                Note minerali e floreali molto delicate.
-              </div>
-
-              <div class="wine-vinif">
-                <strong>Vinificazione:</strong> Rifermentazione in autoclave per 2 mesi.
-              </div>
-
+              <div class="wine-desc">Note minerali e floreali molto delicate. Profumo fine ed elegante, gusto intenso sapido e delicato.</div>
             </div>
-
+            <div class="wine-detail-img-wrap">
+              <img class="wine-detail-img" src="images/le-bolle-del-lago.png" alt="" onclick="openLightbox(this)" onerror="this.parentElement.style.display='none'">
+              <div class="zoom-hint" data-i18n="zoom_hint">🔍 clicca per ingrandire</div>
+            </div>
           </div>
         </div>
       </div>
 
     </div>
   </div>
-</div>
+  </div>
 
   <!-- ═══════════ VINI DEL TERRITORIO ═══════════ -->
   <div class="cat-wrap">
@@ -1456,20 +1286,25 @@
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua et rossa du nemu" data-cat="Vini del Territorio – Rossi" data-price="22" data-img="images/roccese-rossa-du-nemu.png">
+      <div class="wine-item" data-name="Rossese di Dolceacqua et rossa du nemu" data-cat="Vini del Territorio – Rossi" data-price="24" data-img="images/roccese-rossa-du-nemu.png">
         <div class="wine-row" onclick="toggleWine(this)">
           <img class="wine-thumb" src="images/roccese-rossa-du-nemu.png" alt="" onerror="this.style.display='none'">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua et Rossa – Du Nemu</div></div>
-          <div class="wine-right"><span class="wine-price">€ 22,00</span><span class="wine-chevron">▾</span></div>
+          <div class="wine-right"><span class="wine-price">€ 24,00</span><span class="wine-chevron">▾</span></div>
         </div>
         <div class="wine-detail">
           <div class="wine-detail-inner">
             <div class="wine-detail-text">
               <div class="wine-tags">
+                <span class="wine-tag"><strong data-i18n="sigla">Sigla:</strong> DOC Rossese di Dolceacqua</span>
+                <span class="wine-tag"><strong data-i18n="paese">Paese:</strong> Italia</span>
                 <span class="wine-tag"><strong data-i18n="regione">Regione:</strong> Liguria</span>
-                <span class="wine-tag"><strong data-i18n="uve">Uve:</strong> Rossese</span>
+                <span class="wine-tag"><strong data-i18n="gradazione">Gradazione:</strong> 12.5%</span>
+                <span class="wine-tag"><strong data-i18n="uve">Uve:</strong> 100% Rossese</span>
+                <span class="wine-tag"><strong data-i18n="colore">Colore:</strong> Rosso rubino vivace</span>
               </div>
-              <div class="wine-desc">Persistente e di discreta struttura, caldo, morbido, fine e con una buona sapidità.</div>
+              <div class="wine-desc" data-desc-key="rossa_du_nemu">Vivace, armonioso, tannini soffici. Un Rossese di carattere ligure, fresco e beverino, con sentori di ciliegia, piccoli frutti rossi e un tocco di spezie mediterranee.</div>
+              <div class="wine-vinif"><strong data-i18n="vinif">Vinificazione:</strong> <span data-vinif-key="rossa_du_nemu">Acciaio</span></div>
             </div>
             <div class="wine-detail-img-wrap">
               <img class="wine-detail-img" src="images/roccese-rossa-du-nemu.png" alt="" onclick="openLightbox(this)" onerror="this.parentElement.style.display='none'">
@@ -2389,6 +2224,10 @@
 // ────────────────────────────────────────────────────────────────
 // TRANSLATIONS
 // ────────────────────────────────────────────────────────────────
+<script>
+// ────────────────────────────────────────────────────────────────
+// TRANSLATIONS
+// ────────────────────────────────────────────────────────────────
 const i18n = {
   it: {
     lang_select:"Lingua:", hotel:"✦ Hotel Ristorante ✦", carta:"Carta dei Vini",
@@ -2435,10 +2274,21 @@ const i18n = {
     sub_terr_rosati:"Sélection Vins Rosés du Terroir",
     sub_bianchi:"Sélection Vins Blancs Nationaux", sub_rosati:"Sélection Vins Rosés Nationaux",
     sub_rossi:"Sélection Vins Rouges Nationaux",
+    pays:"Pays:", region:"Région:", degre:"Degré:", cepages:"Cépages:", couleur:"Couleur:",
+    pays_fr:"Pays:", regione:"Région:", gradazione:"Degré:", uve:"Cépages:", colore:"Couleur:",
+    pays2:"Pays:", sigla:"Appellation:", gusto:"Goût:", vinif:"Vinification:",
+    pays3:"Pays:", pays4:"Pays:",
+    pays5:"Pays:", pays6:"Pays:",
+    pays7:"Pays:", pays8:"Pays:",
+    pays9:"Pays:", pays10:"Pays:",
+    pays11:"Pays:", pays12:"Pays:",
+    pays13:"Pays:", pays14:"Pays:",
+    pays15:"Pays:", pays16:"Pays:",
+    pays17:"Pays:",
     paese:"Pays:", regione:"Région:", gradazione:"Degré:", uve:"Cépages:", colore:"Couleur:",
     sigla:"Appellation:", gusto:"Goût:", vinif:"Vinification:",
     zoom_hint:"🔍 cliquer pour agrandir",
-    footer_note:"Tous les prix s'entendent par bouteille de 75 Cl",
+    footer_note:"Tous les prix s\'entendent par bouteille de 75 Cl",
     results_1:"résultat", results_n:"résultats"
   },
   de: {
@@ -2458,6 +2308,91 @@ const i18n = {
     footer_note:"Alle Preise gelten für eine 75-Cl-Flasche",
     results_1:"Ergebnis", results_n:"Ergebnisse"
   },
+  es: {
+    lang_select:"Idioma:", hotel:"✦ Hotel Restaurante ✦", carta:"Carta de Vinos",
+    search_placeholder:"Buscar vino, uva, región, precio…",
+    cat_bollicine:"Vinos Espumosos", cat_lago:"Vinos Lago Bin", cat_territorio:"Vinos Locales",
+    cat_bianchi:"Vinos Blancos", cat_rosati:"Vinos Rosados", cat_rossi:"Vinos Tintos",
+    sub_bollicine_it:"Selección Espumosos Italianos", sub_cuveelago:"Cuvée del Lago Bin",
+    sub_champagne:"Selección Champagne", sub_lago:"Selección Vinos Lago Bin",
+    sub_terr_bianchi:"Selección Vinos Blancos Locales", sub_terr_rossi:"Selección Vinos Tintos Locales",
+    sub_terr_rosati:"Selección Vinos Rosados Locales",
+    sub_bianchi:"Selección Vinos Blancos Nacionales", sub_rosati:"Selección Vinos Rosados Nacionales",
+    sub_rossi:"Selección Vinos Tintos Nacionales",
+    paese:"País:", regione:"Región:", gradazione:"Graduación:", uve:"Uvas:", colore:"Color:",
+    sigla:"Denominación:", gusto:"Sabor:", vinif:"Vinificación:",
+    zoom_hint:"🔍 clic para ampliar",
+    footer_note:"Todos los precios por botella de 75 Cl",
+    results_1:"resultado", results_n:"resultados"
+  },
+  pt: {
+    lang_select:"Idioma:", hotel:"✦ Hotel Restaurante ✦", carta:"Carta de Vinhos",
+    search_placeholder:"Pesquisar vinho, uva, região, preço…",
+    cat_bollicine:"Vinhos Espumantes", cat_lago:"Vinhos Lago Bin", cat_territorio:"Vinhos Locais",
+    cat_bianchi:"Vinhos Brancos", cat_rosati:"Vinhos Rosés", cat_rossi:"Vinhos Tintos",
+    sub_bollicine_it:"Seleção Espumantes Italianos", sub_cuveelago:"Cuvée do Lago Bin",
+    sub_champagne:"Seleção Champagne", sub_lago:"Seleção Vinhos Lago Bin",
+    sub_terr_bianchi:"Seleção Vinhos Brancos Locais", sub_terr_rossi:"Seleção Vinhos Tintos Locais",
+    sub_terr_rosati:"Seleção Vinhos Rosés Locais",
+    sub_bianchi:"Seleção Vinhos Brancos Nacionais", sub_rosati:"Seleção Vinhos Rosés Nacionais",
+    sub_rossi:"Seleção Vinhos Tintos Nacionais",
+    paese:"País:", regione:"Região:", gradazione:"Teor Alcoólico:", uve:"Uvas:", colore:"Cor:",
+    sigla:"Denominação:", gusto:"Sabor:", vinif:"Vinificação:",
+    zoom_hint:"🔍 clique para ampliar",
+    footer_note:"Todos os preços por garrafa de 75 Cl",
+    results_1:"resultado", results_n:"resultados"
+  },
+  nl: {
+    lang_select:"Taal:", hotel:"✦ Hotel Restaurant ✦", carta:"Wijnkaart",
+    search_placeholder:"Zoek wijn, druif, regio, prijs…",
+    cat_bollicine:"Mousserende wijnen", cat_lago:"Lago Bin wijnen", cat_territorio:"Streekwijnen",
+    cat_bianchi:"Witte wijnen", cat_rosati:"Roséwijnen", cat_rossi:"Rode wijnen",
+    sub_bollicine_it:"Italiaanse mousserende selectie", sub_cuveelago:"Lago Bin Cuvée",
+    sub_champagne:"Champagne selectie", sub_lago:"Lago Bin wijnselectie",
+    sub_terr_bianchi:"Streek witte wijnen", sub_terr_rossi:"Streek rode wijnen",
+    sub_terr_rosati:"Streek rosé wijnen",
+    sub_bianchi:"Nationale witte wijnen", sub_rosati:"Nationale rosé wijnen",
+    sub_rossi:"Nationale rode wijnen",
+    paese:"Land:", regione:"Regio:", gradazione:"Alcohol:", uve:"Druiven:", colore:"Kleur:",
+    sigla:"Appellatie:", gusto:"Smaak:", vinif:"Vinificatie:",
+    zoom_hint:"🔍 klik om te vergroten",
+    footer_note:"Alle prijzen per fles van 75 Cl",
+    results_1:"resultaat", results_n:"resultaten"
+  },
+  pl: {
+    lang_select:"Język:", hotel:"✦ Hotel Restauracja ✦", carta:"Karta Win",
+    search_placeholder:"Szukaj wina, szczepu, regionu, ceny…",
+    cat_bollicine:"Wina Musujące", cat_lago:"Wina Lago Bin", cat_territorio:"Wina Lokalne",
+    cat_bianchi:"Wina Białe", cat_rosati:"Wina Różowe", cat_rossi:"Wina Czerwone",
+    sub_bollicine_it:"Włoskie wina musujące", sub_cuveelago:"Cuvée Lago Bin",
+    sub_champagne:"Selekcja Szampanów", sub_lago:"Selekcja win Lago Bin",
+    sub_terr_bianchi:"Lokalne białe wina", sub_terr_rossi:"Lokalne czerwone wina",
+    sub_terr_rosati:"Lokalne różowe wina",
+    sub_bianchi:"Krajowe białe wina", sub_rosati:"Krajowe różowe wina",
+    sub_rossi:"Krajowe czerwone wina",
+    paese:"Kraj:", regione:"Region:", gradazione:"Alkohol:", uve:"Szczepy:", colore:"Kolor:",
+    sigla:"Apelacja:", gusto:"Smak:", vinif:"Winifikacja:",
+    zoom_hint:"🔍 kliknij aby powiększyć",
+    footer_note:"Wszystkie ceny za butelkę 75 Cl",
+    results_1:"wynik", results_n:"wyników"
+  },
+  cs: {
+    lang_select:"Jazyk:", hotel:"✦ Hotel Restaurace ✦", carta:"Vinný lístek",
+    search_placeholder:"Hledat víno, odrůdu, region, cenu…",
+    cat_bollicine:"Šumivá vína", cat_lago:"Vína Lago Bin", cat_territorio:"Místní vína",
+    cat_bianchi:"Bílá vína", cat_rosati:"Růžová vína", cat_rossi:"Červená vína",
+    sub_bollicine_it:"Italská šumivá výběr", sub_cuveelago:"Cuvée Lago Bin",
+    sub_champagne:"Výběr Champagne", sub_lago:"Výběr vín Lago Bin",
+    sub_terr_bianchi:"Místní bílá vína", sub_terr_rossi:"Místní červená vína",
+    sub_terr_rosati:"Místní růžová vína",
+    sub_bianchi:"Národní bílá vína", sub_rosati:"Národní růžová vína",
+    sub_rossi:"Národní červená vína",
+    paese:"Země:", regione:"Region:", gradazione:"Alkohol:", uve:"Odrůdy:", colore:"Barva:",
+    sigla:"Označení:", gusto:"Chuť:", vinif:"Vinifikace:",
+    zoom_hint:"🔍 kliknutím přiblížit",
+    footer_note:"Všechny ceny za láhev 75 Cl",
+    results_1:"výsledek", results_n:"výsledků"
+  },
   ru: {
     lang_select:"Язык:", hotel:"✦ Отель Ресторан ✦", carta:"Карта вин",
     search_placeholder:"Поиск вина, сорта, региона, цены…",
@@ -2474,14 +2409,148 @@ const i18n = {
     zoom_hint:"🔍 нажмите для увеличения",
     footer_note:"Все цены за бутылку 75 Кл",
     results_1:"результат", results_n:"результатов"
+  },
+  zh: {
+    lang_select:"语言：", hotel:"✦ 酒店餐厅 ✦", carta:"酒水单",
+    search_placeholder:"搜索葡萄酒、葡萄品种、产区、价格…",
+    cat_bollicine:"起泡酒", cat_lago:"Lago Bin 葡萄酒", cat_territorio:"本地葡萄酒",
+    cat_bianchi:"白葡萄酒", cat_rosati:"桃红葡萄酒", cat_rossi:"红葡萄酒",
+    sub_bollicine_it:"意大利起泡酒精选", sub_cuveelago:"Lago Bin 特酿",
+    sub_champagne:"香槟精选", sub_lago:"Lago Bin 葡萄酒精选",
+    sub_terr_bianchi:"本地白葡萄酒精选", sub_terr_rossi:"本地红葡萄酒精选",
+    sub_terr_rosati:"本地桃红葡萄酒精选",
+    sub_bianchi:"全国白葡萄酒精选", sub_rosati:"全国桃红葡萄酒精选",
+    sub_rossi:"全国红葡萄酒精选",
+    paese:"国家：", regione:"产区：", gradazione:"酒精度：", uve:"葡萄品种：", colore:"颜色：",
+    sigla:"法定产区：", gusto:"口感：", vinif:"酿造工艺：",
+    zoom_hint:"🔍 点击放大",
+    footer_note:"所有价格均为75cl瓶装",
+    results_1:"个结果", results_n:"个结果"
+  },
+  ja: {
+    lang_select:"言語：", hotel:"✦ ホテル・レストラン ✦", carta:"ワインリスト",
+    search_placeholder:"ワイン、ぶどう品種、地域、価格を検索…",
+    cat_bollicine:"スパークリングワイン", cat_lago:"Lago Bin ワイン", cat_territorio:"地元ワイン",
+    cat_bianchi:"白ワイン", cat_rosati:"ロゼワイン", cat_rossi:"赤ワイン",
+    sub_bollicine_it:"イタリアスパークリング厳選", sub_cuveelago:"Lago Bin キュヴェ",
+    sub_champagne:"シャンパン厳選", sub_lago:"Lago Bin ワイン厳選",
+    sub_terr_bianchi:"地元白ワイン厳選", sub_terr_rossi:"地元赤ワイン厳選",
+    sub_terr_rosati:"地元ロゼワイン厳選",
+    sub_bianchi:"国産白ワイン厳選", sub_rosati:"国産ロゼワイン厳選",
+    sub_rossi:"国産赤ワイン厳選",
+    paese:"国：", regione:"地域：", gradazione:"アルコール度数：", uve:"ぶどう品種：", colore:"色：",
+    sigla:"呼称：", gusto:"味わい：", vinif:"醸造：",
+    zoom_hint:"🔍 クリックして拡大",
+    footer_note:"価格はすべて75Clボトル1本あたり",
+    results_1:"件", results_n:"件"
+  },
+  ar: {
+    lang_select:"اللغة:", hotel:"✦ فندق مطعم ✦", carta:"قائمة النبيذ",
+    search_placeholder:"ابحث عن النبيذ، العنب، المنطقة، السعر…",
+    cat_bollicine:"النبيذ الفوار", cat_lago:"نبيذ Lago Bin", cat_territorio:"النبيذ المحلي",
+    cat_bianchi:"النبيذ الأبيض", cat_rosati:"نبيذ الروزيه", cat_rossi:"النبيذ الأحمر",
+    sub_bollicine_it:"مختارات النبيذ الفوار الإيطالي", sub_cuveelago:"كوفيه Lago Bin",
+    sub_champagne:"مختارات الشمبانيا", sub_lago:"مختارات نبيذ Lago Bin",
+    sub_terr_bianchi:"النبيذ الأبيض المحلي", sub_terr_rossi:"النبيذ الأحمر المحلي",
+    sub_terr_rosati:"نبيذ الروزيه المحلي",
+    sub_bianchi:"النبيذ الأبيض الوطني", sub_rosati:"نبيذ الروزيه الوطني",
+    sub_rossi:"النبيذ الأحمر الوطني",
+    paese:"البلد:", regione:"المنطقة:", gradazione:"نسبة الكحول:", uve:"أصناف العنب:", colore:"اللون:",
+    sigla:"التسمية:", gusto:"الطعم:", vinif:"تقنية التخمير:",
+    zoom_hint:"🔍 انقر للتكبير",
+    footer_note:"جميع الأسعار لزجاجة 75 سل",
+    results_1:"نتيجة", results_n:"نتائج"
+  },
+  tr: {
+    lang_select:"Dil:", hotel:"✦ Otel Restoran ✦", carta:"Şarap Listesi",
+    search_placeholder:"Şarap, üzüm, bölge, fiyat ara…",
+    cat_bollicine:"Köpüklü Şaraplar", cat_lago:"Lago Bin Şarapları", cat_territorio:"Yerel Şaraplar",
+    cat_bianchi:"Beyaz Şaraplar", cat_rosati:"Roze Şaraplar", cat_rossi:"Kırmızı Şaraplar",
+    sub_bollicine_it:"İtalyan Köpüklü Seçkisi", sub_cuveelago:"Lago Bin Cuvée",
+    sub_champagne:"Champagne Seçkisi", sub_lago:"Lago Bin Şarap Seçkisi",
+    sub_terr_bianchi:"Yerel Beyaz Şarap Seçkisi", sub_terr_rossi:"Yerel Kırmızı Şarap Seçkisi",
+    sub_terr_rosati:"Yerel Roze Şarap Seçkisi",
+    sub_bianchi:"Ulusal Beyaz Şarap Seçkisi", sub_rosati:"Ulusal Roze Şarap Seçkisi",
+    sub_rossi:"Ulusal Kırmızı Şarap Seçkisi",
+    paese:"Ülke:", regione:"Bölge:", gradazione:"Alkol:", uve:"Üzüm:", colore:"Renk:",
+    sigla:"Menşei:", gusto:"Tat:", vinif:"Vinifikasyon:",
+    zoom_hint:"🔍 büyütmek için tıklayın",
+    footer_note:"Tüm fiyatlar 75 Cl şişe başınadır",
+    results_1:"sonuç", results_n:"sonuç"
   }
 };
 
 let currentLang = 'it';
 
+
+// ────────────────────────────────────────────────────────────────
+// WINE DESCRIPTIONS (multilingual)
+// Keys match data-desc-key attributes on .wine-desc elements
+// ────────────────────────────────────────────────────────────────
+const wineDesc = {
+  it: {
+    rossa_du_nemu: "Vivace, armonioso, tannini soffici. Un Rossese di carattere ligure, fresco e beverino, con sentori di ciliegia, piccoli frutti rossi e un tocco di spezie mediterranee.",
+    rossa_du_nemu_vinif: "Acciaio"
+  },
+  en: {
+    rossa_du_nemu: "Lively, harmonious, soft tannins. A Rossese with true Ligurian character — fresh and easy-drinking, with notes of cherry, small red fruits and a touch of Mediterranean spice.",
+    rossa_du_nemu_vinif: "Stainless steel"
+  },
+  fr: {
+    rossa_du_nemu: "Vif, harmonieux, tannins souples. Un Rossese de caractère ligure, frais et facile à boire, avec des notes de cerise, de petits fruits rouges et une touche d'épices méditerranéennes.",
+    rossa_du_nemu_vinif: "Acier inoxydable"
+  },
+  de: {
+    rossa_du_nemu: "Lebhaft, harmonisch, weiche Tannine. Ein Rossese mit echtem ligurischen Charakter — frisch und leicht trinkbar, mit Noten von Kirsche, kleinen roten Früchten und einem Hauch mediterraner Gewürze.",
+    rossa_du_nemu_vinif: "Edelstahl"
+  },
+  es: {
+    rossa_du_nemu: "Vivo, armonioso, taninos suaves. Un Rossese de carácter ligur, fresco y fácil de beber, con notas de cereza, pequeños frutos rojos y un toque de especias mediterráneas.",
+    rossa_du_nemu_vinif: "Acero inoxidable"
+  },
+  pt: {
+    rossa_du_nemu: "Vivo, harmonioso, taninos suaves. Um Rossese de carácter ligure, fresco e fácil de beber, com notas de cereja, pequenos frutos vermelhos e um toque de especiarias mediterrâneas.",
+    rossa_du_nemu_vinif: "Aço inoxidável"
+  },
+  nl: {
+    rossa_du_nemu: "Levendig, harmonisch, zachte tannines. Een Rossese met echt Ligurisch karakter — fris en gemakkelijk te drinken, met tonen van kers, kleine rode vruchten en een vleugje mediterrane kruiden.",
+    rossa_du_nemu_vinif: "Roestvrij staal"
+  },
+  pl: {
+    rossa_du_nemu: "Żywy, harmonijny, miękkie taniny. Rossese o prawdziwym liguryjskim charakterze — świeży i łatwy w piciu, z nutami wiśni, małych czerwonych owoców i odrobiną śródziemnomorskich przypraw.",
+    rossa_du_nemu_vinif: "Stal nierdzewna"
+  },
+  cs: {
+    rossa_du_nemu: "Živý, harmonický, měkké třísloviny. Rossese s pravým ligurským charakterem — svěží a lehce pitný, s tóny třešně, malých červených plodů a nádechem středomořských koření.",
+    rossa_du_nemu_vinif: "Nerezová ocel"
+  },
+  ru: {
+    rossa_du_nemu: "Живой, гармоничный, мягкие танины. Rossese с настоящим лигурийским характером — свежий и лёгкий, с нотами вишни, небольших красных фруктов и лёгкой средиземноморской пряностью.",
+    rossa_du_nemu_vinif: "Нержавеющая сталь"
+  },
+  zh: {
+    rossa_du_nemu: "活泼、和谐、单宁柔顺。具有真正利古里亚特色的罗塞斯酒——清新易饮，带有樱桃、小红果的香气，以及地中海香料的气息。",
+    rossa_du_nemu_vinif: "不锈钢罐"
+  },
+  ja: {
+    rossa_du_nemu: "生き生きとして、調和がとれており、タンニンが柔らか。真のリグリア的個性を持つロッセーゼ ― フレッシュで飲みやすく、チェリー、小粒の赤い果実、地中海のスパイスのニュアンスがあります。",
+    rossa_du_nemu_vinif: "ステンレスタンク"
+  },
+  ar: {
+    rossa_du_nemu: "نابض بالحياة، متناسق، عفص ناعم. نبيذ روسيزي بطابع ليغوري حقيقي — منعش وسهل الشرب، مع نكهات الكرز والفواكه الحمراء الصغيرة ولمسة من البهارات المتوسطية.",
+    rossa_du_nemu_vinif: "خزانات فولاذية"
+  },
+  tr: {
+    rossa_du_nemu: "Canlı, uyumlu, yumuşak tanenler. Gerçek Ligurya karakterine sahip bir Rossese — taze ve içimi kolay, kiraz, küçük kırmızı meyveler ve bir tutam Akdeniz baharatı notalarıyla.",
+    rossa_du_nemu_vinif: "Paslanmaz çelik"
+  }
+};
+
 function setLang(lang) {
   currentLang = lang;
   const t = i18n[lang];
+  const d = wineDesc[lang] || wineDesc['it'];
+
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (t[key]) el.textContent = t[key];
@@ -2490,9 +2559,23 @@ function setLang(lang) {
     const key = el.getAttribute('data-i18n-placeholder');
     if (t[key]) el.placeholder = t[key];
   });
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+  // Translate wine descriptions
+  document.querySelectorAll('[data-desc-key]').forEach(el => {
+    const key = el.getAttribute('data-desc-key');
+    if (d[key]) el.textContent = d[key];
   });
+  document.querySelectorAll('[data-vinif-key]').forEach(el => {
+    const key = el.getAttribute('data-vinif-key');
+    if (d[key + '_vinif']) el.textContent = d[key + '_vinif'];
+  });
+  // Update lang buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    const code = btn.getAttribute('onclick').match(/setLang\('(.*?)'\)/)?.[1];
+    btn.classList.toggle('active', code === lang);
+  });
+
+  // RTL support for Arabic
+  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
 }
 
 // ────────────────────────────────────────────────────────────────
@@ -2558,8 +2641,16 @@ searchInput.addEventListener('input', function() {
   const t = i18n[currentLang];
   searchCount.textContent = matches.length + ' ' + (matches.length === 1 ? t.results_1 : t.results_n);
 
+  const noResultsMsg = {
+    it: 'Nessun vino trovato per', en: 'No wine found for', fr: 'Aucun vin trouvé pour',
+    de: 'Kein Wein gefunden für', es: 'No se encontró vino para', pt: 'Nenhum vinho encontrado para',
+    nl: 'Geen wijn gevonden voor', pl: 'Nie znaleziono wina dla', cs: 'Žádné víno nenalezeno pro',
+    ru: 'Вино не найдено по запросу', zh: '未找到葡萄酒：', ja: '検索結果なし：',
+    ar: 'لم يُعثر على نبيذ لـ', tr: 'Aranan şaraba ulaşılamadı:'
+  };
   if (matches.length === 0) {
-    resultsBox.innerHTML = '<div class="no-results">Nessun vino trovato per "' + q + '"</div>';
+    const msg = noResultsMsg[currentLang] || noResultsMsg['it'];
+    resultsBox.innerHTML = '<div class="no-results">' + msg + ' "' + q + '"</div>';
     return;
   }
   matches.forEach(({ item }) => {
