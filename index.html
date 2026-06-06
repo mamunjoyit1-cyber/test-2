@@ -1,6 +1,3 @@
-bash
-
-cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -326,6 +323,41 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
   }
   .footer p { color: rgba(201,164,85,0.5); font-size: 10px; margin-top: 5px; font-style: italic; letter-spacing: 1px; }
 
+
+  /* ── WINE BOTTLE IMAGE ── */
+  .wine-detail-inner {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .wine-bottle-img {
+    flex-shrink: 0;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wine-bottle-img img {
+    width: 64px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 4px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+  }
+  .wine-bottle-img .no-img {
+    width: 64px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    opacity: 0.25;
+  }
+  .wine-detail-content {
+    flex: 1;
+    min-width: 0;
+  }
+
   /* search highlight */
   mark { background: rgba(201,164,85,0.3); color: inherit; border-radius: 2px; padding: 0 1px; }
 </style>
@@ -366,7 +398,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
     <div class="subcat-header" onclick="toggleSubcat(this)">Selezione Bollicine Italiane <span class="subcat-arrow">›</span></div>
     <div class="subcat-body">
 
-      <div class="wine-item" data-name="Prosecco di Valdobbiadene Superiore Extra Brut Maschio dei Cavalieri" data-cat="Bollicine" data-price="23">
+      <div class="wine-item" data-name="Prosecco di Valdobbiadene Superiore Extra Brut Maschio dei Cavalieri" data-img="prosecco-rose-extra-dry-maschio-dei-cavalieri.png" data-cat="Bollicine" data-price="23">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Prosecco di Valdobbiadene Superiore Extra Brut – Maschio dei Cavalieri</div></div>
           <div class="wine-right"><span class="wine-price">€ 23,00</span><span class="wine-chevron">▾</span></div>
@@ -384,7 +416,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Prosecco Rosé Extra Dry Maschio dei Cavalieri" data-cat="Bollicine" data-price="22">
+      <div class="wine-item" data-name="Prosecco Rosé Extra Dry Maschio dei Cavalieri" data-img="prosecco-rose-extra-dry-maschio-dei-cavalieri.png" data-cat="Bollicine" data-price="22">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Prosecco Rosé Extra Dry – Maschio dei Cavalieri</div></div>
           <div class="wine-right"><span class="wine-price">€ 22,00</span><span class="wine-chevron">▾</span></div>
@@ -402,7 +434,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Franciacorta Brut 61 Berlucchi" data-cat="Bollicine" data-price="39">
+      <div class="wine-item" data-name="Franciacorta Brut 61 Berlucchi" data-img="berlucchi-franciacorta-brut-61.png" data-cat="Bollicine" data-price="39">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Franciacorta Brut '61 – Berlucchi</div></div>
           <div class="wine-right"><span class="wine-price">€ 39,00</span><span class="wine-chevron">▾</span></div>
@@ -424,7 +456,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
     <div class="subcat-header" onclick="toggleSubcat(this)">Selezione Champagne <span class="subcat-arrow">›</span></div>
     <div class="subcat-body">
 
-      <div class="wine-item" data-name="Cuveè Lago Bin" data-cat="Champagne" data-price="55">
+      <div class="wine-item" data-name="Cuveè Lago Bin" data-img="cuvee-lago-bin.png" data-cat="Champagne" data-price="55">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Cuveè Lago Bin</div></div>
           <div class="wine-right"><span class="wine-price">€ 55,00</span><span class="wine-chevron">▾</span></div>
@@ -438,7 +470,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Gardet Tradition" data-cat="Champagne" data-price="65">
+      <div class="wine-item" data-name="Gardet Tradition" data-img="gardet-tradition.png" data-cat="Champagne" data-price="65">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Gardet "Tradition"</div></div>
           <div class="wine-right"><span class="wine-price">€ 65,00</span><span class="wine-chevron">▾</span></div>
@@ -455,7 +487,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Veuve Cliquot" data-cat="Champagne" data-price="80">
+      <div class="wine-item" data-name="Veuve Cliquot" data-img="veuve-clicquot.png" data-cat="Champagne" data-price="80">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Veuve Cliquot</div></div>
           <div class="wine-right"><span class="wine-price">€ 80,00</span><span class="wine-chevron">▾</span></div>
@@ -473,7 +505,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Michel Tixier" data-cat="Champagne" data-price="60">
+      <div class="wine-item" data-name="Michel Tixier" data-img="michel-tixier.png" data-cat="Champagne" data-price="60">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Michel Tixier</div></div>
           <div class="wine-right"><span class="wine-price">€ 60,00</span><span class="wine-chevron">▾</span></div>
@@ -490,7 +522,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Deutz" data-cat="Champagne" data-price="90">
+      <div class="wine-item" data-name="Deutz" data-img="deutz.png" data-cat="Champagne" data-price="90">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Deutz</div></div>
           <div class="wine-right"><span class="wine-price">€ 90,00</span><span class="wine-chevron">▾</span></div>
@@ -508,7 +540,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="G H Mumm" data-cat="Champagne" data-price="70">
+      <div class="wine-item" data-name="G H Mumm" data-img="gh-mumm.png" data-cat="Champagne" data-price="70">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">G H Mumm</div></div>
           <div class="wine-right"><span class="wine-price">€ 70,00</span><span class="wine-chevron">▾</span></div>
@@ -525,7 +557,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Ruinart Magnum" data-cat="Champagne" data-price="190">
+      <div class="wine-item" data-name="Ruinart Magnum" data-img="Ruinart "Magnum" .png" data-cat="Champagne" data-price="190">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Ruinart "Magnum" <small style="font-size:11px;opacity:0.6;">1,5 L</small></div></div>
           <div class="wine-right"><span class="wine-price">€ 190,00</span><span class="wine-chevron">▾</span></div>
@@ -541,7 +573,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Laurent Perrier" data-cat="Champagne" data-price="75">
+      <div class="wine-item" data-name="Laurent Perrier" data-img="laurent-perrier.png" data-cat="Champagne" data-price="75">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Laurent Perrier</div></div>
           <div class="wine-right"><span class="wine-price">€ 75,00</span><span class="wine-chevron">▾</span></div>
@@ -558,7 +590,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Heidsieck Monopole" data-cat="Champagne" data-price="70">
+      <div class="wine-item" data-name="Heidsieck Monopole" data-img="heidsieck-monopole.png" data-cat="Champagne" data-price="70">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Heidsieck "Monopole"</div></div>
           <div class="wine-right"><span class="wine-price">€ 70,00</span><span class="wine-chevron">▾</span></div>
@@ -576,7 +608,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Don Perignon Dom Pérignon" data-cat="Champagne" data-price="280">
+      <div class="wine-item" data-name="Don Perignon Dom Pérignon" data-img="don-perignon.png" data-cat="Champagne" data-price="280">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Dom Pérignon</div></div>
           <div class="wine-right"><span class="wine-price">€ 280,00</span><span class="wine-chevron">▾</span></div>
@@ -610,7 +642,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
     <div class="subcat-header" onclick="toggleSubcat(this)">Selezione Vini Lago Bin <span class="subcat-arrow">›</span></div>
     <div class="subcat-body">
 
-      <div class="wine-item" data-name="Le Bollicine del Lago Chardonnay frizzante" data-cat="Vini del Lago Bin" data-price="16">
+      <div class="wine-item" data-name="Le Bollicine del Lago Chardonnay frizzante" data-img="le-bollicine-del-lago.png" data-cat="Vini del Lago Bin" data-price="16">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Le Bollicine del Lago</div></div>
           <div class="wine-right"><span class="wine-price">€ 16,00</span><span class="wine-chevron">▾</span></div>
@@ -627,7 +659,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Lago Bianco Pinot Grigio" data-cat="Vini del Lago Bin" data-price="12">
+      <div class="wine-item" data-name="Lago Bianco Pinot Grigio" data-img="lago-bianco.png" data-cat="Vini del Lago Bin" data-price="12">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Lago Bianco</div></div>
           <div class="wine-right"><span class="wine-price">€ 12,00</span><span class="wine-chevron">▾</span></div>
@@ -643,7 +675,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Lago Rosè Raboso rosato" data-cat="Vini del Lago Bin" data-price="12">
+      <div class="wine-item" data-name="Lago Rosè Raboso rosato" data-img="lago-rose.png" data-cat="Vini del Lago Bin" data-price="12">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Lago Rosè</div></div>
           <div class="wine-right"><span class="wine-price">€ 12,00</span><span class="wine-chevron">▾</span></div>
@@ -659,7 +691,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Lago Rosso rosso" data-cat="Vini del Lago Bin" data-price="12">
+      <div class="wine-item" data-name="Lago Rosso rosso" data-img="lago-rosso.png" data-cat="Vini del Lago Bin" data-price="12">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Lago Rosso</div></div>
           <div class="wine-right"><span class="wine-price">€ 12,00</span><span class="wine-chevron">▾</span></div>
@@ -673,7 +705,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Le Bolle del Lago Glera Prosecco" data-cat="Vini del Lago Bin" data-price="21">
+      <div class="wine-item" data-name="Le Bolle del Lago Glera Prosecco" data-img="le-bolle-del-lago.png" data-cat="Vini del Lago Bin" data-price="21">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Le Bolle del Lago</div></div>
           <div class="wine-right"><span class="wine-price">€ 21,00</span><span class="wine-chevron">▾</span></div>
@@ -706,7 +738,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
     <div class="subcat-header" onclick="toggleSubcat(this)">Selezione Vini Bianchi del Territorio <span class="subcat-arrow">›</span></div>
     <div class="subcat-body">
 
-      <div class="wine-item" data-name="Vermentino RLP Poggio dell'Elmo Liguria bianco" data-cat="Vini del Territorio – Bianchi" data-price="25">
+      <div class="wine-item" data-name="Vermentino RLP Poggio dell'Elmo Liguria bianco" data-img="vermentino-poggio-elmo.png" data-cat="Vini del Territorio – Bianchi" data-price="25">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Vermentino RLP – Poggio dell'Elmo</div></div>
           <div class="wine-right"><span class="wine-price">€ 25,00</span><span class="wine-chevron">▾</span></div>
@@ -723,7 +755,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Vermentino RLP Terre Bianche Liguria bianco" data-cat="Vini del Territorio – Bianchi" data-price="33">
+      <div class="wine-item" data-name="Vermentino RLP Terre Bianche Liguria bianco" data-img="vermentino-terre-bianche.png" data-cat="Vini del Territorio – Bianchi" data-price="33">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Vermentino RLP – Terre Bianche</div></div>
           <div class="wine-right"><span class="wine-price">€ 33,00</span><span class="wine-chevron">▾</span></div>
@@ -738,7 +770,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Vermentino RLP Foresti Liguria bianco" data-cat="Vini del Territorio – Bianchi" data-price="26">
+      <div class="wine-item" data-name="Vermentino RLP Foresti Liguria bianco" data-img="vermentino-foresti.png" data-cat="Vini del Territorio – Bianchi" data-price="26">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Vermentino RLP Foresti – 100% Vermentino</div></div>
           <div class="wine-right"><span class="wine-price">€ 26,00</span><span class="wine-chevron">▾</span></div>
@@ -754,7 +786,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Pigato RLP I Soli Foresti Liguria bianco" data-cat="Vini del Territorio – Bianchi" data-price="26">
+      <div class="wine-item" data-name="Pigato RLP I Soli Foresti Liguria bianco" data-img="pigato-foresti.png" data-cat="Vini del Territorio – Bianchi" data-price="26">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Pigato RLP – I Soli – Foresti</div></div>
           <div class="wine-right"><span class="wine-price">€ 26,00</span><span class="wine-chevron">▾</span></div>
@@ -770,7 +802,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Pigato RLP Nemu Liguria bianco" data-cat="Vini del Territorio – Bianchi" data-price="24">
+      <div class="wine-item" data-name="Pigato RLP Nemu Liguria bianco" data-img="pigato-nemu.png" data-cat="Vini del Territorio – Bianchi" data-price="24">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Pigato RLP – Nemu</div></div>
           <div class="wine-right"><span class="wine-price">€ 24,00</span><span class="wine-chevron">▾</span></div>
@@ -784,7 +816,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Pigato RLP Cygnus Poggio dei Gorleri Liguria bianco" data-cat="Vini del Territorio – Bianchi" data-price="38">
+      <div class="wine-item" data-name="Pigato RLP Cygnus Poggio dei Gorleri Liguria bianco" data-img="pigato-cygnus-gorleri.png" data-cat="Vini del Territorio – Bianchi" data-price="38">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Pigato RLP Cygnus – Poggio dei Gorleri</div></div>
           <div class="wine-right"><span class="wine-price">€ 38,00</span><span class="wine-chevron">▾</span></div>
@@ -805,7 +837,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
     <div class="subcat-header" onclick="toggleSubcat(this)">Selezione Vini Rossi del Territorio <span class="subcat-arrow">›</span></div>
     <div class="subcat-body">
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Poggi dell'Elmo 2022 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="28">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Poggi dell'Elmo 2022 Liguria rosso" data-img="poggi-dellelmo-rossese-di-dolceacqua-2022.png" data-cat="Vini del Territorio – Rossi" data-price="28">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua – Poggi dell'Elmo 2022</div></div>
           <div class="wine-right"><span class="wine-price">€ 28,00</span><span class="wine-chevron">▾</span></div>
@@ -821,7 +853,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Superiore Pini Poggi dell'Elmo 2022 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="36">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Superiore Pini Poggi dell'Elmo 2022 Liguria rosso" data-img="rossese-pini-2022.png" data-cat="Vini del Territorio – Rossi" data-price="36">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Superiore Pini – Poggi dell'Elmo 2022</div></div>
           <div class="wine-right"><span class="wine-price">€ 36,00</span><span class="wine-chevron">▾</span></div>
@@ -837,7 +869,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Cima Tramontina Du Nemu 2022 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="24">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Cima Tramontina Du Nemu 2022 Liguria rosso" data-img="rossese-cima-tramontina-2022.png" data-cat="Vini del Territorio – Rossi" data-price="24">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Cima Tramontina – Du Nemu 2022</div></div>
           <div class="wine-right"><span class="wine-price">€ 24,00</span><span class="wine-chevron">▾</span></div>
@@ -852,7 +884,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Superiore Du Nemu 2021 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="34">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Superiore Du Nemu 2021 Liguria rosso" data-img="rossese-superiore-du-nemu-2021.png" data-cat="Vini del Territorio – Rossi" data-price="34">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Superiore – Du Nemu 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 34,00</span><span class="wine-chevron">▾</span></div>
@@ -867,7 +899,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Foresti 2022 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="26">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Foresti 2022 Liguria rosso" data-img="foresti-rossese-di-dolceacqua-2022.png" data-cat="Vini del Territorio – Rossi" data-price="26">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua – Foresti 2022</div></div>
           <div class="wine-right"><span class="wine-price">€ 26,00</span><span class="wine-chevron">▾</span></div>
@@ -882,7 +914,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Luvaira Foresti 2021 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="32">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Luvaira Foresti 2021 Liguria rosso" data-img="rossese-luvaira-foresti-2021.png" data-cat="Vini del Territorio – Rossi" data-price="32">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Luvaira – Foresti 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 32,00</span><span class="wine-chevron">▾</span></div>
@@ -898,7 +930,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Beragna Ka Mancine 2021 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="32">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Beragna Ka Mancine 2021 Liguria rosso" data-img="rossese-beragna-ka-mancine-2021.png.png" data-cat="Vini del Territorio – Rossi" data-price="32">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Beragna – Ka Mancine 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 32,00</span><span class="wine-chevron">▾</span></div>
@@ -913,7 +945,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Galeae Ka Mancine 2022 Liguria rosso DOC" data-cat="Vini del Territorio – Rossi" data-price="36">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Galeae Ka Mancine 2022 Liguria rosso DOC" data-img="rossese-galeae-ka-mancine-2022.png" data-cat="Vini del Territorio – Rossi" data-price="36">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Galeae – Ka Mancine 2022</div></div>
           <div class="wine-right"><span class="wine-price">€ 36,00</span><span class="wine-chevron">▾</span></div>
@@ -929,7 +961,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Ange Ka Mancine 2024 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="44">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Ange Ka Mancine 2024 Liguria rosso" data-img="ka-mancine-rossese-di-dolceacqua-ange-2024.png" data-cat="Vini del Territorio – Rossi" data-price="44">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Ange – Ka Mancine 2024</div></div>
           <div class="wine-right"><span class="wine-price">€ 44,00</span><span class="wine-chevron">▾</span></div>
@@ -944,7 +976,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Terre Bianche 2022 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="32">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Terre Bianche 2022 Liguria rosso" data-img="terre-bianche-rossese-di-dolceacqua-2022.png" data-cat="Vini del Territorio – Rossi" data-price="32">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua – Terre Bianche 2022</div></div>
           <div class="wine-right"><span class="wine-price">€ 32,00</span><span class="wine-chevron">▾</span></div>
@@ -959,7 +991,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Bricco Arcagna Terre Bianche 2017 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="64">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Bricco Arcagna Terre Bianche 2017 Liguria rosso" data-img="rossese-bricco-arcagna-terre-bianche-2017.png" data-cat="Vini del Territorio – Rossi" data-price="64">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Bricco Arcagna – Terre Bianche 2017</div></div>
           <div class="wine-right"><span class="wine-price">€ 64,00</span><span class="wine-chevron">▾</span></div>
@@ -975,7 +1007,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Testalonga Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="56">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Testalonga Liguria rosso" data-img="rossese-testalonga.png" data-cat="Vini del Territorio – Rossi" data-price="56">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua – Testalonga</div></div>
           <div class="wine-right"><span class="wine-price">€ 56,00</span><span class="wine-chevron">▾</span></div>
@@ -991,7 +1023,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Roccese Masala Liguria rosso autoctono" data-cat="Vini del Territorio – Rossi" data-price="49">
+      <div class="wine-item" data-name="Roccese Masala Liguria rosso autoctono" data-img="roccese-masala.png" data-cat="Vini del Territorio – Rossi" data-price="49">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Roccese – Masala</div></div>
           <div class="wine-right"><span class="wine-price">€ 49,00</span><span class="wine-chevron">▾</span></div>
@@ -1007,7 +1039,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Roccese Barricato Masala Liguria rosso barriques" data-cat="Vini del Territorio – Rossi" data-price="63">
+      <div class="wine-item" data-name="Roccese Barricato Masala Liguria rosso barriques" data-img="roccese-barricato-masala.png" data-cat="Vini del Territorio – Rossi" data-price="63">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Roccese Barricato – Masala</div></div>
           <div class="wine-right"><span class="wine-price">€ 63,00</span><span class="wine-chevron">▾</span></div>
@@ -1023,7 +1055,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Posaú rosso Liguria" data-cat="Vini del Territorio – Rossi" data-price="45">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Posaú rosso Liguria" data-img="rossese-fratelli-maccario.png" data-cat="Vini del Territorio – Rossi" data-price="45">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua "Posaú"</div></div>
           <div class="wine-right"><span class="wine-price">€ 45,00</span><span class="wine-chevron">▾</span></div>
@@ -1039,7 +1071,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Superiore Peverelli Luigi Mauro 2021 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="39">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Superiore Peverelli Luigi Mauro 2021 Liguria rosso" data-img="rossese-peverelli-luigi-mauro-2021.png" data-cat="Vini del Territorio – Rossi" data-price="39">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Superiore Peverelli – Luigi Mauro 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 39,00</span><span class="wine-chevron">▾</span></div>
@@ -1054,7 +1086,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Roccese dolceacqua rossa Du Nemu rosso Liguria" data-cat="Vini del Territorio – Rossi" data-price="24">
+      <div class="wine-item" data-name="Roccese dolceacqua rossa Du Nemu rosso Liguria" data-img="roccese-rossa-du-nemu.png" data-cat="Vini del Territorio – Rossi" data-price="24">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Rossa – Du Nemu</div></div>
           <div class="wine-right"><span class="wine-price">€ 24,00</span><span class="wine-chevron">▾</span></div>
@@ -1069,7 +1101,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese dolceacqua bucciardino Ka Mancine 2023 Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="39">
+      <div class="wine-item" data-name="Rossese dolceacqua bucciardino Ka Mancine 2023 Liguria rosso" data-img="roccese-bucciardino-ka-mancine-2023.png" data-cat="Vini del Territorio – Rossi" data-price="39">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Bucciardino – Ka Mancine 2023</div></div>
           <div class="wine-right"><span class="wine-price">€ 39,00</span><span class="wine-chevron">▾</span></div>
@@ -1084,7 +1116,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di dolceacqua 2021 Maccario Dringenberg DOC Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="37">
+      <div class="wine-item" data-name="Rossese di dolceacqua 2021 Maccario Dringenberg DOC Liguria rosso" data-img="rossese-maccario-ringenberg-2021.png" data-cat="Vini del Territorio – Rossi" data-price="37">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua – Maccario Dringenberg 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 37,00</span><span class="wine-chevron">▾</span></div>
@@ -1101,7 +1133,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Fratelli Maccario Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="45">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Fratelli Maccario Liguria rosso" data-img="rossese-fratelli-maccario.png" data-cat="Vini del Territorio – Rossi" data-price="45">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua – Fratelli Maccario</div></div>
           <div class="wine-right"><span class="wine-price">€ 45,00</span><span class="wine-chevron">▾</span></div>
@@ -1117,7 +1149,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese Curli Liguria rosso" data-cat="Vini del Territorio – Rossi" data-price="54">
+      <div class="wine-item" data-name="Rossese Curli Liguria rosso" data-img="rossese-curli.png" data-cat="Vini del Territorio – Rossi" data-price="54">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese Curli</div></div>
           <div class="wine-right"><span class="wine-price">€ 54,00</span><span class="wine-chevron">▾</span></div>
@@ -1138,7 +1170,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
     <div class="subcat-header" onclick="toggleSubcat(this)">Selezione Vini Rosati del Territorio <span class="subcat-arrow">›</span></div>
     <div class="subcat-body">
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Rosato Du Nemu Liguria rosato" data-cat="Vini del Territorio – Rosati" data-price="21">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Rosato Du Nemu Liguria rosato" data-img="rossese-rosato-du-nemu.png" data-cat="Vini del Territorio – Rosati" data-price="21">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Rosato – Du Nemu</div></div>
           <div class="wine-right"><span class="wine-price">€ 21,00</span><span class="wine-chevron">▾</span></div>
@@ -1153,7 +1185,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Rosato Ka Mancine Liguria rosato" data-cat="Vini del Territorio – Rosati" data-price="23">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Rosato Ka Mancine Liguria rosato" data-img="rossese-rosato-ka-mancine.png" data-cat="Vini del Territorio – Rosati" data-price="23">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Rosato – Ka Mancine</div></div>
           <div class="wine-right"><span class="wine-price">€ 23,00</span><span class="wine-chevron">▾</span></div>
@@ -1166,7 +1198,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rossese di Dolceacqua Rosato Poggi dell'Elmo Liguria rosato" data-cat="Vini del Territorio – Rosati" data-price="21">
+      <div class="wine-item" data-name="Rossese di Dolceacqua Rosato Poggi dell'Elmo Liguria rosato" data-img="rossese-rosato-poggi-del-elmo.png" data-cat="Vini del Territorio – Rosati" data-price="21">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rossese di Dolceacqua Rosato – Poggi dell'Elmo</div></div>
           <div class="wine-right"><span class="wine-price">€ 21,00</span><span class="wine-chevron">▾</span></div>
@@ -1197,7 +1229,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
     <div class="subcat-header" onclick="toggleSubcat(this)">Selezione Vini Bianchi Nazionali <span class="subcat-arrow">›</span></div>
     <div class="subcat-body">
 
-      <div class="wine-item" data-name="Roero Arneis Ero Clavesana 2023 Piemonte bianco DOCG" data-cat="Vini Bianchi" data-price="23">
+      <div class="wine-item" data-name="Roero Arneis Ero Clavesana 2023 Piemonte bianco DOCG" data-img="clavesana-roero-arneis-ero-2023.png" data-cat="Vini Bianchi" data-price="23">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Roero Arneis Ero – Clavesana 2023</div></div>
           <div class="wine-right"><span class="wine-price">€ 23,00</span><span class="wine-chevron">▾</span></div>
@@ -1213,7 +1245,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Falanghina Beneventano Vinosia 2022 Campania bianco IGT" data-cat="Vini Bianchi" data-price="18">
+      <div class="wine-item" data-name="Falanghina Beneventano Vinosia 2022 Campania bianco IGT" data-img="vinosia-falanghina-beneventano-2022.png" data-cat="Vini Bianchi" data-price="18">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Falanghina Beneventano – Vinosia 2022</div></div>
           <div class="wine-right"><span class="wine-price">€ 18,00</span><span class="wine-chevron">▾</span></div>
@@ -1228,7 +1260,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Gewürztraminer AA Muri-Gries 2022 Alto Adige bianco" data-cat="Vini Bianchi" data-price="27">
+      <div class="wine-item" data-name="Gewürztraminer AA Muri-Gries 2022 Alto Adige bianco" data-img="aa-gewurztraminer-muri-gries-2022.png" data-cat="Vini Bianchi" data-price="27">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">A.A. Gewürztraminer – Muri-Gries 2022</div></div>
           <div class="wine-right"><span class="wine-price">€ 27,00</span><span class="wine-chevron">▾</span></div>
@@ -1243,7 +1275,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Soave Garganega Latium 2021 Veneto bianco" data-cat="Vini Bianchi" data-price="18">
+      <div class="wine-item" data-name="Soave Garganega Latium 2021 Veneto bianco" data-img="soave-latium-2021.png" data-cat="Vini Bianchi" data-price="18">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Soave (Garganega 100%) – Latium 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 18,00</span><span class="wine-chevron">▾</span></div>
@@ -1257,7 +1289,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Sauvignon Friuli Venezia Giulia bianco" data-cat="Vini Bianchi" data-price="21">
+      <div class="wine-item" data-name="Sauvignon Friuli Venezia Giulia bianco" data-img="sauvignon.png" data-cat="Vini Bianchi" data-price="21">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Sauvignon – Friuli Venezia Giulia</div></div>
           <div class="wine-right"><span class="wine-price">€ 21,00</span><span class="wine-chevron">▾</span></div>
@@ -1288,7 +1320,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
     <div class="subcat-header" onclick="toggleSubcat(this)">Selezione Vini Rosati Nazionali <span class="subcat-arrow">›</span></div>
     <div class="subcat-body">
 
-      <div class="wine-item" data-name="Bardolino Chiaretto Classico Negrar Domini Veneti 2021 Veneto rosato DOC" data-cat="Vini Rosati" data-price="16">
+      <div class="wine-item" data-name="Bardolino Chiaretto Classico Negrar Domini Veneti 2021 Veneto rosato DOC" data-img="bardolino-chiaretto-classico-negrar-2021.png" data-cat="Vini Rosati" data-price="16">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Bardolino Chiaretto Classico – Negrar Domini Veneti 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 16,00</span><span class="wine-chevron">▾</span></div>
@@ -1304,7 +1336,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Pallido Capecci Marche Montepulciano rosato" data-cat="Vini Rosati" data-price="27">
+      <div class="wine-item" data-name="Pallido Capecci Marche Montepulciano rosato" data-img="pallido-capecci.png" data-cat="Vini Rosati" data-price="27">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Pallido – Capecci</div></div>
           <div class="wine-right"><span class="wine-price">€ 27,00</span><span class="wine-chevron">▾</span></div>
@@ -1334,7 +1366,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
     <div class="subcat-header" onclick="toggleSubcat(this)">Selezione Vini Rossi Nazionali <span class="subcat-arrow">›</span></div>
     <div class="subcat-body">
 
-      <div class="wine-item" data-name="Barbaresco Biologico Nada 2019 Piemonte Nebbiolo rosso" data-cat="Vini Rossi" data-price="59">
+      <div class="wine-item" data-name="Barbaresco Biologico Nada 2019 Piemonte Nebbiolo rosso" data-img="barbaresco-biologico-nada-2019.png" data-cat="Vini Rossi" data-price="59">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Barbaresco Biologico – Nada 2019</div></div>
           <div class="wine-right"><span class="wine-price">€ 59,00</span><span class="wine-chevron">▾</span></div>
@@ -1350,7 +1382,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Barbera d'Alba Pio Cesare 2019 Piemonte rosso" data-cat="Vini Rossi" data-price="32">
+      <div class="wine-item" data-name="Barbera d'Alba Pio Cesare 2019 Piemonte rosso" data-img="barbera-dalba-pio-cesare-2019.png" data-cat="Vini Rossi" data-price="32">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Barbera d'Alba – Pio Cesare 2019</div></div>
           <div class="wine-right"><span class="wine-price">€ 32,00</span><span class="wine-chevron">▾</span></div>
@@ -1365,7 +1397,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Barbera d'Alba Clavesana 2019 Piemonte rosso" data-cat="Vini Rossi" data-price="24">
+      <div class="wine-item" data-name="Barbera d'Alba Clavesana 2019 Piemonte rosso" data-img="barbera-dalba-clavesana-2019.png" data-cat="Vini Rossi" data-price="24">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Barbera d'Alba – Clavesana 2019</div></div>
           <div class="wine-right"><span class="wine-price">€ 24,00</span><span class="wine-chevron">▾</span></div>
@@ -1380,7 +1412,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Barolo Serralunga Palladino 2019 Piemonte Nebbiolo DOCG rosso" data-cat="Vini Rossi" data-price="64">
+      <div class="wine-item" data-name="Barolo Serralunga Palladino 2019 Piemonte Nebbiolo DOCG rosso" data-img="barolo-serralunga-palladino-2019.png" data-cat="Vini Rossi" data-price="64">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Barolo Serralunga – Palladino 2019</div></div>
           <div class="wine-right"><span class="wine-price">€ 64,00</span><span class="wine-chevron">▾</span></div>
@@ -1396,7 +1428,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Dolcetto d'Alba Palladino 2022 Piemonte rosso" data-cat="Vini Rossi" data-price="24">
+      <div class="wine-item" data-name="Dolcetto d'Alba Palladino 2022 Piemonte rosso" data-img="dolcetto-dalba-palladino-2022.png" data-cat="Vini Rossi" data-price="24">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Dolcetto d'Alba – Palladino 2022</div></div>
           <div class="wine-right"><span class="wine-price">€ 24,00</span><span class="wine-chevron">▾</span></div>
@@ -1411,7 +1443,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Nebbiolo d'Alba Nhe Clavesana 2021 Piemonte rosso" data-cat="Vini Rossi" data-price="24">
+      <div class="wine-item" data-name="Nebbiolo d'Alba Nhe Clavesana 2021 Piemonte rosso" data-img="nebbiolo-dalba-nhe-clavesana-2021.png" data-cat="Vini Rossi" data-price="24">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Nebbiolo d'Alba Nhe – Clavesana 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 24,00</span><span class="wine-chevron">▾</span></div>
@@ -1426,7 +1458,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Amarone della Valpolicella Campo León Latium 2017 Veneto DOCG rosso" data-cat="Vini Rossi" data-price="92">
+      <div class="wine-item" data-name="Amarone della Valpolicella Campo León Latium 2017 Veneto DOCG rosso" data-img="amarone-della-valpolicella-campo-leon-latium-2017.png" data-cat="Vini Rossi" data-price="92">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Amarone della Valpolicella Campo Leòn – Latium 2017</div></div>
           <div class="wine-right"><span class="wine-price">€ 92,00</span><span class="wine-chevron">▾</span></div>
@@ -1441,7 +1473,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Bell'Aja Bolgheri San Felice 2021 Toscana Merlot Cabernet DOC rosso" data-cat="Vini Rossi" data-price="44">
+      <div class="wine-item" data-name="Bell'Aja Bolgheri San Felice 2021 Toscana Merlot Cabernet DOC rosso" data-img="bellaja-bolgheri-san-felice-2021.png" data-cat="Vini Rossi" data-price="44">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Bell'Aja Bolgheri – San Felice 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 44,00</span><span class="wine-chevron">▾</span></div>
@@ -1457,7 +1489,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Brunello di Montalcino Campogiovanni San Felice 2016 Toscana Sangiovese DOCG rosso" data-cat="Vini Rossi" data-price="70">
+      <div class="wine-item" data-name="Brunello di Montalcino Campogiovanni San Felice 2016 Toscana Sangiovese DOCG rosso" data-img="brunello-campogiovanni-san-felice-2016.png" data-cat="Vini Rossi" data-price="70">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Brunello di Montalcino Campogiovanni – San Felice 2016</div></div>
           <div class="wine-right"><span class="wine-price">€ 70,00</span><span class="wine-chevron">▾</span></div>
@@ -1472,7 +1504,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Chianti Classico Riserva il Grigio San Felice 2018 Toscana Sangiovese rosso" data-cat="Vini Rossi" data-price="33">
+      <div class="wine-item" data-name="Chianti Classico Riserva il Grigio San Felice 2018 Toscana Sangiovese rosso" data-img="hianti-classico-riserva-grigio-2018.png" data-cat="Vini Rossi" data-price="33">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Chianti Classico Riserva il Grigio – San Felice 2018</div></div>
           <div class="wine-right"><span class="wine-price">€ 33,00</span><span class="wine-chevron">▾</span></div>
@@ -1487,7 +1519,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Le Volte dell'Ornellaia Tenuta dell'Ornellaia 2021 Toscana IGT Merlot Sangiovese Cabernet rosso" data-cat="Vini Rossi" data-price="43">
+      <div class="wine-item" data-name="Le Volte dell'Ornellaia Tenuta dell'Ornellaia 2021 Toscana IGT Merlot Sangiovese Cabernet rosso" data-img="le-volte-dellornellaia-2021.png" data-cat="Vini Rossi" data-price="43">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Le Volte dell'Ornellaia – Tenuta dell'Ornellaia 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 43,00</span><span class="wine-chevron">▾</span></div>
@@ -1503,7 +1535,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rosso di Montalcino Casanova di Neri 2021 Toscana Sangiovese rosso" data-cat="Vini Rossi" data-price="45">
+      <div class="wine-item" data-name="Rosso di Montalcino Casanova di Neri 2021 Toscana Sangiovese rosso" data-img="rosso-montalcino-casanova-neri-2021.png" data-cat="Vini Rossi" data-price="45">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rosso di Montalcino – Casanova di Neri 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 45,00</span><span class="wine-chevron">▾</span></div>
@@ -1518,7 +1550,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Rosso di Montepulciano Sabazio La Braccesca 2021 Toscana Sangiovese Merlot rosso" data-cat="Vini Rossi" data-price="21">
+      <div class="wine-item" data-name="Rosso di Montepulciano Sabazio La Braccesca 2021 Toscana Sangiovese Merlot rosso" data-img="rosso-montepulciano-sabazio-2021.png" data-cat="Vini Rossi" data-price="21">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Rosso di Montepulciano Sabazio – La Braccesca 2021</div></div>
           <div class="wine-right"><span class="wine-price">€ 21,00</span><span class="wine-chevron">▾</span></div>
@@ -1533,7 +1565,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Ruit Hora Bolgheri Caccia al Piano 2020 Toscana Merlot Cabernet Syrah rosso" data-cat="Vini Rossi" data-price="63">
+      <div class="wine-item" data-name="Ruit Hora Bolgheri Caccia al Piano 2020 Toscana Merlot Cabernet Syrah rosso" data-img="ruit-hora-bolgheri-caccia-al-piano-2020.png" data-cat="Vini Rossi" data-price="63">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Ruit Hora Bolgheri – Caccia al Piano 2020</div></div>
           <div class="wine-right"><span class="wine-price">€ 63,00</span><span class="wine-chevron">▾</span></div>
@@ -1547,7 +1579,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Tignanello Marchesi Antinori 2016 Toscana Sangiovese Cabernet IGT rosso" data-cat="Vini Rossi" data-price="170">
+      <div class="wine-item" data-name="Tignanello Marchesi Antinori 2016 Toscana Sangiovese Cabernet IGT rosso" data-img="tignanello-antinori-2016.png" data-cat="Vini Rossi" data-price="170">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Tignanello – Marchesi Antinori 2016</div></div>
           <div class="wine-right"><span class="wine-price">€ 170,00</span><span class="wine-chevron">▾</span></div>
@@ -1562,7 +1594,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Montepulciano d'Abruzzo Masciarelli 2020 Abruzzo rosso DOC" data-cat="Vini Rossi" data-price="19">
+      <div class="wine-item" data-name="Montepulciano d'Abruzzo Masciarelli 2020 Abruzzo rosso DOC" data-img="montepulciano-abruzzo-masciarelli-2020.png" data-cat="Vini Rossi" data-price="19">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Montepulciano d'Abruzzo – Masciarelli 2020</div></div>
           <div class="wine-right"><span class="wine-price">€ 19,00</span><span class="wine-chevron">▾</span></div>
@@ -1578,7 +1610,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Aglianico Neromora Vinosia 2019 Campania rosso" data-cat="Vini Rossi" data-price="21">
+      <div class="wine-item" data-name="Aglianico Neromora Vinosia 2019 Campania rosso" data-img="aglianico-neromora-vinosia-2019.png" data-cat="Vini Rossi" data-price="21">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Aglianico Neromora – Vinosia 2019</div></div>
           <div class="wine-right"><span class="wine-price">€ 21,00</span><span class="wine-chevron">▾</span></div>
@@ -1593,7 +1625,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Primitivo Salento Orus Vinosia 2022 Puglia rosso IGT" data-cat="Vini Rossi" data-price="18">
+      <div class="wine-item" data-name="Primitivo Salento Orus Vinosia 2022 Puglia rosso IGT" data-img="primitivo-salento-orus-vinosia-2022.png" data-cat="Vini Rossi" data-price="18">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Primitivo Salento Orus – Vinosia 2022</div></div>
           <div class="wine-right"><span class="wine-price">€ 18,00</span><span class="wine-chevron">▾</span></div>
@@ -1609,7 +1641,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Nero d'Avola Musita 2022 Sicilia rosso" data-cat="Vini Rossi" data-price="22">
+      <div class="wine-item" data-name="Nero d'Avola Musita 2022 Sicilia rosso" data-img="nero-davola-musita-2022.png" data-cat="Vini Rossi" data-price="22">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Nero d'Avola – Musita 2022</div></div>
           <div class="wine-right"><span class="wine-price">€ 22,00</span><span class="wine-chevron">▾</span></div>
@@ -1624,7 +1656,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="Brunello di Montalcino Poggio all'Oro 2007 Toscana Sangiovese DOCG rosso" data-cat="Vini Rossi" data-price="180">
+      <div class="wine-item" data-name="Brunello di Montalcino Poggio all'Oro 2007 Toscana Sangiovese DOCG rosso" data-img="brunello-poggio-alloro-2007.png" data-cat="Vini Rossi" data-price="180">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">Brunello di Montalcino "Poggio all'Oro" 2007</div></div>
           <div class="wine-right"><span class="wine-price">€ 180,00</span><span class="wine-chevron">▾</span></div>
@@ -1640,7 +1672,7 @@ cat > /mnt/user-data/outputs/lago_bin_vini.html << 'ENDOFFILE'
         </div>
       </div>
 
-      <div class="wine-item" data-name="50 50 del 2015 Capannelle Avignonesi Toscana IGT Merlot Sangiovese rosso" data-cat="Vini Rossi" data-price="170">
+      <div class="wine-item" data-name="50 50 del 2015 Capannelle Avignonesi Toscana IGT Merlot Sangiovese rosso" data-img="50-50-capannelle-avignonesi-2015.png" data-cat="Vini Rossi" data-price="170">
         <div class="wine-row" onclick="toggleWine(this)">
           <div class="wine-left"><div class="wine-name">50 &amp; 50 del 2015 – Capannelle Avignonesi</div></div>
           <div class="wine-right"><span class="wine-price">€ 170,00</span><span class="wine-chevron">▾</span></div>
@@ -1681,7 +1713,23 @@ function toggleSubcat(el) {
 }
 function toggleWine(el) {
   el.classList.toggle('active');
-  el.nextElementSibling.classList.toggle('open');
+  const detail = el.nextElementSibling;
+  detail.classList.toggle('open');
+
+  // Inject bottle image if not already done
+  if (detail.classList.contains('open') && !detail.dataset.imgLoaded) {
+    detail.dataset.imgLoaded = '1';
+    const wineItem = el.closest('.wine-item');
+    const imgFile = wineItem ? wineItem.dataset.img : null;
+
+    // Wrap existing content in detail-content div
+    const existingContent = detail.innerHTML;
+    const imgHtml = imgFile
+      ? `<div class="wine-bottle-img"><img src="${imgFile}" alt="Bottiglia" loading="lazy" onerror="this.parentElement.innerHTML=\'<div class=\\"no-img\\">🍾</div>\'"></div>`
+      : `<div class="wine-bottle-img"><div class="no-img">🍾</div></div>`;
+
+    detail.innerHTML = `<div class="wine-detail-inner">${imgHtml}<div class="wine-detail-content">${existingContent}</div></div>`;
+  }
 }
 
 // ── search ────────────────────────────────────────────
@@ -1753,9 +1801,3 @@ searchInput.addEventListener('input', function() {
 </script>
 </body>
 </html>
-ENDOFFILE
-echo "Done"
-Output
-
-Done
-Done
