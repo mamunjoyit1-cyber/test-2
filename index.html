@@ -160,6 +160,14 @@
   .acc-section-head { font-weight:bold; color:#b31e1e; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; margin:12px 0 8px; }
   .acc-section-head:first-of-type { margin-top:0; }
   .acc-dish-select-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .turno-picker { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(42,90,138,0.5); width: 100%; }
+  .turno-picker.visible { display: block; }
+  .turno-label { font-size: 11px; color: #1a3a5a; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 7px; }
+  .turno-options { display: flex; flex-wrap: wrap; gap: 6px; }
+  .turno-btn { border: 1.5px solid #2a5a8a; border-radius: 50%; background: #eef5fb; color: #1a3a5a; font-size: 13px; font-weight: bold; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: inherit; transition: all 0.2s; flex-shrink: 0; }
+  .turno-btn:hover { background: #d6e8f7; }
+  .turno-btn.selected { background: #2a5a8a; color: #fff; box-shadow: 0 2px 6px rgba(42,90,138,0.4); }
+  .turno-tag { background: #2a5a8a; color: #fff; font-size: 10px; font-weight: bold; padding: 1px 7px; border-radius: 8px; margin-left: 4px; letter-spacing: 0.5px; white-space: nowrap; }
 </style>
 </head>
 <body>
