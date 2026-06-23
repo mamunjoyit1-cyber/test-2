@@ -126,6 +126,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 .cart-row-info { flex: 1; }
 .cart-row-name { font-size: 12px; font-weight: bold; color: #f9f1e2; }
 .cart-row-detail { font-size: 11px; color: #bca07d; font-style: italic; margin-top: 2px; }
+.cart-row-detail-pkg { font-size: 13.5px; color: #f0d9a8; font-style: normal; margin-top: 6px; line-height: 1.9; }
 .cart-row-right { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
 .cart-qty-btn { background: transparent; border: 1px solid #d4af37; color: #d4af37; border-radius: 50%; width: 20px; height: 20px; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: inherit; flex-shrink: 0; line-height: 1; }
 .cart-qty-btn:hover { background: #d4af37; color: #150e0b; }
@@ -148,6 +149,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 .overlay-dish:last-child { border-bottom: none; }
 .overlay-dish-name { font-size: 17px; font-weight: bold; color: #f9f1e2; }
 .overlay-dish-detail { font-size: 13px; color: #bca07d; font-style: italic; margin-top: 3px; }
+.overlay-dish-detail-pkg { font-size: 15px; color: #f0d9a8; font-style: normal; margin-top: 6px; line-height: 1.9; }
 .overlay-dish-price { font-size: 17px; font-weight: bold; color: #d4af37; white-space: nowrap; flex-shrink: 0; }
 .overlay-total-box { background: linear-gradient(135deg, #2a1d19, #1a110e); border: 2px solid #d4af37; border-radius: 12px; padding: 18px 22px; margin-top: 24px; display: flex; justify-content: space-between; align-items: center; }
 .overlay-total-label { color: #bca07d; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
@@ -1015,7 +1017,7 @@ const PKG_CONFIG = {
       {name:'Tagliatelle di Pasta Fresca', sauces:['Selvaggina','Funghi']},
       {name:'Gnocchi di Patate', sauces:['Funghi','Formaggi con Gorgonzola']}
     ]},
-    { section:'Secondi Piatti', portata:'1° Secondo', cottura:true, items:[
+    { section:'Secondi Piatti', items:[
       {name:'Coniglio alla Rocchettina'},{name:'Selvaggina al Vino Rosso'},
       {name:'Grigliata Mista di Carne'},{name:'Agnello alla Griglia'},{name:'Roast Beef'}
     ]}
@@ -1030,7 +1032,7 @@ const PKG_CONFIG = {
       {name:'Tagliatelle di Pasta Fresca', sauces:['Selvaggina','Funghi']},
       {name:'Gnocchi di Patate', sauces:['Funghi','Formaggi con Gorgonzola']}
     ]},
-    { section:'Secondi Piatti', portata:'1° Secondo', cottura:true, items:[
+    { section:'Secondi Piatti', items:[
       {name:'Coniglio alla Rocchettina'},{name:'Selvaggina al Vino Rosso'},{name:'Roast Beef'}
     ]}
   ]},
@@ -1267,7 +1269,7 @@ function popupConfirm() {
   if (!allOk) return;
 
   popupPersons.forEach(p => {
-    let details = [p.portata];
+    let details = [];
     if (item.isGelato) details.push(p.flavors.join(', '));
     else if (item.isSorbetto) details.push(p.sorbettoType);
     else { if (p.sauce && p.sauce !== 'none') details.push(p.sauce); }
@@ -1279,6 +1281,7 @@ function popupConfirm() {
       name: item.name,
       price: item.price,
       course: item.course,
+      turno: p.portata,
       person: p.name || null,
       detail: details.join(' · ')
     });
@@ -1344,7 +1347,7 @@ function renderPkgPersons(key) {
 
           // Cottura row
           let cotturaHtml = '';
-          if (sel && section.cottura) {
+          if (sel && dish.cottura) {
             cotturaHtml = `<div class="pkg-cottura-row">
               <div class="pkg-cottura-label">🔥 Cottura:</div>
               <div class="pkg-cottura-chips">
@@ -1419,7 +1422,7 @@ document.addEventListener('click', e => {
       p.selections.push({
         sIdx, iIdx, dish: dish.name,
         sauce: (dish.sauces && dish.sauces.length>0) ? null : 'none',
-        cottura: section.cottura ? null : 'none'
+        cottura: dish.cottura ? null : 'none'
       });
     }
     renderPkgPersons(key);
@@ -1494,7 +1497,7 @@ function addPkgToCart(key,pid) {
     if(s.sauce&&s.sauce!=='none') d+=' ('+s.sauce+')';
     if(s.cottura&&s.cottura!=='none') d+=' — '+s.cottura;
     return d;
-  }).join(' · ');
+  }).join('<br>');
   cart.push({
     id:++cartIdCounter, isPkg:true, pkgKey:key, pkgPid:pid,
     itemId:'pkg_'+key, name:cfg.label, price:cfg.price,
@@ -1510,24 +1513,44 @@ function removePkgPerson(key,pid) {
 
 // ==================== CART ====================
 function updateCart() {
-  // Group by course
-  const grouped={};
-  COURSE_ORDER.forEach(c=>{grouped[c]=[];});
-  cart.forEach(e=>{ if(!grouped[e.course]) grouped[e.course]=[]; grouped[e.course].push(e); });
+  // Group entries: package items go in their own "Menù" bucket;
+  // à la carte items are grouped by the turno the customer picked (not by food category)
+  const buckets = {}; // key -> {label, entries:[]}
+  const bucketOrder = [];
 
-  // Build grouped display - merge same itemId (no person diff) for qty display
+  function bucketFor(e) {
+    if (e.isPkg) return { id:'menu', label:'🍽️ Menù' };
+    const t = e.turno || '—';
+    return { id:'turno:'+t, label:'📋 '+t };
+  }
+
+  cart.forEach(e=>{
+    const b = bucketFor(e);
+    if (!buckets[b.id]) { buckets[b.id] = { label:b.label, entries:[] }; bucketOrder.push(b.id); }
+    buckets[b.id].entries.push(e);
+  });
+
+  // Sort bucket order: Menù first, then turni in TURNO_OPTIONS order
+  bucketOrder.sort((a,b)=>{
+    if (a==='menu') return -1;
+    if (b==='menu') return 1;
+    const ta = a.replace('turno:',''), tb = b.replace('turno:','');
+    const ia = TURNO_OPTIONS.indexOf(ta), ib = TURNO_OPTIONS.indexOf(tb);
+    return (ia===-1?99:ia) - (ib===-1?99:ib);
+  });
+
   let html='', totalItems=0, totalPrice=0, hasContent=false;
 
-  COURSE_ORDER.forEach(course=>{
-    const entries=grouped[course];
+  bucketOrder.forEach(bucketId=>{
+    const entries = buckets[bucketId].entries;
     if(!entries||!entries.length) return;
     hasContent=true;
-    html+=`<div class="cart-course-label">${COURSE_LABELS[course]}</div>`;
+    html+=`<div class="cart-course-label">${buckets[bucketId].label}</div>`;
 
-    // Group same itemId with same detail
+    // Group same itemId+detail+person+turno together for quantity display
     const grouped2=[];
     entries.forEach(e=>{
-      const key=e.itemId+'||'+(e.detail||'')+'||'+(e.person||'');
+      const key=e.itemId+'||'+(e.detail||'')+'||'+(e.person||'')+'||'+(e.turno||'');
       const existing=grouped2.find(g=>g.key===key);
       if(existing){ existing.ids.push(e.id); existing.count++; existing.totalPrice+=e.price; }
       else grouped2.push({key, ids:[e.id], count:1, totalPrice:e.price, name:e.name, person:e.person, detail:e.detail, price:e.price, isPkg:e.isPkg, pkgKey:e.pkgKey, pkgPid:e.pkgPid});
@@ -1536,7 +1559,7 @@ function updateCart() {
     grouped2.forEach(g=>{
       totalItems+=g.count; totalPrice+=g.totalPrice;
       const personTxt=g.person?`<span style="color:#d4af37;">${g.person}</span> — `:'';
-      const detailTxt=g.detail?`<div class="cart-row-detail">${g.detail}</div>`:'';
+      const detailTxt=g.detail?`<div class="${g.isPkg?'cart-row-detail-pkg':'cart-row-detail'}">${g.detail}</div>`:'';
       const removeAllAction=g.isPkg?`removePkgPerson('${g.pkgKey}',${g.pkgPid})`:`removeCartGroup(${JSON.stringify(g.ids)})`;
       const minusAction=g.isPkg?`removePkgPerson('${g.pkgKey}',${g.pkgPid})`:`removeOneCartItem('${g.key}')`;
       html+=`
@@ -1614,7 +1637,7 @@ function removeOneCartItem(groupKey) {
   // Remove last matching entry
   for(let i=cart.length-1;i>=0;i--){
     const e=cart[i];
-    const k=e.itemId+'||'+(e.detail||'')+'||'+(e.person||'');
+    const k=e.itemId+'||'+(e.detail||'')+'||'+(e.person||'')+'||'+(e.turno||'');
     if(k===groupKey){ cart.splice(i,1); break; }
   }
   updateCart();
@@ -1622,7 +1645,7 @@ function removeOneCartItem(groupKey) {
 
 function addSameItem(groupKey) {
   // Find an existing cart entry with this key and duplicate it
-  const e=cart.find(c=>(c.itemId+'||'+(c.detail||'')+'||'+(c.person||''))===groupKey);
+  const e=cart.find(c=>(c.itemId+'||'+(c.detail||'')+'||'+(c.person||'')+'||'+(c.turno||''))===groupKey);
   if(!e) return;
   if(e.isPkg){ alert('Per i menù usa "Aggiungi persona"'); return; }
   cart.push({...e, id:++cartIdCounter});
@@ -1633,19 +1656,36 @@ function toggleCart(){ document.getElementById('cart-panel').classList.toggle('o
 
 // ==================== SUMMARY OVERLAY ====================
 function showOverlay() {
-  const grouped={};
-  COURSE_ORDER.forEach(c=>{grouped[c]=[];});
-  cart.forEach(e=>{ if(!grouped[e.course]) grouped[e.course]=[]; grouped[e.course].push(e); });
+  const buckets = {};
+  const bucketOrder = [];
+  function bucketFor(e) {
+    if (e.isPkg) return { id:'menu', label:'🍽️ Menù' };
+    const t = e.turno || '—';
+    return { id:'turno:'+t, label:'📋 '+t };
+  }
+  cart.forEach(e=>{
+    const b = bucketFor(e);
+    if (!buckets[b.id]) { buckets[b.id] = { label:b.label, entries:[] }; bucketOrder.push(b.id); }
+    buckets[b.id].entries.push(e);
+  });
+  bucketOrder.sort((a,b)=>{
+    if (a==='menu') return -1;
+    if (b==='menu') return 1;
+    const ta = a.replace('turno:',''), tb = b.replace('turno:','');
+    const ia = TURNO_OPTIONS.indexOf(ta), ib = TURNO_OPTIONS.indexOf(tb);
+    return (ia===-1?99:ia) - (ib===-1?99:ib);
+  });
+
   let html='', total=0;
-  COURSE_ORDER.forEach(course=>{
-    const entries=grouped[course]; if(!entries||!entries.length) return;
-    html+=`<div class="overlay-section"><div class="overlay-section-title">${COURSE_LABELS[course]}</div>`;
+  bucketOrder.forEach(bucketId=>{
+    const entries=buckets[bucketId].entries; if(!entries||!entries.length) return;
+    html+=`<div class="overlay-section"><div class="overlay-section-title">${buckets[bucketId].label}</div>`;
     entries.forEach(e=>{
       total+=e.price;
       html+=`<div class="overlay-dish">
         <div>
           <div class="overlay-dish-name">${e.person?e.person+' — ':''}${e.name}</div>
-          ${e.detail?`<div class="overlay-dish-detail">${e.detail}</div>`:''}
+          ${e.detail?`<div class="${e.isPkg?'overlay-dish-detail-pkg':'overlay-dish-detail'}">${e.detail}</div>`:''}
         </div>
         <div class="overlay-dish-price">€${e.price}</div>
       </div>`;
