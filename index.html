@@ -948,6 +948,7 @@ function googleTranslateElementInit() {
 const GELATO_FLAVORS = ['Vaniglia 🍦','Fiore di Latte 🥛','Fragola 🍓','Nocciola 🌰','Limone 🍋','Mango 🥭','Cioccolata 🍫','Caffè ☕'];
 
 const TURNO_OPTIONS = ['1° turno','2° turno','3° turno','4° turno'];
+const DESSERT_LABEL = 'Dessert';
 
 // Which items need cottura
 const COTTURA_ITEMS = ['filetto','grigliata','agnello','roastbeef','coniglio','selvaggina','grigliata_pesce','pescato'];
@@ -1136,13 +1137,14 @@ function handleOverlayClick(e) {
 function popupAddPerson() {
   const pid = ++popupPersonCounter;
   const item = ITEMS[popupItemId];
+  const isDessertCourse = (item.course === 'dolci' || item.course === 'gelato');
   popupPersons.push({
     pid, name:'',
     sauce: (item.sauces.length === 0 && !item.isGelato && !item.isSorbetto) ? 'none' : null,
     cottura: item.cottura ? null : 'none',
     flavors: [],
     sorbettoType: item.isSorbetto ? null : 'none',
-    portata: null
+    portata: isDessertCourse ? DESSERT_LABEL : null
   });
   renderPopupPersons();
 }
@@ -1204,9 +1206,9 @@ function renderPopupPersons() {
       `;
     }
 
-    // Portata HTML
+    // Portata HTML (hidden for dessert/gelato items - turno is auto-assigned to "Dessert")
     let portataHtml = '';
-    {
+    if (item.course !== 'dolci' && item.course !== 'gelato') {
       portataHtml = `
         <div class="portata-selector">
           <div class="portata-label">📋 Quale turno? (obbligatorio)</div>
