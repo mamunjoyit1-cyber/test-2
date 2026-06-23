@@ -210,6 +210,11 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 .btn-arrow { background: #d4af37; color: #150e0b; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
 .footer { background: #0b0202; color: #d4af37; text-align: center; padding: 30px 20px; font-size: 14px; border-top: 3px solid #d4af37; margin-top: 50px; }
 .footer .note { color: #bca07d; font-size: 13px; font-style: italic; margin-top: 10px; }
+
+/* ── TRANSLATION STRIP (Google-Translate style) ── */
+.i18n-strip { display: none; margin-top: 6px; background: #f1ece1; border-left: 4px solid #b31e1e; border-radius: 6px; padding: 8px 12px; font-size: 14px; font-style: italic; color: #3a2a1f; line-height: 1.4; }
+.i18n-strip.show { display: block; }
+.i18n-strip.is-desc { font-size: 13px; }
 </style>
 </head>
 <body>
@@ -233,18 +238,28 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
     <button class="translate-btn" onclick="toggleDropdown(event)" id="translateBtn">🌐 More Languages ▾</button>
     <div class="lang-dropdown" id="langDropdown">
       <div class="lang-dropdown-section">🇪🇺 Europe</div>
-      <div class="lang-dropdown-item" onclick="closeDropdown()">🇪🇸 Español</div>
-      <div class="lang-dropdown-item" onclick="closeDropdown()">🇵🇹 Português</div>
-      <div class="lang-dropdown-item" onclick="closeDropdown()">🇷🇺 Русский</div>
-      <div class="lang-dropdown-item" onclick="closeDropdown()">🇳🇱 Nederlands</div>
-      <div class="lang-dropdown-item" onclick="closeDropdown()">🇵🇱 Polski</div>
-      <div class="lang-dropdown-item" onclick="closeDropdown()">🇬🇷 Ελληνικά</div>
-      <div class="lang-dropdown-item" onclick="closeDropdown()">🇦🇪 العربية</div>
-      <div class="lang-dropdown-item" onclick="closeDropdown()">🇹🇷 Türkçe</div>
-      <div class="lang-dropdown-item" onclick="closeDropdown()">🇨🇳 中文</div>
-      <div class="lang-dropdown-item" onclick="closeDropdown()">🇯🇵 日本語</div>
-      <div class="lang-dropdown-item" onclick="closeDropdown()">🇰🇷 한국어</div>
+      <div class="lang-dropdown-item" onclick="setLangFromDropdown('es',this)">🇪🇸 Español</div>
+      <div class="lang-dropdown-item" onclick="setLangFromDropdown('pt',this)">🇵🇹 Português</div>
+      <div class="lang-dropdown-item" onclick="setLangFromDropdown('ru',this)">🇷🇺 Русский</div>
+      <div class="lang-dropdown-item" onclick="setLangFromDropdown('nl',this)">🇳🇱 Nederlands</div>
+      <div class="lang-dropdown-item" onclick="setLangFromDropdown('pl',this)">🇵🇱 Polski</div>
+      <div class="lang-dropdown-item" onclick="setLangFromDropdown('el',this)">🇬🇷 Ελληνικά</div>
+      <div class="lang-dropdown-section">🌍 World</div>
+      <div class="lang-dropdown-item" onclick="setLangFromDropdown('ar',this)">🇦🇪 العربية</div>
+      <div class="lang-dropdown-item" onclick="setLangFromDropdown('tr',this)">🇹🇷 Türkçe</div>
+      <div class="lang-dropdown-item" onclick="setLangFromDropdown('zh',this)">🇨🇳 中文</div>
+      <div class="lang-dropdown-item" onclick="setLangFromDropdown('ja',this)">🇯🇵 日本語</div>
+      <div class="lang-dropdown-item" onclick="setLangFromDropdown('ko',this)">🇰🇷 한국어</div>
     </div>
+  </div>
+</div>
+
+<!-- TRANSLATION LOADING OVERLAY -->
+<div id="translate-loading" style="display:none;position:fixed;inset:0;background:rgba(15,3,3,0.88);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:18px;">
+  <div style="font-size:36px;">🌐</div>
+  <div style="color:#d4af37;font-size:18px;font-weight:bold;letter-spacing:2px;" id="translate-loading-text">Traduzione in corso...</div>
+  <div style="width:220px;height:4px;background:rgba(212,175,55,0.2);border-radius:2px;overflow:hidden;">
+    <div id="translate-progress-bar" style="height:100%;background:#d4af37;border-radius:2px;width:0%;transition:width 0.4s ease;"></div>
   </div>
 </div>
 
@@ -252,44 +267,42 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   <a class="quick-card" href="#" onclick="setTab('vini');return false;">
     <div class="card-icon">🍷</div>
     <div class="card-text">
-      <span>Carta dei Vini</span>
-      <span class="card-label">Apri Lista Digitale</span>
+      <span data-i18n="qc_vini">Carta dei Vini</span>
+      <span class="card-label" data-i18n="qc_vini_sub">Apri Lista Digitale</span>
     </div>
   </a>
   <div class="quick-card" onclick="setTab('dolce')">
     <div class="card-icon">🍰</div>
     <div class="card-text">
-      <span>Dolci</span>
-      <span class="card-label">I Nostri Dessert</span>
+      <span data-i18n="qc_dolci">Dolci</span>
+      <span class="card-label" data-i18n="qc_dolci_sub">I Nostri Dessert</span>
     </div>
   </div>
   <div class="quick-card" onclick="setTab('bar')">
     <div class="card-icon">🍹</div>
     <div class="card-text">
-      <span>Bevande</span>
-      <span class="card-label">Bibite, Caffè &amp; Cocktails</span>
+      <span data-i18n="qc_bev">Bevande</span>
+      <span class="card-label" data-i18n="qc_bev_sub">Bibite, Caffè &amp; Cocktails</span>
     </div>
   </div>
 </div>
 
 <div class="search-bar-wrap">
   <div class="search-bar-inner">
-    <input id="searchInput" type="text" placeholder="🔍 Cerca nel menù... / Search menu..." oninput="searchMenu(this.value)"/>
+    <input id="searchInput" type="text" placeholder="🔍 Cerca nel menù... / Search menu..." data-i18n-placeholder="search_placeholder" oninput="searchMenu(this.value)"/>
   </div>
   <div id="searchResults"></div>
 </div>
 
 <div class="tabs-wrap">
   <div class="tabs">
-    <button class="tab-btn active" onclick="setTab('menu_packages',this)">🍽️ Menù</button>
-    <button class="tab-btn" onclick="setTab('antipasti',this)">🥗 Antipasti</button>
-    <button class="tab-btn" onclick="setTab('primi',this)">🍝 Primi</button>
-    <button class="tab-btn" onclick="setTab('secondi',this)">🥩 Secondi</button>
-    <button class="tab-btn" onclick="setTab('contorni',this)">🥦 Contorni</button>
-    <button class="tab-btn" onclick="setTab('dolce',this)">🍰 Dolci</button>
-    <button class="tab-btn" onclick="setTab('gelato',this)">🍦 Gelato</button>
-    <button class="tab-btn" onclick="setTab('vini',this)">🍷 Vini</button>
-    <button class="tab-btn" onclick="setTab('bar',this)">☕ Bar</button>
+    <button class="tab-btn active" onclick="setTab('menu_packages',this)" data-i18n="tab_menu">🍽️ Menù</button>
+    <button class="tab-btn" onclick="setTab('antipasti',this)" data-i18n="tab_antipasti">🥗 Antipasti</button>
+    <button class="tab-btn" onclick="setTab('primi',this)" data-i18n="tab_primi">🍝 Primi</button>
+    <button class="tab-btn" onclick="setTab('secondi',this)" data-i18n="tab_secondi">🥩 Secondi</button>
+    <button class="tab-btn" onclick="setTab('contorni',this)" data-i18n="tab_contorni">🥦 Contorni</button>
+    <button class="tab-btn" onclick="setTab('dolce',this)" data-i18n="tab_dolci">🍰 Dolci</button>
+    <button class="tab-btn" onclick="setTab('gelato',this)" data-i18n="tab_gelato">🍦 Gelato</button>
   </div>
 </div>
 
@@ -297,86 +310,95 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 
 <!-- MENU PACKAGES -->
 <div class="section active" id="sec-menu_packages">
-  <h2 class="cat-title">🍽️ I Nostri Menù</h2>
+  <h2 class="cat-title" data-i18n="sec_menu_title">🍽️ I Nostri Menù</h2>
 
   <div class="pkg-item">
     <div class="pkg-header">
       <div>
-        <div class="pkg-name">Menù del Lago Bin</div>
-        <div class="pkg-desc">Con i nostri Piatti Tipici e la Formula "Tutto Compreso" (1 bott. Vino della Casa ogni 4 pers.) — 5 Portate Selezionate dalla Cucina</div>
+        <div class="pkg-name" data-i18n="pkg_lagobin_name">Menù del Lago Bin</div>
+        <div class="i18n-strip" data-i18n-strip="pkg_lagobin_name"></div>
+        <div class="pkg-desc" data-i18n="pkg_lagobin_desc">Con i nostri Piatti Tipici e la Formula "Tutto Compreso" (1 bott. Vino della Casa ogni 4 pers.) — 5 Portate Selezionate dalla Cucina</div>
+        <div class="i18n-strip is-desc" data-i18n-strip="pkg_lagobin_desc"></div>
       </div>
       <div class="pkg-right">
         <div class="pkg-price">€45,00</div>
-        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('lago_bin',this)">📋 Vedi ▾</button>
+        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('lago_bin',this)" data-i18n="btn_vedi">📋 Vedi ▾</button>
       </div>
     </div>
     <div class="pkg-accordion" id="acc-lago_bin">
       <div id="persons-lago_bin"></div>
-      <button class="pkg-add-person-btn" id="addperson-lago_bin" style="display:none;" onclick="addPkgPerson('lago_bin')">+ Aggiungi persona</button>
+      <button class="pkg-add-person-btn" id="addperson-lago_bin" style="display:none;" onclick="addPkgPerson('lago_bin')" data-i18n="btn_add_person">+ Aggiungi persona</button>
     </div>
   </div>
 
   <div class="pkg-item">
     <div class="pkg-header">
       <div>
-        <div class="pkg-name">Menù Gastronomico</div>
-        <div class="pkg-desc">Aperitivo, 3 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse.</div>
+        <div class="pkg-name" data-i18n="pkg_gastro_name">Menù Gastronomico</div>
+        <div class="i18n-strip" data-i18n-strip="pkg_gastro_name"></div>
+        <div class="pkg-desc" data-i18n="pkg_gastro_desc">Aperitivo, 3 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse.</div>
+        <div class="i18n-strip is-desc" data-i18n-strip="pkg_gastro_desc"></div>
       </div>
       <div class="pkg-right">
         <div class="pkg-price">€40,00</div>
-        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('gastro',this)">📋 Vedi ▾</button>
+        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('gastro',this)" data-i18n="btn_vedi">📋 Vedi ▾</button>
       </div>
     </div>
     <div class="pkg-accordion" id="acc-gastro">
       <div id="persons-gastro"></div>
-      <button class="pkg-add-person-btn" id="addperson-gastro" style="display:none;" onclick="addPkgPerson('gastro')">+ Aggiungi persona</button>
+      <button class="pkg-add-person-btn" id="addperson-gastro" style="display:none;" onclick="addPkgPerson('gastro')" data-i18n="btn_add_person">+ Aggiungi persona</button>
     </div>
   </div>
 
   <div class="pkg-item">
     <div class="pkg-header">
       <div>
-        <div class="pkg-name">Menù Degustazione (*)</div>
-        <div class="pkg-desc">Aperitivo, 2 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse.</div>
-        <div style="margin-top:8px;font-size:12px;color:#b31e1e;font-weight:bold;">⚠️ (*) Non servito Sabato Sera, Domenica a Pranzo e nei Festivi.</div>
+        <div class="pkg-name" data-i18n="pkg_degu_name">Menù Degustazione (*)</div>
+        <div class="i18n-strip" data-i18n-strip="pkg_degu_name"></div>
+        <div class="pkg-desc" data-i18n="pkg_degu_desc">Aperitivo, 2 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse.</div>
+        <div class="i18n-strip is-desc" data-i18n-strip="pkg_degu_desc"></div>
+        <div style="margin-top:8px;font-size:12px;color:#b31e1e;font-weight:bold;" data-i18n="pkg_degu_warn">⚠️ (*) Non servito Sabato Sera, Domenica a Pranzo e nei Festivi.</div>
+        <div class="i18n-strip is-desc" data-i18n-strip="pkg_degu_warn"></div>
       </div>
       <div class="pkg-right">
         <div class="pkg-price">€30,00</div>
-        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('degu',this)">📋 Vedi ▾</button>
+        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('degu',this)" data-i18n="btn_vedi">📋 Vedi ▾</button>
       </div>
     </div>
     <div class="pkg-accordion" id="acc-degu">
       <div id="persons-degu"></div>
-      <button class="pkg-add-person-btn" id="addperson-degu" style="display:none;" onclick="addPkgPerson('degu')">+ Aggiungi persona</button>
+      <button class="pkg-add-person-btn" id="addperson-degu" style="display:none;" onclick="addPkgPerson('degu')" data-i18n="btn_add_person">+ Aggiungi persona</button>
     </div>
   </div>
 
   <div class="pkg-item">
     <div class="pkg-header">
       <div>
-        <div class="pkg-name">Menù Bambini (4/10 Anni)</div>
-        <div class="pkg-desc">Un Piatto a scelta + Gelato Fatto in Casa + Bibita</div>
+        <div class="pkg-name" data-i18n="pkg_bambini_name">Menù Bambini (4/10 Anni)</div>
+        <div class="i18n-strip" data-i18n-strip="pkg_bambini_name"></div>
+        <div class="pkg-desc" data-i18n="pkg_bambini_desc">Un Piatto a scelta + Gelato Fatto in Casa + Bibita</div>
+        <div class="i18n-strip is-desc" data-i18n-strip="pkg_bambini_desc"></div>
       </div>
       <div class="pkg-right">
         <div class="pkg-price">€15,00</div>
-        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('bambini',this)">📋 Vedi ▾</button>
+        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('bambini',this)" data-i18n="btn_vedi">📋 Vedi ▾</button>
       </div>
     </div>
     <div class="pkg-accordion" id="acc-bambini">
       <div id="persons-bambini"></div>
-      <button class="pkg-add-person-btn" id="addperson-bambini" style="display:none;" onclick="addPkgPerson('bambini')">+ Aggiungi persona</button>
+      <button class="pkg-add-person-btn" id="addperson-bambini" style="display:none;" onclick="addPkgPerson('bambini')" data-i18n="btn_add_person">+ Aggiungi persona</button>
     </div>
   </div>
 
-  <div class="note-box"><div class="note-box-text">I Menù non sono Divisibili per più Persone.</div></div>
+  <div class="note-box"><div class="note-box-text" data-i18n="note_menu_nodivide">I Menù non sono Divisibili per più Persone.</div></div>
 </div>
 
 <!-- ANTIPASTI -->
 <div class="section" id="sec-antipasti">
-  <h2 class="cat-title">🥗 Antipasti à la Carte</h2>
+  <h2 class="cat-title" data-i18n="sec_antipasti_title">🥗 Antipasti à la Carte</h2>
   <div class="item" id="item-antipasto_tipico">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Antipasto Tipico del Lago Bin</div></div>
+      <div class="item-left"><div class="item-name">Antipasto Tipico del Lago Bin</div><div class="i18n-strip" data-i18n-strip-auto></div></div>
       <div class="item-right">
         <div class="item-price">€15,00</div>
         <div class="qty-row">
@@ -390,7 +412,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   </div>
   <div class="item" id="item-salumiere">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Assortimento del Salumiere</div></div>
+      <div class="item-left"><div class="item-name">Assortimento del Salumiere</div><div class="i18n-strip" data-i18n-strip-auto></div></div>
       <div class="item-right">
         <div class="item-price">€15,00</div>
         <div class="qty-row">
@@ -404,7 +426,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   </div>
   <div class="item" id="item-prosciutto">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Prosciutto di Parma con Melone o Grana</div></div>
+      <div class="item-left"><div class="item-name">Prosciutto di Parma con Melone o Grana</div><div class="i18n-strip" data-i18n-strip-auto></div></div>
       <div class="item-right">
         <div class="item-price">€13,00</div>
         <div class="qty-row">
@@ -418,7 +440,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   </div>
   <div class="item" id="item-misto_caldo">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Antipasto Misto "Caldo e Freddo" (per 2 pers.)</div></div>
+      <div class="item-left"><div class="item-name">Antipasto Misto "Caldo e Freddo" (per 2 pers.)</div><div class="i18n-strip" data-i18n-strip-auto></div></div>
       <div class="item-right">
         <div class="item-price">€25,00</div>
         <div class="qty-row">
@@ -432,7 +454,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   </div>
   <div class="item" id="item-lumache">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Lumache in Umido</div></div>
+      <div class="item-left"><div class="item-name">Lumache in Umido</div><div class="i18n-strip" data-i18n-strip-auto></div></div>
       <div class="item-right">
         <div class="item-price">€18,00</div>
         <div class="qty-row">
@@ -446,7 +468,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   </div>
   <div class="item" id="item-brandacujan">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Brandacujan</div></div>
+      <div class="item-left"><div class="item-name">Brandacujan</div><div class="i18n-strip" data-i18n-strip-auto></div></div>
       <div class="item-right">
         <div class="item-price">€15,00</div>
         <div class="qty-row">
@@ -460,7 +482,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   </div>
   <div class="item" id="item-tartare_manzo">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Tartare di Manzo al Coltello</div></div>
+      <div class="item-left"><div class="item-name">Tartare di Manzo al Coltello</div><div class="i18n-strip" data-i18n-strip-auto></div></div>
       <div class="item-right">
         <div class="item-price">€20,00</div>
         <div class="qty-row">
@@ -474,7 +496,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   </div>
   <div class="item" id="item-tomino">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Tomino d'Alpeggio Caldo</div></div>
+      <div class="item-left"><div class="item-name">Tomino d'Alpeggio Caldo</div><div class="i18n-strip" data-i18n-strip-auto></div></div>
       <div class="item-right">
         <div class="item-price">€12,00</div>
         <div class="qty-row">
@@ -488,7 +510,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   </div>
   <div class="item" id="item-tartare_pesce">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Tartare di Pesce</div><div class="item-desc">Secondo disponibilità</div></div>
+      <div class="item-left"><div class="item-name">Tartare di Pesce</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Secondo disponibilità</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div>
       <div class="item-right">
         <div class="item-price">€18,00*</div>
         <div class="qty-row">
@@ -502,7 +524,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   </div>
   <div class="item" id="item-antipasto_mare">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Antipasto Misto di Mare</div><div class="item-desc">Secondo disponibilità</div></div>
+      <div class="item-left"><div class="item-name">Antipasto Misto di Mare</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Secondo disponibilità</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div>
       <div class="item-right">
         <div class="item-price">€25,00*</div>
         <div class="qty-row">
@@ -518,160 +540,89 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 
 <!-- PRIMI -->
 <div class="section" id="sec-primi">
-  <h2 class="cat-title">🍝 Primi Piatti</h2>
-  <div class="item" id="item-ravioli_nonna"><div class="item-top-row"><div class="item-left"><div class="item-name">Ravioli della Nonna</div><div class="item-desc">Al Pomodoro, Burro e Salvia, Funghi o Burro e Timo</div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('ravioli_nonna',-1)">−</button><span class="qty-display" id="qty-ravioli_nonna">0</span><button class="qty-btn" onclick="changeQty('ravioli_nonna',1)">+</button></div><button class="add-order-btn" id="btn-ravioli_nonna" onclick="openPopup('ravioli_nonna')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-ravioli_coniglio"><div class="item-top-row"><div class="item-left"><div class="item-name">Ravioli della Nonna al Coniglio</div></div><div class="item-right"><div class="item-price">€20,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('ravioli_coniglio',-1)">−</button><span class="qty-display" id="qty-ravioli_coniglio">0</span><button class="qty-btn" onclick="changeQty('ravioli_coniglio',1)">+</button></div><button class="add-order-btn" id="btn-ravioli_coniglio" onclick="openPopup('ravioli_coniglio')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-tagliatelle_sel"><div class="item-top-row"><div class="item-left"><div class="item-name">Tagliatelle di Pasta Fresca</div><div class="item-desc">Alla Selvaggina, ai Funghi o al Pesto Fresco</div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tagliatelle_sel',-1)">−</button><span class="qty-display" id="qty-tagliatelle_sel">0</span><button class="qty-btn" onclick="changeQty('tagliatelle_sel',1)">+</button></div><button class="add-order-btn" id="btn-tagliatelle_sel" onclick="openPopup('tagliatelle_sel')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-tagliatelle_mare"><div class="item-top-row"><div class="item-left"><div class="item-name">Tagliatelle ai Frutti di Mare</div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tagliatelle_mare',-1)">−</button><span class="qty-display" id="qty-tagliatelle_mare">0</span><button class="qty-btn" onclick="changeQty('tagliatelle_mare',1)">+</button></div><button class="add-order-btn" id="btn-tagliatelle_mare" onclick="openPopup('tagliatelle_mare')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-mezzelune"><div class="item-top-row"><div class="item-left"><div class="item-name">Mezzelune di Magro</div><div class="item-desc">Al Burro e Salvia o alle Noci</div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('mezzelune',-1)">−</button><span class="qty-display" id="qty-mezzelune">0</span><button class="qty-btn" onclick="changeQty('mezzelune',1)">+</button></div><button class="add-order-btn" id="btn-mezzelune" onclick="openPopup('mezzelune')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-troffie"><div class="item-top-row"><div class="item-left"><div class="item-name">Troffie</div><div class="item-desc">Al Pesto Fresco o Primavera</div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('troffie',-1)">−</button><span class="qty-display" id="qty-troffie">0</span><button class="qty-btn" onclick="changeQty('troffie',1)">+</button></div><button class="add-order-btn" id="btn-troffie" onclick="openPopup('troffie')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-troffie_gamberetti"><div class="item-top-row"><div class="item-left"><div class="item-name">Troffie con Gamberetti e Zucchine</div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('troffie_gamberetti',-1)">−</button><span class="qty-display" id="qty-troffie_gamberetti">0</span><button class="qty-btn" onclick="changeQty('troffie_gamberetti',1)">+</button></div><button class="add-order-btn" id="btn-troffie_gamberetti" onclick="openPopup('troffie_gamberetti')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-gnocchi"><div class="item-top-row"><div class="item-left"><div class="item-name">Gnocchi di Patate</div><div class="item-desc">Ai Funghi, ai Formaggi con Gorgonzola o Burro e Salvia</div></div><div class="item-right"><div class="item-price">€13,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('gnocchi',-1)">−</button><span class="qty-display" id="qty-gnocchi">0</span><button class="qty-btn" onclick="changeQty('gnocchi',1)">+</button></div><button class="add-order-btn" id="btn-gnocchi" onclick="openPopup('gnocchi')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-risotto"><div class="item-top-row"><div class="item-left"><div class="item-name">Risotto ai Frutti di Mare (min. 2 pers.)</div></div><div class="item-right"><div class="item-price">€20,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('risotto',-1)">−</button><span class="qty-display" id="qty-risotto">0</span><button class="qty-btn" onclick="changeQty('risotto',1)">+</button></div><button class="add-order-btn" id="btn-risotto" onclick="openPopup('risotto')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-duo_primi"><div class="item-top-row"><div class="item-left"><div class="item-name">Duo di Primi</div></div><div class="item-right"><div class="item-price">€25,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('duo_primi',-1)">−</button><span class="qty-display" id="qty-duo_primi">0</span><button class="qty-btn" onclick="changeQty('duo_primi',1)">+</button></div><button class="add-order-btn" id="btn-duo_primi" onclick="openPopup('duo_primi')">+ Aggiungi</button></div></div></div>
+  <h2 class="cat-title" data-i18n="sec_primi_title">🍝 Primi Piatti</h2>
+  <div class="item" id="item-ravioli_nonna"><div class="item-top-row"><div class="item-left"><div class="item-name">Ravioli della Nonna</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Al Pomodoro, Burro e Salvia, Funghi o Burro e Timo</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('ravioli_nonna',-1)">−</button><span class="qty-display" id="qty-ravioli_nonna">0</span><button class="qty-btn" onclick="changeQty('ravioli_nonna',1)">+</button></div><button class="add-order-btn" id="btn-ravioli_nonna" onclick="openPopup('ravioli_nonna')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-ravioli_coniglio"><div class="item-top-row"><div class="item-left"><div class="item-name">Ravioli della Nonna al Coniglio</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€20,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('ravioli_coniglio',-1)">−</button><span class="qty-display" id="qty-ravioli_coniglio">0</span><button class="qty-btn" onclick="changeQty('ravioli_coniglio',1)">+</button></div><button class="add-order-btn" id="btn-ravioli_coniglio" onclick="openPopup('ravioli_coniglio')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-tagliatelle_sel"><div class="item-top-row"><div class="item-left"><div class="item-name">Tagliatelle di Pasta Fresca</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Alla Selvaggina, ai Funghi o al Pesto Fresco</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tagliatelle_sel',-1)">−</button><span class="qty-display" id="qty-tagliatelle_sel">0</span><button class="qty-btn" onclick="changeQty('tagliatelle_sel',1)">+</button></div><button class="add-order-btn" id="btn-tagliatelle_sel" onclick="openPopup('tagliatelle_sel')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-tagliatelle_mare"><div class="item-top-row"><div class="item-left"><div class="item-name">Tagliatelle ai Frutti di Mare</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tagliatelle_mare',-1)">−</button><span class="qty-display" id="qty-tagliatelle_mare">0</span><button class="qty-btn" onclick="changeQty('tagliatelle_mare',1)">+</button></div><button class="add-order-btn" id="btn-tagliatelle_mare" onclick="openPopup('tagliatelle_mare')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-mezzelune"><div class="item-top-row"><div class="item-left"><div class="item-name">Mezzelune di Magro</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Al Burro e Salvia o alle Noci</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('mezzelune',-1)">−</button><span class="qty-display" id="qty-mezzelune">0</span><button class="qty-btn" onclick="changeQty('mezzelune',1)">+</button></div><button class="add-order-btn" id="btn-mezzelune" onclick="openPopup('mezzelune')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-troffie"><div class="item-top-row"><div class="item-left"><div class="item-name">Troffie</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Al Pesto Fresco o Primavera</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('troffie',-1)">−</button><span class="qty-display" id="qty-troffie">0</span><button class="qty-btn" onclick="changeQty('troffie',1)">+</button></div><button class="add-order-btn" id="btn-troffie" onclick="openPopup('troffie')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-troffie_gamberetti"><div class="item-top-row"><div class="item-left"><div class="item-name">Troffie con Gamberetti e Zucchine</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('troffie_gamberetti',-1)">−</button><span class="qty-display" id="qty-troffie_gamberetti">0</span><button class="qty-btn" onclick="changeQty('troffie_gamberetti',1)">+</button></div><button class="add-order-btn" id="btn-troffie_gamberetti" onclick="openPopup('troffie_gamberetti')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-gnocchi"><div class="item-top-row"><div class="item-left"><div class="item-name">Gnocchi di Patate</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Ai Funghi, ai Formaggi con Gorgonzola o Burro e Salvia</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€13,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('gnocchi',-1)">−</button><span class="qty-display" id="qty-gnocchi">0</span><button class="qty-btn" onclick="changeQty('gnocchi',1)">+</button></div><button class="add-order-btn" id="btn-gnocchi" onclick="openPopup('gnocchi')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-risotto"><div class="item-top-row"><div class="item-left"><div class="item-name">Risotto ai Frutti di Mare (min. 2 pers.)</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€20,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('risotto',-1)">−</button><span class="qty-display" id="qty-risotto">0</span><button class="qty-btn" onclick="changeQty('risotto',1)">+</button></div><button class="add-order-btn" id="btn-risotto" onclick="openPopup('risotto')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-duo_primi"><div class="item-top-row"><div class="item-left"><div class="item-name">Duo di Primi</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€25,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('duo_primi',-1)">−</button><span class="qty-display" id="qty-duo_primi">0</span><button class="qty-btn" onclick="changeQty('duo_primi',1)">+</button></div><button class="add-order-btn" id="btn-duo_primi" onclick="openPopup('duo_primi')">+ Aggiungi</button></div></div></div>
 </div>
 
 <!-- SECONDI -->
 <div class="section" id="sec-secondi">
-  <h2 class="cat-title">🥩 Secondi Piatti<br><span style="font-size:15px;font-weight:normal;color:#bca07d;letter-spacing:0;text-transform:none;font-style:italic;">(Contorno incluso: Patate fritte, al forno o verdure alla griglia)</span></h2>
-  <div class="item" id="item-coniglio"><div class="item-top-row"><div class="item-left"><div class="item-name">Coniglio alla Rocchettina</div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('coniglio',-1)">−</button><span class="qty-display" id="qty-coniglio">0</span><button class="qty-btn" onclick="changeQty('coniglio',1)">+</button></div><button class="add-order-btn" id="btn-coniglio" onclick="openPopup('coniglio')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-selvaggina"><div class="item-top-row"><div class="item-left"><div class="item-name">Selvaggina al Vino Rosso</div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('selvaggina',-1)">−</button><span class="qty-display" id="qty-selvaggina">0</span><button class="qty-btn" onclick="changeQty('selvaggina',1)">+</button></div><button class="add-order-btn" id="btn-selvaggina" onclick="openPopup('selvaggina')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-agnello"><div class="item-top-row"><div class="item-left"><div class="item-name">Costine di Agnello alla Griglia</div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('agnello',-1)">−</button><span class="qty-display" id="qty-agnello">0</span><button class="qty-btn" onclick="changeQty('agnello',1)">+</button></div><button class="add-order-btn" id="btn-agnello" onclick="openPopup('agnello')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-grigliata"><div class="item-top-row"><div class="item-left"><div class="item-name">Grigliata Mista di Carne</div></div><div class="item-right"><div class="item-price">€20,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('grigliata',-1)">−</button><span class="qty-display" id="qty-grigliata">0</span><button class="qty-btn" onclick="changeQty('grigliata',1)">+</button></div><button class="add-order-btn" id="btn-grigliata" onclick="openPopup('grigliata')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-roastbeef"><div class="item-top-row"><div class="item-left"><div class="item-name">Roast Beef</div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('roastbeef',-1)">−</button><span class="qty-display" id="qty-roastbeef">0</span><button class="qty-btn" onclick="changeQty('roastbeef',1)">+</button></div><button class="add-order-btn" id="btn-roastbeef" onclick="openPopup('roastbeef')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-filetto"><div class="item-top-row"><div class="item-left"><div class="item-name">Filetto di Manzo</div><div class="item-desc">Al Pepe Verde, al Gorgonzola o alla Griglia</div></div><div class="item-right"><div class="item-price">€25,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('filetto',-1)">−</button><span class="qty-display" id="qty-filetto">0</span><button class="qty-btn" onclick="changeQty('filetto',1)">+</button></div><button class="add-order-btn" id="btn-filetto" onclick="openPopup('filetto')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-pescato"><div class="item-top-row"><div class="item-left"><div class="item-name">Pescato o Gamberoni</div><div class="item-desc">Al Forno o alla Griglia — Secondo disponibilità</div></div><div class="item-right"><div class="item-price">€18,00*</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('pescato',-1)">−</button><span class="qty-display" id="qty-pescato">0</span><button class="qty-btn" onclick="changeQty('pescato',1)">+</button></div><button class="add-order-btn" id="btn-pescato" onclick="openPopup('pescato')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-grigliata_pesce"><div class="item-top-row"><div class="item-left"><div class="item-name">Grigliata Mista di Pesce</div><div class="item-desc">Secondo disponibilità</div></div><div class="item-right"><div class="item-price">€25,00*</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('grigliata_pesce',-1)">−</button><span class="qty-display" id="qty-grigliata_pesce">0</span><button class="qty-btn" onclick="changeQty('grigliata_pesce',1)">+</button></div><button class="add-order-btn" id="btn-grigliata_pesce" onclick="openPopup('grigliata_pesce')">+ Aggiungi</button></div></div></div>
+  <h2 class="cat-title" data-i18n="sec_secondi_title">🥩 Secondi Piatti<br><span style="font-size:15px;font-weight:normal;color:#bca07d;letter-spacing:0;text-transform:none;font-style:italic;" data-i18n="sec_secondi_sub">(Contorno incluso: Patate fritte, al forno o verdure alla griglia)</span></h2>
+  <div class="item" id="item-coniglio"><div class="item-top-row"><div class="item-left"><div class="item-name">Coniglio alla Rocchettina</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('coniglio',-1)">−</button><span class="qty-display" id="qty-coniglio">0</span><button class="qty-btn" onclick="changeQty('coniglio',1)">+</button></div><button class="add-order-btn" id="btn-coniglio" onclick="openPopup('coniglio')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-selvaggina"><div class="item-top-row"><div class="item-left"><div class="item-name">Selvaggina al Vino Rosso</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('selvaggina',-1)">−</button><span class="qty-display" id="qty-selvaggina">0</span><button class="qty-btn" onclick="changeQty('selvaggina',1)">+</button></div><button class="add-order-btn" id="btn-selvaggina" onclick="openPopup('selvaggina')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-agnello"><div class="item-top-row"><div class="item-left"><div class="item-name">Costine di Agnello alla Griglia</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('agnello',-1)">−</button><span class="qty-display" id="qty-agnello">0</span><button class="qty-btn" onclick="changeQty('agnello',1)">+</button></div><button class="add-order-btn" id="btn-agnello" onclick="openPopup('agnello')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-grigliata"><div class="item-top-row"><div class="item-left"><div class="item-name">Grigliata Mista di Carne</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€20,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('grigliata',-1)">−</button><span class="qty-display" id="qty-grigliata">0</span><button class="qty-btn" onclick="changeQty('grigliata',1)">+</button></div><button class="add-order-btn" id="btn-grigliata" onclick="openPopup('grigliata')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-roastbeef"><div class="item-top-row"><div class="item-left"><div class="item-name">Roast Beef</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('roastbeef',-1)">−</button><span class="qty-display" id="qty-roastbeef">0</span><button class="qty-btn" onclick="changeQty('roastbeef',1)">+</button></div><button class="add-order-btn" id="btn-roastbeef" onclick="openPopup('roastbeef')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-filetto"><div class="item-top-row"><div class="item-left"><div class="item-name">Filetto di Manzo</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Al Pepe Verde, al Gorgonzola o alla Griglia</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€25,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('filetto',-1)">−</button><span class="qty-display" id="qty-filetto">0</span><button class="qty-btn" onclick="changeQty('filetto',1)">+</button></div><button class="add-order-btn" id="btn-filetto" onclick="openPopup('filetto')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-pescato"><div class="item-top-row"><div class="item-left"><div class="item-name">Pescato o Gamberoni</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Al Forno o alla Griglia — Secondo disponibilità</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€18,00*</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('pescato',-1)">−</button><span class="qty-display" id="qty-pescato">0</span><button class="qty-btn" onclick="changeQty('pescato',1)">+</button></div><button class="add-order-btn" id="btn-pescato" onclick="openPopup('pescato')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-grigliata_pesce"><div class="item-top-row"><div class="item-left"><div class="item-name">Grigliata Mista di Pesce</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Secondo disponibilità</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€25,00*</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('grigliata_pesce',-1)">−</button><span class="qty-display" id="qty-grigliata_pesce">0</span><button class="qty-btn" onclick="changeQty('grigliata_pesce',1)">+</button></div><button class="add-order-btn" id="btn-grigliata_pesce" onclick="openPopup('grigliata_pesce')">+ Aggiungi</button></div></div></div>
 </div>
 
 <!-- CONTORNI -->
 <div class="section" id="sec-contorni">
-  <h2 class="cat-title">🥦 Contorni &amp; Formaggi</h2>
-  <div class="item" id="item-formaggi"><div class="item-top-row"><div class="item-left"><div class="item-name">Assortimento Misto di Formaggi</div></div><div class="item-right"><div class="item-price">€10,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('formaggi',-1)">−</button><span class="qty-display" id="qty-formaggi">0</span><button class="qty-btn" onclick="changeQty('formaggi',1)">+</button></div><button class="add-order-btn" id="btn-formaggi" onclick="openPopup('formaggi')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-verdure"><div class="item-top-row"><div class="item-left"><div class="item-name">Grigliata Mista di Verdure</div></div><div class="item-right"><div class="item-price">€10,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('verdure',-1)">−</button><span class="qty-display" id="qty-verdure">0</span><button class="qty-btn" onclick="changeQty('verdure',1)">+</button></div><button class="add-order-btn" id="btn-verdure" onclick="openPopup('verdure')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-insalata"><div class="item-top-row"><div class="item-left"><div class="item-name">Insalata Mista</div></div><div class="item-right"><div class="item-price">€10,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('insalata',-1)">−</button><span class="qty-display" id="qty-insalata">0</span><button class="qty-btn" onclick="changeQty('insalata',1)">+</button></div><button class="add-order-btn" id="btn-insalata" onclick="openPopup('insalata')">+ Aggiungi</button></div></div></div>
+  <h2 class="cat-title" data-i18n="sec_contorni_title">🥦 Contorni &amp; Formaggi</h2>
+  <div class="item" id="item-formaggi"><div class="item-top-row"><div class="item-left"><div class="item-name">Assortimento Misto di Formaggi</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€10,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('formaggi',-1)">−</button><span class="qty-display" id="qty-formaggi">0</span><button class="qty-btn" onclick="changeQty('formaggi',1)">+</button></div><button class="add-order-btn" id="btn-formaggi" onclick="openPopup('formaggi')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-verdure"><div class="item-top-row"><div class="item-left"><div class="item-name">Grigliata Mista di Verdure</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€10,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('verdure',-1)">−</button><span class="qty-display" id="qty-verdure">0</span><button class="qty-btn" onclick="changeQty('verdure',1)">+</button></div><button class="add-order-btn" id="btn-verdure" onclick="openPopup('verdure')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-insalata"><div class="item-top-row"><div class="item-left"><div class="item-name">Insalata Mista</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€10,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('insalata',-1)">−</button><span class="qty-display" id="qty-insalata">0</span><button class="qty-btn" onclick="changeQty('insalata',1)">+</button></div><button class="add-order-btn" id="btn-insalata" onclick="openPopup('insalata')">+ Aggiungi</button></div></div></div>
 </div>
 
 <!-- DOLCE -->
 <div class="section" id="sec-dolce">
-  <h2 class="cat-title">🍰 I Nostri Dolci</h2>
-  <div class="dolce-banner"><h3>I Dolci di Nostra Produzione</h3><p>Tutti i nostri dolci sono preparati artigianalmente ogni giorno</p></div>
-  <div class="item" id="item-tiramisu"><div class="item-top-row"><div class="item-left"><div class="item-name">Tiramisù</div><div class="item-desc">Dolce al caffè con mascarpone e cacao</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tiramisu',-1)">−</button><span class="qty-display" id="qty-tiramisu">0</span><button class="qty-btn" onclick="changeQty('tiramisu',1)">+</button></div><button class="add-order-btn" id="btn-tiramisu" onclick="openPopup('tiramisu')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-pannacotta"><div class="item-top-row"><div class="item-left"><div class="item-name">Panna Cotta</div><div class="item-desc">Dolce cremoso alla vaniglia con salsa di frutta</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('pannacotta',-1)">−</button><span class="qty-display" id="qty-pannacotta">0</span><button class="qty-btn" onclick="changeQty('pannacotta',1)">+</button></div><button class="add-order-btn" id="btn-pannacotta" onclick="openPopup('pannacotta')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-cremecaramel"><div class="item-top-row"><div class="item-left"><div class="item-name">Crème Caramel</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('cremecaramel',-1)">−</button><span class="qty-display" id="qty-cremecaramel">0</span><button class="qty-btn" onclick="changeQty('cremecaramel',1)">+</button></div><button class="add-order-btn" id="btn-cremecaramel" onclick="openPopup('cremecaramel')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-cremacatalana"><div class="item-top-row"><div class="item-left"><div class="item-name">Crema Catalana</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('cremacatalana',-1)">−</button><span class="qty-display" id="qty-cremacatalana">0</span><button class="qty-btn" onclick="changeQty('cremacatalana',1)">+</button></div><button class="add-order-btn" id="btn-cremacatalana" onclick="openPopup('cremacatalana')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-semifreddo"><div class="item-top-row"><div class="item-left"><div class="item-name">Semifreddo</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('semifreddo',-1)">−</button><span class="qty-display" id="qty-semifreddo">0</span><button class="qty-btn" onclick="changeQty('semifreddo',1)">+</button></div><button class="add-order-btn" id="btn-semifreddo" onclick="openPopup('semifreddo')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-crumble"><div class="item-top-row"><div class="item-left"><div class="item-name">Crumble di Mele con Gelato</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('crumble',-1)">−</button><span class="qty-display" id="qty-crumble">0</span><button class="qty-btn" onclick="changeQty('crumble',1)">+</button></div><button class="add-order-btn" id="btn-crumble" onclick="openPopup('crumble')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-bunet"><div class="item-top-row"><div class="item-left"><div class="item-name">Bunet</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('bunet',-1)">−</button><span class="qty-display" id="qty-bunet">0</span><button class="qty-btn" onclick="changeQty('bunet',1)">+</button></div><button class="add-order-btn" id="btn-bunet" onclick="openPopup('bunet')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-macedonia"><div class="item-top-row"><div class="item-left"><div class="item-name">Macedonia di Frutta</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('macedonia',-1)">−</button><span class="qty-display" id="qty-macedonia">0</span><button class="qty-btn" onclick="changeQty('macedonia',1)">+</button></div><button class="add-order-btn" id="btn-macedonia" onclick="openPopup('macedonia')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-assort_dolci"><div class="item-top-row"><div class="item-left"><div class="item-name">Assortimento Misto dei Dolci</div></div><div class="item-right"><div class="item-price">€8,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('assort_dolci',-1)">−</button><span class="qty-display" id="qty-assort_dolci">0</span><button class="qty-btn" onclick="changeQty('assort_dolci',1)">+</button></div><button class="add-order-btn" id="btn-assort_dolci" onclick="openPopup('assort_dolci')">+ Aggiungi</button></div></div></div>
+  <h2 class="cat-title" data-i18n="sec_dolci_title">🍰 I Nostri Dolci</h2>
+  <div class="dolce-banner"><h3 data-i18n="dolce_banner_title">I Dolci di Nostra Produzione</h3><p data-i18n="dolce_banner_sub">Tutti i nostri dolci sono preparati artigianalmente ogni giorno</p></div>
+  <div class="item" id="item-tiramisu"><div class="item-top-row"><div class="item-left"><div class="item-name">Tiramisù</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Dolce al caffè con mascarpone e cacao</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tiramisu',-1)">−</button><span class="qty-display" id="qty-tiramisu">0</span><button class="qty-btn" onclick="changeQty('tiramisu',1)">+</button></div><button class="add-order-btn" id="btn-tiramisu" onclick="openPopup('tiramisu')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-pannacotta"><div class="item-top-row"><div class="item-left"><div class="item-name">Panna Cotta</div><div class="i18n-strip" data-i18n-strip-auto></div><div class="item-desc">Dolce cremoso alla vaniglia con salsa di frutta</div><div class="i18n-strip is-desc" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('pannacotta',-1)">−</button><span class="qty-display" id="qty-pannacotta">0</span><button class="qty-btn" onclick="changeQty('pannacotta',1)">+</button></div><button class="add-order-btn" id="btn-pannacotta" onclick="openPopup('pannacotta')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-cremecaramel"><div class="item-top-row"><div class="item-left"><div class="item-name">Crème Caramel</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('cremecaramel',-1)">−</button><span class="qty-display" id="qty-cremecaramel">0</span><button class="qty-btn" onclick="changeQty('cremecaramel',1)">+</button></div><button class="add-order-btn" id="btn-cremecaramel" onclick="openPopup('cremecaramel')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-cremacatalana"><div class="item-top-row"><div class="item-left"><div class="item-name">Crema Catalana</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('cremacatalana',-1)">−</button><span class="qty-display" id="qty-cremacatalana">0</span><button class="qty-btn" onclick="changeQty('cremacatalana',1)">+</button></div><button class="add-order-btn" id="btn-cremacatalana" onclick="openPopup('cremacatalana')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-semifreddo"><div class="item-top-row"><div class="item-left"><div class="item-name">Semifreddo</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('semifreddo',-1)">−</button><span class="qty-display" id="qty-semifreddo">0</span><button class="qty-btn" onclick="changeQty('semifreddo',1)">+</button></div><button class="add-order-btn" id="btn-semifreddo" onclick="openPopup('semifreddo')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-crumble"><div class="item-top-row"><div class="item-left"><div class="item-name">Crumble di Mele con Gelato</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('crumble',-1)">−</button><span class="qty-display" id="qty-crumble">0</span><button class="qty-btn" onclick="changeQty('crumble',1)">+</button></div><button class="add-order-btn" id="btn-crumble" onclick="openPopup('crumble')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-bunet"><div class="item-top-row"><div class="item-left"><div class="item-name">Bunet</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('bunet',-1)">−</button><span class="qty-display" id="qty-bunet">0</span><button class="qty-btn" onclick="changeQty('bunet',1)">+</button></div><button class="add-order-btn" id="btn-bunet" onclick="openPopup('bunet')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-macedonia"><div class="item-top-row"><div class="item-left"><div class="item-name">Macedonia di Frutta</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('macedonia',-1)">−</button><span class="qty-display" id="qty-macedonia">0</span><button class="qty-btn" onclick="changeQty('macedonia',1)">+</button></div><button class="add-order-btn" id="btn-macedonia" onclick="openPopup('macedonia')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-assort_dolci"><div class="item-top-row"><div class="item-left"><div class="item-name">Assortimento Misto dei Dolci</div><div class="i18n-strip" data-i18n-strip-auto></div></div><div class="item-right"><div class="item-price">€8,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('assort_dolci',-1)">−</button><span class="qty-display" id="qty-assort_dolci">0</span><button class="qty-btn" onclick="changeQty('assort_dolci',1)">+</button></div><button class="add-order-btn" id="btn-assort_dolci" onclick="openPopup('assort_dolci')">+ Aggiungi</button></div></div></div>
 </div>
 
 <!-- GELATO -->
 <div class="section" id="sec-gelato">
-  <h2 class="cat-title">🍦 Gelato Artigianale</h2>
+  <h2 class="cat-title" data-i18n="sec_gelato_title">🍦 Gelato Artigianale</h2>
   <div class="item" id="item-gelato">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Gelato Artigianale 🍦</div><div class="item-desc">Fatto in Casa ogni Giorno — max 3 gusti a scelta</div></div>
+      <div class="item-left"><div class="item-name" data-i18n="gelato_name">Gelato Artigianale 🍦</div><div class="i18n-strip" data-i18n-strip="gelato_name"></div><div class="item-desc" data-i18n="gelato_desc">Fatto in Casa ogni Giorno — max 3 gusti a scelta</div><div class="i18n-strip is-desc" data-i18n-strip="gelato_desc"></div></div>
       <div class="item-right">
         <div class="item-price">€6,00</div>
         <div class="qty-row"><button class="qty-btn" onclick="changeQty('gelato',-1)">−</button><span class="qty-display" id="qty-gelato">0</span><button class="qty-btn" onclick="changeQty('gelato',1)">+</button></div>
-        <button class="add-order-btn" id="btn-gelato" onclick="openPopup('gelato')">+ Aggiungi</button>
+        <button class="add-order-btn" id="btn-gelato" onclick="openPopup('gelato')" data-i18n="btn_aggiungi">+ Aggiungi</button>
       </div>
     </div>
     <div class="item-flavours" id="flavours-gelato">
-      <div class="flavour-label">🍦 Gusti disponibili (max 3):</div>
+      <div class="flavour-label" data-i18n="gelato_flavour_label">🍦 Gusti disponibili (max 3):</div>
       <div class="flavour-chips" id="inline-flavours-gelato"></div>
       <div class="flavour-max-note" id="flavour-note-gelato"></div>
     </div>
   </div>
   <div class="item" id="item-sorbetto">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Sorbetto 🍧</div><div class="item-desc">Disponibile con o senza alcol</div></div>
+      <div class="item-left"><div class="item-name" data-i18n="sorbetto_name">Sorbetto 🍧</div><div class="i18n-strip" data-i18n-strip="sorbetto_name"></div><div class="item-desc" data-i18n="sorbetto_desc">Disponibile con o senza alcol</div><div class="i18n-strip is-desc" data-i18n-strip="sorbetto_desc"></div></div>
       <div class="item-right">
         <div class="item-price">€3,00</div>
         <div class="qty-row"><button class="qty-btn" onclick="changeQty('sorbetto',-1)">−</button><span class="qty-display" id="qty-sorbetto">0</span><button class="qty-btn" onclick="changeQty('sorbetto',1)">+</button></div>
-        <button class="add-order-btn" id="btn-sorbetto" onclick="openPopup('sorbetto')">+ Aggiungi</button>
+        <button class="add-order-btn" id="btn-sorbetto" onclick="openPopup('sorbetto')" data-i18n="btn_aggiungi">+ Aggiungi</button>
       </div>
     </div>
     <div class="sorbetto-options" id="sorbetto-inline-options">
-      <div class="sorbetto-opt-label">🍹 Preferenza:</div>
+      <div class="sorbetto-opt-label" data-i18n="sorb_pref">🍹 Preferenza:</div>
       <div class="sorbetto-chip-group">
-        <button class="sorbetto-chip" id="sorb-alc" onclick="selectSorbettoType('Alcolico')">🍷 Con Alcol</button>
-        <button class="sorbetto-chip" id="sorb-noalc" onclick="selectSorbettoType('Senza Alcol')">🧃 Senza Alcol</button>
+        <button class="sorbetto-chip" id="sorb-alc" onclick="selectSorbettoType('Alcolico')" data-i18n="sorb_alc">🍷 Con Alcol</button>
+        <button class="sorbetto-chip" id="sorb-noalc" onclick="selectSorbettoType('Senza Alcol')" data-i18n="sorb_noalc">🧃 Senza Alcol</button>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- VINI -->
-<div class="section" id="sec-vini">
-  <h2 class="cat-title">🍷 Carta dei Vini</h2>
-  <a href="https://mamunjoyit1-cyber.github.io/carta-dei-vini/" target="_blank" class="digital-wine-btn">
-    <span>🍷 Clicca qui per la Carta dei Vini Digitale</span>
-    <span class="btn-arrow">➔</span>
-  </a>
-  <div style="text-align:center;color:#bca07d;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin:20px 0 14px;">Vini al Calice</div>
-  <div class="item"><div class="item-top-row"><div class="item-left"><div class="item-name">Vino Rosso della Casa</div><div class="item-desc">Calice</div></div><div class="item-price">€3,00</div></div></div>
-  <div class="item"><div class="item-top-row"><div class="item-left"><div class="item-name">Vino Bianco della Casa</div><div class="item-desc">Calice</div></div><div class="item-price">€3,00</div></div></div>
-  <div class="item"><div class="item-top-row"><div class="item-left"><div class="item-name">Vino Rosato della Casa</div></div><div class="item-price">€3,00</div></div></div>
-  <div class="item"><div class="item-top-row"><div class="item-left"><div class="item-name">Prosecco DOC</div></div><div class="item-price">€5,00</div></div></div>
-</div>
-
-<!-- BAR -->
-<div class="section" id="sec-bar">
-  <h2 class="cat-title">🍹 Il Nostro Bar</h2>
-  <div class="sub-tabs">
-    <button class="sub-tab-btn active" onclick="setSubTab('caffetteria',this)">☕ Caffetteria</button>
-    <button class="sub-tab-btn" onclick="setSubTab('bibite',this)">🥤 Bibite</button>
-    <button class="sub-tab-btn" onclick="setSubTab('cocktails',this)">🍹 Cocktails</button>
-  </div>
-  <div class="sub-section active" id="subsec-caffetteria">
-    <div class="item"><div class="cocktail-list">
-      <div class="price-row"><span>Caffè Espresso</span><span style="font-weight:800;color:#b31e1e;">€1,50</span></div>
-      <div class="price-row"><span>Caffè Decaffeinato</span><span style="font-weight:800;color:#b31e1e;">€1,80</span></div>
-      <div class="price-row"><span>Caffè D'Orzo</span><span style="font-weight:800;color:#b31e1e;">€2,00</span></div>
-      <div class="price-row"><span>Caffè Ginseng Piccolo</span><span style="font-weight:800;color:#b31e1e;">€2,00</span></div>
-      <div class="price-row"><span>Caffè Ginseng Grande</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
-      <div class="price-row"><span>Caffè Corretto</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
-      <div class="price-row"><span>Cappuccino</span><span style="font-weight:800;color:#b31e1e;">€2,00</span></div>
-      <div class="price-row"><span>Caffè Latte / Latte Macchiato</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
-      <div class="price-row"><span>Thè Caldo / Infusi</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
-      <div class="price-row"><span>Cioccolata Calda</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
-    </div></div>
-  </div>
-  <div class="sub-section" id="subsec-bibite">
-    <div class="item"><div class="cocktail-list">
-      <div class="price-row"><span>Acqua 50 cl</span><span style="font-weight:800;color:#b31e1e;">€1,50</span></div>
-      <div class="price-row"><span>Acqua 1 lt</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
-      <div class="price-row"><span>Coca Cola / Coca Cola Zero</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="price-row"><span>Fanta / Sprite</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="price-row"><span>Estathé Limone / Pesca</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="price-row"><span>Schweppes / Schweppes Lemon</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
-      <div class="price-row"><span>Crodino / Sanbitter</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
-      <div class="bar-divider">Succhi di Frutta</div>
-      <div class="price-row"><span style="font-size:13px;color:#666;">Pesca · Ananas · Arancia · Albicocca · ACE · Pera</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
-    </div></div>
-  </div>
-  <div class="sub-section" id="subsec-cocktails">
-    <div class="item"><div class="cocktail-list">
-      <div class="cocktail-group">🍺 Birre &amp; Aperitivi Base</div>
-      <div class="price-row"><span>Birra Bottiglia 33 cl</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="price-row"><span>Panaché / Monaco</span><span style="font-weight:800;color:#b31e1e;">€5,00</span></div>
-      <div class="price-row"><span>Martini Bianco e Rosso</span><span style="font-weight:800;color:#b31e1e;">€5,00</span></div>
-      <div class="price-row"><span>Digestivi / Distillati</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="price-row"><span>Shot Alcolici</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="cocktail-group">🥂 Spritz &amp; Cocktails Classici — €6,00</div>
-      <div class="cocktail-name">Aperol Spritz</div>
-      <div class="cocktail-name">Campari Spritz</div>
-      <div class="cocktail-name">Limoncello Spritz</div>
-      <div class="cocktail-name">Negroni</div>
-      <div class="cocktail-name">Negroni Sbagliato</div>
-      <div class="cocktail-name">Americano</div>
-      <div class="cocktail-group">⭐ Premium Cocktails — €8,00</div>
-      <div class="cocktail-name">Whisky &amp; Coca / Rhum &amp; Coca</div>
-      <div class="cocktail-name">Gin Tonic / Gin Lemon</div>
-    </div></div>
   </div>
 </div>
 
@@ -679,22 +630,22 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 
 <div class="footer">
   <div style="letter-spacing:2px;">✦ LAGO BIN ✦</div>
-  <div class="note">I Menù non sono Divisibili per più Persone</div>
+  <div class="note" data-i18n="footer_note">I Menù non sono Divisibili per più Persone</div>
 </div>
 
 <div class="cart-fab" onclick="toggleCart()">
-  🛒 Ordine
+  🛒 <span data-i18n="cart_fab">Ordine</span>
   <span class="cart-badge" id="cart-badge">0</span>
 </div>
 
 <div class="cart-panel" id="cart-panel" onclick="event.stopPropagation()">
-  <div class="cart-title">📋 Il Tuo Ordine</div>
-  <div id="cart-content"><div class="cart-empty">Nessun articolo ancora</div></div>
+  <div class="cart-title" data-i18n="cart_title">📋 Il Tuo Ordine</div>
+  <div id="cart-content"><div class="cart-empty" data-i18n="cart_empty">Nessun articolo ancora</div></div>
   <div class="cart-total" id="cart-total" style="display:none;">
-    <span>Totale stimato</span>
+    <span data-i18n="cart_total_label">Totale stimato</span>
     <span id="total-amount">€0</span>
   </div>
-  <button class="waiter-btn" id="waiter-btn" disabled onclick="showOverlay()">📲 Mostra al Cameriere</button>
+  <button class="waiter-btn" id="waiter-btn" disabled onclick="showOverlay()" data-i18n="waiter_btn">📲 Mostra al Cameriere</button>
 </div>
 
 <!-- POPUP -->
@@ -705,9 +656,9 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
     <div class="popup-subtitle" id="popup-subtitle"></div>
     <div class="popup-divider"></div>
     <div id="popup-persons"></div>
-    <button class="add-person-btn" id="popup-add-person" onclick="popupAddPerson()">+ Aggiungi persona</button>
-    <button class="popup-confirm-btn not-ready" id="popup-confirm" onclick="popupConfirm()">✓ Conferma Ordine</button>
-    <span class="popup-cancel" onclick="closePopup()">Annulla / Cancel</span>
+    <button class="add-person-btn" id="popup-add-person" onclick="popupAddPerson()" data-i18n="btn_add_person">+ Aggiungi persona</button>
+    <button class="popup-confirm-btn not-ready" id="popup-confirm" onclick="popupConfirm()" data-i18n="btn_confirm">✓ Conferma Ordine</button>
+    <span class="popup-cancel" onclick="closePopup()" data-i18n="btn_cancel">Annulla / Cancel</span>
   </div>
 </div>
 
@@ -715,11 +666,11 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 <div class="overlay" id="overlay">
   <div class="overlay-header">
     <div class="overlay-logo">✦ LAGO BIN ✦</div>
-    <div class="overlay-sub">Riepilogo Ordine — Order Summary</div>
+    <div class="overlay-sub" data-i18n="overlay_sub">Riepilogo Ordine — Order Summary</div>
   </div>
   <div id="overlay-content"></div>
-  <button class="overlay-close" onclick="closeOverlay()">✕ Chiudi / Close</button>
-  <div class="overlay-note">Mostra questo schermo al cameriere · Show this screen to the waiter</div>
+  <button class="overlay-close" onclick="closeOverlay()" data-i18n="overlay_close">✕ Chiudi / Close</button>
+  <div class="overlay-note" data-i18n="overlay_note">Mostra questo schermo al cameriere · Show this screen to the waiter</div>
 </div>
 
 <script>
@@ -747,7 +698,7 @@ const ITEMS = {
   troffie_gamberetti:{ name:'Troffie con Gamberetti e Zucchine', price:18, course:'primi', sauces:[] },
   gnocchi:          { name:'Gnocchi di Patate', price:13, course:'primi', sauces:['Funghi','Formaggi e Gorgonzola','Burro e Salvia'] },
   risotto:          { name:'Risotto ai Frutti di Mare', price:20, course:'primi', sauces:[] },
-  duo_primi:        { name:'Duo di Primi', price:25, course:'primi', sauces:[] },
+  duo_primi:        { name:'Duo di Primi', price:25, course:'primi', sauces:['Ravioli della Nonna','Ravioli al Coniglio','Tagliatelle Selvaggina','Tagliatelle Funghi','Tagliatelle Pesto','Tagliatelle Frutti di Mare','Mezzelune Burro e Salvia','Mezzelune Noci','Troffie Pesto Fresco','Troffie Primavera','Troffie con Gamberetti','Gnocchi Funghi','Gnocchi Formaggi e Gorgonzola','Gnocchi Burro e Salvia','Risotto Frutti di Mare'], multiSelect:2 },
   coniglio:         { name:'Coniglio alla Rocchettina', price:15, course:'secondi', sauces:[] },
   selvaggina:       { name:'Selvaggina al Vino Rosso', price:18, course:'secondi', sauces:[] },
   agnello:          { name:'Costine di Agnello alla Griglia', price:18, course:'secondi', sauces:[] },
@@ -849,6 +800,7 @@ function openPopup(itemId) {
   let subtitle = 'Aggiungi al tuo ordine';
   if (item.isGelato) subtitle = 'Scegli fino a 3 gusti';
   else if (item.isSorbetto) subtitle = 'Con o senza alcol?';
+  else if (item.multiSelect) subtitle = 'Scegli ' + item.multiSelect + ' piatti per ogni persona';
   else if (item.sauces.length > 0) subtitle = 'Scegli il condimento per ogni persona';
   document.getElementById('popup-subtitle').textContent = subtitle;
   document.getElementById('popup-persons').innerHTML = '';
@@ -873,6 +825,7 @@ function popupAddPerson() {
   popupPersons.push({
     pid, name: '',
     sauce: (item.sauces.length === 0 && !item.isGelato && !item.isSorbetto) ? 'none' : null,
+    multiSauces: item.multiSelect ? [] : null,
     cottura: item.cottura ? null : 'none',
     flavors: [],
     sorbettoType: item.isSorbetto ? null : 'none',
@@ -905,6 +858,16 @@ function renderPopupPersons() {
         '<button class="chip ' + (p.sorbettoType==='Alcolico'?'selected':'') + '" onclick="popupSetSorbetto(' + p.pid + ',\'Alcolico\')">🍷 Con Alcol</button>' +
         '<button class="chip ' + (p.sorbettoType==='Senza Alcol'?'selected':'') + '" onclick="popupSetSorbetto(' + p.pid + ',\'Senza Alcol\')">🧃 Senza Alcol</button>' +
         '</div>';
+    } else if (item.multiSelect && p.multiSauces !== null) {
+      const selCount = p.multiSauces.length;
+      const needed = item.multiSelect;
+      sauceHtml = '<div class="sauce-label-sm">🍽️ Scegli ' + needed + ' piatti (' + selCount + '/' + needed + '):</div><div class="chip-group">' +
+        item.sauces.map(s => {
+          const sel = p.multiSauces.includes(s);
+          const maxed = !sel && selCount >= needed;
+          return '<button class="chip ' + (sel?'selected':'') + ' ' + (maxed?'maxed':'') + '" onclick="popupToggleMultiSauce(' + p.pid + ',\'' + s.replace(/'/g,"\\'") + '\')">' + s + '</button>';
+        }).join('') + '</div>' +
+        (selCount < needed ? '<div style="font-size:11px;color:#b31e1e;font-style:italic;margin-top:4px;">Seleziona ancora ' + (needed - selCount) + ' piatto/i</div>' : '');
     } else if (item.sauces.length > 0) {
       sauceHtml = '<div class="sauce-label-sm">🍽️ Condimento:</div><div class="chip-group">' +
         item.sauces.map(s => '<button class="chip ' + (p.sauce===s?'selected':'') + '" onclick="popupSelectSauce(' + p.pid + ',\'' + s + '\')">' + s + '</button>').join('') +
@@ -940,6 +903,7 @@ function renderPopupPersons() {
 
 function setPopupName(pid,val){ const p=popupPersons.find(x=>x.pid===pid); if(p) p.name=val; }
 function popupSelectSauce(pid,sauce){ const p=popupPersons.find(x=>x.pid===pid); if(p) p.sauce=sauce; renderPopupPersons(); }
+function popupToggleMultiSauce(pid,sauce){ const p=popupPersons.find(x=>x.pid===pid); if(!p) return; const item=ITEMS[popupItemId]; if(p.multiSauces.includes(sauce)) p.multiSauces=p.multiSauces.filter(s=>s!==sauce); else if(p.multiSauces.length<item.multiSelect) p.multiSauces.push(sauce); renderPopupPersons(); }
 function togglePopupFlavor(pid,flavor){ const p=popupPersons.find(x=>x.pid===pid); if(!p) return; if(p.flavors.includes(flavor)) p.flavors=p.flavors.filter(f=>f!==flavor); else if(p.flavors.length<3) p.flavors.push(flavor); renderPopupPersons(); }
 function popupSetSorbetto(pid,type){ const p=popupPersons.find(x=>x.pid===pid); if(p) p.sorbettoType=type; renderPopupPersons(); }
 function popupSetCottura(pid,c){ const p=popupPersons.find(x=>x.pid===pid); if(p) p.cottura=c; renderPopupPersons(); }
@@ -951,7 +915,8 @@ function updatePopupConfirm() {
   const allOk = popupPersons.length > 0 && popupPersons.every(p => {
     if (item.isGelato && p.flavors.length === 0) return false;
     if (item.isSorbetto && !p.sorbettoType) return false;
-    if (item.sauces.length > 0 && !p.sauce) return false;
+    if (item.multiSelect && p.multiSauces.length < item.multiSelect) return false;
+    if (!item.multiSelect && item.sauces.length > 0 && !p.sauce) return false;
     if (item.cottura && p.cottura === null) return false;
     if (!p.portata) return false;
     return true;
@@ -965,7 +930,8 @@ function popupConfirm() {
   const allOk = popupPersons.length > 0 && popupPersons.every(p => {
     if (item.isGelato && p.flavors.length === 0) return false;
     if (item.isSorbetto && !p.sorbettoType) return false;
-    if (item.sauces.length > 0 && !p.sauce) return false;
+    if (item.multiSelect && p.multiSauces.length < item.multiSelect) return false;
+    if (!item.multiSelect && item.sauces.length > 0 && !p.sauce) return false;
     if (item.cottura && p.cottura === null) return false;
     if (!p.portata) return false;
     return true;
@@ -976,6 +942,7 @@ function popupConfirm() {
     let details = [];
     if (item.isGelato) details.push(p.flavors.join(', '));
     else if (item.isSorbetto) details.push(p.sorbettoType);
+    else if (item.multiSelect && p.multiSauces && p.multiSauces.length > 0) details.push(p.multiSauces.join(' + '));
     else if (p.sauce && p.sauce !== 'none') details.push(p.sauce);
     if (item.cottura && p.cottura && p.cottura !== 'none') details.push('Cottura: ' + p.cottura);
 
@@ -1270,8 +1237,163 @@ function setSubTab(name, el) {
   const t = document.getElementById('subsec-' + name); if(t) t.classList.add('active');
 }
 
-// LANG
-function setLang(lang, el) { document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active')); if(el) el.classList.add('active'); closeDropdown(); }
+// ── TRANSLATION ENGINE (Google-Translate style: Italian stays, translation shows in a strip below) ──
+const LANG_NAMES = {
+  it:'Italiano', fr:'Français', en:'English', de:'Deutsch',
+  es:'Español', pt:'Português', ru:'Русский', nl:'Nederlands',
+  pl:'Polski', el:'Ελληνικά', ar:'العربية', tr:'Türkçe',
+  zh:'中文', ja:'日本語', ko:'한국어'
+};
+const RTL_LANGS = ['ar'];
+let currentLang = 'it';
+const translationCache = {}; // { lang: { key: translatedText } }
+
+// Collect all Italian originals (only item-name / item-desc / pkg-name / pkg-desc + a few labelled strips)
+const I18N_ORIGINALS = {};
+
+function collectOriginals() {
+  // Explicit data-i18n-strip="key" elements paired with a data-i18n="key" source
+  document.querySelectorAll('[data-i18n-strip]').forEach(stripEl => {
+    const key = stripEl.getAttribute('data-i18n-strip');
+    if (key) {
+      const sourceEl = document.querySelector('[data-i18n="' + key + '"]');
+      if (sourceEl && !I18N_ORIGINALS[key]) I18N_ORIGINALS[key] = sourceEl.textContent.trim();
+    }
+  });
+
+  // Auto strips: pair each [data-i18n-strip-auto] with the item-name/item-desc immediately before it
+  document.querySelectorAll('[data-i18n-strip-auto]').forEach((stripEl, i) => {
+    const sourceEl = stripEl.previousElementSibling;
+    if (sourceEl && (sourceEl.classList.contains('item-name') || sourceEl.classList.contains('item-desc'))) {
+      const key = 'auto_' + i;
+      stripEl.setAttribute('data-i18n-strip-key', key);
+      I18N_ORIGINALS[key] = sourceEl.textContent.trim();
+    }
+  });
+}
+
+function applyTranslations(lang) {
+  const dict = lang === 'it' ? null : translationCache[lang];
+
+  // Strips tied to data-i18n-strip="key"
+  document.querySelectorAll('[data-i18n-strip]').forEach(stripEl => {
+    const key = stripEl.getAttribute('data-i18n-strip');
+    if (lang === 'it' || !dict || !dict[key]) {
+      stripEl.classList.remove('show');
+      stripEl.textContent = '';
+    } else {
+      stripEl.textContent = dict[key];
+      stripEl.classList.add('show');
+    }
+  });
+
+  // Auto strips
+  document.querySelectorAll('[data-i18n-strip-key]').forEach(stripEl => {
+    const key = stripEl.getAttribute('data-i18n-strip-key');
+    if (lang === 'it' || !dict || !dict[key]) {
+      stripEl.classList.remove('show');
+      stripEl.textContent = '';
+    } else {
+      stripEl.textContent = dict[key];
+      stripEl.classList.add('show');
+    }
+  });
+
+  document.body.setAttribute('dir', RTL_LANGS.includes(lang) ? 'rtl' : 'ltr');
+}
+
+function showTranslateLoading(show, progress) {
+  const el = document.getElementById('translate-loading');
+  el.style.display = show ? 'flex' : 'none';
+  if (progress !== undefined) {
+    document.getElementById('translate-progress-bar').style.width = progress + '%';
+  }
+}
+
+async function translateToLang(lang) {
+  if (translationCache[lang]) { applyTranslations(lang); return; }
+
+  showTranslateLoading(true, 10);
+  const loadingMsgs = {
+    fr:'Traduction en cours...', en:'Translating menu...', de:'Übersetzung läuft...',
+    es:'Traduciendo el menú...', pt:'A traduzir o menu...', ru:'Перевод меню...',
+    nl:'Menu vertalen...', pl:'Tłumaczenie menu...', el:'Μετάφραση μενού...',
+    ar:'جاري ترجمة القائمة...', tr:'Menü çevriliyor...', zh:'正在翻译菜单...',
+    ja:'メニューを翻訳中...', ko:'메뉴 번역 중...'
+  };
+  document.getElementById('translate-loading-text').textContent = loadingMsgs[lang] || 'Translating...';
+
+  const keys = Object.keys(I18N_ORIGINALS);
+  const texts = keys.map(k => I18N_ORIGINALS[k]);
+
+  const prompt = `You are a professional restaurant menu translator. Translate these Italian restaurant menu texts (dish names and short descriptions) to ${LANG_NAMES[lang]}.
+
+Rules:
+- Keep dish names authentic/recognizable (e.g. Tiramisù stays Tiramisù)
+- Translate descriptions naturally for restaurant context
+- Keep emojis exactly as-is
+- Preserve special characters like €, *, °
+- Return ONLY a JSON object mapping each index (0,1,2...) to translated text
+- No explanation, no markdown, just the JSON
+
+Italian texts (${texts.length} items):
+${texts.map((t,i) => `${i}: ${t}`).join('\n')}`;
+
+  showTranslateLoading(true, 30);
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 4000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    showTranslateLoading(true, 70);
+    const data = await response.json();
+    const raw = data.content.map(c => c.text || '').join('');
+    const clean = raw.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(clean);
+
+    const result = {};
+    keys.forEach((key, i) => {
+      result[key] = parsed[i] || I18N_ORIGINALS[key];
+    });
+
+    showTranslateLoading(true, 95);
+    translationCache[lang] = result;
+    applyTranslations(lang);
+    setTimeout(() => showTranslateLoading(false), 300);
+  } catch (err) {
+    console.error('Translation error:', err);
+    showTranslateLoading(false);
+    applyTranslations('it'); // fallback: hide strips, keep Italian only
+  }
+}
+
+function setLang(lang, el) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+  currentLang = lang;
+  closeDropdown();
+  if (lang === 'it') {
+    applyTranslations('it');
+  } else {
+    translateToLang(lang);
+  }
+}
+
+function setLangFromDropdown(lang, el) {
+  document.querySelectorAll('.lang-dropdown-item').forEach(b => b.style.fontWeight = 'normal');
+  if (el) el.style.fontWeight = 'bold';
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  currentLang = lang;
+  closeDropdown();
+  translateToLang(lang);
+}
 function toggleDropdown(e) { if(e) e.stopPropagation(); document.getElementById('langDropdown').classList.toggle('open'); }
 function closeDropdown() { document.getElementById('langDropdown').classList.remove('open'); }
 
@@ -1293,7 +1415,7 @@ function searchMenu(q) {
 }
 
 // INIT
-document.addEventListener('DOMContentLoaded', () => { updateCart(); renderInlineGelato(); });
+document.addEventListener('DOMContentLoaded', () => { collectOriginals(); updateCart(); renderInlineGelato(); });
 document.addEventListener('click', e => {
   if (!e.target.closest('.translate-wrap')) closeDropdown();
   const panel = document.getElementById('cart-panel');
