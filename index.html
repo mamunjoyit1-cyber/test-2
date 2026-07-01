@@ -951,9 +951,18 @@ function popupConfirm(){
 // ── PACKAGES ──
 function togglePkgAccordion(key,btn){
   const acc=document.getElementById('acc-'+key),open=acc.classList.contains('open');
+  Object.keys(PKG_CONFIG).forEach(k=>{
+    if(k!==key){
+      const otherAcc=document.getElementById('acc-'+k);
+      if(otherAcc)otherAcc.classList.remove('open');
+      const otherBtn=document.querySelector('[onclick*="togglePkgAccordion(\'' + k + '\'"]');
+      if(otherBtn)otherBtn.textContent=t('vedi');
+    }
+  });
   acc.classList.toggle('open',!open);
   btn.textContent=open?t('vedi'):t('chiudi');
   if(!open&&(!pkgPersons[key]||!pkgPersons[key].length))addPkgPerson(key);
+}
 }
 function addPkgPerson(key){
   if(!pkgPersons[key])pkgPersons[key]=[];
