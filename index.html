@@ -963,7 +963,6 @@ function togglePkgAccordion(key,btn){
   btn.textContent=open?t('vedi'):t('chiudi');
   if(!open&&(!pkgPersons[key]||!pkgPersons[key].length))addPkgPerson(key);
 }
-}
 function addPkgPerson(key){
   if(!pkgPersons[key])pkgPersons[key]=[];
   const pid=++pkgPersonCounter;
