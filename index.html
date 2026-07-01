@@ -229,6 +229,17 @@ html body { margin-top: 0 !important; }
 .vini-modal-btn.secondary:hover { background: rgba(212,175,55,0.12); }
 .vini-modal-close { color: #5a4a3a; font-size: 12px; cursor: pointer; text-decoration: underline; margin-top: 8px; display: inline-block; }
 .vini-modal-close:hover { color: #bca07d; }
+.vini-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 8px; border-bottom: 1px solid rgba(212,175,55,0.15); cursor: pointer; border-radius: 8px; transition: background 0.2s; color: #f9f1e2; font-size: 14px; font-weight: 500; }
+.vini-row:last-child { border-bottom: none; }
+.vini-row:hover { background: rgba(212,175,55,0.12); }
+.vini-price { color: #d4af37; font-weight: bold; font-size: 14px; flex-shrink: 0; margin-left: 8px; }
+.vini-qty-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 10px 0 6px; }
+.vini-qty-btn { width: 34px; height: 34px; border-radius: 50%; border: 2px solid #d4af37; background: rgba(212,175,55,0.15); color: #d4af37; font-size: 20px; font-weight: bold; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+.vini-qty-btn:hover { background: #d4af37; color: #150e0b; }
+.vini-qty-num { font-size: 20px; font-weight: bold; color: #d4af37; min-width: 30px; text-align: center; }
+.vini-confirm-btn { width: 100%; padding: 12px; border-radius: 25px; border: none; background: #d4af37; color: #150e0b; font-size: 14px; font-weight: bold; font-family: inherit; cursor: pointer; margin-bottom: 10px; transition: all 0.2s; }
+.vini-confirm-btn:hover { background: #f0c93a; }
+.vini-selected-name { color: #d4af37; font-size: 13px; font-weight: bold; text-align: center; margin-bottom: 8px; }
 </style>
 </head>
 <body>
@@ -567,9 +578,24 @@ html body { margin-top: 0 !important; }
   <div class="vini-modal-box">
     <div class="vini-calice">🍷</div>
     <div class="vini-modal-title" data-it="Carta dei Vini" data-fr="Carte des Vins" data-en="Wine List" data-de="Weinkarte">Carta dei Vini</div>
-    <div class="vini-modal-sub" data-it="Come vuoi procedere?" data-fr="Comment souhaitez-vous continuer?" data-en="How would you like to continue?" data-de="Wie möchten Sie fortfahren?">Come vuoi procedere?</div>
-    <a class="vini-modal-btn primary" href="https://mamunjoyit1-cyber.github.io/carta-dei-vini/" target="_blank" onclick="closeViniModal()" data-it="🍷 Apri Lista Digitale" data-fr="🍷 Ouvrir la Liste Digitale" data-en="🍷 Open Digital Wine List" data-de="🍷 Digitale Weinkarte öffnen">🍷 Apri Lista Digitale</a>
-    <button class="vini-modal-btn secondary" onclick="addViniToCart()" data-it="🛒 Aggiungi Vino al Carrello" data-fr="🛒 Ajouter Vin au Panier" data-en="🛒 Add Wine to Order" data-de="🛒 Wein zur Bestellung">🛒 Aggiungi Vino al Carrello</button>
+    <div class="vini-modal-sub" data-it="Scegli il vino o apri la lista completa" data-fr="Choisissez le vin ou ouvrez la liste complète" data-en="Choose a wine or open the full list" data-de="Wein wählen oder vollständige Liste öffnen">Scegli il vino o apri la lista completa</div>
+    <!-- House wines list -->
+    <div id="vini-list" style="background:#1a110e;border-radius:12px;padding:10px 14px;margin-bottom:14px;text-align:left;">
+      <div style="font-size:10px;color:#d4af37;font-weight:bold;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;" data-it="Vini della Casa — Calice" data-fr="Vins Maison — Verre" data-en="House Wines — Glass" data-de="Hausweine — Glas">Vini della Casa — Calice</div>
+      <div class="vini-row" onclick="selectVino('Vino Rosso della Casa','Calice',3)">
+        <span>🍷 <span data-it="Vino Rosso della Casa" data-fr="Vin Rouge Maison" data-en="House Red Wine" data-de="Hauswein Rot">Vino Rosso della Casa</span></span><span class="vini-price">€3,00</span>
+      </div>
+      <div class="vini-row" onclick="selectVino('Vino Bianco della Casa','Calice',3)">
+        <span>🥂 <span data-it="Vino Bianco della Casa" data-fr="Vin Blanc Maison" data-en="House White Wine" data-de="Hauswein Weiß">Vino Bianco della Casa</span></span><span class="vini-price">€3,00</span>
+      </div>
+      <div class="vini-row" onclick="selectVino('Vino Rosato della Casa','Calice',3)">
+        <span>🌸 <span data-it="Vino Rosato della Casa" data-fr="Vin Rosé Maison" data-en="House Rosé Wine" data-de="Hauswein Rosé">Vino Rosato della Casa</span></span><span class="vini-price">€3,00</span>
+      </div>
+      <div class="vini-row" onclick="selectVino('Prosecco DOC','Calice',5)">
+        <span>🥂 Prosecco DOC</span><span class="vini-price">€5,00</span>
+      </div>
+    </div>
+    <a class="vini-modal-btn primary" href="https://mamunjoyit1-cyber.github.io/carta-dei-vini/" target="_blank" onclick="closeViniModal()" data-it="📖 Lista Vini Completa" data-fr="📖 Liste des Vins Complète" data-en="📖 Full Wine List" data-de="📖 Vollständige Weinkarte">📖 Lista Vini Completa</a>
     <span class="vini-modal-close" onclick="closeViniModal()" data-it="Annulla" data-fr="Annuler" data-en="Cancel" data-de="Abbrechen">Annulla</span>
   </div>
 </div>
@@ -588,7 +614,57 @@ const GELATO_FLAVORS=[
 ];
 function flavorLabel(itKey){const f=GELATO_FLAVORS.find(x=>x.it===itKey);return f?(f[currentLang]||f.it):itKey;}
 
-const TURNO_OPTIONS=['1° turno','2° turno','3° turno','4° turno'];
+// Turno options - language-aware display, but stored in IT for cart
+const TURNO_IT=['1° turno','2° turno','3° turno','4° turno'];
+const TURNO_LABELS={
+  it:['1° Turno','2° Turno','3° Turno','4° Turno'],
+  fr:['1er Service','2e Service','3e Service','4e Service'],
+  en:['1st Course','2nd Course','3rd Course','4th Course'],
+  de:['1. Gang','2. Gang','3. Gang','4. Gang']
+};
+const TURNO_OPTIONS=TURNO_IT; // keep IT keys for storage
+function getTurnoLabels(){return TURNO_LABELS[currentLang]||TURNO_LABELS.it;}
+
+// Sauce translations: popup shows in current language, cart always in Italian
+const SAUCE_TRANS={
+  'Melone':           {fr:'Melon',        en:'Melon',          de:'Melone'},
+  'Grana':            {fr:'Grana',        en:'Grana Cheese',   de:'Grana-Käse'},
+  'Pomodoro':         {fr:'Tomate',       en:'Tomato',         de:'Tomate'},
+  'Burro e Salvia':   {fr:'Beurre et Sauge', en:'Butter & Sage', de:'Butter & Salbei'},
+  'Funghi':           {fr:'Champignons',  en:'Mushroom',       de:'Pilze'},
+  'Burro e Timo':     {fr:'Beurre et Thym', en:'Butter & Thyme', de:'Butter & Thymian'},
+  'Selvaggina':       {fr:'Gibier',       en:'Game Sauce',     de:'Wildsauce'},
+  'Pesto Fresco':     {fr:'Pesto Frais',  en:'Fresh Pesto',    de:'Frisches Pesto'},
+  'Noci':             {fr:'Noix',         en:'Walnut',         de:'Walnuss'},
+  'Primavera':        {fr:'Primavera',    en:'Primavera',      de:'Primavera'},
+  'Formaggi e Gorgonzola':{fr:'Fromages et Gorgonzola', en:'Cheeses & Gorgonzola', de:'Käse & Gorgonzola'},
+  'Pepe Verde':       {fr:'Poivre Vert',  en:'Green Pepper',   de:'Grüner Pfeffer'},
+  'Gorgonzola':       {fr:'Gorgonzola',   en:'Gorgonzola',     de:'Gorgonzola'},
+  'Griglia':          {fr:'Grillé',       en:'Grilled',        de:'Gegrillt'},
+  'Al Forno':         {fr:'Au Four',      en:'Baked',          de:'Im Ofen'},
+  'Alla Griglia':     {fr:'Grillé',       en:'Grilled',        de:'Gegrillt'},
+  // Duo di Primi options
+  'Ravioli della Nonna':  {fr:'Ravioli maison',    en:"Grandma's Ravioli", de:'Omas Ravioli'},
+  'Ravioli al Coniglio':  {fr:'Ravioli au Lapin',  en:'Rabbit Ravioli',    de:'Kaninchen-Ravioli'},
+  'Tagliatelle Selvaggina':{fr:'Tagliatelles Gibier',en:'Game Tagliatelle', de:'Wild-Tagliatelle'},
+  'Tagliatelle Funghi':   {fr:'Tagliatelles Champignons',en:'Mushroom Tagliatelle',de:'Pilz-Tagliatelle'},
+  'Tagliatelle Pesto':    {fr:'Tagliatelles Pesto', en:'Pesto Tagliatelle', de:'Pesto-Tagliatelle'},
+  'Tagliatelle Frutti di Mare':{fr:'Tagliatelles Fruits de Mer',en:'Seafood Tagliatelle',de:'Meeresfrüchte-Tagliatelle'},
+  'Mezzelune Burro e Salvia':{fr:'Mezzelune Beurre et Sauge',en:'Mezzelune Butter & Sage',de:'Mezzelune Butter & Salbei'},
+  'Mezzelune Noci':   {fr:'Mezzelune aux Noix',en:'Walnut Mezzelune',de:'Walnuss-Mezzelune'},
+  'Troffie Pesto':    {fr:'Troffie Pesto',   en:'Pesto Troffie',   de:'Pesto-Troffie'},
+  'Troffie Primavera':{fr:'Troffie Primavera',en:'Primavera Troffie',de:'Primavera-Troffie'},
+  'Troffie Gamberetti':{fr:'Troffie Crevettes',en:'Shrimp Troffie', de:'Garnelen-Troffie'},
+  'Gnocchi Funghi':   {fr:'Gnocchi Champignons',en:'Mushroom Gnocchi',de:'Pilz-Gnocchi'},
+  'Gnocchi Formaggi': {fr:'Gnocchi Fromages',en:'Cheese Gnocchi',  de:'Käse-Gnocchi'},
+  'Gnocchi Burro e Salvia':{fr:'Gnocchi Beurre et Sauge',en:'Gnocchi Butter & Sage',de:'Gnocchi Butter & Salbei'},
+  'Risotto Frutti di Mare':{fr:'Risotto Fruits de Mer',en:'Seafood Risotto',de:'Meeresfrüchte-Risotto'},
+  'Formaggi con Gorgonzola':{fr:'Fromages et Gorgonzola',en:'Cheeses & Gorgonzola',de:'Käse & Gorgonzola'}
+};
+// Show sauce in current language (for popup display)
+function sauceLabel(it){const tr=SAUCE_TRANS[it];return(tr&&tr[currentLang])||it;}
+// Always Italian for cart storage
+function sauceItLabel(it){return it;}
 const COTTURA_OPTIONS=['🔴 Al Sangue','🟠 Blue','🟡 Media Cottura','✅ Ben Cotto'];
 
 const ITEMS={
@@ -675,29 +751,83 @@ const PKG_CONFIG={
   ]}
 };
 
-// FIX: Cart course labels show "À la Carte" correctly
-const COURSE_MAP={
-  it:{menu:'🍽️ Menù',antipasti:'🥗 À la Carte — Antipasti',primi:'🍝 À la Carte — Primi',secondi:'🥩 À la Carte — Secondi',contorni:'🥦 À la Carte — Contorni',dolci:'🍰 Dolci',gelato:'🍦 Gelato',bevande:'🍷 Bevande'},
-  fr:{menu:'🍽️ Menu',antipasti:'🥗 À la Carte — Entrées',primi:'🍝 À la Carte — Plats Principaux',secondi:'🥩 À la Carte — Secondes',contorni:'🥦 À la Carte — Accompagnements',dolci:'🍰 Desserts',gelato:'🍦 Glace',bevande:'🍷 Boissons'},
-  en:{menu:'🍽️ Set Menu',antipasti:'🥗 À la Carte — Starters',primi:'🍝 À la Carte — First Courses',secondi:'🥩 À la Carte — Main Courses',contorni:'🥦 À la Carte — Sides',dolci:'🍰 Desserts',gelato:'🍦 Ice Cream',bevande:'🍷 Drinks'},
-  de:{menu:'🍽️ Menü',antipasti:'🥗 À la Carte — Vorspeisen',primi:'🍝 À la Carte — Erster Gang',secondi:'🥩 À la Carte — Hauptgerichte',contorni:'🥦 À la Carte — Beilagen',dolci:'🍰 Desserts',gelato:'🍦 Eis',bevande:'🍷 Getränke'}
+// Cart bucket labels: menu first, then by turno (language-aware), then dolci/gelato/bevande
+const STATIC_BUCKET_MAP={
+  it:{menu:'🍽️ Menù',dolci:'🍰 Dolci',gelato:'🍦 Gelato',bevande:'🍷 Bevande'},
+  fr:{menu:'🍽️ Menu',dolci:'🍰 Desserts',gelato:'🍦 Glace',bevande:'🍷 Boissons'},
+  en:{menu:'🍽️ Set Menu',dolci:'🍰 Desserts',gelato:'🍦 Ice Cream',bevande:'🍷 Drinks'},
+  de:{menu:'🍽️ Menü',dolci:'🍰 Desserts',gelato:'🍦 Eis',bevande:'🍷 Getränke'}
 };
-const COURSE_ORDER=['menu','antipasti','primi','secondi','contorni','dolci','gelato','bevande'];
-function courseLabel(c){return(COURSE_MAP[currentLang]||COURSE_MAP.it)[c]||('📋 '+c);}
+const STATIC_BUCKETS=['menu','dolci','gelato','bevande','altri'];
+function courseLabel(bid){
+  const map=STATIC_BUCKET_MAP[currentLang]||STATIC_BUCKET_MAP.it;
+  if(map[bid])return map[bid];
+  // It's a turno bucket like "turno:1° turno"
+  if(bid.startsWith('turno:')){
+    const itKey=bid.replace('turno:','');
+    const idx=TURNO_IT.indexOf(itKey);
+    if(idx>=0)return'📋 '+(getTurnoLabels()[idx]||itKey);
+    return'📋 '+itKey;
+  }
+  return'📋 '+bid;
+}
 
 let cart=[],cartIdCounter=0,pkgPersons={},pkgPersonCounter=0;
 let popupItemId=null,popupPersons=[],popupPersonCounter=0;
 let inlineGelatoFlavors=[],sorbettoType=null;
 
 // ── VINI MODAL ──
-function openViniModal(){document.getElementById('vini-modal').classList.add('open');applyLang(currentLang);}
+let vinoSelected=null,vinoQty=1;
+function openViniModal(){
+  vinoSelected=null;vinoQty=1;
+  // restore list view
+  document.getElementById('vini-list').style.display='block';
+  const qr=document.getElementById('vini-qty-picker');if(qr)qr.remove();
+  const cb=document.getElementById('vini-confirm-area');if(cb)cb.remove();
+  document.getElementById('vini-modal').classList.add('open');
+  applyLang(currentLang);
+}
 function closeViniModal(){document.getElementById('vini-modal').classList.remove('open');}
-function addViniToCart(){
-  closeViniModal();
-  const qty=parseInt(prompt(t('vino_prompt'),'1'));
-  if(!qty||qty<1)return;
-  for(let i=0;i<qty;i++)cart.push({id:++cartIdCounter,itemId:'vino',name:t('vino_name'),price:0,course:'bevande',turno:'—',person:null,detail:t('vino_detail')});
-  updateCart();
+function selectVino(name,tipo,price){
+  vinoSelected={name,tipo,price};vinoQty=1;
+  // Hide list, show qty picker
+  document.getElementById('vini-list').style.display='none';
+  // Remove old picker if exists
+  let qr=document.getElementById('vini-qty-picker');if(qr)qr.remove();
+  let cb=document.getElementById('vini-confirm-area');if(cb)cb.remove();
+  const box=document.querySelector('.vini-modal-box');
+  // Qty picker
+  const div=document.createElement('div');div.id='vini-qty-picker';
+  div.innerHTML='<div class="vini-selected-name">🍷 '+name+'<br><span style="color:#bca07d;font-size:12px;">'+tipo+' — €'+price+',00</span></div>'+
+    '<div class="vini-qty-row">'+
+    '<button class="vini-qty-btn" onclick="changeVinoQty(-1)">−</button>'+
+    '<span class="vini-qty-num" id="vino-qty-display">1</span>'+
+    '<button class="vini-qty-btn" onclick="changeVinoQty(1)">+</button>'+
+    '</div>';
+  const confirmArea=document.createElement('div');confirmArea.id='vini-confirm-area';
+  confirmArea.innerHTML='<button class="vini-confirm-btn" onclick="confirmVino()" id="vino-confirm-btn">✓ '+t('add_vino_cart')+'</button>'+
+    '<div style="text-align:center;"><span style="color:#5a4a3a;font-size:12px;cursor:pointer;text-decoration:underline;" onclick="backToViniList()">← '+t('vino_back')+'</span></div>';
+  // Insert before the primary btn
+  const primaryBtn=box.querySelector('.vini-modal-btn.primary');
+  box.insertBefore(div,primaryBtn);
+  box.insertBefore(confirmArea,primaryBtn);
+}
+function changeVinoQty(d){
+  vinoQty=Math.max(1,Math.min(10,vinoQty+d));
+  const el=document.getElementById('vino-qty-display');if(el)el.textContent=vinoQty;
+  const btn=document.getElementById('vino-confirm-btn');
+  if(btn)btn.textContent='✓ '+t('add_vino_cart')+' (×'+vinoQty+')';
+}
+function confirmVino(){
+  if(!vinoSelected)return;
+  for(let i=0;i<vinoQty;i++)cart.push({id:++cartIdCounter,itemId:'vino_'+vinoSelected.name.replace(/\s/g,'_'),name:vinoSelected.name,price:vinoSelected.price,course:'bevande',turno:'—',person:null,detail:vinoSelected.tipo});
+  closeViniModal();updateCart();
+}
+function backToViniList(){
+  vinoSelected=null;vinoQty=1;
+  document.getElementById('vini-list').style.display='block';
+  const qr=document.getElementById('vini-qty-picker');if(qr)qr.remove();
+  const cb=document.getElementById('vini-confirm-area');if(cb)cb.remove();
 }
 
 // ── GELATO INLINE (FIX: translated chips) ──
@@ -772,16 +902,21 @@ function renderPopupPersons(){
     }else if(item.multiSelect&&p.multiSauces!==null){
       const sc=p.multiSauces.length,nd=item.multiSelect;
       sauce='<div class="sauce-label-sm">'+t('scegli_n',nd,sc)+'</div><div class="chip-group">'+
-        item.sauces.map(s=>{const sel=p.multiSauces.includes(s),mx=!sel&&sc>=nd;return'<button class="chip'+(sel?' selected':'')+(mx?' maxed':'')+'" onclick="popupToggleMultiSauce('+p.pid+',\''+s.replace(/'/g,"\\'")+'\')">'+s+'</button>';}).join('')+
+        item.sauces.map(s=>{const sel=p.multiSauces.includes(s),mx=!sel&&sc>=nd;return'<button class="chip'+(sel?' selected':'')+(mx?' maxed':'')+'" onclick="popupToggleMultiSauce('+p.pid+',\''+s.replace(/'/g,"\\'")+'\')">'+sauceLabel(s)+'</button>';}).join('')+
         '</div>'+(sc<nd?'<div style="font-size:11px;color:#b31e1e;font-style:italic;margin-top:4px;">'+t('seleziona_ancora',nd-sc)+'</div>':'');
     }else if(item.sauces.length>0){
       sauce='<div class="sauce-label-sm">'+t('condimento_label')+'</div><div class="chip-group">'+
-        item.sauces.map(s=>'<button class="chip'+(p.sauce===s?' selected':'')+'" onclick="popupSelectSauce('+p.pid+',\''+s+'\')">'+s+'</button>').join('')+'</div>';
+        item.sauces.map(s=>'<button class="chip'+(p.sauce===s?' selected':'')+'" onclick="popupSelectSauce('+p.pid+',\''+s+'\')">'+sauceLabel(s)+'</button>').join('')+'</div>';
     }
     let cottura='';
     if(item.cottura)cottura='<div class="cottura-selector"><div class="cottura-label">'+t('cottura_label')+'</div><div class="cottura-chips">'+COTTURA_OPTIONS.map(c=>'<button class="cottura-chip'+(p.cottura===c?' selected':'')+'" onclick="popupSetCottura('+p.pid+',\''+c.replace(/'/g,"\\'")+'\')">'+c+'</button>').join('')+'</div></div>';
     let portata='';
-    if(item.course!=='dolci'&&item.course!=='gelato')portata='<div class="portata-selector"><div class="portata-label">'+t('turno_label')+'</div><div class="portata-chips">'+TURNO_OPTIONS.map(pt=>'<button class="portata-chip'+(p.portata===pt?' selected':'')+'" onclick="popupSetPortata('+p.pid+',\''+pt+'\')">'+pt+'</button>').join('')+'</div>'+(!p.portata?'<div style="font-size:11px;color:#b31e1e;font-style:italic;margin-top:4px;">'+t('seleziona_turno')+'</div>':'')+'</div>';
+    if(item.course!=='dolci'&&item.course!=='gelato'){
+      const tLabels=getTurnoLabels();
+      portata='<div class="portata-selector"><div class="portata-label">'+t('turno_label')+'</div><div class="portata-chips">'+
+        TURNO_IT.map((itKey,i)=>'<button class="portata-chip'+(p.portata===itKey?' selected':'')+'" onclick="popupSetPortata('+p.pid+',\''+itKey+'\')">'+tLabels[i]+'</button>').join('')+
+        '</div>'+(!p.portata?'<div style="font-size:11px;color:#b31e1e;font-style:italic;margin-top:4px;">'+t('seleziona_turno')+'</div>':'')+'</div>';
+    }
     div.innerHTML='<div class="person-icon">'+(idx+1)+'</div><div class="person-fields"><input class="name-input" type="text" placeholder="'+t('name_ph')+'" value="'+p.name+'" oninput="setPopupName('+p.pid+',this.value)">'+sauce+cottura+portata+'</div>'+(popupPersons.length>1?'<button class="remove-person-btn" onclick="removePopupPerson('+p.pid+')">✕</button>':'');
     c.appendChild(div);
   });
@@ -921,15 +1056,20 @@ function removePkgPerson(key,pid){
   renderPkgPersons(key);updateCart();
 }
 
-// ── CART (FIX: grouped by course with À la Carte labels; pkg + button hidden) ──
+// ── CART: pkg→menu bucket, dolci/gelato/bevande→own bucket, others→turno bucket ──
 function updateCart(){
   const buckets={};
   cart.forEach(e=>{
-    const bid=e.isPkg?'menu':(e.course||'altri');
+    let bid;
+    if(e.isPkg) bid='menu';
+    else if(['dolci','gelato','bevande'].includes(e.course)) bid=e.course;
+    else bid='turno:'+(e.turno||'—');
     if(!buckets[bid])buckets[bid]=[];
     buckets[bid].push(e);
   });
-  const order=[...COURSE_ORDER,'altri'];
+  // Sort order: menu, then turno buckets in order, then dolci, gelato, bevande
+  const turnoKeys=TURNO_IT.map(t=>'turno:'+t);
+  const order=['menu',...turnoKeys,'turno:—','dolci','gelato','bevande','altri'];
   let html='',totalItems=0,totalPrice=0,hasContent=false;
   order.forEach(bid=>{
     const entries=buckets[bid];if(!entries||!entries.length)return;
@@ -978,8 +1118,16 @@ function toggleCart(){document.getElementById('cart-panel').classList.toggle('op
 function showOverlay(){
   let html='',total=0;
   const buckets={};
-  cart.forEach(e=>{const bid=e.isPkg?'menu':(e.course||'altri');if(!buckets[bid])buckets[bid]=[];buckets[bid].push(e);});
-  [...COURSE_ORDER,'altri'].forEach(bid=>{
+  cart.forEach(e=>{
+    let bid;
+    if(e.isPkg) bid='menu';
+    else if(['dolci','gelato','bevande'].includes(e.course)) bid=e.course;
+    else bid='turno:'+(e.turno||'—');
+    if(!buckets[bid])buckets[bid]=[];buckets[bid].push(e);
+  });
+  const turnoKeys=TURNO_IT.map(t=>'turno:'+t);
+  const order=['menu',...turnoKeys,'turno:—','dolci','gelato','bevande','altri'];
+  order.forEach(bid=>{
     const entries=buckets[bid];if(!entries||!entries.length)return;
     html+='<div class="overlay-section"><div class="overlay-section-title">'+courseLabel(bid)+'</div>';
     entries.forEach(e=>{total+=e.price;html+='<div class="overlay-dish"><div><div class="overlay-dish-name">'+(e.person?e.person+' — ':'')+e.name+'</div>'+(e.detail?'<div class="'+(e.isPkg?'overlay-dish-detail-pkg':'overlay-dish-detail')+'">'+e.detail+'</div>':'')+'</div><div class="overlay-dish-price">€'+e.price+'</div></div>';});
@@ -1010,10 +1158,10 @@ function setSubTab(name,el){
 // ── TRANSLATION ENGINE ──
 let currentLang='it';
 const T={
-  it:{sub_default:'Aggiungi al tuo ordine',sub_gelato:'Scegli fino a 3 gusti',sub_sorbetto:'Con o senza alcol?',sub_multi:n=>`Scegli ${n} piatti per ogni persona`,sub_sauce:'Scegli il condimento per ogni persona',name_ph:'Nome (opzionale)',gusti_label:'🍦 Gusti (max 3):',gusti_sel:n=>`Selezionati: ${n}/3`,gusti_hint:'Clicca per selezionare fino a 3 gusti',seleziona_gusto:'Seleziona almeno 1 gusto',preferenza_label:'🍹 Preferenza:',con_alcol:'🍷 Con Alcol',senza_alcol:'🧃 Senza Alcol',scegli_n:(n,s)=>`🍽️ Scegli ${n} piatti (${s}/${n}):`,seleziona_ancora:n=>`Seleziona ancora ${n} piatto/i`,condimento_label:'🍽️ Condimento:',cottura_label:'🔥 Cottura:',turno_label:'📋 Turno (obbligatorio)',seleziona_turno:'Seleziona il turno',nessun_articolo:'Nessun articolo ancora',piatti_sel:(c,l)=>`${c} / ${l} piatti selezionati`,persona:'👤 Persona',conferma_aggiungi:"✓ Conferma e Aggiungi all'Ordine",conferma_btn:'✓ Conferma Ordine',confermato:'✅ Confermato e Aggiunto',modifica:'✏️ Modifica',scegli_btn:'+ Scegli',selezionato_btn:'✓ Selezionato',condimento_row:'Condimento:',cinque_portate:'5 Portate selezionate dalla cucina',totale_stimato:'Totale Stimato',nessun_risultato:'Nessun risultato trovato',vedi:'📋 Vedi ▾',chiudi:'📋 Chiudi ▴',add_person:'+ Aggiungi persona',vino_prompt:'Quante bottiglie di vino?',vino_name:'Vino della Casa',vino_detail:'Da selezionare dalla Carta dei Vini'},
-  fr:{sub_default:'Ajouter à votre commande',sub_gelato:"Choisissez jusqu'à 3 parfums",sub_sorbetto:'Avec ou sans alcool?',sub_multi:n=>`Choisissez ${n} plats par personne`,sub_sauce:"Choisissez l'accompagnement",name_ph:'Nom (facultatif)',gusti_label:'🍦 Parfums (max 3):',gusti_sel:n=>`Sélectionnés: ${n}/3`,gusti_hint:"Cliquez pour sélectionner 3 parfums",seleziona_gusto:'Sélectionnez au moins 1 parfum',preferenza_label:'🍹 Préférence:',con_alcol:'🍷 Avec Alcool',senza_alcol:'🧃 Sans Alcool',scegli_n:(n,s)=>`🍽️ Choisissez ${n} plats (${s}/${n}):`,seleziona_ancora:n=>`Sélectionnez encore ${n} plat(s)`,condimento_label:'🍽️ Accompagnement:',cottura_label:'🔥 Cuisson:',turno_label:'📋 Service (obligatoire)',seleziona_turno:'Sélectionnez le service',nessun_articolo:'Aucun article',piatti_sel:(c,l)=>`${c} / ${l} plats sélectionnés`,persona:'👤 Personne',conferma_aggiungi:'✓ Confirmer et Ajouter',conferma_btn:'✓ Confirmer',confermato:'✅ Confirmé',modifica:'✏️ Modifier',scegli_btn:'+ Choisir',selezionato_btn:'✓ Sélectionné',condimento_row:'Accompagnement:',cinque_portate:'5 plats sélectionnés par la cuisine',totale_stimato:'Total Estimé',nessun_risultato:'Aucun résultat',vedi:'📋 Voir ▾',chiudi:'📋 Fermer ▴',add_person:'+ Ajouter une personne',vino_prompt:'Combien de bouteilles?',vino_name:'Vin de la Maison',vino_detail:'À sélectionner sur la carte des vins'},
-  en:{sub_default:'Add to your order',sub_gelato:'Choose up to 3 flavors',sub_sorbetto:'With or without alcohol?',sub_multi:n=>`Choose ${n} dishes per person`,sub_sauce:'Choose the sauce for each person',name_ph:'Name (optional)',gusti_label:'🍦 Flavors (max 3):',gusti_sel:n=>`Selected: ${n}/3`,gusti_hint:'Tap to select up to 3 flavors',seleziona_gusto:'Select at least 1 flavor',preferenza_label:'🍹 Preference:',con_alcol:'🍷 With Alcohol',senza_alcol:'🧃 Without Alcohol',scegli_n:(n,s)=>`🍽️ Choose ${n} dishes (${s}/${n}):`,seleziona_ancora:n=>`Select ${n} more dish(es)`,condimento_label:'🍽️ Sauce:',cottura_label:'🔥 Doneness:',turno_label:'📋 Course Time (required)',seleziona_turno:'Select course time',nessun_articolo:'No items yet',piatti_sel:(c,l)=>`${c} / ${l} dishes selected`,persona:'👤 Person',conferma_aggiungi:'✓ Confirm and Add to Order',conferma_btn:'✓ Confirm Order',confermato:'✅ Confirmed and Added',modifica:'✏️ Modify',scegli_btn:'+ Choose',selezionato_btn:'✓ Selected',condimento_row:'Sauce:',cinque_portate:'5 courses selected by the kitchen',totale_stimato:'Estimated Total',nessun_risultato:'No results found',vedi:'📋 View ▾',chiudi:'📋 Close ▴',add_person:'+ Add person',vino_prompt:'How many bottles?',vino_name:'House Wine',vino_detail:'To be selected from the wine list'},
-  de:{sub_default:'Zur Bestellung hinzufügen',sub_gelato:'Bis zu 3 Sorten wählen',sub_sorbetto:'Mit oder ohne Alkohol?',sub_multi:n=>`Wählen Sie ${n} Gerichte pro Person`,sub_sauce:'Wählen Sie die Sauce',name_ph:'Name (optional)',gusti_label:'🍦 Sorten (max. 3):',gusti_sel:n=>`Ausgewählt: ${n}/3`,gusti_hint:'Tippen um 3 Sorten zu wählen',seleziona_gusto:'Wählen Sie mind. 1 Sorte',preferenza_label:'🍹 Präferenz:',con_alcol:'🍷 Mit Alkohol',senza_alcol:'🧃 Ohne Alkohol',scegli_n:(n,s)=>`🍽️ Wählen Sie ${n} Gerichte (${s}/${n}):`,seleziona_ancora:n=>`Noch ${n} Gericht(e) wählen`,condimento_label:'🍽️ Sauce:',cottura_label:'🔥 Garstufe:',turno_label:'📋 Gang (erforderlich)',seleziona_turno:'Gang auswählen',nessun_articolo:'Noch keine Artikel',piatti_sel:(c,l)=>`${c} / ${l} Gerichte`,persona:'👤 Person',conferma_aggiungi:'✓ Bestätigen und hinzufügen',conferma_btn:'✓ Bestätigen',confermato:'✅ Bestätigt',modifica:'✏️ Ändern',scegli_btn:'+ Wählen',selezionato_btn:'✓ Ausgewählt',condimento_row:'Sauce:',cinque_portate:'5 Gänge von der Küche',totale_stimato:'Geschätzter Gesamtbetrag',nessun_risultato:'Keine Ergebnisse',vedi:'📋 Anzeigen ▾',chiudi:'📋 Schließen ▴',add_person:'+ Person hinzufügen',vino_prompt:'Wie viele Flaschen?',vino_name:'Hauswein',vino_detail:'Aus der Weinkarte auswählen'}
+  it:{add_vino_cart:'Aggiungi al Carrello',vino_back:'Torna ai Vini',sub_default:'Aggiungi al tuo ordine',sub_gelato:'Scegli fino a 3 gusti',sub_sorbetto:'Con o senza alcol?',sub_multi:n=>`Scegli ${n} piatti per ogni persona`,sub_sauce:'Scegli il condimento per ogni persona',name_ph:'Nome (opzionale)',gusti_label:'🍦 Gusti (max 3):',gusti_sel:n=>`Selezionati: ${n}/3`,gusti_hint:'Clicca per selezionare fino a 3 gusti',seleziona_gusto:'Seleziona almeno 1 gusto',preferenza_label:'🍹 Preferenza:',con_alcol:'🍷 Con Alcol',senza_alcol:'🧃 Senza Alcol',scegli_n:(n,s)=>`🍽️ Scegli ${n} piatti (${s}/${n}):`,seleziona_ancora:n=>`Seleziona ancora ${n} piatto/i`,condimento_label:'🍽️ Condimento:',cottura_label:'🔥 Cottura:',turno_label:'📋 Turno (obbligatorio)',seleziona_turno:'Seleziona il turno',nessun_articolo:'Nessun articolo ancora',piatti_sel:(c,l)=>`${c} / ${l} piatti selezionati`,persona:'👤 Persona',conferma_aggiungi:"✓ Conferma e Aggiungi all'Ordine",conferma_btn:'✓ Conferma Ordine',confermato:'✅ Confermato e Aggiunto',modifica:'✏️ Modifica',scegli_btn:'+ Scegli',selezionato_btn:'✓ Selezionato',condimento_row:'Condimento:',cinque_portate:'5 Portate selezionate dalla cucina',totale_stimato:'Totale Stimato',nessun_risultato:'Nessun risultato trovato',vedi:'📋 Vedi ▾',chiudi:'📋 Chiudi ▴',add_person:'+ Aggiungi persona',vino_prompt:'Quante bottiglie di vino?',vino_name:'Vino della Casa',vino_detail:'Da selezionare dalla Carta dei Vini'},
+  fr:{add_vino_cart:'Ajouter au Panier',vino_back:'Retour aux Vins',sub_default:'Ajouter à votre commande',sub_gelato:"Choisissez jusqu'à 3 parfums",sub_sorbetto:'Avec ou sans alcool?',sub_multi:n=>`Choisissez ${n} plats par personne`,sub_sauce:"Choisissez l'accompagnement",name_ph:'Nom (facultatif)',gusti_label:'🍦 Parfums (max 3):',gusti_sel:n=>`Sélectionnés: ${n}/3`,gusti_hint:"Cliquez pour sélectionner 3 parfums",seleziona_gusto:'Sélectionnez au moins 1 parfum',preferenza_label:'🍹 Préférence:',con_alcol:'🍷 Avec Alcool',senza_alcol:'🧃 Sans Alcool',scegli_n:(n,s)=>`🍽️ Choisissez ${n} plats (${s}/${n}):`,seleziona_ancora:n=>`Sélectionnez encore ${n} plat(s)`,condimento_label:'🍽️ Accompagnement:',cottura_label:'🔥 Cuisson:',turno_label:'📋 Service (obligatoire)',seleziona_turno:'Sélectionnez le service',nessun_articolo:'Aucun article',piatti_sel:(c,l)=>`${c} / ${l} plats sélectionnés`,persona:'👤 Personne',conferma_aggiungi:'✓ Confirmer et Ajouter',conferma_btn:'✓ Confirmer',confermato:'✅ Confirmé',modifica:'✏️ Modifier',scegli_btn:'+ Choisir',selezionato_btn:'✓ Sélectionné',condimento_row:'Accompagnement:',cinque_portate:'5 plats sélectionnés par la cuisine',totale_stimato:'Total Estimé',nessun_risultato:'Aucun résultat',vedi:'📋 Voir ▾',chiudi:'📋 Fermer ▴',add_person:'+ Ajouter une personne',vino_prompt:'Combien de bouteilles?',vino_name:'Vin de la Maison',vino_detail:'À sélectionner sur la carte des vins'},
+  en:{add_vino_cart:'Add to Order',vino_back:'Back to Wines',sub_default:'Add to your order',sub_gelato:'Choose up to 3 flavors',sub_sorbetto:'With or without alcohol?',sub_multi:n=>`Choose ${n} dishes per person`,sub_sauce:'Choose the sauce for each person',name_ph:'Name (optional)',gusti_label:'🍦 Flavors (max 3):',gusti_sel:n=>`Selected: ${n}/3`,gusti_hint:'Tap to select up to 3 flavors',seleziona_gusto:'Select at least 1 flavor',preferenza_label:'🍹 Preference:',con_alcol:'🍷 With Alcohol',senza_alcol:'🧃 Without Alcohol',scegli_n:(n,s)=>`🍽️ Choose ${n} dishes (${s}/${n}):`,seleziona_ancora:n=>`Select ${n} more dish(es)`,condimento_label:'🍽️ Sauce:',cottura_label:'🔥 Doneness:',turno_label:'📋 Course Time (required)',seleziona_turno:'Select course time',nessun_articolo:'No items yet',piatti_sel:(c,l)=>`${c} / ${l} dishes selected`,persona:'👤 Person',conferma_aggiungi:'✓ Confirm and Add to Order',conferma_btn:'✓ Confirm Order',confermato:'✅ Confirmed and Added',modifica:'✏️ Modify',scegli_btn:'+ Choose',selezionato_btn:'✓ Selected',condimento_row:'Sauce:',cinque_portate:'5 courses selected by the kitchen',totale_stimato:'Estimated Total',nessun_risultato:'No results found',vedi:'📋 View ▾',chiudi:'📋 Close ▴',add_person:'+ Add person',vino_prompt:'How many bottles?',vino_name:'House Wine',vino_detail:'To be selected from the wine list'},
+  de:{add_vino_cart:'Zum Warenkorb',vino_back:'Zurück zu Weinen',sub_default:'Zur Bestellung hinzufügen',sub_gelato:'Bis zu 3 Sorten wählen',sub_sorbetto:'Mit oder ohne Alkohol?',sub_multi:n=>`Wählen Sie ${n} Gerichte pro Person`,sub_sauce:'Wählen Sie die Sauce',name_ph:'Name (optional)',gusti_label:'🍦 Sorten (max. 3):',gusti_sel:n=>`Ausgewählt: ${n}/3`,gusti_hint:'Tippen um 3 Sorten zu wählen',seleziona_gusto:'Wählen Sie mind. 1 Sorte',preferenza_label:'🍹 Präferenz:',con_alcol:'🍷 Mit Alkohol',senza_alcol:'🧃 Ohne Alkohol',scegli_n:(n,s)=>`🍽️ Wählen Sie ${n} Gerichte (${s}/${n}):`,seleziona_ancora:n=>`Noch ${n} Gericht(e) wählen`,condimento_label:'🍽️ Sauce:',cottura_label:'🔥 Garstufe:',turno_label:'📋 Gang (erforderlich)',seleziona_turno:'Gang auswählen',nessun_articolo:'Noch keine Artikel',piatti_sel:(c,l)=>`${c} / ${l} Gerichte`,persona:'👤 Person',conferma_aggiungi:'✓ Bestätigen und hinzufügen',conferma_btn:'✓ Bestätigen',confermato:'✅ Bestätigt',modifica:'✏️ Ändern',scegli_btn:'+ Wählen',selezionato_btn:'✓ Ausgewählt',condimento_row:'Sauce:',cinque_portate:'5 Gänge von der Küche',totale_stimato:'Geschätzter Gesamtbetrag',nessun_risultato:'Keine Ergebnisse',vedi:'📋 Anzeigen ▾',chiudi:'📋 Schließen ▴',add_person:'+ Person hinzufügen',vino_prompt:'Wie viele Flaschen?',vino_name:'Hauswein',vino_detail:'Aus der Weinkarte auswählen'}
 };
 function t(key,...args){const v=(T[currentLang]||T.it)[key];if(typeof v==='function')return v(...args);return v!==undefined?v:(T.it[key]||key);}
 
