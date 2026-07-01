@@ -228,7 +228,7 @@ html body { margin-top: 0 !important; }
 .vini-modal-btn.secondary { background: transparent; color: #d4af37; }
 .vini-modal-btn.secondary:hover { background: rgba(212,175,55,0.12); }
 .vini-modal-close { color: #5a4a3a; font-size: 12px; cursor: pointer; text-decoration: underline; margin-top: 8px; display: inline-block; }
-.vini-modal-close:hover { color: #bca07d; }
+.vini-modal-close:hover { color: #bca07d; } @keyframes viniPulse { 0%,100%{ box-shadow: 0 0 0 0 rgba(212,175,55,0.55); } 50%{ box-shadow: 0 0 0 10px rgba(212,175,55,0); } } .vini-cta-pulse { animation: viniPulse 1.8s infinite; font-weight: 800; font-size: 15px; }
 .vini-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 8px; border-bottom: 1px solid rgba(212,175,55,0.15); cursor: pointer; border-radius: 8px; transition: background 0.2s; color: #f9f1e2; font-size: 14px; font-weight: 500; }
 .vini-row:last-child { border-bottom: none; }
 .vini-row:hover { background: rgba(212,175,55,0.12); }
@@ -595,7 +595,7 @@ html body { margin-top: 0 !important; }
         <span>🥂 Prosecco DOC</span><span class="vini-price">€5,00</span>
       </div>
     </div>
-    <a class="vini-modal-btn primary" href="https://mamunjoyit1-cyber.github.io/carta-dei-vini/" target="_blank" onclick="closeViniModal()" data-it="📖 Lista Vini Completa" data-fr="📖 Liste des Vins Complète" data-en="📖 Full Wine List" data-de="📖 Vollständige Weinkarte">📖 Lista Vini Completa</a>
+    <a class="vini-modal-btn primary vini-cta-pulse" href="https://mamunjoyit1-cyber.github.io/carta-dei-vini/" target="_blank" onclick="closeViniModal()" data-it="🍷 Clicca qui per la Carta dei Vini Digitale➔" data-fr="🍷 Cliquez ici pour la Carte des Vins Digitale➔" data-en="🍷 Click here for the Digital Wine List➔" data-de="🍷 Hier klicken für die digitale Weinkarte➔">🍷 Clicca qui per la Carta dei Vini Digitale➔</a>
     <span class="vini-modal-close" onclick="closeViniModal()" data-it="Annulla" data-fr="Annuler" data-en="Cancel" data-de="Abbrechen">Annulla</span>
   </div>
 </div>
@@ -949,7 +949,7 @@ function popupConfirm(){
   if(!popupPersons.every(p=>isPersonOk(p,item)))return;
   popupPersons.forEach(p=>{
     let d=[];
-    if(item.isGelato)d.push(p.flavors.map(f=>flavorLabel(f)).join(', '));
+    if(item.isGelato)d.push(p.flavors.join(', '));
     else if(item.isSorbetto)d.push(p.sorbettoType);
     else if(item.multiSelect&&p.multiSauces.length)d.push(p.multiSauces.join(' + '));
     else if(p.sauce&&p.sauce!=='none')d.push(p.sauce);
@@ -989,7 +989,7 @@ function renderPkgPersons(key){
         sec.items.forEach((dish,iIdx)=>{
           const sel=p.selections.find(s=>s.sIdx===sIdx&&s.iIdx===iIdx);
           dh+='<div class="pkg-dish-row"><div class="pkg-dish-name">'+dish.name+dishSub(dish.name)+'</div><button class="pkg-select-btn'+(sel?' selected':'')+'" data-pa="select" data-pk="'+key+'" data-pid="'+p.pid+'" data-si="'+sIdx+'" data-ii="'+iIdx+'">'+(sel?t('selezionato_btn'):t('scegli_btn'))+'</button></div>';
-          if(sel&&dish.sauces&&dish.sauces.length>0)dh+='<div class="pkg-sauce-row"><div class="sauce-label-sm" style="margin-bottom:4px;">'+t('condimento_row')+'</div><div class="pkg-sauce-chips">'+dish.sauces.map((s,si)=>'<button class="chip'+(sel.sauce===s?' selected':'')+'" data-pa="sauce" data-pk="'+key+'" data-pid="'+p.pid+'" data-si="'+sIdx+'" data-ii="'+iIdx+'" data-sai="'+si+'">'+s+'</button>').join('')+'</div></div>';
+          if(sel&&dish.sauces&&dish.sauces.length>0)dh+='<div class="pkg-sauce-row"><div class="sauce-label-sm" style="margin-bottom:4px;">'+t('condimento_row')+'</div><div class="pkg-sauce-chips">'+dish.sauces.map((s,si)=>'<button class="chip'+(sel.sauce===s?' selected':'')+'" data-pa="sauce" data-pk="'+key+'" data-pid="'+p.pid+'" data-si="'+sIdx+'" data-ii="'+iIdx+'" data-sai="'+si+'">'+sauceLabel(s)+'</button>').join('')+'</div></div>';
         });
       });
     }
