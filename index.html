@@ -9,8 +9,10 @@
 body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; color: #f9f1e2; -webkit-font-smoothing: antialiased; }
 .header { background: linear-gradient(135deg, #0f0303 0%, #260707 50%, #0f0303 100%); padding: 40px 20px 30px; text-align: center; border-bottom: 4px solid #d4af37; }
 .header .subtitle { color: #d4af37; font-size: 12px; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 12px; font-weight: bold; }
-.header h1 { color: #ffffff; font-size: clamp(34px, 8vw, 48px); font-weight: normal; letter-spacing: 5px; text-shadow: 2px 2px 6px rgba(0,0,0,0.8); }
+.header h1 { color: #fff; font-size: clamp(34px,8vw,48px); font-weight: normal; letter-spacing: 5px; text-shadow: 2px 2px 6px rgba(0,0,0,0.8); }
 .header .divider { width: 100px; height: 2px; background: #d4af37; margin: 15px auto 0; }
+.header-logo-wrap { display: flex; align-items: center; justify-content: center; gap: 22px; }
+.lago-bin-logo { width: 72px; height: 72px; flex-shrink: 0; }
 .lang-bar { background: #0b0202; padding: 14px 10px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid rgba(212,175,55,0.2); }
 .lang-btn { background: rgba(255,255,255,0.05); color: #f9f1e2; border: 1px solid #d4af37; border-radius: 25px; padding: 9px 20px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.3s ease; }
 .lang-btn.active, .lang-btn:hover { background: #d4af37; color: #150e0b; font-weight: bold; box-shadow: 0 4px 12px rgba(212,175,55,0.4); }
@@ -31,16 +33,15 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 .quick-card .card-label { font-size: 12px; color: #bca07d; font-weight: normal; font-style: italic; margin-top: 1px; }
 .quick-card:hover .card-label { color: #4a361c; }
 .search-bar-wrap { background: #1a110e; padding: 12px 16px; border-bottom: 1px solid rgba(212,175,55,0.2); }
-.search-bar-inner { max-width: 500px; margin: 0 auto; position: relative; }
+.search-bar-inner { max-width: 500px; margin: 0 auto; }
 .search-bar-inner input { width: 100%; padding: 10px 16px; border-radius: 25px; border: 1px solid #d4af37; background: #2a1d19; color: #f9f1e2; font-size: 14px; font-family: inherit; outline: none; }
 .search-bar-inner input::placeholder { color: #7a6a5a; }
 #searchResults { display: none; max-width: 500px; margin: 8px auto 0; background: #221815; border: 1px solid #d4af37; border-radius: 12px; overflow: hidden; max-height: 300px; overflow-y: auto; }
 .tabs-wrap { background: #1a110e; border-bottom: 3px solid #d4af37; width: 100%; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.4); }
-.tabs { display: flex; flex-wrap: wrap; overflow-x: auto; gap: 12px; padding: 14px 16px; -webkit-overflow-scrolling: touch; justify-content: flex-start; }
+.tabs { display: flex; flex-wrap: wrap; overflow-x: auto; gap: 12px; padding: 14px 16px; -webkit-overflow-scrolling: touch; }
 .tabs::-webkit-scrollbar { display: none; }
-.tab-btn { background: #2a1d19; border: 1px solid rgba(212,175,55,0.3); border-radius: 20px; color: #d4af37; padding: 10px 20px; font-size: 14px; cursor: pointer; font-family: inherit; white-space: nowrap; transition: all 0.2s; font-weight: 600; position: relative; }
+.tab-btn { background: #2a1d19; border: 1px solid rgba(212,175,55,0.3); border-radius: 20px; color: #d4af37; padding: 10px 20px; font-size: 14px; cursor: pointer; font-family: inherit; white-space: nowrap; transition: all 0.2s; font-weight: 600; }
 .tab-btn.active { background: #d4af37; color: #150e0b; border-color: #d4af37; box-shadow: 0 4px 8px rgba(212,175,55,0.3); }
-.tab-green-dot { display: inline-block; width: 8px; height: 8px; background: #2a7a2a; border-radius: 50%; margin-left: 6px; vertical-align: middle; box-shadow: 0 0 4px rgba(42,122,42,0.6); }
 .content { padding: 30px 16px 60px; max-width: 750px; margin: 0 auto; }
 .cat-title { text-align: center; color: #d4af37; font-weight: normal; font-size: 26px; letter-spacing: 3px; margin-bottom: 30px; border-bottom: 1px solid #d4af37; padding-bottom: 14px; text-transform: uppercase; }
 .section { display: none !important; }
@@ -178,10 +179,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 .pkg-select-btn { border: 1.5px solid #d4af37; border-radius: 20px; background: rgba(212,175,55,0.1); color: #b31e1e; font-size: 11px; font-weight: bold; padding: 4px 12px; cursor: pointer; font-family: inherit; transition: all 0.2s; white-space: nowrap; }
 .pkg-select-btn.selected { background: #d4af37; color: #150e0b; }
 .pkg-sauce-row { padding: 6px 0 4px 0; }
-.pkg-sauce-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 5px; }
-.pkg-cottura-row { background: #fff5e6; border-radius: 8px; padding: 8px; margin-top: 4px; }
-.pkg-cottura-label { font-size: 10px; font-weight: bold; color: #b31e1e; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
-.pkg-cottura-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.pkg-sauce-chips { display: flex; flex-wrap: wrap; gap: 5px; }
 .pkg-counter { font-size: 12px; font-weight: bold; color: #b31e1e; margin-bottom: 8px; }
 .pkg-counter.done { color: #2a7a2a; }
 .pkg-confirm-btn { width: 100%; padding: 10px; border-radius: 25px; border: none; font-size: 14px; font-weight: bold; font-family: inherit; cursor: pointer; margin-top: 10px; transition: all 0.3s; }
@@ -207,31 +205,52 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 .cocktail-group { color: #b31e1e; font-size: 12px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin: 14px 0 8px; }
 .cocktail-name { font-size: 14.5px; color: #1a0505; padding: 4px 0; border-bottom: 1px dotted rgba(0,0,0,0.08); }
 .bar-divider { text-align: center; color: #bca07d; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 18px 0 10px; border-top: 1px solid rgba(212,175,55,0.15); padding-top: 14px; }
-.digital-wine-btn { display: flex; align-items: center; justify-content: center; gap: 14px; background: linear-gradient(135deg,#3d0b0b,#5a1010); border: 2px solid #d4af37; border-radius: 14px; padding: 22px 28px; text-decoration: none; color: #ffffff; font-size: 18px; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 20px; }
-.btn-arrow { background: #d4af37; color: #150e0b; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
 .footer { background: #0b0202; color: #d4af37; text-align: center; padding: 30px 20px; font-size: 14px; border-top: 3px solid #d4af37; margin-top: 50px; }
 .footer .note { color: #bca07d; font-size: 13px; font-style: italic; margin-top: 10px; }
 #google_translate_element { display: none !important; }
-.goog-te-banner-frame, .goog-te-menu-frame, iframe.skiptranslate, .skiptranslate { display: none !important; }
+.goog-te-banner-frame,.goog-te-menu-frame,iframe.skiptranslate,.skiptranslate { display: none !important; }
 body { top: 0 !important; }
-#goog-gt-tt, .goog-te-balloon-frame, .goog-tooltip { display: none !important; }
+#goog-gt-tt,.goog-te-balloon-frame,.goog-tooltip { display: none !important; }
 html body { margin-top: 0 !important; }
 .translating-bar { display: none; background: #fff3cd; padding: 12px 20px; text-align: center; font-size: 14px; color: #856404; border-bottom: 1px solid #ffeeba; font-weight: bold; }
 .translating-bar.show { display: block; }
+/* VINI MODAL */
+.vini-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 800; align-items: center; justify-content: center; }
+.vini-modal-overlay.open { display: flex; }
+.vini-modal-box { background: linear-gradient(135deg,#1a0e0b,#260f0a); border: 2px solid #d4af37; border-radius: 20px; padding: 36px 28px 28px; max-width: 360px; width: 92%; text-align: center; animation: fadeInUp 0.3s ease; }
+@keyframes fadeInUp { from { transform: translateY(30px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+.vini-calice { font-size: 80px; line-height: 1; margin-bottom: 12px; }
+.vini-modal-title { color: #d4af37; font-size: 22px; letter-spacing: 4px; font-weight: bold; margin-bottom: 6px; text-transform: uppercase; }
+.vini-modal-sub { color: #bca07d; font-size: 13px; font-style: italic; margin-bottom: 26px; }
+.vini-modal-btn { display: block; width: 100%; padding: 13px; border-radius: 28px; font-size: 14px; font-weight: bold; font-family: inherit; cursor: pointer; transition: all 0.2s; margin-bottom: 10px; text-decoration: none; border: 2px solid #d4af37; }
+.vini-modal-btn.primary { background: #d4af37; color: #150e0b; }
+.vini-modal-btn.primary:hover { background: #f0c93a; }
+.vini-modal-btn.secondary { background: transparent; color: #d4af37; }
+.vini-modal-btn.secondary:hover { background: rgba(212,175,55,0.12); }
+.vini-modal-close { color: #5a4a3a; font-size: 12px; cursor: pointer; text-decoration: underline; margin-top: 8px; display: inline-block; }
+.vini-modal-close:hover { color: #bca07d; }
 </style>
 </head>
 <body>
-
 <div id="google_translate_element"></div>
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({ pageLanguage: 'it', autoDisplay: false }, 'google_translate_element');
-}
-</script>
+<script>function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'it',autoDisplay:false},'google_translate_element');}</script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+<!-- HEADER with SVG Logo -->
 <div class="header">
-  <div style="display:flex;align-items:center;justify-content:center;gap:18px;">
+  <div class="header-logo-wrap">
+    <svg class="lago-bin-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="60" cy="60" r="57" fill="none" stroke="#d4af37" stroke-width="2.5"/>
+      <circle cx="60" cy="60" r="50" fill="none" stroke="#d4af37" stroke-width="0.8" opacity="0.4"/>
+      <path d="M18 74 Q33 66 50 74 Q67 82 82 74 Q97 66 107 74" fill="none" stroke="#d4af37" stroke-width="2" opacity="0.7"/>
+      <path d="M22 82 Q37 75 54 82 Q71 89 86 82 Q99 76 107 82" fill="none" stroke="#d4af37" stroke-width="1.4" opacity="0.45"/>
+      <path d="M53 26 L67 26 L64 50 Q69 58 69 64 Q69 71 60 71 Q51 71 51 64 Q51 58 56 50 Z" fill="none" stroke="#d4af37" stroke-width="2.2" stroke-linejoin="round"/>
+      <line x1="60" y1="71" x2="60" y2="87" stroke="#d4af37" stroke-width="2.2"/>
+      <line x1="49" y1="87" x2="71" y2="87" stroke="#d4af37" stroke-width="2.5"/>
+      <path d="M55 36 L65 36 L63.5 50 Q60 57 56.5 50 Z" fill="#d4af37" opacity="0.3"/>
+      <text x="26" y="52" font-size="11" fill="#d4af37" opacity="0.75" font-family="serif">✦</text>
+      <text x="83" y="52" font-size="11" fill="#d4af37" opacity="0.75" font-family="serif">✦</text>
+    </svg>
     <div>
       <div class="subtitle">✦ RISTORANTE ✦</div>
       <h1>LAGO BIN</h1>
@@ -240,6 +259,7 @@ function googleTranslateElementInit() {
   </div>
 </div>
 
+<!-- LANG BAR -->
 <div class="lang-bar">
   <button class="lang-btn active" onclick="setLang('it',this)">🇮🇹 Italiano</button>
   <button class="lang-btn" onclick="setLang('fr',this)">🇫🇷 Français</button>
@@ -264,17 +284,17 @@ function googleTranslateElementInit() {
     </div>
   </div>
 </div>
+<div class="translating-bar" id="translatingBar">🌐 Translating menu... please wait</div>
 
-<div class="translating-bar" id="translatingBar">🌐 Translating menu... please wait a moment</div>
-
+<!-- QUICK CARDS -->
 <div class="quick-cards">
-  <a class="quick-card" href="https://mamunjoyit1-cyber.github.io/carta-dei-vini/" target="_blank">
+  <div class="quick-card" onclick="openViniModal()">
     <div class="card-icon">🍷</div>
     <div class="card-text">
       <span data-it="Carta dei Vini" data-fr="Carte des Vins" data-en="Wine List" data-de="Weinkarte">Carta dei Vini</span>
       <span class="card-label" data-it="Apri Lista Digitale" data-fr="Ouvrir la Liste Digitale" data-en="Open Digital List" data-de="Digitale Liste öffnen">Apri Lista Digitale</span>
     </div>
-  </a>
+  </div>
   <div class="quick-card" onclick="setTab('dolce')">
     <div class="card-icon">🍰</div>
     <div class="card-text">
@@ -291,6 +311,7 @@ function googleTranslateElementInit() {
   </div>
 </div>
 
+<!-- SEARCH -->
 <div class="search-bar-wrap">
   <div class="search-bar-inner">
     <input id="searchInput" type="text" placeholder="🔍 Cerca nel menù... / Search menu..." data-ph-it="🔍 Cerca nel menù... / Search menu..." data-ph-fr="🔍 Rechercher dans le menu..." data-ph-en="🔍 Search the menu..." data-ph-de="🔍 Im Menü suchen..." oninput="searchMenu(this.value)"/>
@@ -298,6 +319,7 @@ function googleTranslateElementInit() {
   <div id="searchResults"></div>
 </div>
 
+<!-- TABS — FIX: Bar tab added -->
 <div class="tabs-wrap">
   <div class="tabs">
     <button class="tab-btn active" onclick="setTab('menu_packages',this)" data-it="🍽️ Menù" data-fr="🍽️ Menus" data-en="🍽️ Menu" data-de="🍽️ Menü">🍽️ Menù</button>
@@ -307,6 +329,7 @@ function googleTranslateElementInit() {
     <button class="tab-btn" onclick="setTab('contorni',this)" data-it="🥦 Contorni" data-fr="🥦 Accompagnements" data-en="🥦 Sides" data-de="🥦 Beilagen">🥦 Contorni</button>
     <button class="tab-btn" onclick="setTab('dolce',this)" data-it="🍰 Dolci" data-fr="🍰 Desserts" data-en="🍰 Desserts" data-de="🍰 Desserts">🍰 Dolci</button>
     <button class="tab-btn" onclick="setTab('gelato',this)" data-it="🍦 Gelato" data-fr="🍦 Glace" data-en="🍦 Ice Cream" data-de="🍦 Eiscreme">🍦 Gelato</button>
+    <button class="tab-btn" id="tab-bar" onclick="setTab('bar',this)" data-it="🍹 Bar" data-fr="🍹 Bar" data-en="🍹 Bar" data-de="🍹 Bar">🍹 Bar</button>
   </div>
 </div>
 
@@ -315,242 +338,70 @@ function googleTranslateElementInit() {
 <!-- MENU PACKAGES -->
 <div class="section active" id="sec-menu_packages">
   <h2 class="cat-title" data-it="🍽️ I Nostri Menù" data-fr="🍽️ Nos Menus" data-en="🍽️ Our Set Menus" data-de="🍽️ Unsere Menüs">🍽️ I Nostri Menù</h2>
-
   <div class="pkg-item">
     <div class="pkg-header">
-      <div>
-        <div class="pkg-name">Menù del Lago Bin</div>
-        <div class="pkg-desc" data-it="Con i nostri Piatti Tipici e la Formula &quot;Tutto Compreso&quot; (1 bott. Vino della Casa ogni 4 pers.) — 5 Portate Selezionate dalla Cucina" data-fr="Avec nos Plats Typiques et la Formule &quot;Tout Inclus&quot; (1 bouteille de Vin de la Maison tous les 4 pers.) — 5 Plats Sélectionnés par la Cuisine" data-en="&quot;All Inclusive&quot; Formula with Typical Dishes (1 bottle of House Wine per 4 persons) — 5 Courses Selected by the Kitchen" data-de="&quot;Alles Inklusive&quot; Formel mit typischen Gerichten (1 Flasche Hauswein für 4 Personen) — 5 von der Küche ausgewählte Gänge">Con i nostri Piatti Tipici e la Formula "Tutto Compreso" (1 bott. Vino della Casa ogni 4 pers.) — 5 Portate Selezionate dalla Cucina</div>
-      </div>
-      <div class="pkg-right">
-        <div class="pkg-price">€45,00</div>
-        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('lago_bin',this)" data-it="📋 Vedi ▾" data-fr="📋 Voir ▾" data-en="📋 View ▾" data-de="📋 Anzeigen ▾">📋 Vedi ▾</button>
-      </div>
+      <div><div class="pkg-name">Menù del Lago Bin</div><div class="pkg-desc" data-it="Con i nostri Piatti Tipici e la Formula &quot;Tutto Compreso&quot; (1 bott. Vino della Casa ogni 4 pers.) — 5 Portate Selezionate dalla Cucina" data-fr="Formule &quot;Tout Inclus&quot; (1 bouteille Vin Maison / 4 pers.) — 5 Plats Sélectionnés par la Cuisine" data-en="&quot;All Inclusive&quot; Formula (1 bottle House Wine per 4 persons) — 5 Courses Selected by the Kitchen" data-de="&quot;Alles Inklusive&quot; (1 Flasche Hauswein / 4 Pers.) — 5 von der Küche ausgewählte Gänge">Con i nostri Piatti Tipici e la Formula "Tutto Compreso" (1 bott. Vino della Casa ogni 4 pers.) — 5 Portate Selezionate dalla Cucina</div></div>
+      <div class="pkg-right"><div class="pkg-price">€45,00</div><button class="pkg-toggle-btn" onclick="togglePkgAccordion('lago_bin',this)" data-it="📋 Vedi ▾" data-fr="📋 Voir ▾" data-en="📋 View ▾" data-de="📋 Anzeigen ▾">📋 Vedi ▾</button></div>
     </div>
-    <div class="pkg-accordion" id="acc-lago_bin">
-      <div id="persons-lago_bin"></div>
-      <button class="pkg-add-person-btn" id="addperson-lago_bin" style="display:none;" onclick="addPkgPerson('lago_bin')" data-it="+ Aggiungi persona" data-fr="+ Ajouter une personne" data-en="+ Add person" data-de="+ Person hinzufügen">+ Aggiungi persona</button>
-    </div>
+    <div class="pkg-accordion" id="acc-lago_bin"><div id="persons-lago_bin"></div><button class="pkg-add-person-btn" id="addperson-lago_bin" style="display:none;" onclick="addPkgPerson('lago_bin')" data-it="+ Aggiungi persona" data-fr="+ Ajouter une personne" data-en="+ Add person" data-de="+ Person hinzufügen">+ Aggiungi persona</button></div>
   </div>
-
   <div class="pkg-item">
     <div class="pkg-header">
-      <div>
-        <div class="pkg-name">Menù Gastronomico</div>
-        <div class="pkg-desc" data-it="Aperitivo, 3 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse." data-fr="Apéritif, 3 Plats au Choix, Dessert, Café et Digestif. Boissons Exclues." data-en="Aperitif, 3 Courses of your choice, Dessert, Coffee & Digestif. Drinks not included." data-de="Aperitif, 3 Gänge nach Wahl, Dessert, Kaffee und Digestif. Getränke nicht inbegriffen.">Aperitivo, 3 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse.</div>
-      </div>
-      <div class="pkg-right">
-        <div class="pkg-price">€40,00</div>
-        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('gastro',this)" data-it="📋 Vedi ▾" data-fr="📋 Voir ▾" data-en="📋 View ▾" data-de="📋 Anzeigen ▾">📋 Vedi ▾</button>
-      </div>
+      <div><div class="pkg-name">Menù Gastronomico</div><div class="pkg-desc" data-it="Aperitivo, 3 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse." data-fr="Apéritif, 3 Plats au Choix, Dessert, Café et Digestif. Boissons Exclues." data-en="Aperitif, 3 Courses of your choice, Dessert, Coffee & Digestif. Drinks not included." data-de="Aperitif, 3 Gänge nach Wahl, Dessert, Kaffee und Digestif. Getränke nicht inbegriffen.">Aperitivo, 3 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse.</div></div>
+      <div class="pkg-right"><div class="pkg-price">€40,00</div><button class="pkg-toggle-btn" onclick="togglePkgAccordion('gastro',this)" data-it="📋 Vedi ▾" data-fr="📋 Voir ▾" data-en="📋 View ▾" data-de="📋 Anzeigen ▾">📋 Vedi ▾</button></div>
     </div>
-    <div class="pkg-accordion" id="acc-gastro">
-      <div id="persons-gastro"></div>
-      <button class="pkg-add-person-btn" id="addperson-gastro" style="display:none;" onclick="addPkgPerson('gastro')" data-it="+ Aggiungi persona" data-fr="+ Ajouter une personne" data-en="+ Add person" data-de="+ Person hinzufügen">+ Aggiungi persona</button>
-    </div>
+    <div class="pkg-accordion" id="acc-gastro"><div id="persons-gastro"></div><button class="pkg-add-person-btn" id="addperson-gastro" style="display:none;" onclick="addPkgPerson('gastro')" data-it="+ Aggiungi persona" data-fr="+ Ajouter une personne" data-en="+ Add person" data-de="+ Person hinzufügen">+ Aggiungi persona</button></div>
   </div>
-
   <div class="pkg-item">
     <div class="pkg-header">
-      <div>
-        <div class="pkg-name">Menù Degustazione (*)</div>
-        <div class="pkg-desc" data-it="Aperitivo, 2 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse." data-fr="Apéritif, 2 Plats au Choix, Dessert, Café et Digestif. Boissons Exclues." data-en="Aperitif, 2 Courses of your choice, Dessert, Coffee & Digestif. Drinks not included." data-de="Aperitif, 2 Gänge nach Wahl, Dessert, Kaffee und Digestif. Getränke nicht inbegriffen.">Aperitivo, 2 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse.</div>
-        <div style="margin-top:8px;font-size:12px;color:#b31e1e;font-weight:bold;" data-it="⚠️ (*) Non servito Sabato Sera, Domenica a Pranzo e nei Festivi." data-fr="⚠️ (*) Non servi le Samedi Soir, le Dimanche à midi et les Jours de Fête." data-en="⚠️ (*) Not served Saturday evenings, Sunday lunch & public holidays." data-de="⚠️ (*) Wird am Samstagabend, Sonntagmittag und an Feiertagen nicht serviert.">⚠️ (*) Non servito Sabato Sera, Domenica a Pranzo e nei Festivi.</div>
-      </div>
-      <div class="pkg-right">
-        <div class="pkg-price">€30,00</div>
-        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('degu',this)" data-it="📋 Vedi ▾" data-fr="📋 Voir ▾" data-en="📋 View ▾" data-de="📋 Anzeigen ▾">📋 Vedi ▾</button>
-      </div>
+      <div><div class="pkg-name">Menù Degustazione (*)</div><div class="pkg-desc" data-it="Aperitivo, 2 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse." data-fr="Apéritif, 2 Plats au Choix, Dessert, Café et Digestif. Boissons Exclues." data-en="Aperitif, 2 Courses of your choice, Dessert, Coffee & Digestif. Drinks not included." data-de="Aperitif, 2 Gänge nach Wahl, Dessert, Kaffee und Digestif. Getränke nicht inbegriffen.">Aperitivo, 2 Portate a scelta, Dessert, Caffè e Digestivo. Bevande Escluse.</div><div style="margin-top:8px;font-size:12px;color:#b31e1e;font-weight:bold;" data-it="⚠️ (*) Non servito Sabato Sera, Domenica a Pranzo e nei Festivi." data-fr="⚠️ (*) Non servi le Samedi Soir, le Dimanche midi et les Jours de Fête." data-en="⚠️ (*) Not served Saturday evenings, Sunday lunch & public holidays." data-de="⚠️ (*) Nicht am Samstagabend, Sonntagmittag und Feiertagen.">⚠️ (*) Non servito Sabato Sera, Domenica a Pranzo e nei Festivi.</div></div>
+      <div class="pkg-right"><div class="pkg-price">€30,00</div><button class="pkg-toggle-btn" onclick="togglePkgAccordion('degu',this)" data-it="📋 Vedi ▾" data-fr="📋 Voir ▾" data-en="📋 View ▾" data-de="📋 Anzeigen ▾">📋 Vedi ▾</button></div>
     </div>
-    <div class="pkg-accordion" id="acc-degu">
-      <div id="persons-degu"></div>
-      <button class="pkg-add-person-btn" id="addperson-degu" style="display:none;" onclick="addPkgPerson('degu')" data-it="+ Aggiungi persona" data-fr="+ Ajouter une personne" data-en="+ Add person" data-de="+ Person hinzufügen">+ Aggiungi persona</button>
-    </div>
+    <div class="pkg-accordion" id="acc-degu"><div id="persons-degu"></div><button class="pkg-add-person-btn" id="addperson-degu" style="display:none;" onclick="addPkgPerson('degu')" data-it="+ Aggiungi persona" data-fr="+ Ajouter une personne" data-en="+ Add person" data-de="+ Person hinzufügen">+ Aggiungi persona</button></div>
   </div>
-
   <div class="pkg-item">
     <div class="pkg-header">
-      <div>
-        <div class="pkg-name">Menù Bambini (4/10 Anni)</div>
-        <div class="pkg-desc" data-it="Un Piatto a scelta + Gelato Fatto in Casa + Bibita" data-fr="Un Plat au choix + Glace Maison + Boisson" data-en="One dish of your choice + Homemade Ice Cream + Drink" data-de="Ein Gericht nach Wahl + Hausgemachtes Eis + Getränk">Un Piatto a scelta + Gelato Fatto in Casa + Bibita</div>
-      </div>
-      <div class="pkg-right">
-        <div class="pkg-price">€15,00</div>
-        <button class="pkg-toggle-btn" onclick="togglePkgAccordion('bambini',this)" data-it="📋 Vedi ▾" data-fr="📋 Voir ▾" data-en="📋 View ▾" data-de="📋 Anzeigen ▾">📋 Vedi ▾</button>
-      </div>
+      <div><div class="pkg-name">Menù Bambini (4/10 Anni)</div><div class="pkg-desc" data-it="Un Piatto a scelta + Gelato Fatto in Casa + Bibita" data-fr="Un Plat au choix + Glace Maison + Boisson" data-en="One dish of your choice + Homemade Ice Cream + Drink" data-de="Ein Gericht nach Wahl + Hausgemachtes Eis + Getränk">Un Piatto a scelta + Gelato Fatto in Casa + Bibita</div></div>
+      <div class="pkg-right"><div class="pkg-price">€15,00</div><button class="pkg-toggle-btn" onclick="togglePkgAccordion('bambini',this)" data-it="📋 Vedi ▾" data-fr="📋 Voir ▾" data-en="📋 View ▾" data-de="📋 Anzeigen ▾">📋 Vedi ▾</button></div>
     </div>
-    <div class="pkg-accordion" id="acc-bambini">
-      <div id="persons-bambini"></div>
-      <button class="pkg-add-person-btn" id="addperson-bambini" style="display:none;" onclick="addPkgPerson('bambini')" data-it="+ Aggiungi persona" data-fr="+ Ajouter une personne" data-en="+ Add person" data-de="+ Person hinzufügen">+ Aggiungi persona</button>
-    </div>
+    <div class="pkg-accordion" id="acc-bambini"><div id="persons-bambini"></div><button class="pkg-add-person-btn" id="addperson-bambini" style="display:none;" onclick="addPkgPerson('bambini')" data-it="+ Aggiungi persona" data-fr="+ Ajouter une personne" data-en="+ Add person" data-de="+ Person hinzufügen">+ Aggiungi persona</button></div>
   </div>
-
   <div class="note-box"><div class="note-box-text" data-it="I Menù non sono Divisibili per più Persone." data-fr="Les Menus ne peuvent pas être partagés entre plusieurs personnes." data-en="Set menus cannot be shared between guests." data-de="Menüs können nicht auf mehrere Personen aufgeteilt werden.">I Menù non sono Divisibili per più Persone.</div></div>
 </div>
 
 <!-- ANTIPASTI -->
 <div class="section" id="sec-antipasti">
   <h2 class="cat-title" data-it="🥗 Antipasti à la Carte" data-fr="🥗 Entrées à la Carte" data-en="🥗 Starters à la Carte" data-de="🥗 Vorspeisen à la Carte">🥗 Antipasti à la Carte</h2>
-  <div class="item" id="item-antipasto_tipico">
-    <div class="item-top-row">
-      <div class="item-left"><div class="item-name"><span class="notranslate">Antipasto Tipico del Lago Bin</span><span class="sub-trans" data-it="" data-fr="(Assortiment Typique du Lago Bin)" data-en="(Typical Lago Bin Starter)" data-de="(Typische Lago Bin Vorspeise)"></span></div></div>
-      <div class="item-right">
-        <div class="item-price">€15,00</div>
-        <div class="qty-row">
-          <button class="qty-btn" onclick="changeQty('antipasto_tipico',-1)">−</button>
-          <span class="qty-display" id="qty-antipasto_tipico">0</span>
-          <button class="qty-btn" onclick="changeQty('antipasto_tipico',1)">+</button>
-        </div>
-        <button class="add-order-btn" id="btn-antipasto_tipico" onclick="openPopup('antipasto_tipico')">+ Aggiungi</button>
-      </div>
-    </div>
-  </div>
-  <div class="item" id="item-salumiere">
-    <div class="item-top-row">
-      <div class="item-left"><div class="item-name"><span class="notranslate">Assortimento del Salumiere</span><span class="sub-trans" data-it="" data-fr="(Charcuterie fine sélectionnée)" data-en="(Mixed Premium Charcuterie Platter)" data-de="(Gemischte Aufschnittplatte)"></span></div></div>
-      <div class="item-right">
-        <div class="item-price">€15,00</div>
-        <div class="qty-row">
-          <button class="qty-btn" onclick="changeQty('salumiere',-1)">−</button>
-          <span class="qty-display" id="qty-salumiere">0</span>
-          <button class="qty-btn" onclick="changeQty('salumiere',1)">+</button>
-        </div>
-        <button class="add-order-btn" id="btn-salumiere" onclick="openPopup('salumiere')">+ Aggiungi</button>
-      </div>
-    </div>
-  </div>
-  <div class="item" id="item-prosciutto">
-    <div class="item-top-row">
-      <div class="item-left"><div class="item-name"><span class="notranslate">Prosciutto di Parma con Melone o Grana</span><span class="sub-trans" data-it="" data-fr="(Jambon de Parme avec Melon ou Grana)" data-en="(Parma Ham with Melon or Grana Cheese)" data-de="(Parmaschinken mit Melone oder Grana-Käse)"></span></div></div>
-      <div class="item-right">
-        <div class="item-price">€13,00</div>
-        <div class="qty-row">
-          <button class="qty-btn" onclick="changeQty('prosciutto',-1)">−</button>
-          <span class="qty-display" id="qty-prosciutto">0</span>
-          <button class="qty-btn" onclick="changeQty('prosciutto',1)">+</button>
-        </div>
-        <button class="add-order-btn" id="btn-prosciutto" onclick="openPopup('prosciutto')">+ Aggiungi</button>
-      </div>
-    </div>
-  </div>
-  <div class="item" id="item-misto_caldo">
-    <div class="item-top-row">
-      <div class="item-left"><div class="item-name"><span class="notranslate">Antipasto Misto "Caldo e Freddo" (per 2 pers.)</span><span class="sub-trans" data-it="" data-fr="(Entrée Mixte Chaud et Froid - 2 pers.)" data-en="(Mixed Hot and Cold Starter - for 2 people)" data-de="(Gemischte warme und kalte Vorspeise - für 2 Pers.)"></span></div></div>
-      <div class="item-right">
-        <div class="item-price">€25,00</div>
-        <div class="qty-row">
-          <button class="qty-btn" onclick="changeQty('misto_caldo',-1)">−</button>
-          <span class="qty-display" id="qty-misto_caldo">0</span>
-          <button class="qty-btn" onclick="changeQty('misto_caldo',1)">+</button>
-        </div>
-        <button class="add-order-btn" id="btn-misto_caldo" onclick="openPopup('misto_caldo')">+ Aggiungi</button>
-      </div>
-    </div>
-  </div>
-  <div class="item" id="item-lumache">
-    <div class="item-top-row">
-      <div class="item-left"><div class="item-name"><span class="notranslate">Lumache in Umido</span><span class="sub-trans" data-it="" data-fr="(Escargots braisés)" data-en="(Braised Snails)" data-de="(Geschmorte Schnecken)"></span></div></div>
-      <div class="item-right">
-        <div class="item-price">€18,00</div>
-        <div class="qty-row">
-          <button class="qty-btn" onclick="changeQty('lumache',-1)">−</button>
-          <span class="qty-display" id="qty-lumache">0</span>
-          <button class="qty-btn" onclick="changeQty('lumache',1)">+</button>
-        </div>
-        <button class="add-order-btn" id="btn-lumache" onclick="openPopup('lumache')">+ Aggiungi</button>
-      </div>
-    </div>
-  </div>
-  <div class="item" id="item-brandacujan">
-    <div class="item-top-row">
-      <div class="item-left"><div class="item-name"><span class="notranslate">Brandacujan</span><span class="sub-trans" data-it="" data-fr="(Brandade de morue traditionnelle)" data-en="(Traditional Stockfish Spread)" data-de="(Pürierter Stockfisch)"></span></div></div>
-      <div class="item-right">
-        <div class="item-price">€15,00</div>
-        <div class="qty-row">
-          <button class="qty-btn" onclick="changeQty('brandacujan',-1)">−</button>
-          <span class="qty-display" id="qty-brandacujan">0</span>
-          <button class="qty-btn" onclick="changeQty('brandacujan',1)">+</button>
-        </div>
-        <button class="add-order-btn" id="btn-brandacujan" onclick="openPopup('brandacujan')">+ Aggiungi</button>
-      </div>
-    </div>
-  </div>
-  <div class="item" id="item-tartare_manzo">
-    <div class="item-top-row">
-      <div class="item-left"><div class="item-name"><span class="notranslate">Tartare di Manzo al Coltello</span><span class="sub-trans" data-it="" data-fr="(Tartare de Bœuf)" data-en="(Hand-cut Beef Tartare)" data-de="(Rindertatar händisch geschnitten)"></span></div></div>
-      <div class="item-right">
-        <div class="item-price">€20,00</div>
-        <div class="qty-row">
-          <button class="qty-btn" onclick="changeQty('tartare_manzo',-1)">−</button>
-          <span class="qty-display" id="qty-tartare_manzo">0</span>
-          <button class="qty-btn" onclick="changeQty('tartare_manzo',1)">+</button>
-        </div>
-        <button class="add-order-btn" id="btn-tartare_manzo" onclick="openPopup('tartare_manzo')">+ Aggiungi</button>
-      </div>
-    </div>
-  </div>
-  <div class="item" id="item-tomino">
-    <div class="item-top-row">
-      <div class="item-left"><div class="item-name"><span class="notranslate">Tomino d'Alpeggio Caldo</span><span class="sub-trans" data-it="" data-fr="(Tomino d'Alpeggio Chaud)" data-en="(Warm Alpine Tomino Cheese)" data-de="(Warmer Alpen-Tomino-Käse)"></span></div></div>
-      <div class="item-right">
-        <div class="item-price">€12,00</div>
-        <div class="qty-row">
-          <button class="qty-btn" onclick="changeQty('tomino',-1)">−</button>
-          <span class="qty-display" id="qty-tomino">0</span>
-          <button class="qty-btn" onclick="changeQty('tomino',1)">+</button>
-        </div>
-        <button class="add-order-btn" id="btn-tomino" onclick="openPopup('tomino')">+ Aggiungi</button>
-      </div>
-    </div>
-  </div>
-  <div class="item" id="item-tartare_pesce">
-    <div class="item-top-row">
-      <div class="item-left"><div class="item-name"><span class="notranslate">Tartare di Pesce</span><span class="sub-trans" data-it="" data-fr="(Tartare de Poisson)" data-en="(Fish Tartare)" data-de="(Fisch-Tatar)"></span></div><div class="item-desc" data-it="Secondo disponibilità" data-fr="Selon disponibilité" data-en="Subject to availability" data-de="Je nach Verfügbarkeit">Secondo disponibilità</div></div>
-      <div class="item-right">
-        <div class="item-price">€18,00*</div>
-        <div class="qty-row">
-          <button class="qty-btn" onclick="changeQty('tartare_pesce',-1)">−</button>
-          <span class="qty-display" id="qty-tartare_pesce">0</span>
-          <button class="qty-btn" onclick="changeQty('tartare_pesce',1)">+</button>
-        </div>
-        <button class="add-order-btn" id="btn-tartare_pesce" onclick="openPopup('tartare_pesce')">+ Aggiungi</button>
-      </div>
-    </div>
-  </div>
-  <div class="item" id="item-antipasto_mare">
-    <div class="item-top-row">
-      <div class="item-left"><div class="item-name"><span class="notranslate">Antipasto Misto di Mare</span><span class="sub-trans" data-it="" data-fr="(Entrée de Mer Mixte)" data-en="(Mixed Seafood Starter)" data-de="(Gemischte Meeresfrüchte-Vorspeise)"></span></div><div class="item-desc" data-it="Secondo disponibilità" data-fr="Selon disponibilité" data-en="Subject to availability" data-de="Je nach Verfügbarkeit">Secondo disponibilità</div></div>
-      <div class="item-right">
-        <div class="item-price">€25,00*</div>
-        <div class="qty-row">
-          <button class="qty-btn" onclick="changeQty('antipasto_mare',-1)">−</button>
-          <span class="qty-display" id="qty-antipasto_mare">0</span>
-          <button class="qty-btn" onclick="changeQty('antipasto_mare',1)">+</button>
-        </div>
-        <button class="add-order-btn" id="btn-antipasto_mare" onclick="openPopup('antipasto_mare')">+ Aggiungi</button>
-      </div>
-    </div>
-  </div>
+  <div class="item" id="item-antipasto_tipico"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Antipasto Tipico del Lago Bin</span><span class="sub-trans" data-it="" data-fr="(Assortiment Typique du Lago Bin)" data-en="(Typical Lago Bin Starter)" data-de="(Typische Lago Bin Vorspeise)"></span></div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('antipasto_tipico',-1)">−</button><span class="qty-display" id="qty-antipasto_tipico">0</span><button class="qty-btn" onclick="changeQty('antipasto_tipico',1)">+</button></div><button class="add-order-btn" id="btn-antipasto_tipico" onclick="openPopup('antipasto_tipico')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-salumiere"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Assortimento del Salumiere</span><span class="sub-trans" data-it="" data-fr="(Charcuterie fine sélectionnée)" data-en="(Mixed Premium Charcuterie Platter)" data-de="(Gemischte Aufschnittplatte)"></span></div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('salumiere',-1)">−</button><span class="qty-display" id="qty-salumiere">0</span><button class="qty-btn" onclick="changeQty('salumiere',1)">+</button></div><button class="add-order-btn" id="btn-salumiere" onclick="openPopup('salumiere')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-prosciutto"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Prosciutto di Parma con Melone o Grana</span><span class="sub-trans" data-it="" data-fr="(Jambon de Parme avec Melon ou Grana)" data-en="(Parma Ham with Melon or Grana Cheese)" data-de="(Parmaschinken mit Melone oder Grana-Käse)"></span></div></div><div class="item-right"><div class="item-price">€13,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('prosciutto',-1)">−</button><span class="qty-display" id="qty-prosciutto">0</span><button class="qty-btn" onclick="changeQty('prosciutto',1)">+</button></div><button class="add-order-btn" id="btn-prosciutto" onclick="openPopup('prosciutto')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-misto_caldo"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Antipasto Misto "Caldo e Freddo" (per 2 pers.)</span><span class="sub-trans" data-it="" data-fr="(Entrée Mixte Chaud et Froid - 2 pers.)" data-en="(Mixed Hot and Cold Starter - for 2 people)" data-de="(Gemischte warme und kalte Vorspeise - 2 Pers.)"></span></div></div><div class="item-right"><div class="item-price">€25,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('misto_caldo',-1)">−</button><span class="qty-display" id="qty-misto_caldo">0</span><button class="qty-btn" onclick="changeQty('misto_caldo',1)">+</button></div><button class="add-order-btn" id="btn-misto_caldo" onclick="openPopup('misto_caldo')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-lumache"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Lumache in Umido</span><span class="sub-trans" data-it="" data-fr="(Escargots braisés)" data-en="(Braised Snails)" data-de="(Geschmorte Schnecken)"></span></div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('lumache',-1)">−</button><span class="qty-display" id="qty-lumache">0</span><button class="qty-btn" onclick="changeQty('lumache',1)">+</button></div><button class="add-order-btn" id="btn-lumache" onclick="openPopup('lumache')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-brandacujan"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Brandacujan</span><span class="sub-trans" data-it="" data-fr="(Brandade de morue traditionnelle)" data-en="(Traditional Stockfish Spread)" data-de="(Pürierter Stockfisch)"></span></div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('brandacujan',-1)">−</button><span class="qty-display" id="qty-brandacujan">0</span><button class="qty-btn" onclick="changeQty('brandacujan',1)">+</button></div><button class="add-order-btn" id="btn-brandacujan" onclick="openPopup('brandacujan')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-tartare_manzo"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Tartare di Manzo al Coltello</span><span class="sub-trans" data-it="" data-fr="(Tartare de Bœuf)" data-en="(Hand-cut Beef Tartare)" data-de="(Rindertatar händisch geschnitten)"></span></div></div><div class="item-right"><div class="item-price">€20,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tartare_manzo',-1)">−</button><span class="qty-display" id="qty-tartare_manzo">0</span><button class="qty-btn" onclick="changeQty('tartare_manzo',1)">+</button></div><button class="add-order-btn" id="btn-tartare_manzo" onclick="openPopup('tartare_manzo')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-tomino"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Tomino d'Alpeggio Caldo</span><span class="sub-trans" data-it="" data-fr="(Tomino d'Alpeggio Chaud)" data-en="(Warm Alpine Tomino Cheese)" data-de="(Warmer Alpen-Tomino-Käse)"></span></div></div><div class="item-right"><div class="item-price">€12,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tomino',-1)">−</button><span class="qty-display" id="qty-tomino">0</span><button class="qty-btn" onclick="changeQty('tomino',1)">+</button></div><button class="add-order-btn" id="btn-tomino" onclick="openPopup('tomino')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-tartare_pesce"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Tartare di Pesce</span><span class="sub-trans" data-it="" data-fr="(Tartare de Poisson)" data-en="(Fish Tartare)" data-de="(Fisch-Tatar)"></span></div><div class="item-desc" data-it="Secondo disponibilità" data-fr="Selon disponibilité" data-en="Subject to availability" data-de="Je nach Verfügbarkeit">Secondo disponibilità</div></div><div class="item-right"><div class="item-price">€18,00*</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tartare_pesce',-1)">−</button><span class="qty-display" id="qty-tartare_pesce">0</span><button class="qty-btn" onclick="changeQty('tartare_pesce',1)">+</button></div><button class="add-order-btn" id="btn-tartare_pesce" onclick="openPopup('tartare_pesce')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-antipasto_mare"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Antipasto Misto di Mare</span><span class="sub-trans" data-it="" data-fr="(Entrée de Mer Mixte)" data-en="(Mixed Seafood Starter)" data-de="(Gemischte Meeresfrüchte-Vorspeise)"></span></div><div class="item-desc" data-it="Secondo disponibilità" data-fr="Selon disponibilité" data-en="Subject to availability" data-de="Je nach Verfügbarkeit">Secondo disponibilità</div></div><div class="item-right"><div class="item-price">€25,00*</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('antipasto_mare',-1)">−</button><span class="qty-display" id="qty-antipasto_mare">0</span><button class="qty-btn" onclick="changeQty('antipasto_mare',1)">+</button></div><button class="add-order-btn" id="btn-antipasto_mare" onclick="openPopup('antipasto_mare')">+ Aggiungi</button></div></div></div>
 </div>
 
 <!-- PRIMI -->
 <div class="section" id="sec-primi">
   <h2 class="cat-title" data-it="🍝 Primi Piatti" data-fr="🍝 Premiers Plats" data-en="🍝 First Courses" data-de="🍝 Erster Gang">🍝 Primi Piatti</h2>
-  <div class="item" id="item-ravioli_nonna"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Ravioli della Nonna</span><span class="sub-trans" data-it="" data-fr="(Ravioli maison tomate ou beurre et sauge)" data-en="(Grandma's Ravioli with tomato or butter & sage)" data-de="(Omas Ravioli mit Tomatensauce oder Butter & Salbei)"></span></div><div class="item-desc" data-it="Al Pomodoro, Burro e Salvia, Funghi o Burro e Timo" data-fr="Tomate, Beurre et Sauge, Champignons ou Beurre et Thym" data-en="Tomato, Butter & Sage, Mushroom, or Butter & Thyme" data-de="Tomate, Butter & Salbei, Pilze oder Butter & Thymian">Al Pomodoro, Burro e Salvia, Funghi o Burro e Timo</div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('ravioli_nonna',-1)">−</button><span class="qty-display" id="qty-ravioli_nonna">0</span><button class="qty-btn" onclick="changeQty('ravioli_nonna',1)">+</button></div><button class="add-order-btn" id="btn-ravioli_nonna" onclick="openPopup('ravioli_nonna')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-ravioli_nonna"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Ravioli della Nonna</span><span class="sub-trans" data-it="" data-fr="(Ravioli maison – tomate ou beurre et sauge)" data-en="(Grandma's Ravioli – tomato or butter & sage)" data-de="(Omas Ravioli – Tomate oder Butter & Salbei)"></span></div><div class="item-desc" data-it="Al Pomodoro, Burro e Salvia, Funghi o Burro e Timo" data-fr="Tomate, Beurre et Sauge, Champignons ou Beurre et Thym" data-en="Tomato, Butter & Sage, Mushroom, or Butter & Thyme" data-de="Tomate, Butter & Salbei, Pilze oder Butter & Thymian">Al Pomodoro, Burro e Salvia, Funghi o Burro e Timo</div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('ravioli_nonna',-1)">−</button><span class="qty-display" id="qty-ravioli_nonna">0</span><button class="qty-btn" onclick="changeQty('ravioli_nonna',1)">+</button></div><button class="add-order-btn" id="btn-ravioli_nonna" onclick="openPopup('ravioli_nonna')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-ravioli_coniglio"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Ravioli della Nonna al Coniglio</span><span class="sub-trans" data-it="" data-fr="(Ravioli au Lapin)" data-en="(Grandma's Ravioli with Rabbit)" data-de="(Omas Ravioli mit Kaninchensauce)"></span></div></div><div class="item-right"><div class="item-price">€20,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('ravioli_coniglio',-1)">−</button><span class="qty-display" id="qty-ravioli_coniglio">0</span><button class="qty-btn" onclick="changeQty('ravioli_coniglio',1)">+</button></div><button class="add-order-btn" id="btn-ravioli_coniglio" onclick="openPopup('ravioli_coniglio')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-tagliatelle_sel"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Tagliatelle di Pasta Fresca</span><span class="sub-trans" data-it="" data-fr="(Tagliatelles fraîches au gibier ou aux champignons)" data-en="(Fresh Pasta Tagliatelle with game sauce or mushrooms)" data-de="(Frische Tagliatelle mit Wildsauce oder Pilzen)"></span></div><div class="item-desc" data-it="Alla Selvaggina, ai Funghi o al Pesto Fresco" data-fr="Au Gibier, aux Champignons ou au Pesto Frais" data-en="Game Sauce, Mushroom, or Fresh Pesto" data-de="Wildsauce, Pilze oder frisches Pesto">Alla Selvaggina, ai Funghi o al Pesto Fresco</div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tagliatelle_sel',-1)">−</button><span class="qty-display" id="qty-tagliatelle_sel">0</span><button class="qty-btn" onclick="changeQty('tagliatelle_sel',1)">+</button></div><button class="add-order-btn" id="btn-tagliatelle_sel" onclick="openPopup('tagliatelle_sel')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-tagliatelle_sel"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Tagliatelle di Pasta Fresca</span><span class="sub-trans" data-it="" data-fr="(Tagliatelles fraîches – gibier, champignons ou pesto)" data-en="(Fresh Tagliatelle – game, mushroom or pesto)" data-de="(Frische Tagliatelle – Wild, Pilze oder Pesto)"></span></div><div class="item-desc" data-it="Alla Selvaggina, ai Funghi o al Pesto Fresco" data-fr="Au Gibier, aux Champignons ou au Pesto Frais" data-en="Game Sauce, Mushroom, or Fresh Pesto" data-de="Wildsauce, Pilze oder frisches Pesto">Alla Selvaggina, ai Funghi o al Pesto Fresco</div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tagliatelle_sel',-1)">−</button><span class="qty-display" id="qty-tagliatelle_sel">0</span><button class="qty-btn" onclick="changeQty('tagliatelle_sel',1)">+</button></div><button class="add-order-btn" id="btn-tagliatelle_sel" onclick="openPopup('tagliatelle_sel')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-tagliatelle_mare"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Tagliatelle ai Frutti di Mare</span><span class="sub-trans" data-it="" data-fr="(Tagliatelles aux Fruits de Mer)" data-en="(Seafood Tagliatelle)" data-de="(Tagliatelle mit Meeresfrüchten)"></span></div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tagliatelle_mare',-1)">−</button><span class="qty-display" id="qty-tagliatelle_mare">0</span><button class="qty-btn" onclick="changeQty('tagliatelle_mare',1)">+</button></div><button class="add-order-btn" id="btn-tagliatelle_mare" onclick="openPopup('tagliatelle_mare')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-mezzelune"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Mezzelune di Magro</span><span class="sub-trans" data-it="" data-fr="(Mezzelune au beurre et sauge ou sauce aux noix)" data-en="(Mezzelune with Butter & Sage or Walnut sauce)" data-de="(Mezzelune mit Butter & Salbei oder Walnusssauce)"></span></div><div class="item-desc" data-it="Al Burro e Salvia o alle Noci" data-fr="Au Beurre et Sauge ou aux Noix" data-en="Butter & Sage or Walnut Sauce" data-de="Butter & Salbei oder Walnusssauce">Al Burro e Salvia o alle Noci</div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('mezzelune',-1)">−</button><span class="qty-display" id="qty-mezzelune">0</span><button class="qty-btn" onclick="changeQty('mezzelune',1)">+</button></div><button class="add-order-btn" id="btn-mezzelune" onclick="openPopup('mezzelune')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-troffie"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Troffie</span><span class="sub-trans" data-it="" data-fr="(Troffie au pesto frais ou style Primavera)" data-en="(Troffie with fresh Pesto or Primavera style)" data-de="(Troffie mit frischem Pesto oder nach Primavera-Art)"></span></div><div class="item-desc" data-it="Al Pesto Fresco o Primavera" data-fr="Au Pesto Frais ou Primavera" data-en="Fresh Pesto or Primavera Style" data-de="Frisches Pesto oder Primavera-Art">Al Pesto Fresco o Primavera</div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('troffie',-1)">−</button><span class="qty-display" id="qty-troffie">0</span><button class="qty-btn" onclick="changeQty('troffie',1)">+</button></div><button class="add-order-btn" id="btn-troffie" onclick="openPopup('troffie')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-mezzelune"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Mezzelune di Magro</span><span class="sub-trans" data-it="" data-fr="(Mezzelune – beurre et sauge ou noix)" data-en="(Mezzelune – Butter & Sage or Walnut sauce)" data-de="(Mezzelune – Butter & Salbei oder Walnuss)"></span></div><div class="item-desc" data-it="Al Burro e Salvia o alle Noci" data-fr="Au Beurre et Sauge ou aux Noix" data-en="Butter & Sage or Walnut Sauce" data-de="Butter & Salbei oder Walnusssauce">Al Burro e Salvia o alle Noci</div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('mezzelune',-1)">−</button><span class="qty-display" id="qty-mezzelune">0</span><button class="qty-btn" onclick="changeQty('mezzelune',1)">+</button></div><button class="add-order-btn" id="btn-mezzelune" onclick="openPopup('mezzelune')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-troffie"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Troffie</span><span class="sub-trans" data-it="" data-fr="(Troffie – pesto frais ou Primavera)" data-en="(Troffie – Fresh Pesto or Primavera style)" data-de="(Troffie – frisches Pesto oder Primavera-Art)"></span></div><div class="item-desc" data-it="Al Pesto Fresco o Primavera" data-fr="Au Pesto Frais ou Primavera" data-en="Fresh Pesto or Primavera Style" data-de="Frisches Pesto oder Primavera-Art">Al Pesto Fresco o Primavera</div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('troffie',-1)">−</button><span class="qty-display" id="qty-troffie">0</span><button class="qty-btn" onclick="changeQty('troffie',1)">+</button></div><button class="add-order-btn" id="btn-troffie" onclick="openPopup('troffie')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-troffie_gamberetti"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Troffie con Gamberetti e Zucchine</span><span class="sub-trans" data-it="" data-fr="(Troffie Crevettes et Courgettes)" data-en="(Troffie with Shrimps & Courgettes)" data-de="(Troffie mit Garnelen und Zucchini)"></span></div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('troffie_gamberetti',-1)">−</button><span class="qty-display" id="qty-troffie_gamberetti">0</span><button class="qty-btn" onclick="changeQty('troffie_gamberetti',1)">+</button></div><button class="add-order-btn" id="btn-troffie_gamberetti" onclick="openPopup('troffie_gamberetti')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-gnocchi"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Gnocchi di Patate</span><span class="sub-trans" data-it="" data-fr="(Gnocchi aux champignons ou fromages et gorgonzola)" data-en="(Potato Gnocchi with mushrooms or cheeses & gorgonzola)" data-de="(Kartoffelgnocchi mit Pilzen oder Käse & Gorgonzola)"></span></div><div class="item-desc" data-it="Ai Funghi, ai Formaggi con Gorgonzola o Burro e Salvia" data-fr="Aux Champignons, aux Fromages et Gorgonzola ou Beurre et Sauge" data-en="Mushroom, Cheeses & Gorgonzola, or Butter & Sage" data-de="Pilze, Käse & Gorgonzola oder Butter & Salbei">Ai Funghi, ai Formaggi con Gorgonzola o Burro e Salvia</div></div><div class="item-right"><div class="item-price">€13,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('gnocchi',-1)">−</button><span class="qty-display" id="qty-gnocchi">0</span><button class="qty-btn" onclick="changeQty('gnocchi',1)">+</button></div><button class="add-order-btn" id="btn-gnocchi" onclick="openPopup('gnocchi')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-gnocchi"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Gnocchi di Patate</span><span class="sub-trans" data-it="" data-fr="(Gnocchi – champignons, fromages ou beurre et sauge)" data-en="(Potato Gnocchi – mushrooms, cheeses or butter & sage)" data-de="(Kartoffelgnocchi – Pilze, Käse & Gorgonzola oder Butter & Salbei)"></span></div><div class="item-desc" data-it="Ai Funghi, ai Formaggi con Gorgonzola o Burro e Salvia" data-fr="Aux Champignons, aux Fromages et Gorgonzola ou Beurre et Sauge" data-en="Mushroom, Cheeses & Gorgonzola, or Butter & Sage" data-de="Pilze, Käse & Gorgonzola oder Butter & Salbei">Ai Funghi, ai Formaggi con Gorgonzola o Burro e Salvia</div></div><div class="item-right"><div class="item-price">€13,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('gnocchi',-1)">−</button><span class="qty-display" id="qty-gnocchi">0</span><button class="qty-btn" onclick="changeQty('gnocchi',1)">+</button></div><button class="add-order-btn" id="btn-gnocchi" onclick="openPopup('gnocchi')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-risotto"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Risotto ai Frutti di Mare (min. 2 pers.)</span><span class="sub-trans" data-it="" data-fr="(Risotto aux Fruits de Mer)" data-en="(Seafood Risotto)" data-de="(Meeresfrüchte-Risotto)"></span></div></div><div class="item-right"><div class="item-price">€20,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('risotto',-1)">−</button><span class="qty-display" id="qty-risotto">0</span><button class="qty-btn" onclick="changeQty('risotto',1)">+</button></div><button class="add-order-btn" id="btn-risotto" onclick="openPopup('risotto')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-duo_primi"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Duo di Primi</span><span class="sub-trans" data-it="" data-fr="(Duo de Pâtes au Choix)" data-en="(Platter of Two First Courses)" data-de="(Zweierlei Nudelgerichte)"></span></div></div><div class="item-right"><div class="item-price">€25,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('duo_primi',-1)">−</button><span class="qty-display" id="qty-duo_primi">0</span><button class="qty-btn" onclick="changeQty('duo_primi',1)">+</button></div><button class="add-order-btn" id="btn-duo_primi" onclick="openPopup('duo_primi')">+ Aggiungi</button></div></div></div>
 </div>
 
 <!-- SECONDI -->
 <div class="section" id="sec-secondi">
-  <h2 class="cat-title" data-it="🥩 Secondi Piatti" data-fr="🥩 Secondes Plats" data-en="🥩 Main Courses" data-de="🥩 Hauptgerichte">🥩 Secondi Piatti<br><span style="font-size:15px;font-weight:normal;color:#bca07d;letter-spacing:0;text-transform:none;font-style:italic;" data-it="(Contorno incluso: Patate fritte, al forno o verdure alla griglia)" data-fr="(Accompagnement inclus : frites, pommes de terre au four ou légumes grillés)" data-en="(Side included: French fries, baked potatoes or grilled vegetables)" data-de="(Beilage inbegriffen: Pommes frites, Ofenkartoffeln oder gegrilltes Gemüse)">(Contorno incluso: Patate fritte, al forno o verdure alla griglia)</span></h2>
+  <h2 class="cat-title" data-it="🥩 Secondi Piatti" data-fr="🥩 Secondes Plats" data-en="🥩 Main Courses" data-de="🥩 Hauptgerichte">🥩 Secondi Piatti<br><span style="font-size:15px;font-weight:normal;color:#bca07d;letter-spacing:0;text-transform:none;font-style:italic;" data-it="(Contorno incluso: Patate fritte, al forno o verdure alla griglia)" data-fr="(Accompagnement inclus: frites, pommes de terre au four ou légumes grillés)" data-en="(Side included: French fries, baked potatoes or grilled vegetables)" data-de="(Beilage inbegriffen: Pommes, Ofenkartoffeln oder gegrilltes Gemüse)">(Contorno incluso: Patate fritte, al forno o verdure alla griglia)</span></h2>
   <div class="item" id="item-coniglio"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Coniglio alla Rocchettina</span><span class="sub-trans" data-it="" data-fr="(Lapin à la Rocchettina)" data-en="(Rabbit Rocchettina Style)" data-de="(Kaninchen nach Rocchettina-Art)"></span></div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('coniglio',-1)">−</button><span class="qty-display" id="qty-coniglio">0</span><button class="qty-btn" onclick="changeQty('coniglio',1)">+</button></div><button class="add-order-btn" id="btn-coniglio" onclick="openPopup('coniglio')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-selvaggina"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Selvaggina al Vino Rosso</span><span class="sub-trans" data-it="" data-fr="(Gibier au Vin Rouge)" data-en="(Game in Red Wine)" data-de="(Wildfleisch in Rotwein)"></span></div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('selvaggina',-1)">−</button><span class="qty-display" id="qty-selvaggina">0</span><button class="qty-btn" onclick="changeQty('selvaggina',1)">+</button></div><button class="add-order-btn" id="btn-selvaggina" onclick="openPopup('selvaggina')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-agnello"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Costine di Agnello alla Griglia</span><span class="sub-trans" data-it="" data-fr="(Côtes d'Agneau Grillées)" data-en="(Grilled Lamb Ribs)" data-de="(Gegrillte Lammrippchen)"></span></div></div><div class="item-right"><div class="item-price">€18,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('agnello',-1)">−</button><span class="qty-display" id="qty-agnello">0</span><button class="qty-btn" onclick="changeQty('agnello',1)">+</button></div><button class="add-order-btn" id="btn-agnello" onclick="openPopup('agnello')">+ Aggiungi</button></div></div></div>
@@ -573,43 +424,35 @@ function googleTranslateElementInit() {
 <div class="section" id="sec-dolce">
   <h2 class="cat-title" data-it="🍰 I Nostri Dolci" data-fr="🍰 Desserts Artisanaux" data-en="🍰 Homemade Desserts" data-de="🍰 Dessertkarte">🍰 I Nostri Dolci</h2>
   <div class="dolce-banner"><h3 data-it="I Dolci di Nostra Produzione" data-fr="Nos Desserts Fait Maison" data-en="Our Homemade Desserts" data-de="Hausgemachte Desserts">I Dolci di Nostra Produzione</h3><p data-it="Tutti i nostri dolci sono preparati artigianalmente ogni giorno" data-fr="Tous nos desserts sont préparés avec amour chaque jour" data-en="All our desserts are handcrafted and freshly made every day" data-de="Alle unsere Desserts werden jeden Tag frisch handgemacht">Tutti i nostri dolci sono preparati artigianalmente ogni giorno</p></div>
-  <div class="item" id="item-tiramisu"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Tiramisù</span><span class="sub-trans" data-it="" data-fr="(Tiramisu)" data-en="(Classic Tiramisu)" data-de="(Klassisches Tiramisu)"></span></div><div class="item-desc" data-it="Dolce al caffè con mascarpone e cacao" data-fr="Dessert au café avec mascarpone et cacao" data-en="Traditional coffee dessert with mascarpone cream and cocoa" data-de="Kaffeedessert mit Mascarpone und Kakao">Dolce al caffè con mascarpone e cacao</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tiramisu',-1)">−</button><span class="qty-display" id="qty-tiramisu">0</span><button class="qty-btn" onclick="changeQty('tiramisu',1)">+</button></div><button class="add-order-btn" id="btn-tiramisu" onclick="openPopup('tiramisu')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-pannacotta"><div class="item-top-row"><div class="item-left"><div class="item-name">Panna Cotta</div><div class="item-desc" data-it="Dolce cremoso alla vaniglia con salsa di frutta" data-fr="Dessert crémeux à la vanille avec coulis de fruits" data-en="Creamy vanilla pudding served with fruit coulis" data-de="Cremiges Vanilledessert mit Fruchtsauce">Dolce cremoso alla vaniglia con salsa di frutta</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('pannacotta',-1)">−</button><span class="qty-display" id="qty-pannacotta">0</span><button class="qty-btn" onclick="changeQty('pannacotta',1)">+</button></div><button class="add-order-btn" id="btn-pannacotta" onclick="openPopup('pannacotta')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-cremecaramel"><div class="item-top-row"><div class="item-left"><div class="item-name">Crème Caramel</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('cremecaramel',-1)">−</button><span class="qty-display" id="qty-cremecaramel">0</span><button class="qty-btn" onclick="changeQty('cremecaramel',1)">+</button></div><button class="add-order-btn" id="btn-cremecaramel" onclick="openPopup('cremecaramel')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-tiramisu"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Tiramisù</span><span class="sub-trans" data-it="" data-fr="(Tiramisu classique)" data-en="(Classic Tiramisu)" data-de="(Klassisches Tiramisu)"></span></div><div class="item-desc" data-it="Dolce al caffè con mascarpone e cacao" data-fr="Dessert au café avec mascarpone et cacao" data-en="Traditional coffee dessert with mascarpone cream and cocoa" data-de="Kaffeedessert mit Mascarpone und Kakao">Dolce al caffè con mascarpone e cacao</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('tiramisu',-1)">−</button><span class="qty-display" id="qty-tiramisu">0</span><button class="qty-btn" onclick="changeQty('tiramisu',1)">+</button></div><button class="add-order-btn" id="btn-tiramisu" onclick="openPopup('tiramisu')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-pannacotta"><div class="item-top-row"><div class="item-left"><div class="item-name">Panna Cotta<span class="sub-trans" data-it="" data-fr="(Panna Cotta vanille et coulis de fruits)" data-en="(Vanilla Panna Cotta with fruit coulis)" data-de="(Vanille-Panna-Cotta mit Fruchtsauce)"></span></div><div class="item-desc" data-it="Dolce cremoso alla vaniglia con salsa di frutta" data-fr="Dessert crémeux à la vanille avec coulis de fruits" data-en="Creamy vanilla pudding served with fruit coulis" data-de="Cremiges Vanilledessert mit Fruchtsauce">Dolce cremoso alla vaniglia con salsa di frutta</div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('pannacotta',-1)">−</button><span class="qty-display" id="qty-pannacotta">0</span><button class="qty-btn" onclick="changeQty('pannacotta',1)">+</button></div><button class="add-order-btn" id="btn-pannacotta" onclick="openPopup('pannacotta')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-cremecaramel"><div class="item-top-row"><div class="item-left"><div class="item-name">Crème Caramel<span class="sub-trans" data-it="" data-fr="(Flan au Caramel)" data-en="(Classic Crème Caramel)" data-de="(Karamellpudding)"></span></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('cremecaramel',-1)">−</button><span class="qty-display" id="qty-cremecaramel">0</span><button class="qty-btn" onclick="changeQty('cremecaramel',1)">+</button></div><button class="add-order-btn" id="btn-cremecaramel" onclick="openPopup('cremecaramel')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-cremacatalana"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Crema Catalana</span><span class="sub-trans" data-it="" data-fr="(Crème Catalane)" data-en="(Crème Brûlée Style)" data-de="(Katalanische Creme)"></span></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('cremacatalana',-1)">−</button><span class="qty-display" id="qty-cremacatalana">0</span><button class="qty-btn" onclick="changeQty('cremacatalana',1)">+</button></div><button class="add-order-btn" id="btn-cremacatalana" onclick="openPopup('cremacatalana')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-semifreddo"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Semifreddo</span><span class="sub-trans" data-it="" data-fr="(Parfait Semifreddo)" data-en="(Homemade Semifreddo)" data-de="(Semifreddo)"></span></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('semifreddo',-1)">−</button><span class="qty-display" id="qty-semifreddo">0</span><button class="qty-btn" onclick="changeQty('semifreddo',1)">+</button></div><button class="add-order-btn" id="btn-semifreddo" onclick="openPopup('semifreddo')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-crumble"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Crumble di Mele con Gelato</span><span class="sub-trans" data-it="" data-fr="(Crumble aux Pommes avec Glace)" data-en="(Apple Crumble with Ice Cream)" data-de="(Apfel-Crumble mit Eis)"></span></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('crumble',-1)">−</button><span class="qty-display" id="qty-crumble">0</span><button class="qty-btn" onclick="changeQty('crumble',1)">+</button></div><button class="add-order-btn" id="btn-crumble" onclick="openPopup('crumble')">+ Aggiungi</button></div></div></div>
-  <div class="item" id="item-bunet"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Bunet</span><span class="sub-trans" data-it="" data-fr="(Pudding Piémontais au Chocolat)" data-en="(Bunet - Amaretti & Cocoa Pudding)" data-de="(Piemontesischer Schokoladenpudding)"></span></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('bunet',-1)">−</button><span class="qty-display" id="qty-bunet">0</span><button class="qty-btn" onclick="changeQty('bunet',1)">+</button></div><button class="add-order-btn" id="btn-bunet" onclick="openPopup('bunet')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-bunet"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Bunet</span><span class="sub-trans" data-it="" data-fr="(Pudding Piémontais au Chocolat)" data-en="(Bunet – Amaretti & Cocoa Pudding)" data-de="(Piemontesischer Schokoladenpudding)"></span></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('bunet',-1)">−</button><span class="qty-display" id="qty-bunet">0</span><button class="qty-btn" onclick="changeQty('bunet',1)">+</button></div><button class="add-order-btn" id="btn-bunet" onclick="openPopup('bunet')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-macedonia"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Macedonia di Frutta</span><span class="sub-trans" data-it="" data-fr="(Salade de Fruits)" data-en="(Fresh Fruit Salad)" data-de="(Obstsalat)"></span></div></div><div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('macedonia',-1)">−</button><span class="qty-display" id="qty-macedonia">0</span><button class="qty-btn" onclick="changeQty('macedonia',1)">+</button></div><button class="add-order-btn" id="btn-macedonia" onclick="openPopup('macedonia')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-assort_dolci"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Assortimento Misto dei Dolci</span><span class="sub-trans" data-it="" data-fr="(Assortiment de Desserts)" data-en="(Mixed Dessert Platter)" data-de="(Gemischter Dessertteller)"></span></div></div><div class="item-right"><div class="item-price">€8,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('assort_dolci',-1)">−</button><span class="qty-display" id="qty-assort_dolci">0</span><button class="qty-btn" onclick="changeQty('assort_dolci',1)">+</button></div><button class="add-order-btn" id="btn-assort_dolci" onclick="openPopup('assort_dolci')">+ Aggiungi</button></div></div></div>
 </div>
 
-<!-- GELATO -->
+<!-- GELATO — FIX: translated flavour chips -->
 <div class="section" id="sec-gelato">
   <h2 class="cat-title" data-it="🍦 Gelato Artigianale" data-fr="🍦 Glace Artisanale" data-en="🍦 Artisan Ice Cream" data-de="🍦 Hausgemachtes Eis">🍦 Gelato Artigianale</h2>
   <div class="item" id="item-gelato">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Gelato Artigianale 🍦</div><div class="item-desc" data-it="Fatto in Casa ogni Giorno — max 3 gusti a scelta" data-fr="Fait maison tous les jours — max 3 parfums au choix" data-en="Freshly Made Every Day — choose up to 3 flavors" data-de="Täglich frisch zubereitet — bis zu 3 Sorten wählbar">Fatto in Casa ogni Giorno — max 3 gusti a scelta</div></div>
-      <div class="item-right">
-        <div class="item-price">€6,00</div>
-        <div class="qty-row"><button class="qty-btn" onclick="changeQty('gelato',-1)">−</button><span class="qty-display" id="qty-gelato">0</span><button class="qty-btn" onclick="changeQty('gelato',1)">+</button></div>
-        <button class="add-order-btn" id="btn-gelato" onclick="openPopup('gelato')" data-it="+ Aggiungi" data-fr="+ Ajouter" data-en="+ Add" data-de="+ Hinzufügen">+ Aggiungi</button>
-      </div>
+      <div class="item-left"><div class="item-name">Gelato Artigianale 🍦</div><div class="item-desc" data-it="Fatto in Casa ogni Giorno — max 3 gusti a scelta" data-fr="Fait maison tous les jours — max 3 parfums au choix" data-en="Freshly Made Every Day — choose up to 3 flavors" data-de="Täglich frisch – bis zu 3 Sorten wählbar">Fatto in Casa ogni Giorno — max 3 gusti a scelta</div></div>
+      <div class="item-right"><div class="item-price">€6,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('gelato',-1)">−</button><span class="qty-display" id="qty-gelato">0</span><button class="qty-btn" onclick="changeQty('gelato',1)">+</button></div><button class="add-order-btn" id="btn-gelato" onclick="openPopup('gelato')">+ Aggiungi</button></div>
     </div>
     <div class="item-flavours" id="flavours-gelato">
-      <div class="flavour-label" data-it="🍦 Gusti disponibili (max 3):" data-fr="🍦 Parfums disponibles (max 3):" data-en="🍦 Available Flavors (max 3):" data-de="🍦 Verfügbare Sorten (max. 3):">🍦 Gusti disponibili (max 3):</div>
+      <div class="flavour-label" id="flavour-main-label" data-it="🍦 Gusti disponibili (max 3):" data-fr="🍦 Parfums disponibles (max 3):" data-en="🍦 Available Flavors (max 3):" data-de="🍦 Verfügbare Sorten (max. 3):">🍦 Gusti disponibili (max 3):</div>
       <div class="flavour-chips" id="inline-flavours-gelato"></div>
       <div class="flavour-max-note" id="flavour-note-gelato"></div>
     </div>
   </div>
   <div class="item" id="item-sorbetto">
     <div class="item-top-row">
-      <div class="item-left"><div class="item-name">Sorbetto 🍧</div><div class="item-desc" data-it="Disponibile con o senza alcol" data-fr="Disponible avec ou sans alcool" data-en="Available with or without alcohol" data-de="Mit oder ohne Alkohol erhältlich">Disponibile con o senza alcol</div></div>
-      <div class="item-right">
-        <div class="item-price">€3,00</div>
-        <div class="qty-row"><button class="qty-btn" onclick="changeQty('sorbetto',-1)">−</button><span class="qty-display" id="qty-sorbetto">0</span><button class="qty-btn" onclick="changeQty('sorbetto',1)">+</button></div>
-        <button class="add-order-btn" id="btn-sorbetto" onclick="openPopup('sorbetto')" data-it="+ Aggiungi" data-fr="+ Ajouter" data-en="+ Add" data-de="+ Hinzufügen">+ Aggiungi</button>
-      </div>
+      <div class="item-left"><div class="item-name">Sorbetto 🍧<span class="sub-trans" data-it="" data-fr="(Sorbet avec ou sans alcool)" data-en="(Sorbet with or without alcohol)" data-de="(Sorbet mit oder ohne Alkohol)"></span></div><div class="item-desc" data-it="Disponibile con o senza alcol" data-fr="Disponible avec ou sans alcool" data-en="Available with or without alcohol" data-de="Mit oder ohne Alkohol erhältlich">Disponibile con o senza alcol</div></div>
+      <div class="item-right"><div class="item-price">€3,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('sorbetto',-1)">−</button><span class="qty-display" id="qty-sorbetto">0</span><button class="qty-btn" onclick="changeQty('sorbetto',1)">+</button></div><button class="add-order-btn" id="btn-sorbetto" onclick="openPopup('sorbetto')">+ Aggiungi</button></div>
     </div>
     <div class="sorbetto-options" id="sorbetto-inline-options">
       <div class="sorbetto-opt-label" data-it="🍹 Preferenza:" data-fr="🍹 Préférence:" data-en="🍹 Preference:" data-de="🍹 Präferenz:">🍹 Preferenza:</div>
@@ -625,9 +468,9 @@ function googleTranslateElementInit() {
 <div class="section" id="sec-bar">
   <h2 class="cat-title" data-it="🍹 Il Nostro Bar" data-fr="🍹 Notre Bar" data-en="🍹 Our Bar" data-de="🍹 Unsere Bar">🍹 Il Nostro Bar</h2>
   <div class="sub-tabs">
-    <button class="sub-tab-btn active" onclick="setSubTab('caffetteria', this)"><span data-it="☕ Caffetteria" data-fr="☕ Cafétéria" data-en="☕ Coffee" data-de="☕ Kaffee">☕ Caffetteria</span></button>
-    <button class="sub-tab-btn" onclick="setSubTab('bibite', this)"><span data-it="🥤 Bibite" data-fr="🥤 Boissons" data-en="🥤 Drinks" data-de="🥤 Getränke">🥤 Bibite</span></button>
-    <button class="sub-tab-btn" onclick="setSubTab('cocktails', this)"><span data-it="🍹 Cocktails" data-fr="🍹 Cocktails" data-en="🍹 Cocktails" data-de="🍹 Cocktails">🍹 Cocktails</span></button>
+    <button class="sub-tab-btn active" onclick="setSubTab('caffetteria',this)"><span data-it="☕ Caffetteria" data-fr="☕ Cafétéria" data-en="☕ Coffee" data-de="☕ Kaffee">☕ Caffetteria</span></button>
+    <button class="sub-tab-btn" onclick="setSubTab('bibite',this)"><span data-it="🥤 Bibite" data-fr="🥤 Boissons" data-en="🥤 Drinks" data-de="🥤 Getränke">🥤 Bibite</span></button>
+    <button class="sub-tab-btn" onclick="setSubTab('cocktails',this)"><span data-it="🍹 Cocktails" data-fr="🍹 Cocktails" data-en="🍹 Cocktails" data-de="🍹 Cocktails">🍹 Cocktails</span></button>
   </div>
   <div class="sub-section active" id="subsec-caffetteria">
     <div class="cocktail-list">
@@ -637,7 +480,7 @@ function googleTranslateElementInit() {
       <div class="price-row"><span data-it="Caffè Ginseng Piccolo" data-fr="Café Ginseng Petit" data-en="Ginseng Coffee Small" data-de="Ginseng Kaffee Klein">Caffè Ginseng Piccolo</span><span style="font-weight:800;color:#b31e1e;">€2,00</span></div>
       <div class="price-row"><span data-it="Caffè Ginseng Grande" data-fr="Café Ginseng Grand" data-en="Ginseng Coffee Large" data-de="Ginseng Kaffee Groß">Caffè Ginseng Grande</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
       <div class="price-row"><span data-it="Caffè Corretto" data-fr="Café Corretto" data-en="Coffee with Grappa" data-de="Kaffee mit Schnaps">Caffè Corretto</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
-      <div class="price-row"><span data-it="Cappuccino" data-fr="Cappuccino" data-en="Cappuccino" data-de="Cappuccino">Cappuccino</span><span style="font-weight:800;color:#b31e1e;">€2,00</span></div>
+      <div class="price-row"><span>Cappuccino</span><span style="font-weight:800;color:#b31e1e;">€2,00</span></div>
       <div class="price-row"><span data-it="Caffè Latte / Latte Macchiato" data-fr="Café Latte / Latte Macchiato" data-en="Café Latte / Latte Macchiato" data-de="Café Latte / Latte Macchiato">Caffè Latte / Latte Macchiato</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
       <div class="price-row"><span data-it="Thè Caldo / Infusi" data-fr="Thé Chaud / Infusions" data-en="Hot Tea / Herbal Tea" data-de="Heißer Tee / Kräutertee">Thè Caldo / Infusi</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
       <div class="price-row"><span data-it="Cioccolata Calda" data-fr="Chocolat Chaud" data-en="Hot Chocolate" data-de="Heiße Schokolade">Cioccolata Calda</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
@@ -653,26 +496,26 @@ function googleTranslateElementInit() {
       <div class="price-row"><span class="notranslate">Schweppes / Schweppes Lemon</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
       <div class="price-row"><span class="notranslate">Crodino / Sanbitter</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
       <div class="bar-divider" data-it="Succhi di Frutta" data-fr="Jus de Fruits" data-en="Fruit Juices" data-de="Fruchtsäfte">Succhi di Frutta</div>
-      <div class="price-row"><span data-it="Pesca · Ananas · Arancia · Albicocca · ACE · Pera" data-fr="Pêche · Ananas · Orange · Abricot · ACE · Poire" data-en="Peach · Pineapple · Orange · Apricot · ACE · Pear" data-de="Pfirsich · Ananas · Orange · Aprikose · ACE · Birne" style="font-size:13px;color:#666;">Pesca · Ananas · Arancia · Albicocca · ACE · Pera</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
+      <div class="price-row"><span style="font-size:13px;color:#666;" data-it="Pesca · Ananas · Arancia · Albicocca · ACE · Pera" data-fr="Pêche · Ananas · Orange · Abricot · ACE · Poire" data-en="Peach · Pineapple · Orange · Apricot · ACE · Pear" data-de="Pfirsich · Ananas · Orange · Aprikose · ACE · Birne">Pesca · Ananas · Arancia · Albicocca · ACE · Pera</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
     </div>
   </div>
   <div class="sub-section" id="subsec-cocktails">
     <div class="cocktail-list">
-      <div class="cocktail-group" data-it="🍺 Birre & Aperitivi Base" data-fr="🍺 Bières & Apéritifs de Base" data-en="🍺 Beers & Basic Aperitifs" data-de="🍺 Biere & Basis-Aperitifs">🍺 Birre & Aperitivi Base</div>
+      <div class="cocktail-group">🍺 Birre &amp; Aperitivi Base</div>
       <div class="price-row"><span data-it="Birra Bottiglia 33 cl" data-fr="Bière Bouteille 33 cl" data-en="Beer Bottle 33 cl" data-de="Bier Flasche 33 cl">Birra Bottiglia 33 cl</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
       <div class="price-row"><span class="notranslate">Panaché / Monaco</span><span style="font-weight:800;color:#b31e1e;">€5,00</span></div>
       <div class="price-row"><span class="notranslate">Martini Bianco e Rosso</span><span style="font-weight:800;color:#b31e1e;">€5,00</span></div>
       <div class="price-row"><span data-it="Digestivi / Distillati" data-fr="Digestifs / Distillats" data-en="Digestifs / Spirits" data-de="Digestifs / Destillate">Digestivi / Distillati</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
       <div class="price-row"><span data-it="Shot Alcolici" data-fr="Shots Alcoolisés" data-en="Alcohol Shots" data-de="Alkohol-Shots">Shot Alcolici</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="cocktail-group" data-it="🥂 Spritz & Cocktails Classici — €6,00" data-fr="🥂 Spritz & Cocktails Classiques — €6,00" data-en="🥂 Spritz & Classic Cocktails — €6,00" data-de="🥂 Spritz & Klassische Cocktails — €6,00">🥂 Spritz & Cocktails Classici — €6,00</div>
+      <div class="cocktail-group">🥂 Spritz &amp; Cocktails Classici — €6,00</div>
       <div class="cocktail-name notranslate">Aperol Spritz</div>
       <div class="cocktail-name notranslate">Campari Spritz</div>
       <div class="cocktail-name notranslate">Limoncello Spritz</div>
       <div class="cocktail-name notranslate">Negroni</div>
       <div class="cocktail-name notranslate">Negroni Sbagliato</div>
       <div class="cocktail-name notranslate">Americano</div>
-      <div class="cocktail-group" data-it="⭐ Premium Cocktails — €8,00" data-fr="⭐ Cocktails Premium — €8,00" data-en="⭐ Premium Cocktails — €8,00" data-de="⭐ Premium Cocktails — €8,00">⭐ Premium Cocktails — €8,00</div>
-      <div class="cocktail-name"><span data-it="Whisky & Coca / Rhum & Coca" data-fr="Whisky Coca / Rhum Coca" data-en="Whisky & Coke / Rum & Coke" data-de="Whisky & Cola / Rum & Cola">Whisky & Coca / Rhum & Coca</span></div>
+      <div class="cocktail-group">⭐ Premium Cocktails — €8,00</div>
+      <div class="cocktail-name"><span data-it="Whisky & Coca / Rhum & Coca" data-fr="Whisky Coca / Rhum Coca" data-en="Whisky & Coke / Rum & Coke" data-de="Whisky & Cola / Rum & Cola">Whisky &amp; Coca / Rhum &amp; Coca</span></div>
       <div class="cocktail-name"><span data-it="Gin Tonic / Gin Lemon" data-fr="Gin Tonic / Gin Citron" data-en="Gin & Tonic / Gin & Lemon" data-de="Gin Tonic / Gin Zitrone">Gin Tonic / Gin Lemon</span></div>
     </div>
   </div>
@@ -682,900 +525,567 @@ function googleTranslateElementInit() {
 
 <div class="footer">
   <div style="letter-spacing:2px;">✦ LAGO BIN ✦</div>
-  <div class="note" data-it="I Menù non sono Divisibili per più Persone" data-fr="Les Menus ne peuvent pas être partagés entre plusieurs personnes" data-en="Set menus cannot be shared between guests" data-de="Menüs können nicht auf mehrere Personen aufgeteilt werden">I Menù non sono Divisibili per più Persone</div>
+  <div class="note" data-it="I Menù non sono Divisibili per più Persone" data-fr="Les Menus ne peuvent pas être partagés" data-en="Set menus cannot be shared between guests" data-de="Menüs können nicht aufgeteilt werden">I Menù non sono Divisibili per più Persone</div>
 </div>
 
+<!-- CART FAB -->
 <div class="cart-fab" onclick="toggleCart()">
   🛒 <span data-it="Ordine" data-fr="Commande" data-en="Order" data-de="Bestellung">Ordine</span>
   <span class="cart-badge" id="cart-badge">0</span>
 </div>
-
 <div class="cart-panel" id="cart-panel" onclick="event.stopPropagation()">
   <div class="cart-title" data-it="📋 Il Tuo Ordine" data-fr="📋 Votre Commande" data-en="📋 Your Order" data-de="📋 Ihre Bestellung">📋 Il Tuo Ordine</div>
-  <div id="cart-content"><div class="cart-empty" data-it="Nessun articolo ancora" data-fr="Aucun article pour le moment" data-en="No items yet" data-de="Noch keine Artikel">Nessun articolo ancora</div></div>
-  <div class="cart-total" id="cart-total" style="display:none;">
-    <span data-it="Totale stimato" data-fr="Total estimé" data-en="Estimated total" data-de="Geschätzter Gesamtbetrag">Totale stimato</span>
-    <span id="total-amount">€0</span>
-  </div>
+  <div id="cart-content"><div class="cart-empty">Nessun articolo ancora</div></div>
+  <div class="cart-total" id="cart-total" style="display:none;"><span data-it="Totale stimato" data-fr="Total estimé" data-en="Estimated total" data-de="Geschätzter Gesamtbetrag">Totale stimato</span><span id="total-amount">€0</span></div>
   <button class="waiter-btn" id="waiter-btn" disabled onclick="showOverlay()" data-it="📲 Mostra al Cameriere" data-fr="📲 Montrer au Serveur" data-en="📲 Show to Waiter" data-de="📲 Dem Kellner zeigen">📲 Mostra al Cameriere</button>
 </div>
 
 <!-- POPUP -->
 <div class="popup-overlay" id="popup-overlay" onclick="handleOverlayClick(event)">
-  <div class="popup-box" id="popup-box">
+  <div class="popup-box">
     <div class="popup-handle"></div>
     <div class="popup-title" id="popup-title"></div>
     <div class="popup-subtitle" id="popup-subtitle"></div>
     <div class="popup-divider"></div>
     <div id="popup-persons"></div>
-    <button class="add-person-btn" id="popup-add-person" onclick="popupAddPerson()" data-it="+ Aggiungi persona" data-fr="+ Ajouter une personne" data-en="+ Add person" data-de="+ Person hinzufügen">+ Aggiungi persona</button>
-    <button class="popup-confirm-btn not-ready" id="popup-confirm" onclick="popupConfirm()" data-it="✓ Conferma Ordine" data-fr="✓ Confirmer la Commande" data-en="✓ Confirm Order" data-de="✓ Bestellung bestätigen">✓ Conferma Ordine</button>
-    <span class="popup-cancel" onclick="closePopup()" data-it="Annulla / Cancel" data-fr="Annuler / Cancel" data-en="Cancel" data-de="Abbrechen">Annulla / Cancel</span>
+    <button class="add-person-btn" id="popup-add-person" onclick="popupAddPerson()">+ Aggiungi persona</button>
+    <button class="popup-confirm-btn not-ready" id="popup-confirm" onclick="popupConfirm()">✓ Conferma Ordine</button>
+    <span class="popup-cancel" onclick="closePopup()">Annulla / Cancel</span>
   </div>
 </div>
 
 <!-- SUMMARY OVERLAY -->
 <div class="overlay" id="overlay">
-  <div class="overlay-header">
-    <div class="overlay-logo">✦ LAGO BIN ✦</div>
-    <div class="overlay-sub" data-it="Riepilogo Ordine — Order Summary" data-fr="Récapitulatif de la Commande" data-en="Order Summary" data-de="Bestellübersicht">Riepilogo Ordine — Order Summary</div>
-  </div>
+  <div class="overlay-header"><div class="overlay-logo">✦ LAGO BIN ✦</div><div class="overlay-sub" data-it="Riepilogo Ordine" data-fr="Récapitulatif" data-en="Order Summary" data-de="Bestellübersicht">Riepilogo Ordine</div></div>
   <div id="overlay-content"></div>
   <button class="overlay-close" onclick="closeOverlay()" data-it="✕ Chiudi / Close" data-fr="✕ Fermer" data-en="✕ Close" data-de="✕ Schließen">✕ Chiudi / Close</button>
-  <div class="overlay-note" data-it="Mostra questo schermo al cameriere · Show this screen to the waiter" data-fr="Montrez cet écran au serveur" data-en="Show this screen to the waiter" data-de="Zeigen Sie dies dem Kellner">Mostra questo schermo al cameriere · Show this screen to the waiter</div>
+  <div class="overlay-note" data-it="Mostra questo schermo al cameriere" data-fr="Montrez cet écran au serveur" data-en="Show this screen to the waiter" data-de="Zeigen Sie dies dem Kellner">Mostra questo schermo al cameriere</div>
+</div>
+
+<!-- CARTA DEI VINI MODAL -->
+<div class="vini-modal-overlay" id="vini-modal" onclick="if(event.target===this)closeViniModal()">
+  <div class="vini-modal-box">
+    <div class="vini-calice">🍷</div>
+    <div class="vini-modal-title" data-it="Carta dei Vini" data-fr="Carte des Vins" data-en="Wine List" data-de="Weinkarte">Carta dei Vini</div>
+    <div class="vini-modal-sub" data-it="Come vuoi procedere?" data-fr="Comment souhaitez-vous continuer?" data-en="How would you like to continue?" data-de="Wie möchten Sie fortfahren?">Come vuoi procedere?</div>
+    <a class="vini-modal-btn primary" href="https://mamunjoyit1-cyber.github.io/carta-dei-vini/" target="_blank" onclick="closeViniModal()" data-it="🍷 Apri Lista Digitale" data-fr="🍷 Ouvrir la Liste Digitale" data-en="🍷 Open Digital Wine List" data-de="🍷 Digitale Weinkarte öffnen">🍷 Apri Lista Digitale</a>
+    <button class="vini-modal-btn secondary" onclick="addViniToCart()" data-it="🛒 Aggiungi Vino al Carrello" data-fr="🛒 Ajouter Vin au Panier" data-en="🛒 Add Wine to Order" data-de="🛒 Wein zur Bestellung">🛒 Aggiungi Vino al Carrello</button>
+    <span class="vini-modal-close" onclick="closeViniModal()" data-it="Annulla" data-fr="Annuler" data-en="Cancel" data-de="Abbrechen">Annulla</span>
+  </div>
 </div>
 
 <script>
-const GELATO_FLAVORS = ['Vaniglia 🍦','Fiore di Latte 🥛','Fragola 🍓','Nocciola 🌰','Limone 🍋','Mango 🥭','Cioccolata 🍫','Caffè ☕'];
-const TURNO_OPTIONS = ['1° turno','2° turno','3° turno','4° turno'];
-const COTTURA_OPTIONS = ['🔴 Al Sangue','🟠 Blue','🟡 Media Cottura','✅ Ben Cotto'];
+// ── GELATO FLAVORS with multilingual labels (FIX) ──
+const GELATO_FLAVORS=[
+  {it:'Vaniglia 🍦',fr:'Vanille 🍦',en:'Vanilla 🍦',de:'Vanille 🍦'},
+  {it:'Fiore di Latte 🥛',fr:'Fior di Latte 🥛',en:'Fresh Cream 🥛',de:'Milchblume 🥛'},
+  {it:'Fragola 🍓',fr:'Fraise 🍓',en:'Strawberry 🍓',de:'Erdbeere 🍓'},
+  {it:'Nocciola 🌰',fr:'Noisette 🌰',en:'Hazelnut 🌰',de:'Haselnuss 🌰'},
+  {it:'Limone 🍋',fr:'Citron 🍋',en:'Lemon 🍋',de:'Zitrone 🍋'},
+  {it:'Mango 🥭',fr:'Mangue 🥭',en:'Mango 🥭',de:'Mango 🥭'},
+  {it:'Cioccolata 🍫',fr:'Chocolat 🍫',en:'Chocolate 🍫',de:'Schokolade 🍫'},
+  {it:'Caffè ☕',fr:'Café ☕',en:'Coffee ☕',de:'Kaffee ☕'}
+];
+function flavorLabel(itKey){const f=GELATO_FLAVORS.find(x=>x.it===itKey);return f?(f[currentLang]||f.it):itKey;}
 
-const ITEMS = {
-  antipasto_tipico: { name:'Antipasto Tipico del Lago Bin', price:15, course:'antipasti', sauces:[] },
-  salumiere:        { name:'Assortimento del Salumiere', price:15, course:'antipasti', sauces:[] },
-  prosciutto:       { name:'Prosciutto di Parma', price:13, course:'antipasti', sauces:['Melone','Grana'] },
-  misto_caldo:      { name:'Antipasto Misto Caldo e Freddo', price:25, course:'antipasti', sauces:[] },
-  lumache:          { name:'Lumache in Umido', price:18, course:'antipasti', sauces:[] },
-  brandacujan:      { name:'Brandacujan', price:15, course:'antipasti', sauces:[] },
-  tartare_manzo:    { name:'Tartare di Manzo al Coltello', price:20, course:'antipasti', sauces:[] },
-  tomino:           { name:"Tomino d'Alpeggio Caldo", price:12, course:'antipasti', sauces:[] },
-  tartare_pesce:    { name:'Tartare di Pesce', price:18, course:'antipasti', sauces:[] },
-  antipasto_mare:   { name:'Antipasto Misto di Mare', price:25, course:'antipasti', sauces:[] },
-  ravioli_nonna:    { name:'Ravioli della Nonna', price:18, course:'primi', sauces:['Pomodoro','Burro e Salvia','Funghi','Burro e Timo'] },
-  ravioli_coniglio: { name:'Ravioli al Coniglio', price:20, course:'primi', sauces:[] },
-  tagliatelle_sel:  { name:'Tagliatelle di Pasta Fresca', price:15, course:'primi', sauces:['Selvaggina','Funghi','Pesto Fresco'] },
-  tagliatelle_mare: { name:'Tagliatelle ai Frutti di Mare', price:18, course:'primi', sauces:[] },
-  mezzelune:        { name:'Mezzelune di Magro', price:15, course:'primi', sauces:['Burro e Salvia','Noci'] },
-  troffie:          { name:'Troffie', price:15, course:'primi', sauces:['Pesto Fresco','Primavera'] },
-  troffie_gamberetti:{ name:'Troffie con Gamberetti e Zucchine', price:18, course:'primi', sauces:[] },
-  gnocchi:          { name:'Gnocchi di Patate', price:13, course:'primi', sauces:['Funghi','Formaggi e Gorgonzola','Burro e Salvia'] },
-  risotto:          { name:'Risotto ai Frutti di Mare', price:20, course:'primi', sauces:[] },
-  duo_primi:        { name:'Duo di Primi', price:25, course:'primi', sauces:['Ravioli della Nonna','Ravioli al Coniglio','Tagliatelle Selvaggina','Tagliatelle Funghi','Tagliatelle Pesto','Tagliatelle Frutti di Mare','Mezzelune Burro e Salvia','Mezzelune Noci','Troffie Pesto Fresco','Troffie Primavera','Troffie con Gamberetti','Gnocchi Funghi','Gnocchi Formaggi e Gorgonzola','Gnocchi Burro e Salvia'], multiSelect:2 },
-  coniglio:         { name:'Coniglio alla Rocchettina', price:15, course:'secondi', sauces:[] },
-  selvaggina:       { name:'Selvaggina al Vino Rosso', price:18, course:'secondi', sauces:[] },
-  agnello:          { name:'Costine di Agnello alla Griglia', price:18, course:'secondi', sauces:[] },
-  grigliata:        { name:'Grigliata Mista di Carne', price:20, course:'secondi', sauces:[] },
-  roastbeef:        { name:'Roast Beef', price:18, course:'secondi', sauces:[] },
-  filetto:          { name:'Filetto di Manzo', price:25, course:'secondi', sauces:['Pepe Verde','Gorgonzola','Griglia'], cottura:true },
-  pescato:          { name:'Pescato o Gamberoni', price:18, course:'secondi', sauces:['Al Forno','Alla Griglia'] },
-  grigliata_pesce:  { name:'Grigliata Mista di Pesce', price:25, course:'secondi', sauces:[] },
-  formaggi:         { name:'Assortimento di Formaggi', price:10, course:'contorni', sauces:[] },
-  verdure:          { name:'Grigliata di Verdure', price:10, course:'contorni', sauces:[] },
-  insalata:         { name:'Insalata Mista', price:10, course:'contorni', sauces:[] },
-  tiramisu:         { name:'Tiramisù', price:6, course:'dolci', sauces:[] },
-  pannacotta:       { name:'Panna Cotta', price:6, course:'dolci', sauces:[] },
-  cremecaramel:     { name:'Crème Caramel', price:6, course:'dolci', sauces:[] },
-  cremacatalana:    { name:'Crema Catalana', price:6, course:'dolci', sauces:[] },
-  semifreddo:       { name:'Semifreddo', price:6, course:'dolci', sauces:[] },
-  crumble:          { name:'Crumble di Mele con Gelato', price:6, course:'dolci', sauces:[] },
-  bunet:            { name:'Bunet', price:6, course:'dolci', sauces:[] },
-  macedonia:        { name:'Macedonia di Frutta', price:6, course:'dolci', sauces:[] },
-  assort_dolci:     { name:'Assortimento Misto dei Dolci', price:8, course:'dolci', sauces:[] },
-  gelato:           { name:'Gelato Artigianale', price:6, course:'gelato', sauces:[], isGelato:true },
-  sorbetto:         { name:'Sorbetto', price:3, course:'gelato', sauces:[], isSorbetto:true }
+const TURNO_OPTIONS=['1° turno','2° turno','3° turno','4° turno'];
+const COTTURA_OPTIONS=['🔴 Al Sangue','🟠 Blue','🟡 Media Cottura','✅ Ben Cotto'];
+
+const ITEMS={
+  antipasto_tipico:{name:'Antipasto Tipico del Lago Bin',price:15,course:'antipasti',sauces:[]},
+  salumiere:{name:'Assortimento del Salumiere',price:15,course:'antipasti',sauces:[]},
+  prosciutto:{name:'Prosciutto di Parma',price:13,course:'antipasti',sauces:['Melone','Grana']},
+  misto_caldo:{name:'Antipasto Misto Caldo e Freddo',price:25,course:'antipasti',sauces:[]},
+  lumache:{name:'Lumache in Umido',price:18,course:'antipasti',sauces:[]},
+  brandacujan:{name:'Brandacujan',price:15,course:'antipasti',sauces:[]},
+  tartare_manzo:{name:'Tartare di Manzo al Coltello',price:20,course:'antipasti',sauces:[]},
+  tomino:{name:"Tomino d'Alpeggio Caldo",price:12,course:'antipasti',sauces:[]},
+  tartare_pesce:{name:'Tartare di Pesce',price:18,course:'antipasti',sauces:[]},
+  antipasto_mare:{name:'Antipasto Misto di Mare',price:25,course:'antipasti',sauces:[]},
+  ravioli_nonna:{name:'Ravioli della Nonna',price:18,course:'primi',sauces:['Pomodoro','Burro e Salvia','Funghi','Burro e Timo']},
+  ravioli_coniglio:{name:'Ravioli al Coniglio',price:20,course:'primi',sauces:[]},
+  tagliatelle_sel:{name:'Tagliatelle di Pasta Fresca',price:15,course:'primi',sauces:['Selvaggina','Funghi','Pesto Fresco']},
+  tagliatelle_mare:{name:'Tagliatelle ai Frutti di Mare',price:18,course:'primi',sauces:[]},
+  mezzelune:{name:'Mezzelune di Magro',price:15,course:'primi',sauces:['Burro e Salvia','Noci']},
+  troffie:{name:'Troffie',price:15,course:'primi',sauces:['Pesto Fresco','Primavera']},
+  troffie_gamberetti:{name:'Troffie con Gamberetti e Zucchine',price:18,course:'primi',sauces:[]},
+  gnocchi:{name:'Gnocchi di Patate',price:13,course:'primi',sauces:['Funghi','Formaggi e Gorgonzola','Burro e Salvia']},
+  risotto:{name:'Risotto ai Frutti di Mare',price:20,course:'primi',sauces:[]},
+  duo_primi:{name:'Duo di Primi',price:25,course:'primi',sauces:['Ravioli della Nonna','Ravioli al Coniglio','Tagliatelle Selvaggina','Tagliatelle Funghi','Tagliatelle Pesto','Tagliatelle Frutti di Mare','Mezzelune Burro e Salvia','Mezzelune Noci','Troffie Pesto','Troffie Primavera','Troffie Gamberetti','Gnocchi Funghi','Gnocchi Formaggi','Gnocchi Burro e Salvia','Risotto Frutti di Mare'],multiSelect:2},
+  coniglio:{name:'Coniglio alla Rocchettina',price:15,course:'secondi',sauces:[]},
+  selvaggina:{name:'Selvaggina al Vino Rosso',price:18,course:'secondi',sauces:[]},
+  agnello:{name:'Costine di Agnello alla Griglia',price:18,course:'secondi',sauces:[]},
+  grigliata:{name:'Grigliata Mista di Carne',price:20,course:'secondi',sauces:[]},
+  roastbeef:{name:'Roast Beef',price:18,course:'secondi',sauces:[]},
+  filetto:{name:'Filetto di Manzo',price:25,course:'secondi',sauces:['Pepe Verde','Gorgonzola','Griglia'],cottura:true},
+  pescato:{name:'Pescato o Gamberoni',price:18,course:'secondi',sauces:['Al Forno','Alla Griglia']},
+  grigliata_pesce:{name:'Grigliata Mista di Pesce',price:25,course:'secondi',sauces:[]},
+  formaggi:{name:'Assortimento di Formaggi',price:10,course:'contorni',sauces:[]},
+  verdure:{name:'Grigliata di Verdure',price:10,course:'contorni',sauces:[]},
+  insalata:{name:'Insalata Mista',price:10,course:'contorni',sauces:[]},
+  tiramisu:{name:'Tiramisù',price:6,course:'dolci',sauces:[]},
+  pannacotta:{name:'Panna Cotta',price:6,course:'dolci',sauces:[]},
+  cremecaramel:{name:'Crème Caramel',price:6,course:'dolci',sauces:[]},
+  cremacatalana:{name:'Crema Catalana',price:6,course:'dolci',sauces:[]},
+  semifreddo:{name:'Semifreddo',price:6,course:'dolci',sauces:[]},
+  crumble:{name:'Crumble di Mele con Gelato',price:6,course:'dolci',sauces:[]},
+  bunet:{name:'Bunet',price:6,course:'dolci',sauces:[]},
+  macedonia:{name:'Macedonia di Frutta',price:6,course:'dolci',sauces:[]},
+  assort_dolci:{name:'Assortimento Misto dei Dolci',price:8,course:'dolci',sauces:[]},
+  gelato:{name:'Gelato Artigianale',price:6,course:'gelato',sauces:[],isGelato:true},
+  sorbetto:{name:'Sorbetto',price:3,course:'gelato',sauces:[],isSorbetto:true}
 };
 
-// Bracket translations for dish names shown inside the package "piatti" accordion
-const DISH_TRANS = {
-  'Antipasto Tipico del Lago Bin': { fr:'(Assortiment Typique du Lago Bin)', en:'(Typical Lago Bin Starter)', de:'(Typische Lago Bin Vorspeise)' },
-  'Assortimento del Salumiere': { fr:'(Charcuterie fine sélectionnée)', en:'(Mixed Premium Charcuterie Platter)', de:'(Gemischte Aufschnittplatte)' },
-  'Prosciutto di Parma': { fr:'(Jambon de Parme)', en:'(Parma Ham)', de:'(Parmaschinken)' },
-  'Lumache in Umido': { fr:'(Escargots braisés)', en:'(Braised Snails)', de:'(Geschmorte Schnecken)' },
-  'Ravioli della Nonna': { fr:'(Ravioli maison)', en:"(Grandma's Ravioli)", de:'(Omas Ravioli)' },
-  'Tagliatelle di Pasta Fresca': { fr:'(Tagliatelles fraîches)', en:'(Fresh Tagliatelle)', de:'(Frische Tagliatelle)' },
-  'Gnocchi di Patate': { fr:'(Gnocchi de pommes de terre)', en:'(Potato Gnocchi)', de:'(Kartoffelgnocchi)' },
-  'Coniglio alla Rocchettina': { fr:'(Lapin à la Rocchettina)', en:'(Rabbit Rocchettina Style)', de:'(Kaninchen nach Rocchettina-Art)' },
-  'Selvaggina al Vino Rosso': { fr:'(Gibier au Vin Rouge)', en:'(Game in Red Wine)', de:'(Wildfleisch in Rotwein)' },
-  'Grigliata Mista di Carne': { fr:'(Grillade Mixte de Viandes)', en:'(Mixed Grilled Meat)', de:'(Gemischter Fleischteller vom Grill)' },
-  'Agnello alla Griglia': { fr:'(Agneau Grillé)', en:'(Grilled Lamb)', de:'(Gegrilltes Lamm)' },
-  'Roast Beef': { fr:'(Rosbif)', en:'(Roast Beef)', de:'(Roastbeef)' },
-  'Ravioli': { fr:'(Ravioli)', en:'(Ravioli)', de:'(Ravioli)' },
-  'Tagliatelle': { fr:'(Tagliatelle)', en:'(Tagliatelle)', de:'(Tagliatelle)' },
-  'Gnocchi': { fr:'(Gnocchi)', en:'(Gnocchi)', de:'(Gnocchi)' },
-  'Milanese': { fr:'(Milanaise)', en:'(Milanese)', de:'(Mailänder Schnitzel)' },
-  'Bistecca': { fr:'(Steak)', en:'(Steak)', de:'(Steak)' },
-  'Rostelle': { fr:'(Côtelettes)', en:'(Cutlets)', de:'(Koteletts)' },
-  'Salsiccia': { fr:'(Saucisse)', en:'(Sausage)', de:'(Wurst)' }
+const DISH_TRANS={
+  'Antipasto Tipico del Lago Bin':{fr:'(Assortiment du Lago Bin)',en:'(Typical Lago Bin Starter)',de:'(Lago Bin Vorspeise)'},
+  'Assortimento del Salumiere':{fr:'(Charcuterie fine)',en:'(Charcuterie Platter)',de:'(Aufschnittplatte)'},
+  'Prosciutto di Parma':{fr:'(Jambon de Parme)',en:'(Parma Ham)',de:'(Parmaschinken)'},
+  'Lumache in Umido':{fr:'(Escargots braisés)',en:'(Braised Snails)',de:'(Geschmorte Schnecken)'},
+  'Ravioli della Nonna':{fr:'(Ravioli maison)',en:"(Grandma's Ravioli)",de:'(Omas Ravioli)'},
+  'Tagliatelle di Pasta Fresca':{fr:'(Tagliatelles fraîches)',en:'(Fresh Tagliatelle)',de:'(Frische Tagliatelle)'},
+  'Gnocchi di Patate':{fr:'(Gnocchi de pommes de terre)',en:'(Potato Gnocchi)',de:'(Kartoffelgnocchi)'},
+  'Coniglio alla Rocchettina':{fr:'(Lapin à la Rocchettina)',en:'(Rabbit Rocchettina Style)',de:'(Kaninchen Rocchettina-Art)'},
+  'Selvaggina al Vino Rosso':{fr:'(Gibier au Vin Rouge)',en:'(Game in Red Wine)',de:'(Wildfleisch in Rotwein)'},
+  'Grigliata Mista di Carne':{fr:'(Grillade Mixte)',en:'(Mixed Grilled Meat)',de:'(Gemischter Grillteller)'},
+  'Agnello alla Griglia':{fr:'(Agneau Grillé)',en:'(Grilled Lamb)',de:'(Gegrilltes Lamm)'},
+  'Roast Beef':{fr:'(Rosbif)',en:'(Roast Beef)',de:'(Roastbeef)'},
+  'Ravioli':{fr:'(Ravioli)',en:'(Ravioli)',de:'(Ravioli)'},
+  'Tagliatelle':{fr:'(Tagliatelle)',en:'(Tagliatelle)',de:'(Tagliatelle)'},
+  'Gnocchi':{fr:'(Gnocchi)',en:'(Gnocchi)',de:'(Gnocchi)'},
+  'Milanese':{fr:'(Milanaise)',en:'(Milanese)',de:'(Mailänder Schnitzel)'},
+  'Bistecca':{fr:'(Steak)',en:'(Steak)',de:'(Steak)'},
+  'Rostelle':{fr:'(Côtelettes)',en:'(Cutlets)',de:'(Koteletts)'},
+  'Salsiccia':{fr:'(Saucisse)',en:'(Sausage)',de:'(Wurst)'}
 };
-function dishSub(name) {
-  if (currentLang === 'it') return '';
-  const tr = DISH_TRANS[name];
-  if (!tr || !tr[currentLang]) return '';
-  return '<div class="sub-trans" style="display:block;margin-top:3px;">' + tr[currentLang] + '</div>';
-}
+function dishSub(n){if(currentLang==='it')return '';const tr=DISH_TRANS[n];if(!tr||!tr[currentLang])return '';return '<div class="sub-trans" style="display:block;margin-top:3px;">'+tr[currentLang]+'</div>';}
 
-const PKG_CONFIG = {
-  lago_bin: { label:'Menù del Lago Bin', price:45, limit:0, dishes:[] },
-  gastro: { label:'Menù Gastronomico', price:40, limit:3, dishes:[
-    { section:'Antipasti', items:[{name:'Antipasto Tipico del Lago Bin'},{name:'Assortimento del Salumiere'},{name:'Prosciutto di Parma', sauces:['Melone','Grana']},{name:'Lumache in Umido'}]},
-    { section:'Primi Piatti', items:[{name:'Ravioli della Nonna', sauces:['Pomodoro','Burro e Salvia']},{name:'Tagliatelle di Pasta Fresca', sauces:['Selvaggina','Funghi']},{name:'Gnocchi di Patate', sauces:['Funghi','Formaggi con Gorgonzola']}]},
-    { section:'Secondi Piatti', items:[{name:'Coniglio alla Rocchettina'},{name:'Selvaggina al Vino Rosso'},{name:'Grigliata Mista di Carne'},{name:'Agnello alla Griglia'},{name:'Roast Beef'}]}
+const PKG_CONFIG={
+  lago_bin:{label:'Menù del Lago Bin',price:45,limit:0,dishes:[]},
+  gastro:{label:'Menù Gastronomico',price:40,limit:3,dishes:[
+    {section:'Antipasti',items:[{name:'Antipasto Tipico del Lago Bin'},{name:'Assortimento del Salumiere'},{name:'Prosciutto di Parma',sauces:['Melone','Grana']},{name:'Lumache in Umido'}]},
+    {section:'Primi Piatti',items:[{name:'Ravioli della Nonna',sauces:['Pomodoro','Burro e Salvia']},{name:'Tagliatelle di Pasta Fresca',sauces:['Selvaggina','Funghi']},{name:'Gnocchi di Patate',sauces:['Funghi','Formaggi con Gorgonzola']}]},
+    {section:'Secondi Piatti',items:[{name:'Coniglio alla Rocchettina'},{name:'Selvaggina al Vino Rosso'},{name:'Grigliata Mista di Carne'},{name:'Agnello alla Griglia'},{name:'Roast Beef'}]}
   ]},
-  degu: { label:'Menù Degustazione', price:30, limit:2, dishes:[
-    { section:'Antipasti', items:[{name:'Antipasto Tipico del Lago Bin'},{name:'Assortimento del Salumiere'},{name:'Prosciutto di Parma', sauces:['Melone','Grana']},{name:'Lumache in Umido'}]},
-    { section:'Secondi Piatti', items:[{name:'Coniglio alla Rocchettina'},{name:'Selvaggina al Vino Rosso'},{name:'Roast Beef'}]}
+  degu:{label:'Menù Degustazione',price:30,limit:2,dishes:[
+    {section:'Antipasti',items:[{name:'Antipasto Tipico del Lago Bin'},{name:'Assortimento del Salumiere'},{name:'Prosciutto di Parma',sauces:['Melone','Grana']},{name:'Lumache in Umido'}]},
+    {section:'Secondi Piatti',items:[{name:'Coniglio alla Rocchettina'},{name:'Selvaggina al Vino Rosso'},{name:'Roast Beef'}]}
   ]},
-  bambini: { label:'Menù Bambini', price:15, limit:1, dishes:[
-    { section:'Piatti a scelta', items:[{name:'Ravioli'},{name:'Tagliatelle'},{name:'Gnocchi'},{name:'Milanese'},{name:'Bistecca'},{name:'Rostelle'},{name:'Salsiccia'}]}
+  bambini:{label:'Menù Bambini',price:15,limit:1,dishes:[
+    {section:'Piatti a scelta',items:[{name:'Ravioli'},{name:'Tagliatelle'},{name:'Gnocchi'},{name:'Milanese'},{name:'Bistecca'},{name:'Rostelle'},{name:'Salsiccia'}]}
   ]}
 };
 
-let cart = [];
-let cartIdCounter = 0;
-let pkgPersons = {};
-let pkgPersonCounter = 0;
-let popupItemId = null;
-let popupPersons = [];
-let popupPersonCounter = 0;
-let inlineGelatoFlavors = [];
-let sorbettoType = null;
+// FIX: Cart course labels show "À la Carte" correctly
+const COURSE_MAP={
+  it:{menu:'🍽️ Menù',antipasti:'🥗 À la Carte — Antipasti',primi:'🍝 À la Carte — Primi',secondi:'🥩 À la Carte — Secondi',contorni:'🥦 À la Carte — Contorni',dolci:'🍰 Dolci',gelato:'🍦 Gelato',bevande:'🍷 Bevande'},
+  fr:{menu:'🍽️ Menu',antipasti:'🥗 À la Carte — Entrées',primi:'🍝 À la Carte — Plats Principaux',secondi:'🥩 À la Carte — Secondes',contorni:'🥦 À la Carte — Accompagnements',dolci:'🍰 Desserts',gelato:'🍦 Glace',bevande:'🍷 Boissons'},
+  en:{menu:'🍽️ Set Menu',antipasti:'🥗 À la Carte — Starters',primi:'🍝 À la Carte — First Courses',secondi:'🥩 À la Carte — Main Courses',contorni:'🥦 À la Carte — Sides',dolci:'🍰 Desserts',gelato:'🍦 Ice Cream',bevande:'🍷 Drinks'},
+  de:{menu:'🍽️ Menü',antipasti:'🥗 À la Carte — Vorspeisen',primi:'🍝 À la Carte — Erster Gang',secondi:'🥩 À la Carte — Hauptgerichte',contorni:'🥦 À la Carte — Beilagen',dolci:'🍰 Desserts',gelato:'🍦 Eis',bevande:'🍷 Getränke'}
+};
+const COURSE_ORDER=['menu','antipasti','primi','secondi','contorni','dolci','gelato','bevande'];
+function courseLabel(c){return(COURSE_MAP[currentLang]||COURSE_MAP.it)[c]||('📋 '+c);}
 
-// GELATO INLINE
-function renderInlineGelato() {
-  const container = document.getElementById('inline-flavours-gelato');
-  const note = document.getElementById('flavour-note-gelato');
-  if (!container) return;
-  const count = inlineGelatoFlavors.length;
-  container.innerHTML = GELATO_FLAVORS.map(f => {
-    const sel = inlineGelatoFlavors.includes(f);
-    const maxed = !sel && count >= 3;
-    return '<button class="flavour-chip ' + (sel?'selected':'') + ' ' + (maxed?'maxed':'') + '" onclick="toggleInlineFlavor(\'' + f + '\')">' + f + '</button>';
-  }).join('');
-  note.textContent = count > 0 ? 'Selezionati: ' + count + '/3' : 'Clicca per selezionare fino a 3 gusti';
+let cart=[],cartIdCounter=0,pkgPersons={},pkgPersonCounter=0;
+let popupItemId=null,popupPersons=[],popupPersonCounter=0;
+let inlineGelatoFlavors=[],sorbettoType=null;
+
+// ── VINI MODAL ──
+function openViniModal(){document.getElementById('vini-modal').classList.add('open');applyLang(currentLang);}
+function closeViniModal(){document.getElementById('vini-modal').classList.remove('open');}
+function addViniToCart(){
+  closeViniModal();
+  const qty=parseInt(prompt(t('vino_prompt'),'1'));
+  if(!qty||qty<1)return;
+  for(let i=0;i<qty;i++)cart.push({id:++cartIdCounter,itemId:'vino',name:t('vino_name'),price:0,course:'bevande',turno:'—',person:null,detail:t('vino_detail')});
+  updateCart();
 }
 
-function toggleInlineFlavor(f) {
-  if (inlineGelatoFlavors.includes(f)) {
-    inlineGelatoFlavors = inlineGelatoFlavors.filter(x => x !== f);
-  } else {
-    if (inlineGelatoFlavors.length >= 3) return;
-    inlineGelatoFlavors.push(f);
-  }
+// ── GELATO INLINE (FIX: translated chips) ──
+function renderInlineGelato(){
+  const c=document.getElementById('inline-flavours-gelato'),note=document.getElementById('flavour-note-gelato');
+  if(!c)return;
+  const count=inlineGelatoFlavors.length;
+  c.innerHTML=GELATO_FLAVORS.map(f=>{
+    const sel=inlineGelatoFlavors.includes(f.it),maxed=!sel&&count>=3;
+    return'<button class="flavour-chip'+(sel?' selected':'')+(maxed?' maxed':'')+'" onclick="toggleInlineFlavor(\''+f.it.replace(/'/g,"\\'")+'\')">'+( f[currentLang]||f.it)+'</button>';
+  }).join('');
+  note.textContent=count>0?t('gusti_sel',count):t('gusti_hint');
+}
+function toggleInlineFlavor(f){
+  if(inlineGelatoFlavors.includes(f))inlineGelatoFlavors=inlineGelatoFlavors.filter(x=>x!==f);
+  else{if(inlineGelatoFlavors.length>=3)return;inlineGelatoFlavors.push(f);}
   renderInlineGelato();
 }
-
-function selectSorbettoType(type) {
-  sorbettoType = type;
-  document.getElementById('sorb-alc').classList.toggle('selected', type==='Alcolico');
-  document.getElementById('sorb-noalc').classList.toggle('selected', type==='Senza Alcol');
+function selectSorbettoType(type){
+  sorbettoType=type;
+  document.getElementById('sorb-alc').classList.toggle('selected',type==='Alcolico');
+  document.getElementById('sorb-noalc').classList.toggle('selected',type==='Senza Alcol');
   document.getElementById('sorbetto-inline-options').classList.add('show');
 }
 
-// QTY
-function changeQty(itemId, delta) {
-  if (delta > 0) { openPopup(itemId); return; }
-  if (delta < 0) {
-    const idx = cart.map(c => c.itemId).lastIndexOf(itemId);
-    if (idx >= 0) { cart.splice(idx, 1); updateCart(); }
-  }
+// ── QTY ──
+function changeQty(id,delta){
+  if(delta>0){openPopup(id);return;}
+  if(delta<0){const idx=cart.map(c=>c.itemId).lastIndexOf(id);if(idx>=0){cart.splice(idx,1);updateCart();}}
 }
 
-// POPUP
-function openPopup(itemId) {
-  popupItemId = itemId;
-  popupPersons = [];
-  popupPersonCounter = 0;
-  const item = ITEMS[itemId];
-  if (!item) return;
-  document.getElementById('popup-title').textContent = item.name;
-  let subtitle = t('subtitle_default');
-  if (item.isGelato) subtitle = t('subtitle_gelato');
-  else if (item.isSorbetto) subtitle = t('subtitle_sorbetto');
-  else if (item.multiSelect) subtitle = t('subtitle_multi')(item.multiSelect);
-  else if (item.sauces.length > 0) subtitle = t('subtitle_sauce');
-  document.getElementById('popup-subtitle').textContent = subtitle;
-  document.getElementById('popup-persons').innerHTML = '';
+// ── POPUP ──
+function openPopup(id){
+  popupItemId=id;popupPersons=[];popupPersonCounter=0;
+  const item=ITEMS[id];if(!item)return;
+  document.getElementById('popup-title').textContent=item.name;
+  let sub=t('sub_default');
+  if(item.isGelato)sub=t('sub_gelato');
+  else if(item.isSorbetto)sub=t('sub_sorbetto');
+  else if(item.multiSelect)sub=t('sub_multi',item.multiSelect);
+  else if(item.sauces.length>0)sub=t('sub_sauce');
+  document.getElementById('popup-subtitle').textContent=sub;
+  document.getElementById('popup-confirm').textContent=t('conferma_btn');
+  document.getElementById('popup-add-person').textContent=t('add_person');
+  document.getElementById('popup-persons').innerHTML='';
   popupAddPerson();
   document.getElementById('popup-overlay').classList.add('open');
 }
-
-function closePopup() {
-  document.getElementById('popup-overlay').classList.remove('open');
-  popupItemId = null;
-  popupPersons = [];
-}
-
-function handleOverlayClick(e) {
-  if (e.target === document.getElementById('popup-overlay')) closePopup();
-}
-
-function popupAddPerson() {
-  const pid = ++popupPersonCounter;
-  const item = ITEMS[popupItemId];
-  const isDessert = item.course === 'dolci' || item.course === 'gelato';
-  popupPersons.push({
-    pid, name: '',
-    sauce: (item.sauces.length === 0 && !item.isGelato && !item.isSorbetto) ? 'none' : null,
-    multiSauces: item.multiSelect ? [] : null,
-    cottura: item.cottura ? null : 'none',
-    flavors: [],
-    sorbettoType: item.isSorbetto ? null : 'none',
-    portata: isDessert ? 'Dessert' : null
-  });
+function closePopup(){document.getElementById('popup-overlay').classList.remove('open');popupItemId=null;popupPersons=[];}
+function handleOverlayClick(e){if(e.target===document.getElementById('popup-overlay'))closePopup();}
+function popupAddPerson(){
+  const pid=++popupPersonCounter,item=ITEMS[popupItemId];
+  const isDessert=item.course==='dolci'||item.course==='gelato';
+  popupPersons.push({pid,name:'',sauce:(item.sauces.length===0&&!item.isGelato&&!item.isSorbetto)?'none':null,multiSauces:item.multiSelect?[]:null,cottura:item.cottura?null:'none',flavors:[],sorbettoType:item.isSorbetto?null:'none',portata:isDessert?'Dessert':null});
   renderPopupPersons();
 }
-
-function renderPopupPersons() {
-  const item = ITEMS[popupItemId];
-  const container = document.getElementById('popup-persons');
-  container.innerHTML = '';
-
-  popupPersons.forEach((p, idx) => {
-    const div = document.createElement('div');
-    div.className = 'person-row';
-
-    let sauceHtml = '';
-    if (item.isGelato) {
-      const count = p.flavors.length;
-      sauceHtml = '<div class="sauce-label-sm">' + t('gusti_label') + '</div><div class="chip-group">' +
-        GELATO_FLAVORS.map(f => {
-          const sel = p.flavors.includes(f);
-          const maxed = !sel && count >= 3;
-          return '<button class="chip ' + (sel?'selected':'') + ' ' + (maxed?'maxed':'') + '" onclick="togglePopupFlavor(' + p.pid + ',\'' + f + '\')">' + f + '</button>';
-        }).join('') + '</div>' +
-        (count === 0 ? '<div style="font-size:11px;color:#b31e1e;font-style:italic;">' + t('seleziona_gusto') + '</div>' : '');
-    } else if (item.isSorbetto) {
-      sauceHtml = '<div class="sauce-label-sm">' + t('preferenza_label') + '</div><div class="chip-group">' +
-        '<button class="chip ' + (p.sorbettoType==='Alcolico'?'selected':'') + '" onclick="popupSetSorbetto(' + p.pid + ',\'Alcolico\')">' + t('con_alcol') + '</button>' +
-        '<button class="chip ' + (p.sorbettoType==='Senza Alcol'?'selected':'') + '" onclick="popupSetSorbetto(' + p.pid + ',\'Senza Alcol\')">' + t('senza_alcol') + '</button>' +
-        '</div>';
-    } else if (item.multiSelect && p.multiSauces !== null) {
-      const selCount = p.multiSauces.length;
-      const needed = item.multiSelect;
-      sauceHtml = '<div class="sauce-label-sm">' + t('scegli_n')(needed, selCount) + '</div><div class="chip-group">' +
-        item.sauces.map(s => {
-          const sel = p.multiSauces.includes(s);
-          const maxed = !sel && selCount >= needed;
-          return '<button class="chip ' + (sel?'selected':'') + ' ' + (maxed?'maxed':'') + '" onclick="popupToggleMultiSauce(' + p.pid + ',\'' + s.replace(/'/g,"\\'") + '\')">' + s + '</button>';
-        }).join('') + '</div>' +
-        (selCount < needed ? '<div style="font-size:11px;color:#b31e1e;font-style:italic;margin-top:4px;">' + t('seleziona_ancora')(needed - selCount) + '</div>' : '');
-    } else if (item.sauces.length > 0) {
-      sauceHtml = '<div class="sauce-label-sm">' + t('condimento_label') + '</div><div class="chip-group">' +
-        item.sauces.map(s => '<button class="chip ' + (p.sauce===s?'selected':'') + '" onclick="popupSelectSauce(' + p.pid + ',\'' + s + '\')">' + s + '</button>').join('') +
-        '</div>';
+function renderPopupPersons(){
+  const item=ITEMS[popupItemId],c=document.getElementById('popup-persons');
+  c.innerHTML='';
+  popupPersons.forEach((p,idx)=>{
+    const div=document.createElement('div');div.className='person-row';
+    let sauce='';
+    if(item.isGelato){
+      const count=p.flavors.length;
+      sauce='<div class="sauce-label-sm">'+t('gusti_label')+'</div><div class="chip-group">'+
+        GELATO_FLAVORS.map(f=>{const sel=p.flavors.includes(f.it),mx=!sel&&count>=3;return'<button class="chip'+(sel?' selected':'')+(mx?' maxed':'')+'" onclick="togglePopupFlavor('+p.pid+',\''+f.it.replace(/'/g,"\\'")+'\')">'+( f[currentLang]||f.it)+'</button>';}).join('')+
+        '</div>'+(count===0?'<div style="font-size:11px;color:#b31e1e;font-style:italic;">'+t('seleziona_gusto')+'</div>':'');
+    }else if(item.isSorbetto){
+      sauce='<div class="sauce-label-sm">'+t('preferenza_label')+'</div><div class="chip-group">'+
+        '<button class="chip'+(p.sorbettoType==='Alcolico'?' selected':'')+'" onclick="popupSetSorbetto('+p.pid+',\'Alcolico\')">'+t('con_alcol')+'</button>'+
+        '<button class="chip'+(p.sorbettoType==='Senza Alcol'?' selected':'')+'" onclick="popupSetSorbetto('+p.pid+',\'Senza Alcol\')">'+t('senza_alcol')+'</button></div>';
+    }else if(item.multiSelect&&p.multiSauces!==null){
+      const sc=p.multiSauces.length,nd=item.multiSelect;
+      sauce='<div class="sauce-label-sm">'+t('scegli_n',nd,sc)+'</div><div class="chip-group">'+
+        item.sauces.map(s=>{const sel=p.multiSauces.includes(s),mx=!sel&&sc>=nd;return'<button class="chip'+(sel?' selected':'')+(mx?' maxed':'')+'" onclick="popupToggleMultiSauce('+p.pid+',\''+s.replace(/'/g,"\\'")+'\')">'+s+'</button>';}).join('')+
+        '</div>'+(sc<nd?'<div style="font-size:11px;color:#b31e1e;font-style:italic;margin-top:4px;">'+t('seleziona_ancora',nd-sc)+'</div>':'');
+    }else if(item.sauces.length>0){
+      sauce='<div class="sauce-label-sm">'+t('condimento_label')+'</div><div class="chip-group">'+
+        item.sauces.map(s=>'<button class="chip'+(p.sauce===s?' selected':'')+'" onclick="popupSelectSauce('+p.pid+',\''+s+'\')">'+s+'</button>').join('')+'</div>';
     }
-
-    let cotturaHtml = '';
-    if (item.cottura) {
-      cotturaHtml = '<div class="cottura-selector"><div class="cottura-label">' + t('cottura_label') + '</div><div class="cottura-chips">' +
-        COTTURA_OPTIONS.map(c => '<button class="cottura-chip ' + (p.cottura===c?'selected':'') + '" onclick="popupSetCottura(' + p.pid + ',\'' + c.replace(/'/g,"\\'") + '\')">' + c + '</button>').join('') +
-        '</div></div>';
-    }
-
-    let portataHtml = '';
-    if (item.course !== 'dolci' && item.course !== 'gelato') {
-      portataHtml = '<div class="portata-selector"><div class="portata-label">' + t('turno_label') + '</div><div class="portata-chips">' +
-        TURNO_OPTIONS.map(pt => '<button class="portata-chip ' + (p.portata===pt?'selected':'') + '" onclick="popupSetPortata(' + p.pid + ',\'' + pt + '\')">' + pt + '</button>').join('') +
-        '</div>' + (!p.portata ? '<div style="font-size:11px;color:#b31e1e;font-style:italic;margin-top:4px;">' + t('seleziona_turno') + '</div>' : '') + '</div>';
-    }
-
-    const canRemove = popupPersons.length > 1;
-    div.innerHTML =
-      '<div class="person-icon">' + (idx+1) + '</div>' +
-      '<div class="person-fields">' +
-        '<input class="name-input" type="text" placeholder="' + t('name_placeholder') + '" value="' + p.name + '" oninput="setPopupName(' + p.pid + ',this.value)">' +
-        sauceHtml + cotturaHtml + portataHtml +
-      '</div>' +
-      (canRemove ? '<button class="remove-person-btn" onclick="removePopupPerson(' + p.pid + ')">✕</button>' : '');
-    container.appendChild(div);
+    let cottura='';
+    if(item.cottura)cottura='<div class="cottura-selector"><div class="cottura-label">'+t('cottura_label')+'</div><div class="cottura-chips">'+COTTURA_OPTIONS.map(c=>'<button class="cottura-chip'+(p.cottura===c?' selected':'')+'" onclick="popupSetCottura('+p.pid+',\''+c.replace(/'/g,"\\'")+'\')">'+c+'</button>').join('')+'</div></div>';
+    let portata='';
+    if(item.course!=='dolci'&&item.course!=='gelato')portata='<div class="portata-selector"><div class="portata-label">'+t('turno_label')+'</div><div class="portata-chips">'+TURNO_OPTIONS.map(pt=>'<button class="portata-chip'+(p.portata===pt?' selected':'')+'" onclick="popupSetPortata('+p.pid+',\''+pt+'\')">'+pt+'</button>').join('')+'</div>'+(!p.portata?'<div style="font-size:11px;color:#b31e1e;font-style:italic;margin-top:4px;">'+t('seleziona_turno')+'</div>':'')+'</div>';
+    div.innerHTML='<div class="person-icon">'+(idx+1)+'</div><div class="person-fields"><input class="name-input" type="text" placeholder="'+t('name_ph')+'" value="'+p.name+'" oninput="setPopupName('+p.pid+',this.value)">'+sauce+cottura+portata+'</div>'+(popupPersons.length>1?'<button class="remove-person-btn" onclick="removePopupPerson('+p.pid+')">✕</button>':'');
+    c.appendChild(div);
   });
   updatePopupConfirm();
 }
-
-function setPopupName(pid,val){ const p=popupPersons.find(x=>x.pid===pid); if(p) p.name=val; }
-function popupSelectSauce(pid,sauce){ const p=popupPersons.find(x=>x.pid===pid); if(p) p.sauce=sauce; renderPopupPersons(); }
-function popupToggleMultiSauce(pid,sauce){ const p=popupPersons.find(x=>x.pid===pid); if(!p) return; const item=ITEMS[popupItemId]; if(p.multiSauces.includes(sauce)) p.multiSauces=p.multiSauces.filter(s=>s!==sauce); else if(p.multiSauces.length<item.multiSelect) p.multiSauces.push(sauce); renderPopupPersons(); }
-function togglePopupFlavor(pid,flavor){ const p=popupPersons.find(x=>x.pid===pid); if(!p) return; if(p.flavors.includes(flavor)) p.flavors=p.flavors.filter(f=>f!==flavor); else if(p.flavors.length<3) p.flavors.push(flavor); renderPopupPersons(); }
-function popupSetSorbetto(pid,type){ const p=popupPersons.find(x=>x.pid===pid); if(p) p.sorbettoType=type; renderPopupPersons(); }
-function popupSetCottura(pid,c){ const p=popupPersons.find(x=>x.pid===pid); if(p) p.cottura=c; renderPopupPersons(); }
-function popupSetPortata(pid,pt){ const p=popupPersons.find(x=>x.pid===pid); if(p) p.portata=pt; renderPopupPersons(); }
-function removePopupPerson(pid){ popupPersons=popupPersons.filter(p=>p.pid!==pid); renderPopupPersons(); }
-
-function updatePopupConfirm() {
-  const item = ITEMS[popupItemId];
-  const allOk = popupPersons.length > 0 && popupPersons.every(p => {
-    if (item.isGelato && p.flavors.length === 0) return false;
-    if (item.isSorbetto && !p.sorbettoType) return false;
-    if (item.multiSelect && p.multiSauces.length < item.multiSelect) return false;
-    if (!item.multiSelect && item.sauces.length > 0 && !p.sauce) return false;
-    if (item.cottura && p.cottura === null) return false;
-    if (!p.portata) return false;
-    return true;
+function setPopupName(pid,v){const p=popupPersons.find(x=>x.pid===pid);if(p)p.name=v;}
+function popupSelectSauce(pid,s){const p=popupPersons.find(x=>x.pid===pid);if(p)p.sauce=s;renderPopupPersons();}
+function popupToggleMultiSauce(pid,s){const p=popupPersons.find(x=>x.pid===pid);if(!p)return;const item=ITEMS[popupItemId];if(p.multiSauces.includes(s))p.multiSauces=p.multiSauces.filter(x=>x!==s);else if(p.multiSauces.length<item.multiSelect)p.multiSauces.push(s);renderPopupPersons();}
+function togglePopupFlavor(pid,f){const p=popupPersons.find(x=>x.pid===pid);if(!p)return;if(p.flavors.includes(f))p.flavors=p.flavors.filter(x=>x!==f);else if(p.flavors.length<3)p.flavors.push(f);renderPopupPersons();}
+function popupSetSorbetto(pid,tp){const p=popupPersons.find(x=>x.pid===pid);if(p)p.sorbettoType=tp;renderPopupPersons();}
+function popupSetCottura(pid,co){const p=popupPersons.find(x=>x.pid===pid);if(p)p.cottura=co;renderPopupPersons();}
+function popupSetPortata(pid,pt){const p=popupPersons.find(x=>x.pid===pid);if(p)p.portata=pt;renderPopupPersons();}
+function removePopupPerson(pid){popupPersons=popupPersons.filter(p=>p.pid!==pid);renderPopupPersons();}
+function isPersonOk(p,item){
+  if(item.isGelato&&p.flavors.length===0)return false;
+  if(item.isSorbetto&&!p.sorbettoType)return false;
+  if(item.multiSelect&&p.multiSauces.length<item.multiSelect)return false;
+  if(!item.multiSelect&&item.sauces.length>0&&!p.sauce)return false;
+  if(item.cottura&&p.cottura===null)return false;
+  if(!p.portata)return false;
+  return true;
+}
+function updatePopupConfirm(){
+  const item=ITEMS[popupItemId];
+  const ok=popupPersons.length>0&&popupPersons.every(p=>isPersonOk(p,item));
+  document.getElementById('popup-confirm').className='popup-confirm-btn '+(ok?'ready':'not-ready');
+}
+function popupConfirm(){
+  const item=ITEMS[popupItemId];
+  if(!popupPersons.every(p=>isPersonOk(p,item)))return;
+  popupPersons.forEach(p=>{
+    let d=[];
+    if(item.isGelato)d.push(p.flavors.map(f=>flavorLabel(f)).join(', '));
+    else if(item.isSorbetto)d.push(p.sorbettoType);
+    else if(item.multiSelect&&p.multiSauces.length)d.push(p.multiSauces.join(' + '));
+    else if(p.sauce&&p.sauce!=='none')d.push(p.sauce);
+    if(item.cottura&&p.cottura&&p.cottura!=='none')d.push('Cottura: '+p.cottura);
+    cart.push({id:++cartIdCounter,itemId:popupItemId,name:item.name,price:item.price,course:item.course,turno:p.portata,person:p.name||null,detail:d.join(' · ')});
   });
-  const btn = document.getElementById('popup-confirm');
-  btn.className = 'popup-confirm-btn ' + (allOk ? 'ready' : 'not-ready');
+  closePopup();updateCart();
 }
 
-function popupConfirm() {
-  const item = ITEMS[popupItemId];
-  const allOk = popupPersons.length > 0 && popupPersons.every(p => {
-    if (item.isGelato && p.flavors.length === 0) return false;
-    if (item.isSorbetto && !p.sorbettoType) return false;
-    if (item.multiSelect && p.multiSauces.length < item.multiSelect) return false;
-    if (!item.multiSelect && item.sauces.length > 0 && !p.sauce) return false;
-    if (item.cottura && p.cottura === null) return false;
-    if (!p.portata) return false;
-    return true;
-  });
-  if (!allOk) return;
-
-  popupPersons.forEach(p => {
-    let details = [];
-    if (item.isGelato) details.push(p.flavors.join(', '));
-    else if (item.isSorbetto) details.push(p.sorbettoType);
-    else if (item.multiSelect && p.multiSauces && p.multiSauces.length > 0) details.push(p.multiSauces.join(' + '));
-    else if (p.sauce && p.sauce !== 'none') details.push(p.sauce);
-    if (item.cottura && p.cottura && p.cottura !== 'none') details.push('Cottura: ' + p.cottura);
-
-    cart.push({
-      id: ++cartIdCounter,
-      itemId: popupItemId,
-      name: item.name,
-      price: item.price,
-      course: item.course,
-      turno: p.portata,
-      person: p.name || null,
-      detail: details.join(' · ')
-    });
-  });
-  closePopup();
-  updateCart();
+// ── PACKAGES ──
+function togglePkgAccordion(key,btn){
+  const acc=document.getElementById('acc-'+key),open=acc.classList.contains('open');
+  acc.classList.toggle('open',!open);
+  btn.textContent=open?t('vedi'):t('chiudi');
+  if(!open&&(!pkgPersons[key]||!pkgPersons[key].length))addPkgPerson(key);
 }
-
-// PACKAGES
-function togglePkgAccordion(key, btnEl) {
-  const acc = document.getElementById('acc-' + key);
-  const isOpen = acc.classList.contains('open');
-  acc.classList.toggle('open', !isOpen);
-  btnEl.textContent = isOpen ? t('vedi') : t('chiudi');
-  if (!isOpen && (!pkgPersons[key] || pkgPersons[key].length === 0)) {
-    addPkgPerson(key);
-  }
-}
-
-function addPkgPerson(key) {
-  if (!pkgPersons[key]) pkgPersons[key] = [];
-  const pid = ++pkgPersonCounter;
-  pkgPersons[key].push({ pid, name:'', selections:[], confirmed:false });
-  const addBtn = document.getElementById('addperson-' + key);
-  if (addBtn) addBtn.style.display = 'none';
+function addPkgPerson(key){
+  if(!pkgPersons[key])pkgPersons[key]=[];
+  const pid=++pkgPersonCounter;
+  pkgPersons[key].push({pid,name:'',selections:[],confirmed:false});
+  const ab=document.getElementById('addperson-'+key);if(ab)ab.style.display='none';
   renderPkgPersons(key);
 }
-
-function renderPkgPersons(key) {
-  const cfg = PKG_CONFIG[key];
-  const persons = pkgPersons[key] || [];
-  const container = document.getElementById('persons-' + key);
-  if (!container) return;
-  container.innerHTML = '';
-
-  persons.forEach((p, idx) => {
-    const div = document.createElement('div');
-    div.className = 'pkg-person-block';
-
-    let dishesHtml = '';
-    if (cfg.limit === 0) {
-      dishesHtml = '<div style="font-size:13px;color:#7a5a3a;font-style:italic;">' + t('cinque_portate') + '</div>';
-    } else {
-      const count = p.selections.length;
-      dishesHtml = '<div class="pkg-counter ' + (count>=cfg.limit?'done':'') + '">' + t('piatti_sel')(count, cfg.limit) + '</div>';
-      cfg.dishes.forEach((section, sIdx) => {
-        dishesHtml += '<div class="pkg-section-head">📍 ' + section.section + '</div>';
-        section.items.forEach((dish, iIdx) => {
-          const sel = p.selections.find(s => s.sIdx===sIdx && s.iIdx===iIdx);
-          dishesHtml += '<div class="pkg-dish-row"><div class="pkg-dish-name">' + dish.name + dishSub(dish.name) + '</div>' +
-            '<button class="pkg-select-btn ' + (sel?'selected':'') + '" data-pkgaction="select" data-pkgkey="' + key + '" data-pid="' + p.pid + '" data-sidx="' + sIdx + '" data-iidx="' + iIdx + '">' + (sel?t('selezionato_btn'):t('scegli_btn')) + '</button></div>';
-          if (sel && dish.sauces && dish.sauces.length > 0) {
-            dishesHtml += '<div class="pkg-sauce-row"><div class="sauce-label-sm" style="margin-bottom:4px;">' + t('condimento_row') + '</div><div class="pkg-sauce-chips">' +
-              dish.sauces.map((s,si) => '<button class="chip ' + (sel.sauce===s?'selected':'') + '" data-pkgaction="sauce" data-pkgkey="' + key + '" data-pid="' + p.pid + '" data-sidx="' + sIdx + '" data-iidx="' + iIdx + '" data-sauceidx="' + si + '">' + s + '</button>').join('') +
-              '</div></div>';
-          }
+function renderPkgPersons(key){
+  const cfg=PKG_CONFIG[key],persons=pkgPersons[key]||[];
+  const container=document.getElementById('persons-'+key);if(!container)return;
+  container.innerHTML='';
+  persons.forEach((p,idx)=>{
+    const div=document.createElement('div');div.className='pkg-person-block';
+    let dh='';
+    if(cfg.limit===0){dh='<div style="font-size:13px;color:#7a5a3a;font-style:italic;">'+t('cinque_portate')+'</div>';}
+    else{
+      const cnt=p.selections.length;
+      dh='<div class="pkg-counter'+(cnt>=cfg.limit?' done':'')+'">'+t('piatti_sel',cnt,cfg.limit)+'</div>';
+      cfg.dishes.forEach((sec,sIdx)=>{
+        dh+='<div class="pkg-section-head">📍 '+sec.section+'</div>';
+        sec.items.forEach((dish,iIdx)=>{
+          const sel=p.selections.find(s=>s.sIdx===sIdx&&s.iIdx===iIdx);
+          dh+='<div class="pkg-dish-row"><div class="pkg-dish-name">'+dish.name+dishSub(dish.name)+'</div><button class="pkg-select-btn'+(sel?' selected':'')+'" data-pa="select" data-pk="'+key+'" data-pid="'+p.pid+'" data-si="'+sIdx+'" data-ii="'+iIdx+'">'+(sel?t('selezionato_btn'):t('scegli_btn'))+'</button></div>';
+          if(sel&&dish.sauces&&dish.sauces.length>0)dh+='<div class="pkg-sauce-row"><div class="sauce-label-sm" style="margin-bottom:4px;">'+t('condimento_row')+'</div><div class="pkg-sauce-chips">'+dish.sauces.map((s,si)=>'<button class="chip'+(sel.sauce===s?' selected':'')+'" data-pa="sauce" data-pk="'+key+'" data-pid="'+p.pid+'" data-si="'+sIdx+'" data-ii="'+iIdx+'" data-sai="'+si+'">'+s+'</button>').join('')+'</div></div>';
         });
       });
     }
-
-    const allDetailsOk = p.selections.every(s => s.sauce !== null && s.cottura !== null);
-    const isReady = (cfg.limit === 0 || p.selections.length >= cfg.limit) && allDetailsOk;
-
-    div.innerHTML =
-      '<div class="pkg-person-header">' +
-        '<div class="pkg-person-label">' + t('persona') + ' ' + (idx+1) + (p.confirmed?' ✅':'') + '</div>' +
-        (persons.length > 1 ? '<button class="pkg-remove-person" data-pkgaction="removeperson" data-pkgkey="' + key + '" data-pid="' + p.pid + '">✕</button>' : '') +
-      '</div>' +
-      '<input class="pkg-person-name-input" type="text" placeholder="' + t('name_placeholder') + '" value="' + p.name + '" data-pkgaction="setname" data-pkgkey="' + key + '" data-pid="' + p.pid + '">' +
-      dishesHtml +
-      (!p.confirmed ?
-        '<button class="pkg-confirm-btn ' + (isReady?'active':'inactive') + '" data-pkgaction="confirm" data-pkgkey="' + key + '" data-pid="' + p.pid + '">' + t('conferma_aggiungi') + '</button>' :
-        '<button class="pkg-confirm-btn confirmed" disabled>' + t('confermato') + '</button>' +
-        '<button class="pkg-modify-btn" data-pkgaction="modify" data-pkgkey="' + key + '" data-pid="' + p.pid + '">' + t('modifica') + '</button>'
-      );
+    const allOk=p.selections.every(s=>s.sauce!==null&&s.cottura!==null);
+    const ready=(cfg.limit===0||p.selections.length>=cfg.limit)&&allOk;
+    div.innerHTML='<div class="pkg-person-header"><div class="pkg-person-label">'+t('persona')+' '+(idx+1)+(p.confirmed?' ✅':'')+'</div>'+(persons.length>1?'<button class="pkg-remove-person" data-pa="removeperson" data-pk="'+key+'" data-pid="'+p.pid+'">✕</button>':'')+'</div>'+
+      '<input class="pkg-person-name-input" type="text" placeholder="'+t('name_ph')+'" value="'+p.name+'" data-pa="setname" data-pk="'+key+'" data-pid="'+p.pid+'">'+dh+
+      (!p.confirmed?'<button class="pkg-confirm-btn '+(ready?'active':'inactive')+'" data-pa="confirm" data-pk="'+key+'" data-pid="'+p.pid+'">'+t('conferma_aggiungi')+'</button>':
+        '<button class="pkg-confirm-btn confirmed" disabled>'+t('confermato')+'</button><button class="pkg-modify-btn" data-pa="modify" data-pk="'+key+'" data-pid="'+p.pid+'">'+t('modifica')+'</button>');
     container.appendChild(div);
   });
-
-  const addBtn = document.getElementById('addperson-' + key);
-  if (addBtn) {
-    const lastConf = persons.length > 0 && persons[persons.length-1].confirmed;
-    addBtn.style.display = (persons.length === 0 || lastConf) ? 'block' : 'none';
-  }
+  const ab=document.getElementById('addperson-'+key);
+  if(ab){const lc=persons.length>0&&persons[persons.length-1].confirmed;ab.style.display=(persons.length===0||lc)?'block':'none';}
 }
-
-document.addEventListener('click', e => {
-  const btn = e.target.closest('[data-pkgaction]');
-  if (!btn) return;
-  const action = btn.getAttribute('data-pkgaction');
-  const key = btn.getAttribute('data-pkgkey');
-  const pid = parseInt(btn.getAttribute('data-pid'));
-  const p = (pkgPersons[key]||[]).find(x => x.pid===pid);
-  if (!p && action !== 'setname') return;
-  const cfg = PKG_CONFIG[key];
-
-  if (action === 'select') {
-    if (p.confirmed) return;
-    const sIdx = parseInt(btn.getAttribute('data-sidx'));
-    const iIdx = parseInt(btn.getAttribute('data-iidx'));
-    const existingIdx = p.selections.findIndex(s => s.sIdx===sIdx && s.iIdx===iIdx);
-    if (existingIdx >= 0) {
-      p.selections.splice(existingIdx, 1);
-    } else {
-      if (cfg.limit > 0 && p.selections.length >= cfg.limit) return;
-      const dish = cfg.dishes[sIdx].items[iIdx];
-      p.selections.push({ sIdx, iIdx, dish: dish.name, sauce: (dish.sauces&&dish.sauces.length>0)?null:'none', cottura:'none' });
-    }
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('[data-pa]');if(!btn)return;
+  const action=btn.getAttribute('data-pa'),key=btn.getAttribute('data-pk'),pid=parseInt(btn.getAttribute('data-pid'));
+  const p=(pkgPersons[key]||[]).find(x=>x.pid===pid);
+  if(!p&&action!=='setname')return;
+  const cfg=PKG_CONFIG[key];
+  if(action==='select'){
+    if(p.confirmed)return;
+    const sIdx=parseInt(btn.getAttribute('data-si')),iIdx=parseInt(btn.getAttribute('data-ii'));
+    const ei=p.selections.findIndex(s=>s.sIdx===sIdx&&s.iIdx===iIdx);
+    if(ei>=0)p.selections.splice(ei,1);
+    else{if(cfg.limit>0&&p.selections.length>=cfg.limit)return;const dish=cfg.dishes[sIdx].items[iIdx];p.selections.push({sIdx,iIdx,dish:dish.name,sauce:(dish.sauces&&dish.sauces.length>0)?null:'none',cottura:'none'});}
     renderPkgPersons(key);
-  } else if (action === 'sauce') {
-    if (p.confirmed) return;
-    const sIdx = parseInt(btn.getAttribute('data-sidx'));
-    const iIdx = parseInt(btn.getAttribute('data-iidx'));
-    const si = parseInt(btn.getAttribute('data-sauceidx'));
-    const sel = p.selections.find(s => s.sIdx===sIdx && s.iIdx===iIdx);
-    if (sel) sel.sauce = cfg.dishes[sIdx].items[iIdx].sauces[si];
+  }else if(action==='sauce'){
+    if(p.confirmed)return;
+    const sIdx=parseInt(btn.getAttribute('data-si')),iIdx=parseInt(btn.getAttribute('data-ii')),sai=parseInt(btn.getAttribute('data-sai'));
+    const sel=p.selections.find(s=>s.sIdx===sIdx&&s.iIdx===iIdx);
+    if(sel)sel.sauce=cfg.dishes[sIdx].items[iIdx].sauces[sai];
     renderPkgPersons(key);
-  } else if (action === 'removeperson') {
-    removePkgPerson(key, pid);
-  } else if (action === 'confirm') {
-    confirmPkgPerson(key, pid);
-  } else if (action === 'modify') {
-    modifyPkgPerson(key, pid);
-  }
+  }else if(action==='removeperson'){removePkgPerson(key,pid);}
+  else if(action==='confirm'){confirmPkgPerson(key,pid);}
+  else if(action==='modify'){modifyPkgPerson(key,pid);}
 });
-
-document.addEventListener('input', e => {
-  const el = e.target.closest('[data-pkgaction="setname"]');
-  if (!el) return;
-  const key = el.getAttribute('data-pkgkey');
-  const pid = parseInt(el.getAttribute('data-pid'));
-  const p = (pkgPersons[key]||[]).find(x => x.pid===pid);
-  if (p) p.name = el.value;
+document.addEventListener('input',e=>{
+  const el=e.target.closest('[data-pa="setname"]');if(!el)return;
+  const key=el.getAttribute('data-pk'),pid=parseInt(el.getAttribute('data-pid'));
+  const p=(pkgPersons[key]||[]).find(x=>x.pid===pid);if(p)p.name=el.value;
 });
-
-function confirmPkgPerson(key, pid) {
-  const p = (pkgPersons[key]||[]).find(x => x.pid===pid);
-  if (!p) return;
-  const cfg = PKG_CONFIG[key];
-  if (cfg.limit > 0 && p.selections.length < cfg.limit) return;
-  const allDetailsOk = p.selections.every(s => s.sauce !== null && s.cottura !== null);
-  if (!allDetailsOk) return;
-  p.confirmed = true;
-  addPkgToCart(key, pid);
-  renderPkgPersons(key);
-  updateCart();
+function confirmPkgPerson(key,pid){
+  const p=(pkgPersons[key]||[]).find(x=>x.pid===pid);if(!p)return;
+  const cfg=PKG_CONFIG[key];
+  if(cfg.limit>0&&p.selections.length<cfg.limit)return;
+  if(!p.selections.every(s=>s.sauce!==null&&s.cottura!==null))return;
+  p.confirmed=true;addPkgToCart(key,pid);renderPkgPersons(key);updateCart();
+}
+function modifyPkgPerson(key,pid){
+  const p=(pkgPersons[key]||[]).find(x=>x.pid===pid);
+  if(p){p.confirmed=false;cart=cart.filter(c=>!(c.isPkg&&c.pkgKey===key&&c.pkgPid===pid));renderPkgPersons(key);updateCart();}
+}
+function addPkgToCart(key,pid){
+  const p=(pkgPersons[key]||[]).find(x=>x.pid===pid),cfg=PKG_CONFIG[key];
+  if(!p||!p.confirmed)return;
+  cart=cart.filter(c=>!(c.isPkg&&c.pkgKey===key&&c.pkgPid===pid));
+  const detail=cfg.limit===0?t('cinque_portate'):p.selections.map((s,i)=>{let d=(i+1)+'. '+s.dish;if(s.sauce&&s.sauce!=='none')d+=' ('+s.sauce+')';return d;}).join('<br>');
+  cart.push({id:++cartIdCounter,isPkg:true,pkgKey:key,pkgPid:pid,itemId:'pkg_'+key,name:cfg.label,price:cfg.price,course:'menu',person:p.name||null,detail});
+}
+function removePkgPerson(key,pid){
+  pkgPersons[key]=(pkgPersons[key]||[]).filter(p=>p.pid!==pid);
+  cart=cart.filter(c=>!(c.isPkg&&c.pkgKey===key&&c.pkgPid===pid));
+  renderPkgPersons(key);updateCart();
 }
 
-function modifyPkgPerson(key, pid) {
-  const p = (pkgPersons[key]||[]).find(x => x.pid===pid);
-  if (p) {
-    p.confirmed = false;
-    cart = cart.filter(c => !(c.isPkg && c.pkgKey===key && c.pkgPid===pid));
-    renderPkgPersons(key);
-    updateCart();
-  }
-}
-
-function addPkgToCart(key, pid) {
-  const p = (pkgPersons[key]||[]).find(x => x.pid===pid);
-  const cfg = PKG_CONFIG[key];
-  if (!p || !p.confirmed) return;
-  cart = cart.filter(c => !(c.isPkg && c.pkgKey===key && c.pkgPid===pid));
-  const detail = cfg.limit === 0 ? '5 portate della cucina' : p.selections.map((s,i) => {
-    let d = (i+1) + '. ' + s.dish;
-    if (s.sauce && s.sauce !== 'none') d += ' (' + s.sauce + ')';
-    return d;
-  }).join('<br>');
-  cart.push({ id:++cartIdCounter, isPkg:true, pkgKey:key, pkgPid:pid, itemId:'pkg_'+key, name:cfg.label, price:cfg.price, course:'menu', person:p.name||null, detail });
-}
-
-function removePkgPerson(key, pid) {
-  pkgPersons[key] = (pkgPersons[key]||[]).filter(p => p.pid !== pid);
-  cart = cart.filter(c => !(c.isPkg && c.pkgKey===key && c.pkgPid===pid));
-  renderPkgPersons(key);
-  updateCart();
-}
-
-// CART
-function updateCart() {
-  const buckets = {}, bucketOrder = [];
-  cart.forEach(e => {
-    const bid = e.isPkg ? 'menu' : ('turno:' + (e.turno||'—'));
-    const blabel = e.isPkg ? t('menu_bucket') : ('📋 ' + (e.turno||'—'));
-    if (!buckets[bid]) { buckets[bid] = { label:blabel, entries:[] }; bucketOrder.push(bid); }
-    buckets[bid].entries.push(e);
+// ── CART (FIX: grouped by course with À la Carte labels; pkg + button hidden) ──
+function updateCart(){
+  const buckets={};
+  cart.forEach(e=>{
+    const bid=e.isPkg?'menu':(e.course||'altri');
+    if(!buckets[bid])buckets[bid]=[];
+    buckets[bid].push(e);
   });
-  bucketOrder.sort((a,b) => {
-    if (a==='menu') return -1; if (b==='menu') return 1;
-    const ia = TURNO_OPTIONS.indexOf(a.replace('turno:','')), ib = TURNO_OPTIONS.indexOf(b.replace('turno:',''));
-    return (ia===-1?99:ia) - (ib===-1?99:ib);
-  });
-
-  let html = '', totalItems = 0, totalPrice = 0, hasContent = false;
-  bucketOrder.forEach(bid => {
-    const entries = buckets[bid].entries;
-    if (!entries.length) return;
-    hasContent = true;
-    html += '<div class="cart-course-label">' + buckets[bid].label + '</div>';
-    const grouped = [];
-    entries.forEach(e => {
-      const gk = e.itemId + '||' + (e.detail||'') + '||' + (e.person||'') + '||' + (e.turno||'');
-      const ex = grouped.find(g => g.key===gk);
-      if (ex) { ex.ids.push(e.id); ex.count++; ex.totalPrice+=e.price; }
-      else grouped.push({ key:gk, ids:[e.id], count:1, totalPrice:e.price, name:e.name, person:e.person, detail:e.detail, price:e.price, isPkg:e.isPkg, pkgKey:e.pkgKey, pkgPid:e.pkgPid });
+  const order=[...COURSE_ORDER,'altri'];
+  let html='',totalItems=0,totalPrice=0,hasContent=false;
+  order.forEach(bid=>{
+    const entries=buckets[bid];if(!entries||!entries.length)return;
+    hasContent=true;
+    html+='<div class="cart-course-label">'+courseLabel(bid)+'</div>';
+    const grouped=[];
+    entries.forEach(e=>{
+      const gk=e.itemId+'||'+(e.detail||'')+'||'+(e.person||'')+'||'+(e.turno||'');
+      const ex=grouped.find(g=>g.key===gk);
+      if(ex){ex.ids.push(e.id);ex.count++;ex.totalPrice+=e.price;}
+      else grouped.push({key:gk,ids:[e.id],count:1,totalPrice:e.price,name:e.name,person:e.person,detail:e.detail,price:e.price,isPkg:e.isPkg,pkgKey:e.pkgKey,pkgPid:e.pkgPid});
     });
-    grouped.forEach(g => {
-      totalItems += g.count; totalPrice += g.totalPrice;
-      const personTxt = g.person ? '<span style="color:#d4af37;">' + g.person + '</span> — ' : '';
-      const detailTxt = g.detail ? '<div class="' + (g.isPkg?'cart-row-detail-pkg':'cart-row-detail') + '">' + g.detail + '</div>' : '';
-      const removeAction = g.isPkg ? "removePkgPerson('" + g.pkgKey + "'," + g.pkgPid + ")" : "removeCartGroup(" + JSON.stringify(g.ids) + ")";
-      const minusAction = g.isPkg ? "removePkgPerson('" + g.pkgKey + "'," + g.pkgPid + ")" : "removeOneCartItem('" + g.key.replace(/'/g,"\\'") + "')";
-      html += '<div class="cart-row"><div class="cart-row-info"><div class="cart-row-name">' + personTxt + g.name + '</div>' + detailTxt + '</div>' +
-        '<div class="cart-row-right">' +
-        '<button class="cart-qty-btn" onclick="' + minusAction + '">−</button>' +
-        '<span class="cart-qty-num">' + g.count + '</span>' +
-        '<button class="cart-qty-btn" onclick="addSameItem(\'' + g.key.replace(/'/g,"\\'") + '\')">+</button>' +
-        '<span class="cart-price">€' + g.totalPrice + '</span>' +
-        '<button class="cart-remove-btn" onclick="' + removeAction + '">✕</button>' +
+    grouped.forEach(g=>{
+      totalItems+=g.count;totalPrice+=g.totalPrice;
+      const pTxt=g.person?'<span style="color:#d4af37;">'+g.person+'</span> — ':'';
+      const dTxt=g.detail?'<div class="'+(g.isPkg?'cart-row-detail-pkg':'cart-row-detail')+'">'+g.detail+'</div>':'';
+      const rem=g.isPkg?"removePkgPerson('"+g.pkgKey+"',"+g.pkgPid+")":"removeCartGroup("+JSON.stringify(g.ids)+")";
+      const minus=g.isPkg?"removePkgPerson('"+g.pkgKey+"',"+g.pkgPid+")":"removeOneCartItem('"+g.key.replace(/'/g,"\\'"+"')");
+      const plus=g.isPkg?'':'addSameItem(\''+g.key.replace(/'/g,"\\'")+'\')';
+      html+='<div class="cart-row"><div class="cart-row-info"><div class="cart-row-name">'+pTxt+g.name+'</div>'+dTxt+'</div>'+
+        '<div class="cart-row-right">'+
+        '<button class="cart-qty-btn" onclick="'+minus+'">−</button>'+
+        '<span class="cart-qty-num">'+g.count+'</span>'+
+        (g.isPkg?'<span style="width:20px;display:inline-block;"></span>':'<button class="cart-qty-btn" onclick="'+plus+'">+</button>')+
+        '<span class="cart-price">€'+g.totalPrice+'</span>'+
+        '<button class="cart-remove-btn" onclick="'+rem+'">✕</button>'+
         '</div></div>';
     });
   });
-
-  const content = document.getElementById('cart-content');
-  const totalDiv = document.getElementById('cart-total');
-  const waiterBtn = document.getElementById('waiter-btn');
-  if (hasContent) { content.innerHTML = html; totalDiv.style.display='flex'; document.getElementById('total-amount').textContent='€'+totalPrice; waiterBtn.disabled=false; }
-  else { content.innerHTML='<div class="cart-empty">' + t('nessun_articolo') + '</div>'; totalDiv.style.display='none'; waiterBtn.disabled=true; }
-  document.getElementById('cart-badge').textContent = totalItems;
-
-  Object.keys(ITEMS).forEach(id => {
-    const qd = document.getElementById('qty-'+id);
-    if (qd) qd.textContent = cart.filter(c => c.itemId===id).length;
-    const btn = document.getElementById('btn-'+id);
-    if (btn) btn.classList.toggle('has-items', cart.some(c => c.itemId===id));
+  const cc=document.getElementById('cart-content'),tc=document.getElementById('cart-total'),wb=document.getElementById('waiter-btn');
+  if(hasContent){cc.innerHTML=html;tc.style.display='flex';document.getElementById('total-amount').textContent='€'+totalPrice;wb.disabled=false;}
+  else{cc.innerHTML='<div class="cart-empty">'+t('nessun_articolo')+'</div>';tc.style.display='none';wb.disabled=true;}
+  document.getElementById('cart-badge').textContent=totalItems;
+  Object.keys(ITEMS).forEach(id=>{
+    const qd=document.getElementById('qty-'+id);if(qd)qd.textContent=cart.filter(c=>c.itemId===id).length;
+    const b=document.getElementById('btn-'+id);if(b)b.classList.toggle('has-items',cart.some(c=>c.itemId===id));
   });
-
   renderInlineGelato();
 }
+function removeCartGroup(ids){ids.forEach(id=>{const i=cart.findIndex(c=>c.id===id);if(i>=0)cart.splice(i,1);});updateCart();}
+function removeOneCartItem(gk){for(let i=cart.length-1;i>=0;i--){const e=cart[i];if(e.itemId+'||'+(e.detail||'')+'||'+(e.person||'')+'||'+(e.turno||'')===gk){cart.splice(i,1);break;}}updateCart();}
+function addSameItem(gk){const e=cart.find(c=>(c.itemId+'||'+(c.detail||'')+'||'+(c.person||'')+'||'+(c.turno||''))===gk);if(!e||e.isPkg)return;cart.push({...e,id:++cartIdCounter});updateCart();}
+function toggleCart(){document.getElementById('cart-panel').classList.toggle('open');}
 
-function removeCartGroup(ids) { ids.forEach(id => { const i=cart.findIndex(c=>c.id===id); if(i>=0) cart.splice(i,1); }); updateCart(); }
-function removeOneCartItem(gk) { for(let i=cart.length-1;i>=0;i--){ const e=cart[i]; const k=e.itemId+'||'+(e.detail||'')+'||'+(e.person||'')+'||'+(e.turno||''); if(k===gk){cart.splice(i,1);break;} } updateCart(); }
-function addSameItem(gk) { const e=cart.find(c=>(c.itemId+'||'+(c.detail||'')+'||'+(c.person||'')+'||'+(c.turno||''))===gk); if(!e||e.isPkg) return; cart.push({...e,id:++cartIdCounter}); updateCart(); }
-function toggleCart() { document.getElementById('cart-panel').classList.toggle('open'); }
-
-// OVERLAY
-function showOverlay() {
-  let html = '', total = 0;
-  const buckets = {}, bucketOrder = [];
-  cart.forEach(e => {
-    const bid = e.isPkg ? 'menu' : ('turno:' + (e.turno||'—'));
-    const blabel = e.isPkg ? t('menu_bucket') : ('📋 ' + (e.turno||'—'));
-    if (!buckets[bid]) { buckets[bid] = { label:blabel, entries:[] }; bucketOrder.push(bid); }
-    buckets[bid].entries.push(e);
+// ── OVERLAY ──
+function showOverlay(){
+  let html='',total=0;
+  const buckets={};
+  cart.forEach(e=>{const bid=e.isPkg?'menu':(e.course||'altri');if(!buckets[bid])buckets[bid]=[];buckets[bid].push(e);});
+  [...COURSE_ORDER,'altri'].forEach(bid=>{
+    const entries=buckets[bid];if(!entries||!entries.length)return;
+    html+='<div class="overlay-section"><div class="overlay-section-title">'+courseLabel(bid)+'</div>';
+    entries.forEach(e=>{total+=e.price;html+='<div class="overlay-dish"><div><div class="overlay-dish-name">'+(e.person?e.person+' — ':'')+e.name+'</div>'+(e.detail?'<div class="'+(e.isPkg?'overlay-dish-detail-pkg':'overlay-dish-detail')+'">'+e.detail+'</div>':'')+'</div><div class="overlay-dish-price">€'+e.price+'</div></div>';});
+    html+='</div>';
   });
-  bucketOrder.sort((a,b) => { if(a==='menu')return -1; if(b==='menu')return 1; const ia=TURNO_OPTIONS.indexOf(a.replace('turno:','')),ib=TURNO_OPTIONS.indexOf(b.replace('turno:','')); return(ia===-1?99:ia)-(ib===-1?99:ib); });
-  bucketOrder.forEach(bid => {
-    const entries = buckets[bid].entries; if(!entries.length) return;
-    html += '<div class="overlay-section"><div class="overlay-section-title">' + buckets[bid].label + '</div>';
-    entries.forEach(e => { total += e.price; html += '<div class="overlay-dish"><div><div class="overlay-dish-name">' + (e.person?e.person+' — ':'') + e.name + '</div>' + (e.detail?'<div class="' + (e.isPkg?'overlay-dish-detail-pkg':'overlay-dish-detail') + '">' + e.detail + '</div>':'') + '</div><div class="overlay-dish-price">€' + e.price + '</div></div>'; });
-    html += '</div>';
-  });
-  html += '<div class="overlay-total-box"><div class="overlay-total-label">' + t('totale_stimato') + '</div><div class="overlay-total-amount">€' + total + '</div></div>';
-  document.getElementById('overlay-content').innerHTML = html;
+  html+='<div class="overlay-total-box"><div class="overlay-total-label">'+t('totale_stimato')+'</div><div class="overlay-total-amount">€'+total+'</div></div>';
+  document.getElementById('overlay-content').innerHTML=html;
   document.getElementById('overlay').classList.add('open');
   document.getElementById('cart-panel').classList.remove('open');
 }
-function closeOverlay() { document.getElementById('overlay').classList.remove('open'); }
+function closeOverlay(){document.getElementById('overlay').classList.remove('open');}
 
-// TABS
-function setTab(tab, el) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  if (el) el.classList.add('active');
-  else { const btn = document.querySelector('.tab-btn[onclick*="\'' + tab + '\'"]'); if(btn) btn.classList.add('active'); }
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  const t = document.getElementById('sec-' + tab); if(t) t.classList.add('active');
-  const tw = document.querySelector('.tabs-wrap'); if(tw) window.scrollTo({ top: tw.offsetTop-10, behavior:'smooth' });
+// ── TABS (FIX: setTab now properly activates button even when called from quick-cards) ──
+function setTab(tab,el){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  if(el){el.classList.add('active');}
+  else{document.querySelectorAll('.tab-btn').forEach(b=>{if((b.getAttribute('onclick')||'').includes("'"+tab+"'"))b.classList.add('active');});}
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  const sec=document.getElementById('sec-'+tab);if(sec)sec.classList.add('active');
+  const tw=document.querySelector('.tabs-wrap');if(tw)window.scrollTo({top:tw.offsetTop-10,behavior:'smooth'});
+}
+function setSubTab(name,el){
+  document.querySelectorAll('.sub-tab-btn').forEach(b=>b.classList.remove('active'));if(el)el.classList.add('active');
+  document.querySelectorAll('.sub-section').forEach(s=>s.classList.remove('active'));
+  const sec=document.getElementById('subsec-'+name);if(sec)sec.classList.add('active');
 }
 
-function setSubTab(name, el) {
-  document.querySelectorAll('.sub-tab-btn').forEach(b => b.classList.remove('active')); if(el) el.classList.add('active');
-  document.querySelectorAll('.sub-section').forEach(s => s.classList.remove('active'));
-  const t = document.getElementById('subsec-' + name); if(t) t.classList.add('active');
-}
-
-// ── TRANSLATION ENGINE (instant data-attribute switch, IT/FR/EN/DE) ────────
-let currentLang = 'it';
-
-// Recurring UI phrases used inside dynamically-rendered popup/package/cart HTML.
-// Dish, sauce, turno and cottura names stay in Italian (authentic menu terms).
-const T = {
-  it: {
-    subtitle_default: 'Aggiungi al tuo ordine',
-    subtitle_gelato: 'Scegli fino a 3 gusti',
-    subtitle_sorbetto: 'Con o senza alcol?',
-    subtitle_multi: n => `Scegli ${n} piatti per ogni persona`,
-    subtitle_sauce: 'Scegli il condimento per ogni persona',
-    name_placeholder: 'Nome (opzionale)',
-    gusti_label: '🍦 Gusti (max 3):',
-    seleziona_gusto: 'Seleziona almeno 1 gusto',
-    preferenza_label: '🍹 Preferenza:',
-    con_alcol: '🍷 Con Alcol',
-    senza_alcol: '🧃 Senza Alcol',
-    scegli_n: (n, sel) => `🍽️ Scegli ${n} piatti (${sel}/${n}):`,
-    seleziona_ancora: n => `Seleziona ancora ${n} piatto/i`,
-    condimento_label: '🍽️ Condimento:',
-    cottura_label: '🔥 Cottura:',
-    turno_label: '📋 Turno (obbligatorio)',
-    seleziona_turno: 'Seleziona il turno',
-    nessun_articolo: 'Nessun articolo ancora',
-    menu_bucket: '🍽️ Menù',
-    piatti_sel: (c, l) => `${c} / ${l} piatti selezionati`,
-    persona: '👤 Persona',
-    conferma_aggiungi: "✓ Conferma e Aggiungi all'Ordine",
-    confermato: '✅ Confermato e Aggiunto',
-    modifica: '✏️ Modifica',
-    scegli_btn: '+ Scegli',
-    selezionato_btn: '✓ Selezionato',
-    condimento_row: 'Condimento:',
-    cinque_portate: '5 Portate selezionate dalla cucina',
-    totale_stimato: 'Totale Stimato',
-    nessun_risultato: 'Nessun risultato trovato',
-    vedi: '📋 Vedi ▾',
-    chiudi: '📋 Chiudi ▴'
-  },
-  fr: {
-    subtitle_default: 'Ajouter à votre commande',
-    subtitle_gelato: "Choisissez jusqu'à 3 parfums",
-    subtitle_sorbetto: 'Avec ou sans alcool ?',
-    subtitle_multi: n => `Choisissez ${n} plats par personne`,
-    subtitle_sauce: "Choisissez l'accompagnement pour chaque personne",
-    name_placeholder: 'Nom (facultatif)',
-    gusti_label: '🍦 Parfums (max 3):',
-    seleziona_gusto: 'Sélectionnez au moins 1 parfum',
-    preferenza_label: '🍹 Préférence:',
-    con_alcol: '🍷 Avec Alcool',
-    senza_alcol: '🧃 Sans Alcool',
-    scegli_n: (n, sel) => `🍽️ Choisissez ${n} plats (${sel}/${n}):`,
-    seleziona_ancora: n => `Sélectionnez encore ${n} plat(s)`,
-    condimento_label: '🍽️ Accompagnement:',
-    cottura_label: '🔥 Cuisson:',
-    turno_label: '📋 Service (obligatoire)',
-    seleziona_turno: 'Sélectionnez le service',
-    nessun_articolo: 'Aucun article pour le moment',
-    menu_bucket: '🍽️ Menu',
-    piatti_sel: (c, l) => `${c} / ${l} plats sélectionnés`,
-    persona: '👤 Personne',
-    conferma_aggiungi: '✓ Confirmer et Ajouter à la Commande',
-    confermato: '✅ Confirmé et Ajouté',
-    modifica: '✏️ Modifier',
-    scegli_btn: '+ Choisir',
-    selezionato_btn: '✓ Sélectionné',
-    condimento_row: 'Accompagnement:',
-    cinque_portate: '5 plats sélectionnés par la cuisine',
-    totale_stimato: 'Total Estimé',
-    nessun_risultato: 'Aucun résultat trouvé',
-    vedi: '📋 Voir ▾',
-    chiudi: '📋 Fermer ▴'
-  },
-  en: {
-    subtitle_default: 'Add to your order',
-    subtitle_gelato: 'Choose up to 3 flavors',
-    subtitle_sorbetto: 'With or without alcohol?',
-    subtitle_multi: n => `Choose ${n} dishes per person`,
-    subtitle_sauce: 'Choose the sauce for each person',
-    name_placeholder: 'Name (optional)',
-    gusti_label: '🍦 Flavors (max 3):',
-    seleziona_gusto: 'Select at least 1 flavor',
-    preferenza_label: '🍹 Preference:',
-    con_alcol: '🍷 With Alcohol',
-    senza_alcol: '🧃 Without Alcohol',
-    scegli_n: (n, sel) => `🍽️ Choose ${n} dishes (${sel}/${n}):`,
-    seleziona_ancora: n => `Select ${n} more dish(es)`,
-    condimento_label: '🍽️ Sauce:',
-    cottura_label: '🔥 Doneness:',
-    turno_label: '📋 Course Time (required)',
-    seleziona_turno: 'Select the course time',
-    nessun_articolo: 'No items yet',
-    menu_bucket: '🍽️ Set Menu',
-    piatti_sel: (c, l) => `${c} / ${l} dishes selected`,
-    persona: '👤 Person',
-    conferma_aggiungi: '✓ Confirm and Add to Order',
-    confermato: '✅ Confirmed and Added',
-    modifica: '✏️ Modify',
-    scegli_btn: '+ Choose',
-    selezionato_btn: '✓ Selected',
-    condimento_row: 'Sauce:',
-    cinque_portate: '5 courses selected by the kitchen',
-    totale_stimato: 'Estimated Total',
-    nessun_risultato: 'No results found',
-    vedi: '📋 View ▾',
-    chiudi: '📋 Close ▴'
-  },
-  de: {
-    subtitle_default: 'Zur Bestellung hinzufügen',
-    subtitle_gelato: 'Bis zu 3 Sorten wählen',
-    subtitle_sorbetto: 'Mit oder ohne Alkohol?',
-    subtitle_multi: n => `Wählen Sie ${n} Gerichte pro Person`,
-    subtitle_sauce: 'Wählen Sie die Sauce für jede Person',
-    name_placeholder: 'Name (optional)',
-    gusti_label: '🍦 Sorten (max. 3):',
-    seleziona_gusto: 'Wählen Sie mindestens 1 Sorte',
-    preferenza_label: '🍹 Präferenz:',
-    con_alcol: '🍷 Mit Alkohol',
-    senza_alcol: '🧃 Ohne Alkohol',
-    scegli_n: (n, sel) => `🍽️ Wählen Sie ${n} Gerichte (${sel}/${n}):`,
-    seleziona_ancora: n => `Wählen Sie noch ${n} Gericht(e)`,
-    condimento_label: '🍽️ Sauce:',
-    cottura_label: '🔥 Garstufe:',
-    turno_label: '📋 Gang (erforderlich)',
-    seleziona_turno: 'Wählen Sie den Gang',
-    nessun_articolo: 'Noch keine Artikel',
-    menu_bucket: '🍽️ Menü',
-    piatti_sel: (c, l) => `${c} / ${l} Gerichte ausgewählt`,
-    persona: '👤 Person',
-    conferma_aggiungi: '✓ Bestätigen und zur Bestellung hinzufügen',
-    confermato: '✅ Bestätigt und Hinzugefügt',
-    modifica: '✏️ Ändern',
-    scegli_btn: '+ Wählen',
-    selezionato_btn: '✓ Ausgewählt',
-    condimento_row: 'Sauce:',
-    cinque_portate: '5 von der Küche ausgewählte Gänge',
-    totale_stimato: 'Geschätzter Gesamtbetrag',
-    nessun_risultato: 'Keine Ergebnisse gefunden',
-    vedi: '📋 Anzeigen ▾',
-    chiudi: '📋 Schließen ▴'
-  }
+// ── TRANSLATION ENGINE ──
+let currentLang='it';
+const T={
+  it:{sub_default:'Aggiungi al tuo ordine',sub_gelato:'Scegli fino a 3 gusti',sub_sorbetto:'Con o senza alcol?',sub_multi:n=>`Scegli ${n} piatti per ogni persona`,sub_sauce:'Scegli il condimento per ogni persona',name_ph:'Nome (opzionale)',gusti_label:'🍦 Gusti (max 3):',gusti_sel:n=>`Selezionati: ${n}/3`,gusti_hint:'Clicca per selezionare fino a 3 gusti',seleziona_gusto:'Seleziona almeno 1 gusto',preferenza_label:'🍹 Preferenza:',con_alcol:'🍷 Con Alcol',senza_alcol:'🧃 Senza Alcol',scegli_n:(n,s)=>`🍽️ Scegli ${n} piatti (${s}/${n}):`,seleziona_ancora:n=>`Seleziona ancora ${n} piatto/i`,condimento_label:'🍽️ Condimento:',cottura_label:'🔥 Cottura:',turno_label:'📋 Turno (obbligatorio)',seleziona_turno:'Seleziona il turno',nessun_articolo:'Nessun articolo ancora',piatti_sel:(c,l)=>`${c} / ${l} piatti selezionati`,persona:'👤 Persona',conferma_aggiungi:"✓ Conferma e Aggiungi all'Ordine",conferma_btn:'✓ Conferma Ordine',confermato:'✅ Confermato e Aggiunto',modifica:'✏️ Modifica',scegli_btn:'+ Scegli',selezionato_btn:'✓ Selezionato',condimento_row:'Condimento:',cinque_portate:'5 Portate selezionate dalla cucina',totale_stimato:'Totale Stimato',nessun_risultato:'Nessun risultato trovato',vedi:'📋 Vedi ▾',chiudi:'📋 Chiudi ▴',add_person:'+ Aggiungi persona',vino_prompt:'Quante bottiglie di vino?',vino_name:'Vino della Casa',vino_detail:'Da selezionare dalla Carta dei Vini'},
+  fr:{sub_default:'Ajouter à votre commande',sub_gelato:"Choisissez jusqu'à 3 parfums",sub_sorbetto:'Avec ou sans alcool?',sub_multi:n=>`Choisissez ${n} plats par personne`,sub_sauce:"Choisissez l'accompagnement",name_ph:'Nom (facultatif)',gusti_label:'🍦 Parfums (max 3):',gusti_sel:n=>`Sélectionnés: ${n}/3`,gusti_hint:"Cliquez pour sélectionner 3 parfums",seleziona_gusto:'Sélectionnez au moins 1 parfum',preferenza_label:'🍹 Préférence:',con_alcol:'🍷 Avec Alcool',senza_alcol:'🧃 Sans Alcool',scegli_n:(n,s)=>`🍽️ Choisissez ${n} plats (${s}/${n}):`,seleziona_ancora:n=>`Sélectionnez encore ${n} plat(s)`,condimento_label:'🍽️ Accompagnement:',cottura_label:'🔥 Cuisson:',turno_label:'📋 Service (obligatoire)',seleziona_turno:'Sélectionnez le service',nessun_articolo:'Aucun article',piatti_sel:(c,l)=>`${c} / ${l} plats sélectionnés`,persona:'👤 Personne',conferma_aggiungi:'✓ Confirmer et Ajouter',conferma_btn:'✓ Confirmer',confermato:'✅ Confirmé',modifica:'✏️ Modifier',scegli_btn:'+ Choisir',selezionato_btn:'✓ Sélectionné',condimento_row:'Accompagnement:',cinque_portate:'5 plats sélectionnés par la cuisine',totale_stimato:'Total Estimé',nessun_risultato:'Aucun résultat',vedi:'📋 Voir ▾',chiudi:'📋 Fermer ▴',add_person:'+ Ajouter une personne',vino_prompt:'Combien de bouteilles?',vino_name:'Vin de la Maison',vino_detail:'À sélectionner sur la carte des vins'},
+  en:{sub_default:'Add to your order',sub_gelato:'Choose up to 3 flavors',sub_sorbetto:'With or without alcohol?',sub_multi:n=>`Choose ${n} dishes per person`,sub_sauce:'Choose the sauce for each person',name_ph:'Name (optional)',gusti_label:'🍦 Flavors (max 3):',gusti_sel:n=>`Selected: ${n}/3`,gusti_hint:'Tap to select up to 3 flavors',seleziona_gusto:'Select at least 1 flavor',preferenza_label:'🍹 Preference:',con_alcol:'🍷 With Alcohol',senza_alcol:'🧃 Without Alcohol',scegli_n:(n,s)=>`🍽️ Choose ${n} dishes (${s}/${n}):`,seleziona_ancora:n=>`Select ${n} more dish(es)`,condimento_label:'🍽️ Sauce:',cottura_label:'🔥 Doneness:',turno_label:'📋 Course Time (required)',seleziona_turno:'Select course time',nessun_articolo:'No items yet',piatti_sel:(c,l)=>`${c} / ${l} dishes selected`,persona:'👤 Person',conferma_aggiungi:'✓ Confirm and Add to Order',conferma_btn:'✓ Confirm Order',confermato:'✅ Confirmed and Added',modifica:'✏️ Modify',scegli_btn:'+ Choose',selezionato_btn:'✓ Selected',condimento_row:'Sauce:',cinque_portate:'5 courses selected by the kitchen',totale_stimato:'Estimated Total',nessun_risultato:'No results found',vedi:'📋 View ▾',chiudi:'📋 Close ▴',add_person:'+ Add person',vino_prompt:'How many bottles?',vino_name:'House Wine',vino_detail:'To be selected from the wine list'},
+  de:{sub_default:'Zur Bestellung hinzufügen',sub_gelato:'Bis zu 3 Sorten wählen',sub_sorbetto:'Mit oder ohne Alkohol?',sub_multi:n=>`Wählen Sie ${n} Gerichte pro Person`,sub_sauce:'Wählen Sie die Sauce',name_ph:'Name (optional)',gusti_label:'🍦 Sorten (max. 3):',gusti_sel:n=>`Ausgewählt: ${n}/3`,gusti_hint:'Tippen um 3 Sorten zu wählen',seleziona_gusto:'Wählen Sie mind. 1 Sorte',preferenza_label:'🍹 Präferenz:',con_alcol:'🍷 Mit Alkohol',senza_alcol:'🧃 Ohne Alkohol',scegli_n:(n,s)=>`🍽️ Wählen Sie ${n} Gerichte (${s}/${n}):`,seleziona_ancora:n=>`Noch ${n} Gericht(e) wählen`,condimento_label:'🍽️ Sauce:',cottura_label:'🔥 Garstufe:',turno_label:'📋 Gang (erforderlich)',seleziona_turno:'Gang auswählen',nessun_articolo:'Noch keine Artikel',piatti_sel:(c,l)=>`${c} / ${l} Gerichte`,persona:'👤 Person',conferma_aggiungi:'✓ Bestätigen und hinzufügen',conferma_btn:'✓ Bestätigen',confermato:'✅ Bestätigt',modifica:'✏️ Ändern',scegli_btn:'+ Wählen',selezionato_btn:'✓ Ausgewählt',condimento_row:'Sauce:',cinque_portate:'5 Gänge von der Küche',totale_stimato:'Geschätzter Gesamtbetrag',nessun_risultato:'Keine Ergebnisse',vedi:'📋 Anzeigen ▾',chiudi:'📋 Schließen ▴',add_person:'+ Person hinzufügen',vino_prompt:'Wie viele Flaschen?',vino_name:'Hauswein',vino_detail:'Aus der Weinkarte auswählen'}
 };
-function t(key) { return (T[currentLang] && T[currentLang][key]) || T.it[key]; }
+function t(key,...args){const v=(T[currentLang]||T.it)[key];if(typeof v==='function')return v(...args);return v!==undefined?v:(T.it[key]||key);}
 
-function applyLang(lang) {
-  document.querySelectorAll('[data-' + lang + ']').forEach(item => {
-    if (item.classList.contains('sub-trans')) return;
-    const val = item.getAttribute('data-' + lang);
-    if (val !== null) item.textContent = val;
+function applyLang(lang){
+  document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+    if(el.classList.contains('sub-trans'))return;
+    const v=el.getAttribute('data-'+lang);if(v!==null)el.textContent=v;
   });
-  document.querySelectorAll('.sub-trans').forEach(item => {
-    const text = item.getAttribute('data-' + lang) || '';
-    if (text.trim() !== '') { item.textContent = text; item.style.display = 'block'; item.classList.add('notranslate'); }
-    else { item.textContent = ''; item.style.display = 'none'; item.classList.remove('notranslate'); }
+  document.querySelectorAll('.sub-trans').forEach(el=>{
+    const txt=el.getAttribute('data-'+lang)||'';
+    if(txt.trim()){el.textContent=txt;el.style.display='block';el.classList.add('notranslate');}
+    else{el.textContent='';el.style.display='none';el.classList.remove('notranslate');}
   });
-  const search = document.getElementById('searchInput');
-  if (search) {
-    const ph = search.getAttribute('data-ph-' + lang);
-    if (ph) search.placeholder = ph;
-  }
-  document.body.setAttribute('dir', 'ltr');
+  const si=document.getElementById('searchInput');
+  if(si){const ph=si.getAttribute('data-ph-'+lang);if(ph)si.placeholder=ph;}
 }
-
-function setLang(lang, el) {
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  if (el) el.classList.add('active');
-  document.querySelectorAll('.lang-dropdown-item').forEach(b => b.style.fontWeight = 'normal');
-  document.getElementById('translateBtn').textContent = '🌐 More Languages ▾';
-  currentLang = lang;
-  closeDropdown();
-  const select = document.querySelector('.goog-te-combo');
-  const googleWasActive = select && select.value !== '';
-  if (googleWasActive) {
-    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    select.value = ''; select.dispatchEvent(new Event('change'));
-    setTimeout(() => { applyLang(lang); refreshDynamicText(); }, 650);
-  } else {
-    applyLang(lang);
-    refreshDynamicText();
-  }
-  const q = document.getElementById('searchInput').value;
-  if (q && q.trim().length >= 2) setTimeout(() => searchMenu(q), googleWasActive ? 700 : 0);
+function setLang(lang,el){
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  if(el)el.classList.add('active');
+  document.getElementById('translateBtn').textContent='🌐 More Languages ▾';
+  currentLang=lang;closeDropdown();
+  const sel=document.querySelector('.goog-te-combo');
+  const gwa=sel&&sel.value!=='';
+  if(gwa){document.cookie='googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';sel.value='';sel.dispatchEvent(new Event('change'));setTimeout(()=>{applyLang(lang);refreshDyn();},650);}
+  else{applyLang(lang);refreshDyn();}
 }
-
-// Re-render any open dynamic UI (popup / package accordions / cart) so the
-// recurring phrases inside them switch language too.
-function refreshDynamicText() {
-  if (popupItemId) renderPopupPersons();
-  Object.keys(pkgPersons).forEach(key => { if (pkgPersons[key] && pkgPersons[key].length) renderPkgPersons(key); });
-  updateCart();
+function refreshDyn(){
+  if(popupItemId)renderPopupPersons();
+  Object.keys(pkgPersons).forEach(k=>{if(pkgPersons[k]&&pkgPersons[k].length)renderPkgPersons(k);});
+  updateCart();renderInlineGelato();
 }
-
-function toggleDropdown(e) { if (e) e.stopPropagation(); document.getElementById('langDropdown').classList.toggle('open'); }
-function closeDropdown() { document.getElementById('langDropdown').classList.remove('open'); }
-
-function showTranslateBar(show) {
-  const el = document.getElementById('translatingBar');
-  if (el) el.classList.toggle('show', show);
-}
-
-function googleTranslate(langCode) {
-  closeDropdown();
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+function toggleDropdown(e){if(e)e.stopPropagation();document.getElementById('langDropdown').classList.toggle('open');}
+function closeDropdown(){document.getElementById('langDropdown').classList.remove('open');}
+function showTranslateBar(v){document.getElementById('translatingBar').classList.toggle('show',v);}
+function googleTranslate(code){
+  closeDropdown();document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
   showTranslateBar(true);
-  // Let Google Translate see the bracketed dish translations and dynamic UI text
-  document.querySelectorAll('.sub-trans').forEach(item => {
-    item.classList.remove('notranslate');
-    const itText = item.getAttribute('data-it') || '';
-    const enText = item.getAttribute('data-en') || '';
-    const sourceText = itText.trim() !== '' ? itText : enText;
-    if (sourceText.trim() !== '') { item.textContent = sourceText; item.style.display = 'block'; }
-    else { item.style.display = 'none'; }
+  document.querySelectorAll('.sub-trans').forEach(el=>{
+    el.classList.remove('notranslate');
+    const src=(el.getAttribute('data-it')||el.getAttribute('data-en')||'').trim();
+    if(src){el.textContent=src;el.style.display='block';}else{el.style.display='none';}
   });
-  document.querySelectorAll('[data-it]').forEach(item => {
-    if (item.classList.contains('sub-trans')) return;
-    const itText = item.getAttribute('data-it');
-    if (itText && itText.trim() !== '') item.textContent = itText;
-  });
-  const search = document.getElementById('searchInput');
-  if (search) { const ph = search.getAttribute('data-ph-it'); if (ph) search.placeholder = ph; }
-
-  const select = document.querySelector('.goog-te-combo');
-  if (select) {
-    select.value = langCode;
-    select.dispatchEvent(new Event('change'));
-    setTimeout(() => showTranslateBar(false), 2500);
-  } else {
-    document.cookie = 'googtrans=/it/' + langCode + ';path=/';
-    setTimeout(() => window.location.reload(), 400);
-  }
+  document.querySelectorAll('[data-it]').forEach(el=>{if(el.classList.contains('sub-trans'))return;const v=el.getAttribute('data-it');if(v&&v.trim())el.textContent=v;});
+  const si=document.getElementById('searchInput');if(si){const ph=si.getAttribute('data-ph-it');if(ph)si.placeholder=ph;}
+  const sel=document.querySelector('.goog-te-combo');
+  if(sel){sel.value=code;sel.dispatchEvent(new Event('change'));setTimeout(()=>showTranslateBar(false),2500);}
+  else{document.cookie='googtrans=/it/'+code+';path=/';setTimeout(()=>window.location.reload(),400);}
 }
 
-// SEARCH
-function searchMenu(q) {
-  const box = document.getElementById('searchResults');
-  if (!q || q.trim().length < 2) { box.style.display = 'none'; return; }
-  const results = [];
-  document.querySelectorAll('.item-name').forEach(el => {
-    const ntSpan = el.querySelector('.notranslate');
-    const txt = (ntSpan ? ntSpan.textContent : el.textContent).trim();
-    if (txt.toLowerCase().includes(q.toLowerCase())) {
-      const priceEl = el.closest('.item')?.querySelector('.item-price');
-      results.push({ name: txt, price: priceEl ? priceEl.textContent : '' });
+// ── SEARCH ──
+function searchMenu(q){
+  const box=document.getElementById('searchResults');
+  if(!q||q.trim().length<2){box.style.display='none';return;}
+  const results=[];
+  document.querySelectorAll('.item-name').forEach(el=>{
+    const nt=el.querySelector('.notranslate');
+    const txt=(nt?nt.textContent:el.textContent).trim();
+    if(txt.toLowerCase().includes(q.toLowerCase())){
+      const pr=el.closest('.item')?.querySelector('.item-price');
+      results.push({name:txt,price:pr?pr.textContent:''});
     }
   });
-  if (!results.length) box.innerHTML = '<div style="padding:12px 16px;color:#bca07d;font-size:13px;font-style:italic;">' + t('nessun_risultato') + '</div>';
-  else box.innerHTML = results.map(r => '<div style="padding:10px 16px;border-bottom:1px solid rgba(212,175,55,0.1);color:#f9f1e2;font-size:14px;display:flex;justify-content:space-between;"><span class="notranslate" style="font-weight:600;">' + r.name + '</span><span style="color:#d4af37;">' + r.price + '</span></div>').join('');
-  box.style.display = 'block';
+  box.innerHTML=results.length?results.map(r=>'<div style="padding:10px 16px;border-bottom:1px solid rgba(212,175,55,0.1);color:#f9f1e2;font-size:14px;display:flex;justify-content:space-between;"><span class="notranslate" style="font-weight:600;">'+r.name+'</span><span style="color:#d4af37;">'+r.price+'</span></div>').join(''):'<div style="padding:12px 16px;color:#bca07d;font-size:13px;font-style:italic;">'+t('nessun_risultato')+'</div>';
+  box.style.display='block';
 }
 
-// INIT
-document.addEventListener('DOMContentLoaded', () => { updateCart(); renderInlineGelato(); });
-document.addEventListener('click', e => {
-  if (!e.target.closest('.translate-wrap')) closeDropdown();
-  const panel = document.getElementById('cart-panel');
-  const fab = document.querySelector('.cart-fab');
-  if (panel && fab && !panel.contains(e.target) && !fab.contains(e.target)) panel.classList.remove('open');
+// ── INIT ──
+document.addEventListener('DOMContentLoaded',()=>{updateCart();renderInlineGelato();});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.translate-wrap'))closeDropdown();
+  const panel=document.getElementById('cart-panel'),fab=document.querySelector('.cart-fab');
+  if(panel&&fab&&!panel.contains(e.target)&&!fab.contains(e.target))panel.classList.remove('open');
 });
 </script>
 </body>
