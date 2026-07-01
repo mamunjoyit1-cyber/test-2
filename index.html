@@ -946,7 +946,7 @@ function popupConfirm(){
   closePopup();updateCart();
 }
 
-// ── PACKAGES ──
+function changeSimplePkgQty(key,delta){   const cfg=PKG_CONFIG[key];   if(delta>0){     cart.push({id:++cartIdCounter,itemId:'pkg_'+key,name:cfg.label,price:cfg.price,course:'menu',person:null,detail:t('cinque_portate')});   }else{     const idx=cart.map(c=>c.itemId).lastIndexOf('pkg_'+key);     if(idx>=0)cart.splice(idx,1);   }   updateCart();   const qd=document.getElementById('qty-pkg-'+key);   if(qd)qd.textContent=cart.filter(c=>c.itemId==='pkg_'+key).length; } // ── PACKAGES ──
 function togglePkgAccordion(key,btn){
   const acc=document.getElementById('acc-'+key),open=acc.classList.contains('open');
   Object.keys(PKG_CONFIG).forEach(k=>{
