@@ -758,7 +758,7 @@ const STATIC_BUCKET_MAP={
   en:{menu:'🍽️ Set Menu',dolci:'🍰 Desserts',gelato:'🍦 Ice Cream',bevande:'🍷 Drinks'},
   de:{menu:'🍽️ Menü',dolci:'🍰 Desserts',gelato:'🍦 Eis',bevande:'🍷 Getränke'}
 };
-const STATIC_BUCKETS=['menu','dolci','gelato','bevande','altri'];
+const STATIC_BUCKETS=['menu','dolci','gelato','bevande','altri']; const ALA_CARTA_LABEL={it:'Alla Carta',fr:'À la Carte',en:'À la Carte',de:'À la Carte'};
 function courseLabel(bid){
   const map=STATIC_BUCKET_MAP[currentLang]||STATIC_BUCKET_MAP.it;
   if(map[bid])return map[bid];
@@ -766,7 +766,7 @@ function courseLabel(bid){
   if(bid.startsWith('turno:')){
     const itKey=bid.replace('turno:','');
     const idx=TURNO_IT.indexOf(itKey);
-    if(idx>=0)return'📋 '+(getTurnoLabels()[idx]||itKey);
+    if(idx>=0)return'📋 '+(TURNO_LABELS.it[idx]||itKey);
     return'📋 '+itKey;
   }
   return'📋 '+bid;
@@ -1058,6 +1058,7 @@ function removePkgPerson(key,pid){
 
 // ── CART: pkg→menu bucket, dolci/gelato/bevande→own bucket, others→turno bucket ──
 function updateCart(){
+  window.__alaCartaShown=false;
   const buckets={};
   cart.forEach(e=>{
     let bid;
@@ -1074,7 +1075,7 @@ function updateCart(){
   order.forEach(bid=>{
     const entries=buckets[bid];if(!entries||!entries.length)return;
     hasContent=true;
-    html+='<div class="cart-course-label">'+courseLabel(bid)+'</div>';
+    if(bid.startsWith('turno:')&&!window.__alaCartaShown){html+='<div class="cart-course-label">🥗 '+(ALA_CARTA_LABEL[currentLang]||ALA_CARTA_LABEL.it)+'</div>';window.__alaCartaShown=true;}html+='<div class="cart-course-label">'+courseLabel(bid)+'</div>';
     const grouped=[];
     entries.forEach(e=>{
       const gk=e.itemId+'||'+(e.detail||'')+'||'+(e.person||'')+'||'+(e.turno||'');
