@@ -1117,6 +1117,7 @@ function toggleCart(){document.getElementById('cart-panel').classList.toggle('op
 
 // ── OVERLAY ──
 function showOverlay(){
+  window.__alaCartaShownOv=false;
   let html='',total=0;
   const buckets={};
   cart.forEach(e=>{
@@ -1130,7 +1131,7 @@ function showOverlay(){
   const order=['menu',...turnoKeys,'turno:—','dolci','gelato','bevande','altri'];
   order.forEach(bid=>{
     const entries=buckets[bid];if(!entries||!entries.length)return;
-    html+='<div class="overlay-section"><div class="overlay-section-title">'+courseLabel(bid)+'</div>';
+    if(bid.startsWith('turno:')&&!window.__alaCartaShownOv){html+='<div class="overlay-section-title" style="border-bottom:none;margin-bottom:2px;">🥗 '+(ALA_CARTA_LABEL[currentLang]||ALA_CARTA_LABEL.it)+'</div>';window.__alaCartaShownOv=true;}html+='<div class="overlay-section"><div class="overlay-section-title" style="'+(bid.startsWith('turno:')?'font-size:13px;padding-left:14px;':'')+'">'+courseLabel(bid)+'</div>';
     entries.forEach(e=>{total+=e.price;html+='<div class="overlay-dish"><div><div class="overlay-dish-name">'+(e.person?e.person+' — ':'')+e.name+'</div>'+(e.detail?'<div class="'+(e.isPkg?'overlay-dish-detail-pkg':'overlay-dish-detail')+'">'+e.detail+'</div>':'')+'</div><div class="overlay-dish-price">€'+e.price+'</div></div>';});
     html+='</div>';
   });
