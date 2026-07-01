@@ -113,6 +113,44 @@
     return out;
   }
 
+  // The patch files use a different naming convention for several keys than
+  // the site's own T{} object does (e.g. patch "pkg_view" = site "vedi").
+  // This table lets buildTFromPack() find the right value either way.
+  var ALIASES = {
+    vedi: ['vedi', 'pkg_view'],
+    chiudi: ['chiudi', 'pkg_close'],
+    add_person: ['add_person', 'pkg_add_person'],
+    conferma_aggiungi: ['conferma_aggiungi', 'pkg_confirm'],
+    confermato: ['confermato', 'pkg_confirmed'],
+    modifica: ['modifica', 'pkg_modify'],
+    scegli_btn: ['scegli_btn', 'pkg_choose'],
+    selezionato_btn: ['selezionato_btn', 'pkg_selected'],
+    cinque_portate: ['cinque_portate', 'pkg_5courses'],
+    nessun_articolo: ['nessun_articolo', 'cart_empty'],
+    nessun_risultato: ['nessun_risultato', 'no_results'],
+    totale_stimato: ['totale_stimato', 'totale'],
+    conferma_btn: ['conferma_btn', 'confirm_order'],
+    add_vino_cart: ['add_vino_cart', 'wine_add_cart'],
+    vino_back: ['vino_back', 'wine_back'],
+    condimento_row: ['condimento_row', 'condimento_label'],
+    seleziona_turno: ['seleziona_turno', 'turno_hint']
+  };
+  function resolveVal(pack, key) {
+    var candidates = ALIASES[key] || [key];
+    for (var i = 0; i < candidates.length; i++) {
+      if (pack[candidates[i]] !== undefined) return pack[candidates[i]];
+    }
+    return undefined;
+  }
+  function buildTFromPack(pack) {
+    var out = {};
+    T_KEYS.forEach(function (k) {
+      var v = resolveVal(pack, k);
+      if (v !== undefined) out[k] = wrapPlaceholder(v);
+    });
+    return out;
+  }
+
   // Merge whatever dynamic-UI + sauce data exists into the site's own
   // T{} / SAUCE_TRANS objects, for every patched language, once.
   if (typeof T === 'object' && typeof SAUCE_TRANS === 'object') {
@@ -125,6 +163,31 @@
           if (!SAUCE_TRANS[sKey]) SAUCE_TRANS[sKey] = {};
           SAUCE_TRANS[sKey][code] = pack.sauces[sKey];
         });
+      }
+    });
+  }
+
+  // Cart bucket labels (📋 Menù / 🍰 Dolci / 🍦 Gelato / 🍷 Bevande)
+  if (typeof STATIC_BUCKET_MAP === 'object') {
+    Object.keys(translations).forEach(function (code) {
+      var pack = translations[code];
+      if (pack.course_menu || pack.course_dolci || pack.course_gelato || pack.course_bevande) {
+        STATIC_BUCKET_MAP[code] = {
+          menu: pack.course_menu || STATIC_BUCKET_MAP.it.menu,
+          dolci: pack.course_dolci || STATIC_BUCKET_MAP.it.dolci,
+          gelato: pack.course_gelato || STATIC_BUCKET_MAP.it.gelato,
+          bevande: pack.course_bevande || STATIC_BUCKET_MAP.it.bevande
+        };
+      }
+    });
+  }
+
+  // Turno (course-order) labels — patch stores these as a 4-item array
+  if (typeof TURNO_LABELS === 'object') {
+    Object.keys(translations).forEach(function (code) {
+      var pack = translations[code];
+      if (Array.isArray(pack.turno) && pack.turno.length === 4) {
+        TURNO_LABELS[code] = pack.turno;
       }
     });
   }
@@ -247,8 +310,12 @@
     }
 
     // Wine modal
-    setText('.vini-modal-title', pack.card_wine);
+    setText('.vini-modal-title', pack.wine_title || pack.card_wine);
     setText('.vini-modal-sub', pack.wine_sub);
+
+    // Small extras present under the patch's own naming
+    setText('.popup-cancel', pack.cancel);
+    setText('.cart-total > span:first-child', pack.cart_total);
   }
 
   // 3) The actual language switch used by dropdown items
