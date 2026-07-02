@@ -626,7 +626,7 @@ const SAUCE_TRANS={
   'Gorgonzola':       {fr:'Gorgonzola',   en:'Gorgonzola',     de:'Gorgonzola'},
   'Griglia':          {fr:'Grillé',       en:'Grilled',        de:'Gegrillt'},
   'Al Forno':         {fr:'Au Four',      en:'Baked',          de:'Im Ofen'},
-  'Alla Griglia':     {fr:'Grillé',       en:'Grilled',        de:'Gegrillt'},
+  'Alla Griglia':     {fr:'Grillé',       en:'Grilled',        de:'Gegrillt'},   'al Burro':{fr:'Au Beurre', en:'Butter', de:'Mit Butter'},   'alla Gorgonzola':{fr:'Au Gorgonzola', en:'Gorgonzola', de:'Mit Gorgonzola'},   'Pesto':{fr:'Pesto', en:'Pesto', de:'Pesto'},   'Ragù':{fr:'Ragù (sauce à la viande)', en:'Ragù (Meat Sauce)', de:'Ragù (Fleischsauce)'},   'Burro':{fr:'Beurre', en:'Butter', de:'Butter'},
   // Duo di Primi options
   'Ravioli della Nonna':  {fr:'Ravioli maison',    en:"Grandma's Ravioli", de:'Omas Ravioli'},
   'Ravioli al Coniglio':  {fr:'Ravioli au Lapin',  en:'Rabbit Ravioli',    de:'Kaninchen-Ravioli'},
@@ -715,7 +715,8 @@ const DISH_TRANS={
   'Milanese':{fr:'(Milanaise)',en:'(Milanese)',de:'(Mailänder Schnitzel)'},
   'Bistecca':{fr:'(Steak)',en:'(Steak)',de:'(Steak)'},
   'Rostelle':{fr:'(Côtelettes)',en:'(Cutlets)',de:'(Koteletts)'},
-  'Salsiccia':{fr:'(Saucisse)',en:'(Sausage)',de:'(Wurst)'}
+  'Salsiccia':{fr:'(Saucisse)',en:'(Sausage)',de:'(Wurst)'},
+  'Trofie':{fr:'(Trofie)',en:'(Trofie Pasta)',de:'(Trofie-Nudeln)'}
 };
 function dishSub(n){if(currentLang==='it')return '';const tr=DISH_TRANS[n];if(!tr||!tr[currentLang])return '';return '<div class="sub-trans" style="display:block;margin-top:3px;">'+tr[currentLang]+'</div>';}
 
