@@ -1084,7 +1084,7 @@ function updateCart(){
       const pTxt=g.person?'<span style="color:#d4af37;">'+g.person+'</span> — ':'';
       const dTxt=g.detail?'<div class="'+(g.isPkg?'cart-row-detail-pkg':'cart-row-detail')+'">'+g.detail+'</div>':'';
       const rem=g.isPkg?"removePkgPerson('"+g.pkgKey+"',"+g.pkgPid+")":"removeCartGroup("+JSON.stringify(g.ids)+")";
-      const minus=g.isPkg?"removePkgPerson('"+g.pkgKey+"',"+g.pkgPid+")":"removeOneCartItem('"+g.key.replace(/'/g,"\\'"+"')");
+      const minus=g.isPkg?"removePkgPerson('"+g.pkgKey+"',"+g.pkgPid+")":"removeOneCartItem('"+g.key.replace(/'/g,"\\'")+"')";
       const plus=g.isPkg?'':'addSameItem(\''+g.key.replace(/'/g,"\\'")+'\')';
       html+='<div class="cart-row"><div class="cart-row-info"><div class="cart-row-name">'+pTxt+g.name+'</div>'+dTxt+'</div>'+
         '<div class="cart-row-right">'+
