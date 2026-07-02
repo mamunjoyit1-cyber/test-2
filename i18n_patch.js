@@ -1,6 +1,17 @@
 // Auto-generated: fills missing translation keys for tr, bg, sk, hr, sr, sl, ar, zh-CN, ja, ko, hi, bn, ur, fa
 window.I18N_PATCH = {
   "tr": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Gnocchi",
+      "Milanese": "Milano Usulü Şnitzel",
+      "Bistecca": "Biftek",
+      "Rostelle": "Kızarmış Rulo",
+      "Salsiccia": "Sosis"
+    },
+    "pkg_section_scelta": "Seçmeli Yemekler",
+    "cottura": ["🔴 Az Pişmiş", "🟠 Mavi (Çok Az)", "🟡 Orta Pişmiş", "✅ İyi Pişmiş"],
     "cat_primi": "🍝 İlk Yemekler",
     "dishes": {
       "Antipasto Tipico del Lago Bin": "(Lago Bin'e Özgü Meze)",
@@ -65,6 +76,17 @@ window.I18N_PATCH = {
     }
   },
   "bg": {
+    "kids_dishes": {
+      "Ravioli": "Равиоли",
+      "Tagliatelle": "タглиателе",
+      "Gnocchi": "Njoки",
+      "Milanese": "Шницел по Милански",
+      "Bistecca": "Бифтек",
+      "Rostelle": "Пържени Рулца",
+      "Salsiccia": "Наденица"
+    },
+    "pkg_section_scelta": "Ястия по избор",
+    "cottura": ["🔴 Розово", "🟠 Много Розово", "🟡 Средно", "✅ Добре Изпечено"],
     "subtitle": "✦ РЕСТОРАНТ ✦",
     "cat_primi": "🍝 Първи Ястия",
     "secondi_sub": "(Гарнитура включена: пържени картофи, печени картофи или зеленчуци на скара)",
@@ -170,6 +192,17 @@ window.I18N_PATCH = {
     }
   },
   "sk": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Gnocchi",
+      "Milanese": "Milánsky Rezeň",
+      "Bistecca": "Steak",
+      "Rostelle": "Vyprážané Rolky",
+      "Salsiccia": "Klobása"
+    },
+    "pkg_section_scelta": "Jedlá na výber",
+    "cottura": ["🔴 Krvavé", "🟠 Veľmi Krvavé", "🟡 Stredne Prepečené", "✅ Prepečené"],
     "subtitle": "✦ REŠTAURÁCIA ✦",
     "cat_menu": "🍽️ Naše Menu",
     "cat_antipasti": "🥗 Predjedlá à la Carte",
@@ -303,6 +336,17 @@ window.I18N_PATCH = {
     }
   },
   "hr": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Njoki",
+      "Milanese": "Milanski Odrezak",
+      "Bistecca": "Odrezak",
+      "Rostelle": "Pržene Rolice",
+      "Salsiccia": "Kobasica"
+    },
+    "pkg_section_scelta": "Jela po izboru",
+    "cottura": ["🔴 Krvavo", "🟠 Vrlo Krvavo", "🟡 Srednje Pečeno", "✅ Dobro Pečeno"],
     "subtitle": "✦ RESTORAN ✦",
     "cat_menu": "🍽️ Naši Jelovnici",
     "cat_antipasti": "🥗 Predjela à la Carte",
@@ -431,6 +475,17 @@ window.I18N_PATCH = {
     }
   },
   "sr": {
+    "kids_dishes": {
+      "Ravioli": "Равиоли",
+      "Tagliatelle": "Тaljателе",
+      "Gnocchi": "Њоки",
+      "Milanese": "Милански Одрезак",
+      "Bistecca": "Одрезак",
+      "Rostelle": "Пржене Ролнице",
+      "Salsiccia": "Кобасица"
+    },
+    "pkg_section_scelta": "Јела по избору",
+    "cottura": ["🔴 Крваво", "🟠 Врло Крваво", "🟡 Средње Печено", "✅ Добро Печено"],
     "subtitle": "✦ РЕСТОРАН ✦",
     "cat_menu": "🍽️ Наши Менији",
     "cat_antipasti": "🥗 Предјела à la Carte",
@@ -559,6 +614,17 @@ window.I18N_PATCH = {
     }
   },
   "sl": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Njoki",
+      "Milanese": "Milanski Zrezek",
+      "Bistecca": "Zrezek",
+      "Rostelle": "Ocvrti Zvitki",
+      "Salsiccia": "Klobasa"
+    },
+    "pkg_section_scelta": "Jedi po izbiri",
+    "cottura": ["🔴 Krvavo", "🟠 Zelo Krvavo", "🟡 Srednje Pečeno", "✅ Dobro Pečeno"],
     "subtitle": "✦ RESTAVRACIJA ✦",
     "cat_menu": "🍽️ Naši Jedilniki",
     "cat_antipasti": "🥗 Predjedi à la Carte",
@@ -687,6 +753,17 @@ window.I18N_PATCH = {
     }
   },
   "ar": {
+    "kids_dishes": {
+      "Ravioli": "رافيولي",
+      "Tagliatelle": "تالياتيلي",
+      "Gnocchi": "نيوكي",
+      "Milanese": "شنيتزل ميلانو",
+      "Bistecca": "ستيك",
+      "Rostelle": "لفائف مقلية",
+      "Salsiccia": "نقانق"
+    },
+    "pkg_section_scelta": "أطباق للاختيار",
+    "cottura": ["🔴 نيء قليلاً", "🟠 نيء جداً", "🟡 متوسط النضج", "✅ ناضج جيداً"],
     "subtitle": "✦ مطعم ✦",
     "tab_primi": "🍝 الطبق الأول",
     "cat_menu": "🍽️ قوائم الطعام لدينا",
@@ -815,6 +892,17 @@ window.I18N_PATCH = {
     }
   },
   "zh-CN": {
+    "kids_dishes": {
+      "Ravioli": "意式饺子",
+      "Tagliatelle": "宽面条",
+      "Gnocchi": "土豆团子",
+      "Milanese": "米兰式炸肉排",
+      "Bistecca": "牛排",
+      "Rostelle": "炸肉卷",
+      "Salsiccia": "香肠"
+    },
+    "pkg_section_scelta": "可选菜品",
+    "cottura": ["🔴 三分熟", "🟠 一分熟", "🟡 五分熟", "✅ 全熟"],
     "subtitle": "✦ 餐厅 ✦",
     "tab_primi": "🍝 头盘",
     "cat_menu": "🍽️ 我们的套餐",
@@ -960,6 +1048,17 @@ window.I18N_PATCH = {
     }
   },
   "ja": {
+    "kids_dishes": {
+      "Ravioli": "ラビオリ",
+      "Tagliatelle": "タリアテッレ",
+      "Gnocchi": "ニョッキ",
+      "Milanese": "ミラノ風カツレツ",
+      "Bistecca": "ステーキ",
+      "Rostelle": "揚げロール",
+      "Salsiccia": "ソーセージ"
+    },
+    "pkg_section_scelta": "選べる料理",
+    "cottura": ["🔴 レア", "🟠 ブルー(超レア)", "🟡 ミディアム", "✅ ウェルダン"],
     "subtitle": "✦ レストラン ✦",
     "tab_primi": "🍝 プリモ",
     "cat_menu": "🍽️ コースメニュー",
@@ -1105,6 +1204,17 @@ window.I18N_PATCH = {
     }
   },
   "ko": {
+    "kids_dishes": {
+      "Ravioli": "라비올리",
+      "Tagliatelle": "탈리아텔레",
+      "Gnocchi": "뇨키",
+      "Milanese": "밀라노식 커틀릿",
+      "Bistecca": "스테이크",
+      "Rostelle": "튀긴 롤",
+      "Salsiccia": "소시지"
+    },
+    "pkg_section_scelta": "선택 요리",
+    "cottura": ["🔴 레어", "🟠 블루(초레어)", "🟡 미디엄", "✅ 웰던"],
     "subtitle": "✦ 레스토랑 ✦",
     "tab_primi": "🍝 첫 번째 코스",
     "cat_menu": "🍽️ 저희 메뉴",
@@ -1250,6 +1360,17 @@ window.I18N_PATCH = {
     }
   },
   "hi": {
+    "kids_dishes": {
+      "Ravioli": "रैवियोली",
+      "Tagliatelle": "टैग्लिएटेल",
+      "Gnocchi": "न्योक्की",
+      "Milanese": "मिलानी कटलेट",
+      "Bistecca": "स्टेक",
+      "Rostelle": "तली हुई रोल",
+      "Salsiccia": "सॉसेज"
+    },
+    "pkg_section_scelta": "चुनने के लिए व्यंजन",
+    "cottura": ["🔴 अधपका (रेयर)", "🟠 अत्यधिक अधपका", "🟡 मीडियम", "✅ पूरी तरह पका"],
     "subtitle": "✦ रेस्तरां ✦",
     "tab_primi": "🍝 पहला कोर्स",
     "tab_contorni": "🥦 साइड डिश",
@@ -1381,6 +1502,17 @@ window.I18N_PATCH = {
     }
   },
   "bn": {
+    "kids_dishes": {
+      "Ravioli": "রাভিওলি",
+      "Tagliatelle": "তালিয়াতেল্লে",
+      "Gnocchi": "নিওকি",
+      "Milanese": "মিলানিজ কাটলেট",
+      "Bistecca": "স্টেক",
+      "Rostelle": "ভাজা রোল",
+      "Salsiccia": "সসেজ"
+    },
+    "pkg_section_scelta": "পছন্দের খাবার",
+    "cottura": ["🔴 হালকা রান্না (রেয়ার)", "🟠 অতি হালকা রান্না", "🟡 মাঝারি রান্না", "✅ পুরোপুরি রান্না"],
     "subtitle": "✦ রেস্তোরাঁ ✦",
     "tab_primi": "🍝 প্রথম কোর্স",
     "tab_contorni": "🥦 সাইড ডিশ",
@@ -1512,6 +1644,17 @@ window.I18N_PATCH = {
     }
   },
   "ur": {
+    "kids_dishes": {
+      "Ravioli": "راویولی",
+      "Tagliatelle": "تالیاتیلے",
+      "Gnocchi": "نیوکی",
+      "Milanese": "میلانی کٹلیٹ",
+      "Bistecca": "سٹیک",
+      "Rostelle": "تلا ہوا رول",
+      "Salsiccia": "ساسیج"
+    },
+    "pkg_section_scelta": "انتخاب کے لیے کھانے",
+    "cottura": ["🔴 ہلکا پکا ہوا", "🟠 بہت ہلکا پکا", "🟡 درمیانہ پکا", "✅ اچھی طرح پکا"],
     "subtitle": "✦ ریستوران ✦",
     "tab_primi": "🍝 پہلا کورس",
     "tab_contorni": "🥦 سائیڈ ڈش",
@@ -1643,6 +1786,17 @@ window.I18N_PATCH = {
     }
   },
   "fa": {
+    "kids_dishes": {
+      "Ravioli": "راویولی",
+      "Tagliatelle": "تالیاتله",
+      "Gnocchi": "نیوکی",
+      "Milanese": "شنیسل میلانی",
+      "Bistecca": "استیک",
+      "Rostelle": "رول سرخ‌شده",
+      "Salsiccia": "سوسیس"
+    },
+    "pkg_section_scelta": "غذاهای انتخابی",
+    "cottura": ["🔴 کم‌پز", "🟠 خیلی کم‌پز", "🟡 متوسط", "✅ کاملاً پخته"],
     "subtitle": "✦ رستوران ✦",
     "tab_primi": "🍝 دوره اول",
     "tab_contorni": "🥦 پیش‌غذای فرعی",
@@ -1774,6 +1928,17 @@ window.I18N_PATCH = {
     }
   },
   "es": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Ñoquis",
+      "Milanese": "Milanesa",
+      "Bistecca": "Filete",
+      "Rostelle": "Rollitos Fritos",
+      "Salsiccia": "Salchicha"
+    },
+    "pkg_section_scelta": "Platos a elegir",
+    "cottura": ["🔴 Poco Hecho", "🟠 Muy Poco Hecho", "🟡 Al Punto", "✅ Bien Hecho"],
     "subtitle": "✦ RESTAURANTE ✦",
     "cat_antipasti": "🥗 Entrantes",
     "cat_primi": "🍝 Primeros Platos",
@@ -1920,6 +2085,17 @@ window.I18N_PATCH = {
     }
   },
   "pt": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Nhoque",
+      "Milanese": "Escalope à Milanesa",
+      "Bistecca": "Bife",
+      "Rostelle": "Rolinhos Fritos",
+      "Salsiccia": "Salsicha"
+    },
+    "pkg_section_scelta": "Pratos à escolha",
+    "cottura": ["🔴 Mal Passado", "🟠 Muito Mal Passado", "🟡 Ao Ponto", "✅ Bem Passado"],
     "subtitle": "✦ RESTAURANTE ✦",
     "cat_antipasti": "🥗 Entradas",
     "cat_primi": "🍝 Primeiros Pratos",
@@ -2066,6 +2242,17 @@ window.I18N_PATCH = {
     }
   },
   "ru": {
+    "kids_dishes": {
+      "Ravioli": "Равиоли",
+      "Tagliatelle": "Тальятелле",
+      "Gnocchi": "Ньокки",
+      "Milanese": "Шницель по-милански",
+      "Bistecca": "Стейк",
+      "Rostelle": "Жареные Рулетики",
+      "Salsiccia": "Колбаска"
+    },
+    "pkg_section_scelta": "Блюда на выбор",
+    "cottura": ["🔴 С Кровью", "🟠 Очень Слабой Прожарки", "🟡 Средней Прожарки", "✅ Хорошо Прожаренный"],
     "subtitle": "✦ РЕСТОРАН ✦",
     "cat_antipasti": "🥗 Закуски",
     "cat_primi": "🍝 Первые Блюда",
@@ -2212,6 +2399,17 @@ window.I18N_PATCH = {
     }
   },
   "nl": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Gnocchi",
+      "Milanese": "Milanese Schnitzel",
+      "Bistecca": "Biefstuk",
+      "Rostelle": "Gefrituurde Rolletjes",
+      "Salsiccia": "Worst"
+    },
+    "pkg_section_scelta": "Gerechten naar keuze",
+    "cottura": ["🔴 Rood (Rare)", "🟠 Zeer Rood (Blue)", "🟡 Medium", "✅ Doorbakken"],
     "subtitle": "✦ RESTAURANT ✦",
     "cat_antipasti": "🥗 Voorgerechten à la Carte",
     "cat_primi": "🍝 Eerste Gangen",
@@ -2358,6 +2556,17 @@ window.I18N_PATCH = {
     }
   },
   "pl": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Gnocchi",
+      "Milanese": "Kotlet Mediolański",
+      "Bistecca": "Stek",
+      "Rostelle": "Smażone Roladki",
+      "Salsiccia": "Kiełbaska"
+    },
+    "pkg_section_scelta": "Dania do wyboru",
+    "cottura": ["🔴 Krwisty", "🟠 Bardzo Krwisty", "🟡 Średnio Wysmażony", "✅ Dobrze Wysmażony"],
     "subtitle": "✦ RESTAURACJA ✦",
     "cat_antipasti": "🥗 Przystawki à la carte",
     "cat_primi": "🍝 Pierwsze Dania",
@@ -2504,6 +2713,17 @@ window.I18N_PATCH = {
     }
   },
   "uk": {
+    "kids_dishes": {
+      "Ravioli": "Равіолі",
+      "Tagliatelle": "Тальятелле",
+      "Gnocchi": "Ньокі",
+      "Milanese": "Шніцель по-міланськи",
+      "Bistecca": "Стейк",
+      "Rostelle": "Смажені Рулетики",
+      "Salsiccia": "Ковбаска"
+    },
+    "pkg_section_scelta": "Страви на вибір",
+    "cottura": ["🔴 З Кров'ю", "🟠 Дуже Слабкої Прожарки", "🟡 Середньої Прожарки", "✅ Добре Прожарений"],
     "subtitle": "✦ РЕСТОРАН ✦",
     "cat_antipasti": "🥗 Закуски",
     "cat_primi": "🍝 Перші Страви",
@@ -2650,6 +2870,17 @@ window.I18N_PATCH = {
     }
   },
   "ro": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Gnocchi",
+      "Milanese": "Șnițel Milaneză",
+      "Bistecca": "Friptură",
+      "Rostelle": "Ruladă Prăjită",
+      "Salsiccia": "Cârnat"
+    },
+    "pkg_section_scelta": "Feluri la alegere",
+    "cottura": ["🔴 În Sânge", "🟠 Foarte În Sânge", "🟡 Mediu", "✅ Bine Făcut"],
     "subtitle": "✦ RESTAURANT ✦",
     "cat_antipasti": "🥗 Aperitive",
     "cat_primi": "🍝 Feluri Întâi",
@@ -2796,6 +3027,17 @@ window.I18N_PATCH = {
     }
   },
   "sv": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Gnocchi",
+      "Milanese": "Milanesa Schnitzel",
+      "Bistecca": "Biff",
+      "Rostelle": "Friterade Rullar",
+      "Salsiccia": "Korv"
+    },
+    "pkg_section_scelta": "Rätter att välja",
+    "cottura": ["🔴 Blodig", "🟠 Mycket Blodig", "🟡 Medium", "✅ Genomstekt"],
     "subtitle": "✦ RESTAURANG ✦",
     "cat_antipasti": "🥗 Förrätter",
     "cat_primi": "🍝 Förstarätter",
@@ -2942,6 +3184,17 @@ window.I18N_PATCH = {
     }
   },
   "da": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Gnocchi",
+      "Milanese": "Milano Schnitzel",
+      "Bistecca": "Bøf",
+      "Rostelle": "Friterede Ruller",
+      "Salsiccia": "Pølse"
+    },
+    "pkg_section_scelta": "Retter at vælge",
+    "cottura": ["🔴 Rød (Rare)", "🟠 Meget Rød (Blue)", "🟡 Medium", "✅ Gennemstegt"],
     "subtitle": "✦ RESTAURANT ✦",
     "cat_antipasti": "🥗 Forretter",
     "cat_primi": "🍝 Første Retter",
@@ -3088,6 +3341,17 @@ window.I18N_PATCH = {
     }
   },
   "no": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Gnocchi",
+      "Milanese": "Milanese Schnitzel",
+      "Bistecca": "Biff",
+      "Rostelle": "Fritert Rull",
+      "Salsiccia": "Pølse"
+    },
+    "pkg_section_scelta": "Retter å velge",
+    "cottura": ["🔴 Rød (Rare)", "🟠 Veldig Rød (Blue)", "🟡 Medium", "✅ Gjennomstekt"],
     "subtitle": "✦ RESTAURANT ✦",
     "cat_antipasti": "🥗 Forretter",
     "cat_primi": "🍝 Første Retter",
@@ -3234,6 +3498,17 @@ window.I18N_PATCH = {
     }
   },
   "fi": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Gnocchi",
+      "Milanese": "Milanolainen Leike",
+      "Bistecca": "Pihvi",
+      "Rostelle": "Paistetut Rullat",
+      "Salsiccia": "Makkara"
+    },
+    "pkg_section_scelta": "Valittavat ruokalajit",
+    "cottura": ["🔴 Punainen (Rare)", "🟠 Erittäin Punainen (Blue)", "🟡 Medium", "✅ Kypsä"],
     "subtitle": "✦ RAVINTOLA ✦",
     "cat_antipasti": "🥗 Alkuruoat",
     "cat_primi": "🍝 Ensimmäiset Ruokalajit",
@@ -3380,6 +3655,17 @@ window.I18N_PATCH = {
     }
   },
   "el": {
+    "kids_dishes": {
+      "Ravioli": "Ραβιόλι",
+      "Tagliatelle": "Ταλιατέλες",
+      "Gnocchi": "Νιόκι",
+      "Milanese": "Σνίτσελ Μιλάνο",
+      "Bistecca": "Μπριζόλα",
+      "Rostelle": "Τηγανητά Ρολά",
+      "Salsiccia": "Λουκάνικο"
+    },
+    "pkg_section_scelta": "Πιάτα προς Επιλογή",
+    "cottura": ["🔴 Μισοψημένο", "🟠 Πολύ Μισοψημένο", "🟡 Μέτρια Ψημένο", "✅ Καλοψημένο"],
     "subtitle": "✦ ΕΣΤΙΑΤΟΡΙΟ ✦",
     "cat_antipasti": "🥗 Ορεκτικά",
     "cat_primi": "🍝 Πρώτα Πιάτα",
@@ -3526,6 +3812,17 @@ window.I18N_PATCH = {
     }
   },
   "cs": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Noky",
+      "Milanese": "Milánský Řízek",
+      "Bistecca": "Steak",
+      "Rostelle": "Smažené Závitky",
+      "Salsiccia": "Klobása"
+    },
+    "pkg_section_scelta": "Jídla na výběr",
+    "cottura": ["🔴 Krvavé", "🟠 Velmi Krvavé", "🟡 Střední Propečení", "✅ Dobře Propečené"],
     "subtitle": "✦ RESTAURACE ✦",
     "cat_antipasti": "🥗 Předkrmy",
     "cat_primi": "🍝 První Chody",
@@ -3672,6 +3969,17 @@ window.I18N_PATCH = {
     }
   },
   "hu": {
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Gnocchi",
+      "Milanese": "Milánói Szelet",
+      "Bistecca": "Steak",
+      "Rostelle": "Sült Tekercs",
+      "Salsiccia": "Kolbász"
+    },
+    "pkg_section_scelta": "Választható Fogások",
+    "cottura": ["🔴 Véres", "🟠 Nagyon Véres", "🟡 Közepesen Átsütött", "✅ Jól Átsütött"],
     "subtitle": "✦ ÉTTEREM ✦",
     "cat_antipasti": "🥗 Előételek",
     "cat_primi": "🍝 Első Fogások",
@@ -3815,6 +4123,330 @@ window.I18N_PATCH = {
       "Bunet": "(Piemonti Csokoládépuding)",
       "Macedonia di Frutta": "(Friss Gyümölcssaláta)",
       "Assortimento Misto dei Dolci": "(Vegyes Desszerttál)"
+    }
+  },
+  "vi": {
+    "subtitle": "✦ NHÀ HÀNG ✦",
+    "cat_antipasti": "🥗 Khai Vị",
+    "cat_primi": "🍝 Món Đầu",
+    "cat_secondi": "🥩 Món Chính",
+    "cat_contorni": "🥦 Món Kèm & Phô Mai",
+    "cat_dolce": "🍰 Món Tráng Miệng",
+    "cat_gelato": "🍦 Kem Thủ Công",
+    "cat_bar": "🍹 Quầy Bar",
+    "secondi_sub": "(Bao gồm món kèm: khoai tây chiên, khoai tây nướng hoặc rau nướng)",
+    "dolce_banner_title": "Món Tráng Miệng Tự Làm",
+    "dolce_banner_sub": "Tất cả món tráng miệng của chúng tôi được làm thủ công mỗi ngày",
+    "gelato_desc": "Làm mới mỗi ngày — chọn tối đa 3 vị",
+    "sorbetto_desc": "Có loại có cồn hoặc không cồn",
+    "search_ph": "🔍 Tìm trong thực đơn...",
+    "card_wine": "Danh Sách Rượu Vang",
+    "card_wine_sub": "Mở Danh Sách Kỹ Thuật Số",
+    "card_dolce": "Món Tráng Miệng",
+    "card_dolce_sub": "Món Tráng Miệng Của Chúng Tôi",
+    "card_bar": "Đồ Uống",
+    "card_bar_sub": "Đồ Uống, Cà Phê & Cocktail",
+    "order_btn": "Đặt Món",
+    "cart_title": "📋 Đơn Đặt Món Của Bạn",
+    "nessun_articolo": "Chưa có món nào",
+    "waiter_btn": "📲 Hiển Thị Cho Nhân Viên",
+    "overlay_sub": "Tóm Tắt Đơn Đặt Món",
+    "overlay_close": "✕ Đóng",
+    "overlay_note": "Hãy cho nhân viên xem màn hình này",
+    "pkg_lago_desc": "Với các Món Đặc Trưng và Công Thức \"Trọn Gói\" (1 chai Rượu Vang Nhà mỗi 4 người) — 5 Món do Bếp Chọn",
+    "pkg_gastro_desc": "Khai vị, 3 Món tự chọn, Tráng miệng, Cà phê và Rượu tiêu hóa. Không bao gồm đồ uống.",
+    "pkg_degu_desc": "Khai vị, 2 Món tự chọn, Tráng miệng, Cà phê và Rượu tiêu hóa. Không bao gồm đồ uống.",
+    "pkg_degu_warn": "⚠️ (*) Không phục vụ tối thứ Bảy, trưa Chủ Nhật và các ngày lễ.",
+    "pkg_bambini_desc": "Một món tự chọn + Kem Tự Làm + Đồ Uống",
+    "note_box": "Thực đơn không thể chia sẻ giữa nhiều người.",
+    "vedi": "📋 Xem ▾",
+    "chiudi": "📋 Đóng ▴",
+    "add_person": "+ Thêm người",
+    "conferma_aggiungi": "✓ Xác Nhận và Thêm vào Đơn",
+    "confermato": "✅ Đã Xác Nhận và Thêm",
+    "modifica": "✏️ Sửa",
+    "scegli_btn": "+ Chọn",
+    "selezionato_btn": "✓ Đã Chọn",
+    "cinque_portate": "5 món do bếp chọn",
+    "condimento_label": "🍽️ Nước Sốt:",
+    "condimento_row": "Nước Sốt:",
+    "cottura_label": "🔥 Độ Chín:",
+    "turno_label": "📋 Thứ Tự Phục Vụ (bắt buộc)",
+    "seleziona_turno": "Chọn thứ tự phục vụ",
+    "gusti_label": "🍦 Hương Vị (tối đa 3):",
+    "gusti_sel": "Đã chọn: {n}/3",
+    "gusti_hint": "Chạm để chọn tối đa 3 hương vị",
+    "seleziona_gusto": "Chọn ít nhất 1 hương vị",
+    "preferenza_label": "🍹 Sở Thích:",
+    "con_alcol": "🍷 Có Cồn",
+    "senza_alcol": "🧃 Không Cồn",
+    "sub_default": "Thêm vào đơn đặt món",
+    "sub_gelato": "Chọn tối đa 3 hương vị",
+    "sub_sorbetto": "Có cồn hay không cồn?",
+    "sub_sauce": "Chọn nước sốt cho mỗi người",
+    "scegli_n": "🍽️ Chọn {n} món ({s}/{n}):",
+    "seleziona_ancora": "Chọn thêm {n} món nữa",
+    "name_ph": "Tên (không bắt buộc)",
+    "conferma_btn": "✓ Xác Nhận Đơn",
+    "persona": "👤 Người",
+    "piatti_sel": "{n} / {s} món đã chọn",
+    "totale_stimato": "Tổng Ước Tính",
+    "nessun_risultato": "Không tìm thấy kết quả",
+    "course_menu": "🍽️ Thực Đơn",
+    "course_dolci": "🍰 Tráng Miệng",
+    "course_gelato": "🍦 Kem",
+    "course_bevande": "🍷 Đồ Uống",
+    "wine_sub": "Chọn một loại rượu hoặc mở toàn bộ danh sách",
+    "wine_house_label": "Rượu Vang Nhà — Ly",
+    "add_vino_cart": "Thêm vào Đơn",
+    "vino_back": "Quay lại Danh Sách Rượu",
+    "wine_title": "Danh Sách Rượu Vang",
+    "cancel": "Hủy",
+    "cart_total": "Tổng ước tính",
+    "turno": [
+      "Món 1",
+      "Món 2",
+      "Món 3",
+      "Món 4"
+    ],
+    "sauces": {
+      "Melone": "Dưa Vàng",
+      "Grana": "Phô Mai Grana",
+      "Pomodoro": "Cà Chua",
+      "Burro e Salvia": "Bơ và Xô Thơm",
+      "Funghi": "Nấm",
+      "Burro e Timo": "Bơ và Cỏ Xạ Hương",
+      "Selvaggina": "Sốt Thịt Rừng",
+      "Pesto Fresco": "Pesto Tươi",
+      "Noci": "Hạt Óc Chó",
+      "Primavera": "Primavera",
+      "Formaggi e Gorgonzola": "Phô Mai và Gorgonzola",
+      "Pepe Verde": "Tiêu Xanh",
+      "Gorgonzola": "Gorgonzola",
+      "Griglia": "Nướng",
+      "Al Forno": "Nướng Lò",
+      "Alla Griglia": "Nướng",
+      "Formaggi con Gorgonzola": "Phô Mai với Gorgonzola"
+    },
+    "dishes": {
+      "Antipasto Tipico del Lago Bin": "(Khai Vị Đặc Trưng Lago Bin)",
+      "Assortimento del Salumiere": "(Đĩa Thịt Nguội Tổng Hợp)",
+      "Prosciutto di Parma con Melone o Grana": "(Giăm Bông Parma với Dưa Vàng hoặc Phô Mai Grana)",
+      "Antipasto Misto \"Caldo e Freddo\" (per 2 pers.)": "(Khai Vị Nóng Lạnh Kết Hợp - cho 2 người)",
+      "Lumache in Umido": "(Ốc Sên Om)",
+      "Brandacujan": "(Pate Cá Tuyết Truyền Thống)",
+      "Tartare di Manzo al Coltello": "(Tartare Bò Băm Tay bằng Dao)",
+      "Tomino d'Alpeggio Caldo": "(Phô Mai Núi Alps Tomino Nóng)",
+      "Tartare di Pesce": "(Tartare Cá)",
+      "Antipasto Misto di Mare": "(Khai Vị Hải Sản Tổng Hợp)",
+      "Ravioli della Nonna": "(Ravioli của Bà)",
+      "Ravioli della Nonna al Coniglio": "(Ravioli của Bà với Thịt Thỏ)",
+      "Tagliatelle di Pasta Fresca": "(Mì Tagliatelle Tươi)",
+      "Tagliatelle ai Frutti di Mare": "(Mì Tagliatelle Hải Sản)",
+      "Mezzelune di Magro": "(Mezzelune với Bơ và Xô Thơm hoặc Hạt Óc Chó)",
+      "Troffie": "(Troffie với Pesto hoặc Primavera)",
+      "Troffie con Gamberetti e Zucchine": "(Troffie với Tôm và Bí Ngòi)",
+      "Gnocchi di Patate": "(Gnocchi Khoai Tây)",
+      "Risotto ai Frutti di Mare (min. 2 pers.)": "(Risotto Hải Sản)",
+      "Duo di Primi": "(Bộ Đôi Món Đầu)",
+      "Coniglio alla Rocchettina": "(Thịt Thỏ Kiểu Rocchettina)",
+      "Selvaggina al Vino Rosso": "(Thịt Rừng Sốt Rượu Vang Đỏ)",
+      "Costine di Agnello alla Griglia": "(Sườn Cừu Nướng)",
+      "Grigliata Mista di Carne": "(Thịt Nướng Tổng Hợp)",
+      "Roast Beef": "(Thịt Bò Nướng)",
+      "Filetto di Manzo": "(Thăn Bò)",
+      "Pescato o Gamberoni": "(Cá Trong Ngày hoặc Tôm Lớn)",
+      "Grigliata Mista di Pesce": "(Hải Sản Nướng Tổng Hợp)",
+      "Assortimento Misto di Formaggi": "(Đĩa Phô Mai)",
+      "Grigliata Mista di Verdure": "(Rau Nướng)",
+      "Insalata Mista": "(Salad Trộn)",
+      "Tiramisù": "(Tiramisu Cổ Điển)",
+      "Panna Cotta": "(Panna Cotta Vani)",
+      "Crème Caramel": "(Bánh Flan Caramel)",
+      "Crema Catalana": "(Kem Catalan)",
+      "Semifreddo": "(Semifreddo Tự Làm)",
+      "Crumble di Mele con Gelato": "(Bánh Táo Crumble với Kem)",
+      "Bunet": "(Bánh Pudding Sô Cô La Piemonte)",
+      "Macedonia di Frutta": "(Salad Trái Cây Tươi)",
+      "Assortimento Misto dei Dolci": "(Đĩa Tráng Miệng Tổng Hợp)"
+    },
+    "cottura": [
+      "🔴 Tái",
+      "🟠 Rất Tái",
+      "🟡 Chín Vừa",
+      "✅ Chín Kỹ"
+    ],
+    "pkg_section_scelta": "Món Tự Chọn",
+    "kids_dishes": {
+      "Ravioli": "Ravioli",
+      "Tagliatelle": "Tagliatelle",
+      "Gnocchi": "Gnocchi",
+      "Milanese": "Cốt Lết Kiểu Milan",
+      "Bistecca": "Bít Tết",
+      "Rostelle": "Cuộn Chiên",
+      "Salsiccia": "Xúc Xích"
+    }
+  },
+  "th": {
+    "subtitle": "✦ ร้านอาหาร ✦",
+    "cat_antipasti": "🥗 อาหารเรียกน้ำย่อย",
+    "cat_primi": "🍝 จานแรก",
+    "cat_secondi": "🥩 จานหลัก",
+    "cat_contorni": "🥦 เครื่องเคียงและชีส",
+    "cat_dolce": "🍰 ของหวาน",
+    "cat_gelato": "🍦 ไอศกรีมทำมือ",
+    "cat_bar": "🍹 บาร์ของเรา",
+    "secondi_sub": "(รวมเครื่องเคียง: เฟรนช์ฟรายส์ มันฝรั่งอบ หรือผักย่าง)",
+    "dolce_banner_title": "ของหวานทำเอง",
+    "dolce_banner_sub": "ของหวานทุกชนิดของเราทำด้วยมือทุกวัน",
+    "gelato_desc": "ทำสดใหม่ทุกวัน — เลือกได้สูงสุด 3 รสชาติ",
+    "sorbetto_desc": "มีทั้งแบบมีแอลกอฮอล์และไม่มีแอลกอฮอล์",
+    "search_ph": "🔍 ค้นหาในเมนู...",
+    "card_wine": "รายการไวน์",
+    "card_wine_sub": "เปิดรายการดิจิทัล",
+    "card_dolce": "ของหวาน",
+    "card_dolce_sub": "ของหวานของเรา",
+    "card_bar": "เครื่องดื่ม",
+    "card_bar_sub": "เครื่องดื่ม กาแฟ และค็อกเทล",
+    "order_btn": "คำสั่งซื้อ",
+    "cart_title": "📋 คำสั่งซื้อของคุณ",
+    "nessun_articolo": "ยังไม่มีรายการ",
+    "waiter_btn": "📲 แสดงให้พนักงานดู",
+    "overlay_sub": "สรุปคำสั่งซื้อ",
+    "overlay_close": "✕ ปิด",
+    "overlay_note": "แสดงหน้าจอนี้ให้พนักงานดู",
+    "pkg_lago_desc": "พร้อมอาหารประจำร้านและสูตร \"รวมทุกอย่าง\" (ไวน์บ้าน 1 ขวดต่อ 4 ท่าน) — 5 จานคัดสรรโดยครัว",
+    "pkg_gastro_desc": "อาหารเรียกน้ำย่อย, เลือก 3 จาน, ของหวาน, กาแฟ และดีเจสทีฟ ไม่รวมเครื่องดื่ม",
+    "pkg_degu_desc": "อาหารเรียกน้ำย่อย, เลือก 2 จาน, ของหวาน, กาแฟ และดีเจสทีฟ ไม่รวมเครื่องดื่ม",
+    "pkg_degu_warn": "⚠️ (*) ไม่เสิร์ฟคืนวันเสาร์ กลางวันวันอาทิตย์ และวันหยุดนักขัตฤกษ์",
+    "pkg_bambini_desc": "เลือก 1 จาน + ไอศกรีมทำเอง + เครื่องดื่ม",
+    "note_box": "ไม่สามารถแบ่งเมนูระหว่างหลายคนได้",
+    "vedi": "📋 ดู ▾",
+    "chiudi": "📋 ปิด ▴",
+    "add_person": "+ เพิ่มคน",
+    "conferma_aggiungi": "✓ ยืนยันและเพิ่มลงคำสั่งซื้อ",
+    "confermato": "✅ ยืนยันและเพิ่มแล้ว",
+    "modifica": "✏️ แก้ไข",
+    "scegli_btn": "+ เลือก",
+    "selezionato_btn": "✓ เลือกแล้ว",
+    "cinque_portate": "5 จานคัดสรรโดยครัว",
+    "condimento_label": "🍽️ ซอส:",
+    "condimento_row": "ซอส:",
+    "cottura_label": "🔥 ระดับความสุก:",
+    "turno_label": "📋 ลำดับการเสิร์ฟ (จำเป็น)",
+    "seleziona_turno": "เลือกลำดับการเสิร์ฟ",
+    "gusti_label": "🍦 รสชาติ (สูงสุด 3):",
+    "gusti_sel": "เลือกแล้ว: {n}/3",
+    "gusti_hint": "แตะเพื่อเลือกรสชาติสูงสุด 3 รส",
+    "seleziona_gusto": "เลือกอย่างน้อย 1 รสชาติ",
+    "preferenza_label": "🍹 ความชอบ:",
+    "con_alcol": "🍷 มีแอลกอฮอล์",
+    "senza_alcol": "🧃 ไม่มีแอลกอฮอล์",
+    "sub_default": "เพิ่มลงในคำสั่งซื้อของคุณ",
+    "sub_gelato": "เลือกได้สูงสุด 3 รสชาติ",
+    "sub_sorbetto": "มีแอลกอฮอล์หรือไม่มี?",
+    "sub_sauce": "เลือกซอสสำหรับแต่ละคน",
+    "scegli_n": "🍽️ เลือก {n} จาน ({s}/{n}):",
+    "seleziona_ancora": "เลือกอีก {n} จาน",
+    "name_ph": "ชื่อ (ไม่บังคับ)",
+    "conferma_btn": "✓ ยืนยันคำสั่งซื้อ",
+    "persona": "👤 คน",
+    "piatti_sel": "{n} / {s} จานที่เลือก",
+    "totale_stimato": "ยอดรวมโดยประมาณ",
+    "nessun_risultato": "ไม่พบผลลัพธ์",
+    "course_menu": "🍽️ เมนู",
+    "course_dolci": "🍰 ของหวาน",
+    "course_gelato": "🍦 ไอศกรีม",
+    "course_bevande": "🍷 เครื่องดื่ม",
+    "wine_sub": "เลือกไวน์หรือเปิดรายการทั้งหมด",
+    "wine_house_label": "ไวน์บ้าน — แก้ว",
+    "add_vino_cart": "เพิ่มลงคำสั่งซื้อ",
+    "vino_back": "กลับไปที่รายการไวน์",
+    "wine_title": "รายการไวน์",
+    "cancel": "ยกเลิก",
+    "cart_total": "ยอดรวมโดยประมาณ",
+    "turno": [
+      "จานที่ 1",
+      "จานที่ 2",
+      "จานที่ 3",
+      "จานที่ 4"
+    ],
+    "sauces": {
+      "Melone": "เมลอน",
+      "Grana": "ชีสกรานา",
+      "Pomodoro": "มะเขือเทศ",
+      "Burro e Salvia": "เนยและเซจ",
+      "Funghi": "เห็ด",
+      "Burro e Timo": "เนยและไทม์",
+      "Selvaggina": "ซอสเนื้อสัตว์ป่า",
+      "Pesto Fresco": "เพสโตสด",
+      "Noci": "วอลนัท",
+      "Primavera": "พรีมาเวรา",
+      "Formaggi e Gorgonzola": "ชีสและกอร์กอนโซล่า",
+      "Pepe Verde": "พริกไทยเขียว",
+      "Gorgonzola": "กอร์กอนโซล่า",
+      "Griglia": "ย่าง",
+      "Al Forno": "อบ",
+      "Alla Griglia": "ย่าง",
+      "Formaggi con Gorgonzola": "ชีสกับกอร์กอนโซล่า"
+    },
+    "dishes": {
+      "Antipasto Tipico del Lago Bin": "(อาหารเรียกน้ำย่อยประจำร้าน Lago Bin)",
+      "Assortimento del Salumiere": "(จานรวมไส้กรอกและแฮม)",
+      "Prosciutto di Parma con Melone o Grana": "(แฮมปาร์มากับเมลอนหรือชีสกรานา)",
+      "Antipasto Misto \"Caldo e Freddo\" (per 2 pers.)": "(อาหารเรียกน้ำย่อยร้อนเย็นรวม - สำหรับ 2 ท่าน)",
+      "Lumache in Umido": "(หอยทากตุ๋น)",
+      "Brandacujan": "(เพสท์ปลาคอดสูตรดั้งเดิม)",
+      "Tartare di Manzo al Coltello": "(ทาร์ทาร์เนื้อสับมือด้วยมีด)",
+      "Tomino d'Alpeggio Caldo": "(ชีสภูเขาทอมิโนอุ่น)",
+      "Tartare di Pesce": "(ทาร์ทาร์ปลา)",
+      "Antipasto Misto di Mare": "(อาหารเรียกน้ำย่อยทะเลรวม)",
+      "Ravioli della Nonna": "(ราวิโอลีสูตรคุณยาย)",
+      "Ravioli della Nonna al Coniglio": "(ราวิโอลีสูตรคุณยายไส้กระต่าย)",
+      "Tagliatelle di Pasta Fresca": "(ทาเยียเตลเลพาสต้าสด)",
+      "Tagliatelle ai Frutti di Mare": "(ทาเยียเตลเลอาหารทะเล)",
+      "Mezzelune di Magro": "(เมซซาลูเนกับเนยและเซจ หรือวอลนัท)",
+      "Troffie": "(ทรอฟฟีเยกับเพสโตหรือพรีมาเวรา)",
+      "Troffie con Gamberetti e Zucchine": "(ทรอฟฟีเยกับกุ้งและซูกินี)",
+      "Gnocchi di Patate": "(นอกกี้มันฝรั่ง)",
+      "Risotto ai Frutti di Mare (min. 2 pers.)": "(ริซอตโตอาหารทะเล)",
+      "Duo di Primi": "(คู่จานแรก)",
+      "Coniglio alla Rocchettina": "(กระต่ายสไตล์ร็อกเก็ตติน่า)",
+      "Selvaggina al Vino Rosso": "(เนื้อสัตว์ป่าในไวน์แดง)",
+      "Costine di Agnello alla Griglia": "(ซี่โครงแกะย่าง)",
+      "Grigliata Mista di Carne": "(เนื้อย่างรวม)",
+      "Roast Beef": "(โรสต์บีฟ)",
+      "Filetto di Manzo": "(เนื้อสันในวัว)",
+      "Pescato o Gamberoni": "(ปลาประจำวันหรือกุ้งตัวใหญ่)",
+      "Grigliata Mista di Pesce": "(อาหารทะเลย่างรวม)",
+      "Assortimento Misto di Formaggi": "(จานชีสรวม)",
+      "Grigliata Mista di Verdure": "(ผักย่างรวม)",
+      "Insalata Mista": "(สลัดรวม)",
+      "Tiramisù": "(ทีรามิสุคลาสสิก)",
+      "Panna Cotta": "(พานาคอตต้าวานิลลา)",
+      "Crème Caramel": "(ครีมคาราเมล)",
+      "Crema Catalana": "(ครีมคาตาลัน)",
+      "Semifreddo": "(เซมิเฟรดโดทำเอง)",
+      "Crumble di Mele con Gelato": "(แอปเปิลครัมเบิลกับไอศกรีม)",
+      "Bunet": "(พุดดิ้งช็อกโกแลตพีเอมอนเต)",
+      "Macedonia di Frutta": "(สลัดผลไม้สด)",
+      "Assortimento Misto dei Dolci": "(จานของหวานรวม)"
+    },
+    "cottura": [
+      "🔴 สุกน้อย",
+      "🟠 สุกน้อยมาก",
+      "🟡 สุกปานกลาง",
+      "✅ สุกเต็มที่"
+    ],
+    "pkg_section_scelta": "จานให้เลือก",
+    "kids_dishes": {
+      "Ravioli": "ราวิโอลี",
+      "Tagliatelle": "ทาเยียเตลเล",
+      "Gnocchi": "นอกกี้",
+      "Milanese": "หมูชุบแป้งทอดมิลาน",
+      "Bistecca": "สเต็ก",
+      "Rostelle": "ม้วนทอด",
+      "Salsiccia": "ไส้กรอก"
     }
   }
 };
