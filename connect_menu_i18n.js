@@ -81,7 +81,9 @@
     hi: { flag: '🇮🇳', name: 'हिन्दी' },
     bn: { flag: '🇧🇩', name: 'বাংলা' },
     ur: { flag: '🇵🇰', name: 'اردو' },
-    fa: { flag: '🇮🇷', name: 'فارسی' }
+    fa: { flag: '🇮🇷', name: 'فارسی' },
+    vi: { flag: '🇻🇳', name: 'Tiếng Việt' },
+    th: { flag: '🇹🇭', name: 'ไทย' }
   };
 
   // Dynamic-UI keys used by the site's own T{} object (popup / cart / package
@@ -190,6 +192,103 @@
         TURNO_LABELS[code] = pack.turno;
       }
     });
+  }
+
+  // Cottura (doneness level) labels — same pattern as turno, but the site
+  // has no built-in translation slot for these at all, so we build one.
+  var COTTURA_IT = ['🔴 Al Sangue', '🟠 Blue', '🟡 Media Cottura', '✅ Ben Cotto'];
+  var COTTURA_LABELS = {};
+  Object.keys(translations).forEach(function (code) {
+    var pack = translations[code];
+    if (Array.isArray(pack.cottura) && pack.cottura.length === 4) {
+      COTTURA_LABELS[code] = pack.cottura;
+    }
+  });
+
+  // Package accordion section headers (Antipasti / Primi Piatti / Secondi
+  // Piatti / Piatti a scelta) — hardcoded Italian in the site, never
+  // translated even by it/fr/en/de. Map each to the matching patch key.
+  var SECTION_KEY_MAP = {
+    'Antipasti': 'cat_antipasti',
+    'Primi Piatti': 'cat_primi',
+    'Secondi Piatti': 'cat_secondi',
+    'Piatti a scelta': 'pkg_section_scelta'
+  };
+  function translateSectionHeads() {
+    var pack = translations[currentLang];
+    if (!pack) return;
+    document.querySelectorAll('.pkg-section-head').forEach(function (el) {
+      var raw = el.textContent.replace('📍', '').trim();
+      var key = SECTION_KEY_MAP[raw];
+      var val = key && pack[key];
+      if (val) el.textContent = '📍 ' + val;
+    });
+  }
+  // Some package-accordion dish names are shortened/reworded versions of
+  // the full à la carte names, so they need to be mapped before lookup.
+  var PKG_DISH_ALIAS = {
+    'Prosciutto di Parma': 'Prosciutto di Parma con Melone o Grana',
+    'Agnello alla Griglia': 'Costine di Agnello alla Griglia'
+  };
+  function translatePkgDishNames() {
+    var pack = translations[currentLang];
+    if (!pack) return;
+    var dishes = pack.dishes || {};
+    var kids = pack.kids_dishes || {};
+    document.querySelectorAll('.pkg-dish-name').forEach(function (el) {
+      for (var i = 0; i < el.childNodes.length; i++) {
+        var node = el.childNodes[i];
+        if (node.nodeType === 3 && node.textContent.trim()) {
+          var it = node.textContent.trim();
+          var lookupKey = PKG_DISH_ALIAS[it] || it;
+          var val = dishes[lookupKey];
+          if (val) {
+            node.textContent = val.replace(/^\(|\)$/g, '');
+          } else if (kids[it]) {
+            node.textContent = kids[it];
+          }
+          break;
+        }
+      }
+    });
+  }
+  function translatePkgSauceChips() {
+    var pack = translations[currentLang];
+    if (!pack || !pack.sauces) return;
+    document.querySelectorAll('.pkg-sauce-chips .chip').forEach(function (btn) {
+      var it = btn.textContent.trim();
+      var val = pack.sauces[it];
+      if (val) btn.textContent = val;
+    });
+  }
+  function translateCotturaChips() {
+    var labels = COTTURA_LABELS[currentLang];
+    if (!labels) return;
+    document.querySelectorAll('.cottura-chip').forEach(function (btn) {
+      var m = (btn.getAttribute('onclick') || '').match(/popupSetCottura\(\d+,'([^']+)'\)/);
+      if (!m) return;
+      var itText = m[1].replace(/\\'/g, "'");
+      var idx = COTTURA_IT.indexOf(itText);
+      if (idx > -1 && labels[idx]) btn.textContent = labels[idx];
+    });
+  }
+  // Wrap the site's own render functions so these two extra translation
+  // passes run every time the popup / package accordion redraws.
+  if (typeof renderPopupPersons === 'function') {
+    var _origRenderPopupPersons = renderPopupPersons;
+    renderPopupPersons = function () {
+      _origRenderPopupPersons.apply(this, arguments);
+      translateCotturaChips();
+    };
+  }
+  if (typeof renderPkgPersons === 'function') {
+    var _origRenderPkgPersons = renderPkgPersons;
+    renderPkgPersons = function () {
+      _origRenderPkgPersons.apply(this, arguments);
+      translateSectionHeads();
+      translatePkgDishNames();
+      translatePkgSauceChips();
+    };
   }
 
   // 2) Map of static UI selectors -> patch key (only applied when both exist)
@@ -343,43 +442,39 @@
     // per-key fallback to Italian for anything not yet translated.
     if (typeof currentLang !== 'undefined') currentLang = code;
     if (typeof refreshDyn === 'function') refreshDyn();
+    translateCotturaChips();
+    translateSectionHeads();
+    translatePkgDishNames();
+    translatePkgSauceChips();
   };
 
-  // 4) Wire up the "More Languages" dropdown
+  // 4) Rebuild the "More Languages" dropdown cleanly, grouped and ordered
   var dropdown = document.getElementById('langDropdown');
   if (!dropdown) return;
 
-  var items = Array.prototype.slice.call(dropdown.querySelectorAll('.lang-dropdown-item'));
-  var existingCodes = items.map(function (el) {
-    var m = (el.getAttribute('onclick') || '').match(/googleTranslate\('([^']+)'\)/);
-    return m ? m[1] : null;
-  });
+  var EUROPE_ORDER = ['nl', 'es', 'pt', 'ru', 'pl', 'uk', 'ro', 'sv', 'da', 'no', 'fi', 'el', 'cs', 'hu',
+    'bg', 'sk', 'hr', 'sr', 'sl', 'tr'];
+  var WORLD_ORDER = ['ar', 'zh-CN', 'ja', 'ko', 'hi', 'bn', 'ur', 'fa', 'vi', 'th'];
 
-  var newSection = null;
-  function addNewDropdownLang(code) {
-    if (!newSection) {
-      newSection = document.createElement('div');
-      newSection.className = 'lang-dropdown-section';
-      newSection.textContent = '🌐 Altre Lingue';
-      dropdown.appendChild(newSection);
-    }
-    var meta = LANG_META[code];
-    var item = document.createElement('div');
-    item.className = 'lang-dropdown-item';
-    item.textContent = meta ? meta.flag + ' ' + meta.name : code;
-    item.addEventListener('click', function () { window.setPatchLang(code); });
-    dropdown.appendChild(item);
+  dropdown.innerHTML = '';
+
+  function addSection(title, codes) {
+    var available = codes.filter(function (c) { return translations[c]; });
+    if (!available.length) return;
+    var sec = document.createElement('div');
+    sec.className = 'lang-dropdown-section';
+    sec.textContent = title;
+    dropdown.appendChild(sec);
+    available.forEach(function (code) {
+      var meta = LANG_META[code];
+      var item = document.createElement('div');
+      item.className = 'lang-dropdown-item';
+      item.textContent = meta ? meta.flag + ' ' + meta.name : code;
+      item.addEventListener('click', function () { window.setPatchLang(code); });
+      dropdown.appendChild(item);
+    });
   }
 
-  Object.keys(translations).forEach(function (code) {
-    var idx = existingCodes.indexOf(code);
-    if (idx > -1) {
-      // Re-route existing dropdown entry away from Google Translate
-      var el = items[idx];
-      el.removeAttribute('onclick');
-      el.addEventListener('click', function () { window.setPatchLang(code); });
-    } else {
-      addNewDropdownLang(code);
-    }
-  });
+  addSection('🇪🇺 Europe', EUROPE_ORDER);
+  addSection('🌍 World', WORLD_ORDER);
 })();
