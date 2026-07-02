@@ -653,7 +653,7 @@ const SAUCE_TRANS={
 function sauceLabel(it){const tr=SAUCE_TRANS[it];return(tr&&tr[currentLang])||it;}
 // Always Italian for cart storage
 function sauceItLabel(it){return it;}
-const COTTURA_OPTIONS=['🔴 Al Sangue','🟠 Blue','🟡 Media Cottura','✅ Ben Cotto'];
+const COTTURA_OPTIONS=['🔴 Al Sangue','🟠 Blue','🟡 Media Cottura','✅ Ben Cotto']; const COTTURA_TRANS={   '🔴 Al Sangue':{fr:'🔴 Saignant',en:'🔴 Rare',de:'🔴 Blutig'},   '🟠 Blue':{fr:'🟠 Bleu',en:'🟠 Blue',de:'🟠 Blutig-Roh'},   '🟡 Media Cottura':{fr:'🟡 À Point',en:'🟡 Medium',de:'🟡 Medium'},   '✅ Ben Cotto':{fr:'✅ Bien Cuit',en:'✅ Well Done',de:'✅ Durchgebraten'} }; function cotturaLabel(it){const tr=COTTURA_TRANS[it];return(tr&&tr[currentLang])||it;}
 
 const ITEMS={
   antipasto_tipico:{name:'Antipasto Tipico del Lago Bin',price:15,course:'antipasti',sauces:[]},
@@ -897,7 +897,7 @@ function renderPopupPersons(){
         item.sauces.map(s=>'<button class="chip'+(p.sauce===s?' selected':'')+'" onclick="popupSelectSauce('+p.pid+',\''+s+'\')">'+sauceLabel(s)+'</button>').join('')+'</div>';
     }
     let cottura='';
-    if(item.cottura)cottura='<div class="cottura-selector"><div class="cottura-label">'+t('cottura_label')+'</div><div class="cottura-chips">'+COTTURA_OPTIONS.map(c=>'<button class="cottura-chip'+(p.cottura===c?' selected':'')+'" onclick="popupSetCottura('+p.pid+',\''+c.replace(/'/g,"\\'")+'\')">'+c+'</button>').join('')+'</div></div>';
+    if(item.cottura)cottura='<div class="cottura-selector"><div class="cottura-label">'+t('cottura_label')+'</div><div class="cottura-chips">'+COTTURA_OPTIONS.map(c=>'<button class="cottura-chip'+(p.cottura===c?' selected':'')+'" onclick="popupSetCottura('+p.pid+',\''+c.replace(/'/g,"\\'")+'\')">'+cotturaLabel(c)+'</button>').join('')+'</div></div>';
     let portata='';
     if(item.course!=='dolci'&&item.course!=='gelato'){
       const tLabels=getTurnoLabels();
