@@ -732,7 +732,13 @@ const PKG_CONFIG={
     {section:'Secondi Piatti',items:[{name:'Coniglio alla Rocchettina'},{name:'Selvaggina al Vino Rosso'},{name:'Roast Beef'}]}
   ]},
   bambini:{label:'Menù Bambini',price:15,limit:1,dishes:[
-    {section:'Piatti a scelta',items:[{name:'Ravioli'},{name:'Tagliatelle'},{name:'Gnocchi'},{name:'Milanese'},{name:'Bistecca'},{name:'Rostelle'},{name:'Salsiccia'}]}
+    {section:'Piatti a scelta',items:[
+      {name:'Ravioli',sauces:['Burro e Salvia','Pomodoro','Ragù']},
+      {name:'Tagliatelle',sauces:['Burro','Ragù','Pesto','Pomodoro']},
+      {name:'Gnocchi',sauces:['al Burro','alla Gorgonzola','Pesto','Pomodoro','Ragù']},
+      {name:'Trofie',sauces:['Pesto Fresco','Pomodoro','Ragù']},
+      {name:'Milanese'},{name:'Bistecca'},{name:'Rostelle'},{name:'Salsiccia'}
+    ]}
   ]}
 };
 
