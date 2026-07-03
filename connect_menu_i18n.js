@@ -205,6 +205,10 @@
     });
   }
 
+  // NOTE: cart/overlay section headers (courseLabel, ALA_CARTA_LABEL) are
+  // intentionally left in Italian per restaurant preference — the cart is
+  // shown to kitchen/waiter staff and should stay consistent in Italian.
+
   // Cottura (doneness level) labels — same pattern as turno, but the site
   // has no built-in translation slot for these at all, so we build one.
   var COTTURA_IT = ['🔴 Al Sangue', '🟠 Blue', '🟡 Media Cottura', '✅ Ben Cotto'];
@@ -281,8 +285,9 @@
       var subText = dishes[lookupKey] || kids[it];
       if (subText) {
         var sub = document.createElement('div');
-        sub.className = 'pkg-sub-trans';
-        sub.style.cssText = 'font-size:12px;color:#7a5a3a;font-style:italic;margin-top:2px;';
+        sub.className = 'sub-trans pkg-sub-trans notranslate';
+        sub.style.display = 'block';
+        sub.style.marginTop = '6px';
         sub.textContent = subText;
         el.appendChild(sub);
       }
@@ -365,8 +370,13 @@
     el.textContent = val; // fallback if no leading text node found
   }
 
+  function normKey(s) {
+    return (s || '').normalize ? s.normalize('NFC').trim() : (s || '').trim();
+  }
   function applyDishSubtitles(pack) {
     var dishes = pack.dishes || {};
+    var normDishes = {};
+    Object.keys(dishes).forEach(function (k) { normDishes[normKey(k)] = dishes[k]; });
     document.querySelectorAll('.item-name').forEach(function (nameEl) {
       var subEl = nameEl.querySelector('.sub-trans');
       if (!subEl) return;
@@ -380,7 +390,7 @@
           if (node.nodeType === 3 && node.textContent.trim()) { itName = node.textContent.trim(); break; }
         }
       }
-      var txt = dishes[itName];
+      var txt = dishes[itName] || normDishes[normKey(itName)];
       if (txt) {
         subEl.textContent = txt;
         subEl.style.display = 'block';
