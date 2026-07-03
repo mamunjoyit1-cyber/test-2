@@ -2,6 +2,7 @@
 window.I18N_PATCH = {
   "tr": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Gnocchi",
@@ -56,6 +57,11 @@ window.I18N_PATCH = {
       "Assortimento Misto dei Dolci": "(Karışık Tatlı Tabağı)"
     },
     "sauces": {
+      "al Burro": "Tereyağı",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Tereyağı",
       "Melone": "Kavun",
       "Grana": "Grana Peyniri",
       "Pomodoro": "Domates",
@@ -77,6 +83,7 @@ window.I18N_PATCH = {
   },
   "bg": {
     "kids_dishes": {
+      "Trofie": "Трофие",
       "Ravioli": "Равиоли",
       "Tagliatelle": "タглиателе",
       "Gnocchi": "Njoки",
@@ -172,6 +179,11 @@ window.I18N_PATCH = {
       "Assortimento Misto dei Dolci": "(Асорти от Десерти)"
     },
     "sauces": {
+      "al Burro": "Масло",
+      "alla Gorgonzola": "Горгонзола",
+      "Pesto": "Песто",
+      "Ragù": "Рагу",
+      "Burro": "Масло",
       "Melone": "Пъпеш",
       "Grana": "Сирене Грана",
       "Pomodoro": "Домат",
@@ -193,6 +205,7 @@ window.I18N_PATCH = {
   },
   "sk": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Gnocchi",
@@ -274,6 +287,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "Pridať do Objednávky",
     "wine_back": "Späť na Vína",
     "sauces": {
+      "al Burro": "Maslo",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragú",
+      "Burro": "Maslo",
       "Melone": "Melón",
       "Grana": "Syr Grana",
       "Pomodoro": "Rajčina",
@@ -337,6 +355,7 @@ window.I18N_PATCH = {
   },
   "hr": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Njoki",
@@ -413,6 +432,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "Dodaj u Narudžbu",
     "wine_back": "Natrag na Vina",
     "sauces": {
+      "al Burro": "Maslac",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Maslac",
       "Melone": "Dinja",
       "Grana": "Sir Grana",
       "Pomodoro": "Rajčica",
@@ -476,6 +500,7 @@ window.I18N_PATCH = {
   },
   "sr": {
     "kids_dishes": {
+      "Trofie": "Трофије",
       "Ravioli": "Равиоли",
       "Tagliatelle": "Тaljателе",
       "Gnocchi": "Њоки",
@@ -552,6 +577,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "Додај у Наруџбину",
     "wine_back": "Назад на Вина",
     "sauces": {
+      "al Burro": "Путер",
+      "alla Gorgonzola": "Горгонзола",
+      "Pesto": "Песто",
+      "Ragù": "Рагу",
+      "Burro": "Путер",
       "Melone": "Диња",
       "Grana": "Сир Грана",
       "Pomodoro": "Парадајз",
@@ -615,6 +645,7 @@ window.I18N_PATCH = {
   },
   "sl": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Njoki",
@@ -691,6 +722,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "Dodaj v Naročilo",
     "wine_back": "Nazaj na Vina",
     "sauces": {
+      "al Burro": "Maslo",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Maslo",
       "Melone": "Melona",
       "Grana": "Sir Grana",
       "Pomodoro": "Paradižnik",
@@ -754,6 +790,7 @@ window.I18N_PATCH = {
   },
   "ar": {
     "kids_dishes": {
+      "Trofie": "تروفيه",
       "Ravioli": "رافيولي",
       "Tagliatelle": "تالياتيلي",
       "Gnocchi": "نيوكي",
@@ -830,6 +867,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "أضف إلى الطلب",
     "wine_back": "العودة إلى النبيذ",
     "sauces": {
+      "al Burro": "زبدة",
+      "alla Gorgonzola": "جورجونزولا",
+      "Pesto": "بيستو",
+      "Ragù": "راغو",
+      "Burro": "زبدة",
       "Melone": "شمام",
       "Grana": "جبنة غرانا",
       "Pomodoro": "طماطم",
@@ -893,6 +935,7 @@ window.I18N_PATCH = {
   },
   "zh-CN": {
     "kids_dishes": {
+      "Trofie": "特罗菲面",
       "Ravioli": "意式饺子",
       "Tagliatelle": "宽面条",
       "Gnocchi": "土豆团子",
@@ -986,6 +1029,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "加入订单",
     "wine_back": "返回酒单",
     "sauces": {
+      "al Burro": "黄油",
+      "alla Gorgonzola": "戈贡佐拉奶酪",
+      "Pesto": "香蒜酱",
+      "Ragù": "肉酱",
+      "Burro": "黄油",
       "Melone": "甜瓜",
       "Grana": "格拉纳奶酪",
       "Pomodoro": "番茄",
@@ -1049,6 +1097,7 @@ window.I18N_PATCH = {
   },
   "ja": {
     "kids_dishes": {
+      "Trofie": "トロフィエ",
       "Ravioli": "ラビオリ",
       "Tagliatelle": "タリアテッレ",
       "Gnocchi": "ニョッキ",
@@ -1142,6 +1191,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "注文に追加",
     "wine_back": "ワイン一覧に戻る",
     "sauces": {
+      "al Burro": "バター",
+      "alla Gorgonzola": "ゴルゴンゾーラ",
+      "Pesto": "ペスト",
+      "Ragù": "ラグー",
+      "Burro": "バター",
       "Melone": "メロン",
       "Grana": "グラナチーズ",
       "Pomodoro": "トマト",
@@ -1205,6 +1259,7 @@ window.I18N_PATCH = {
   },
   "ko": {
     "kids_dishes": {
+      "Trofie": "트로피에",
       "Ravioli": "라비올리",
       "Tagliatelle": "탈리아텔레",
       "Gnocchi": "뇨키",
@@ -1298,6 +1353,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "주문에 추가",
     "wine_back": "와인으로 돌아가기",
     "sauces": {
+      "al Burro": "버터",
+      "alla Gorgonzola": "고르곤졸라",
+      "Pesto": "페스토",
+      "Ragù": "라구",
+      "Burro": "버터",
       "Melone": "멜론",
       "Grana": "그라나 치즈",
       "Pomodoro": "토마토",
@@ -1361,6 +1421,7 @@ window.I18N_PATCH = {
   },
   "hi": {
     "kids_dishes": {
+      "Trofie": "ट्रोफी",
       "Ravioli": "रैवियोली",
       "Tagliatelle": "टैग्लिएटेल",
       "Gnocchi": "न्योक्की",
@@ -1440,6 +1501,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "ऑर्डर में जोड़ें",
     "wine_back": "वाइन पर वापस जाएं",
     "sauces": {
+      "al Burro": "मक्खन",
+      "alla Gorgonzola": "गोरगोंज़ोला",
+      "Pesto": "पेस्तो",
+      "Ragù": "रागू",
+      "Burro": "मक्खन",
       "Melone": "खरबूजा",
       "Grana": "ग्राना चीज़",
       "Pomodoro": "टमाटर",
@@ -1503,6 +1569,7 @@ window.I18N_PATCH = {
   },
   "bn": {
     "kids_dishes": {
+      "Trofie": "ট্রোফি",
       "Ravioli": "রাভিওলি",
       "Tagliatelle": "তালিয়াতেল্লে",
       "Gnocchi": "নিওকি",
@@ -1582,6 +1649,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "অর্ডারে যোগ করুন",
     "wine_back": "ওয়াইনে ফিরে যান",
     "sauces": {
+      "al Burro": "মাখন",
+      "alla Gorgonzola": "গরগনজোলা",
+      "Pesto": "পেস্তো",
+      "Ragù": "রাগু",
+      "Burro": "মাখন",
       "Melone": "তরমুজ",
       "Grana": "গ্রানা চিজ",
       "Pomodoro": "টমেটো",
@@ -1645,6 +1717,7 @@ window.I18N_PATCH = {
   },
   "ur": {
     "kids_dishes": {
+      "Trofie": "ٹروفی",
       "Ravioli": "راویولی",
       "Tagliatelle": "تالیاتیلے",
       "Gnocchi": "نیوکی",
@@ -1724,6 +1797,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "آرڈر میں شامل کریں",
     "wine_back": "شراب کی طرف واپس جائیں",
     "sauces": {
+      "al Burro": "مکھن",
+      "alla Gorgonzola": "گورگونزولا",
+      "Pesto": "پیسٹو",
+      "Ragù": "راگو",
+      "Burro": "مکھن",
       "Melone": "خربوزہ",
       "Grana": "گرانا پنیر",
       "Pomodoro": "ٹماٹر",
@@ -1787,6 +1865,7 @@ window.I18N_PATCH = {
   },
   "fa": {
     "kids_dishes": {
+      "Trofie": "ترافیه",
       "Ravioli": "راویولی",
       "Tagliatelle": "تالیاتله",
       "Gnocchi": "نیوکی",
@@ -1866,6 +1945,11 @@ window.I18N_PATCH = {
     "wine_add_cart": "افزودن به سفارش",
     "wine_back": "بازگشت به شراب‌ها",
     "sauces": {
+      "al Burro": "کره",
+      "alla Gorgonzola": "گورگونزولا",
+      "Pesto": "پستو",
+      "Ragù": "راگو",
+      "Burro": "کره",
       "Melone": "طالبی",
       "Grana": "پنیر گرانا",
       "Pomodoro": "گوجه‌فرنگی",
@@ -1929,6 +2013,7 @@ window.I18N_PATCH = {
   },
   "es": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Ñoquis",
@@ -2023,6 +2108,11 @@ window.I18N_PATCH = {
       "4º Turno"
     ],
     "sauces": {
+      "al Burro": "Mantequilla",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragú",
+      "Burro": "Mantequilla",
       "Melone": "Melón",
       "Grana": "Queso Grana",
       "Pomodoro": "Tomate",
@@ -2086,6 +2176,7 @@ window.I18N_PATCH = {
   },
   "pt": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Nhoque",
@@ -2180,6 +2271,11 @@ window.I18N_PATCH = {
       "4º Turno"
     ],
     "sauces": {
+      "al Burro": "Manteiga",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Manteiga",
       "Melone": "Melão",
       "Grana": "Queijo Grana",
       "Pomodoro": "Tomate",
@@ -2243,6 +2339,7 @@ window.I18N_PATCH = {
   },
   "ru": {
     "kids_dishes": {
+      "Trofie": "Трофие",
       "Ravioli": "Равиоли",
       "Tagliatelle": "Тальятелле",
       "Gnocchi": "Ньокки",
@@ -2337,6 +2434,11 @@ window.I18N_PATCH = {
       "4-я Подача"
     ],
     "sauces": {
+      "al Burro": "Масло",
+      "alla Gorgonzola": "Горгонзола",
+      "Pesto": "Песто",
+      "Ragù": "Рагу",
+      "Burro": "Масло",
       "Melone": "Дыня",
       "Grana": "Сыр Грана",
       "Pomodoro": "Томат",
@@ -2400,6 +2502,7 @@ window.I18N_PATCH = {
   },
   "nl": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Gnocchi",
@@ -2494,6 +2597,11 @@ window.I18N_PATCH = {
       "4e Gang"
     ],
     "sauces": {
+      "al Burro": "Boter",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Boter",
       "Melone": "Meloen",
       "Grana": "Grana-kaas",
       "Pomodoro": "Tomaat",
@@ -2557,6 +2665,7 @@ window.I18N_PATCH = {
   },
   "pl": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Gnocchi",
@@ -2651,6 +2760,11 @@ window.I18N_PATCH = {
       "4. Danie"
     ],
     "sauces": {
+      "al Burro": "Masło",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Masło",
       "Melone": "Melon",
       "Grana": "Ser Grana",
       "Pomodoro": "Pomidor",
@@ -2714,6 +2828,7 @@ window.I18N_PATCH = {
   },
   "uk": {
     "kids_dishes": {
+      "Trofie": "Трофіє",
       "Ravioli": "Равіолі",
       "Tagliatelle": "Тальятелле",
       "Gnocchi": "Ньокі",
@@ -2808,6 +2923,11 @@ window.I18N_PATCH = {
       "4-та Подача"
     ],
     "sauces": {
+      "al Burro": "Масло",
+      "alla Gorgonzola": "Горгонзола",
+      "Pesto": "Песто",
+      "Ragù": "Рагу",
+      "Burro": "Масло",
       "Melone": "Диня",
       "Grana": "Сир Грана",
       "Pomodoro": "Томат",
@@ -2871,6 +2991,7 @@ window.I18N_PATCH = {
   },
   "ro": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Gnocchi",
@@ -2965,6 +3086,11 @@ window.I18N_PATCH = {
       "Felul 4"
     ],
     "sauces": {
+      "al Burro": "Unt",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Unt",
       "Melone": "Pepene Galben",
       "Grana": "Brânză Grana",
       "Pomodoro": "Roșii",
@@ -3028,6 +3154,7 @@ window.I18N_PATCH = {
   },
   "sv": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Gnocchi",
@@ -3122,6 +3249,11 @@ window.I18N_PATCH = {
       "4:e Rätten"
     ],
     "sauces": {
+      "al Burro": "Smör",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Smör",
       "Melone": "Melon",
       "Grana": "Grana-ost",
       "Pomodoro": "Tomat",
@@ -3185,6 +3317,7 @@ window.I18N_PATCH = {
   },
   "da": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Gnocchi",
@@ -3279,6 +3412,11 @@ window.I18N_PATCH = {
       "4. Ret"
     ],
     "sauces": {
+      "al Burro": "Smør",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Smør",
       "Melone": "Melon",
       "Grana": "Grana-ost",
       "Pomodoro": "Tomat",
@@ -3342,6 +3480,7 @@ window.I18N_PATCH = {
   },
   "no": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Gnocchi",
@@ -3436,6 +3575,11 @@ window.I18N_PATCH = {
       "4. Rett"
     ],
     "sauces": {
+      "al Burro": "Smør",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Smør",
       "Melone": "Melon",
       "Grana": "Grana-ost",
       "Pomodoro": "Tomat",
@@ -3499,6 +3643,7 @@ window.I18N_PATCH = {
   },
   "fi": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Gnocchi",
@@ -3593,6 +3738,11 @@ window.I18N_PATCH = {
       "4. Ruokalaji"
     ],
     "sauces": {
+      "al Burro": "Voi",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Voi",
       "Melone": "Meloni",
       "Grana": "Grana-juusto",
       "Pomodoro": "Tomaatti",
@@ -3656,6 +3806,7 @@ window.I18N_PATCH = {
   },
   "el": {
     "kids_dishes": {
+      "Trofie": "Τροφιέ",
       "Ravioli": "Ραβιόλι",
       "Tagliatelle": "Ταλιατέλες",
       "Gnocchi": "Νιόκι",
@@ -3750,6 +3901,11 @@ window.I18N_PATCH = {
       "4ο Πιάτο"
     ],
     "sauces": {
+      "al Burro": "Βούτυρο",
+      "alla Gorgonzola": "Γκοργκοντζόλα",
+      "Pesto": "Πέστο",
+      "Ragù": "Ραγκού",
+      "Burro": "Βούτυρο",
       "Melone": "Πεπόνι",
       "Grana": "Τυρί Γκράνα",
       "Pomodoro": "Ντομάτα",
@@ -3813,6 +3969,7 @@ window.I18N_PATCH = {
   },
   "cs": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Noky",
@@ -3907,6 +4064,11 @@ window.I18N_PATCH = {
       "4. Chod"
     ],
     "sauces": {
+      "al Burro": "Máslo",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragú",
+      "Burro": "Máslo",
       "Melone": "Meloun",
       "Grana": "Sýr Grana",
       "Pomodoro": "Rajče",
@@ -3970,6 +4132,7 @@ window.I18N_PATCH = {
   },
   "hu": {
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Gnocchi",
@@ -4064,6 +4227,11 @@ window.I18N_PATCH = {
       "4. Fogás"
     ],
     "sauces": {
+      "al Burro": "Vaj",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Vaj",
       "Melone": "Sárgadinnye",
       "Grana": "Grana Sajt",
       "Pomodoro": "Paradicsom",
@@ -4210,6 +4378,11 @@ window.I18N_PATCH = {
       "Món 4"
     ],
     "sauces": {
+      "al Burro": "Bơ",
+      "alla Gorgonzola": "Gorgonzola",
+      "Pesto": "Pesto",
+      "Ragù": "Ragù",
+      "Burro": "Bơ",
       "Melone": "Dưa Vàng",
       "Grana": "Phô Mai Grana",
       "Pomodoro": "Cà Chua",
@@ -4278,6 +4451,7 @@ window.I18N_PATCH = {
     ],
     "pkg_section_scelta": "Món Tự Chọn",
     "kids_dishes": {
+      "Trofie": "Trofie",
       "Ravioli": "Ravioli",
       "Tagliatelle": "Tagliatelle",
       "Gnocchi": "Gnocchi",
@@ -4372,6 +4546,11 @@ window.I18N_PATCH = {
       "จานที่ 4"
     ],
     "sauces": {
+      "al Burro": "เนย",
+      "alla Gorgonzola": "กอร์กอนโซล่า",
+      "Pesto": "เพสโต",
+      "Ragù": "รากู",
+      "Burro": "เนย",
       "Melone": "เมลอน",
       "Grana": "ชีสกรานา",
       "Pomodoro": "มะเขือเทศ",
@@ -4440,6 +4619,7 @@ window.I18N_PATCH = {
     ],
     "pkg_section_scelta": "จานให้เลือก",
     "kids_dishes": {
+      "Trofie": "โทรฟีเอ",
       "Ravioli": "ราวิโอลี",
       "Tagliatelle": "ทาเยียเตลเล",
       "Gnocchi": "นอกกี้",
