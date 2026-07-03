@@ -1,6 +1,47 @@
 // Auto-generated: fills missing translation keys for tr, bg, sk, hr, sr, sl, ar, zh-CN, ja, ko, hi, bn, ur, fa
 window.I18N_PATCH = {
   "tr": {
+    "sub_multi": "Her kişi için {n} yemek seçin",
+    "name_ph": "İsim (isteğe bağlı)",
+    "gusti_label": "🍦 Çeşitler (maks. 3):",
+    "gusti_sel": "Seçildi: {n}/3",
+    "gusti_hint": "En fazla 3 çeşit seçmek için dokunun",
+    "seleziona_gusto": "En az 1 çeşit seçin",
+    "con_alcol": "🍷 Alkollü",
+    "senza_alcol": "🧃 Alkolsüz",
+    "condimento_label": "🍽️ Sos:",
+    "cottura_label": "🔥 Pişirme Derecesi:",
+    "turno_label": "📋 Servis Sırası (zorunlu)",
+    "seleziona_turno": "Servis sırasını seçin",
+    "nessun_articolo": "Henüz ürün yok",
+    "piatti_sel": "{n} / {s} yemek seçildi",
+    "persona": "👤 Kişi",
+    "conferma_btn": "✓ Siparişi Onayla",
+    "condimento_row": "Sos:",
+    "totale_stimato": "Tahmini Toplam",
+    "nessun_risultato": "Sonuç bulunamadı",
+    "vino_prompt": "Kaç şişe?",
+    "vino_name": "Ev Şarabı",
+    "vino_detail": "Şarap listesinden seçilecek",
+    "turno": ["1. Yemek", "2. Yemek", "3. Yemek", "4. Yemek"],
+    "sub_default": "Siparişinize ekleyin",
+    "sub_gelato": "En fazla 3 çeşit seçin",
+    "sub_sorbetto": "Alkollü mü alkolsüz mü?",
+    "sub_sauce": "Her kişi için sos seçin",
+    "preferenza_label": "🍹 Tercih:",
+    "scegli_n": "🍽️ {n} yemek seçin ({s}/{n}):",
+    "seleziona_ancora": "{n} yemek daha seçin",
+    "conferma_aggiungi": "✓ Onayla ve Siparişe Ekle",
+    "confermato": "✅ Onaylandı ve Eklendi",
+    "modifica": "✏️ Değiştir",
+    "scegli_btn": "+ Seç",
+    "selezionato_btn": "✓ Seçildi",
+    "cinque_portate": "Mutfağın seçtiği 5 yemek",
+    "vedi": "📋 Görüntüle ▾",
+    "chiudi": "📋 Kapat ▴",
+    "add_person": "+ Kişi ekle",
+    "add_vino_cart": "Siparişe Ekle",
+    "vino_back": "Şaraplara Dön",
     "wine_full_list": "📖 Tam Şarap Listesi",
     "wines": {
       "Vino Rosso della Casa": "Ev Kırmızı Şarabı",
@@ -98,6 +139,29 @@ window.I18N_PATCH = {
     }
   },
   "bg": {
+    "sub_multi": "Изберете {n} ястия за всеки човек",
+    "name_ph": "Име (незадължително)",
+    "gusti_label": "🍦 Вкусове (макс. 3):",
+    "gusti_sel": "Избрани: {n}/3",
+    "gusti_hint": "Докоснете за да изберете до 3 вкуса",
+    "seleziona_gusto": "Изберете поне 1 вкус",
+    "con_alcol": "🍷 С Алкохол",
+    "senza_alcol": "🧃 Без Алкохол",
+    "condimento_label": "🍽️ Сос:",
+    "cottura_label": "🔥 Степен на изпичане:",
+    "turno_label": "📋 Ред на сервиране (задължително)",
+    "seleziona_turno": "Изберете ред на сервиране",
+    "nessun_articolo": "Все още няма артикули",
+    "piatti_sel": "{n} / {s} ястия избрани",
+    "persona": "👤 Човек",
+    "conferma_btn": "✓ Потвърди Поръчката",
+    "condimento_row": "Сос:",
+    "totale_stimato": "Приблизителна Сума",
+    "nessun_risultato": "Няма намерени резултати",
+    "vino_prompt": "Колко бутилки?",
+    "vino_name": "Домашно Вино",
+    "vino_detail": "За избор от винената карта",
+    "turno": ["1-во Хранене", "2-ро Хранене", "3-то Хранене", "4-то Хранене"],
     "wine_full_list": "📖 Пълен Списък с Вина",
     "wines": {
       "Vino Rosso della Casa": "Домашно Червено Вино",
@@ -236,6 +300,23 @@ window.I18N_PATCH = {
     }
   },
   "sk": {
+    "sub_multi": "Vyberte {n} jedlá pre každú osobu",
+    "gusti_label": "🍦 Príchute (max. 3):",
+    "gusti_sel": "Vybrané: {n}/3",
+    "gusti_hint": "Klepnutím vyberte až 3 príchute",
+    "con_alcol": "🍷 S Alkoholom",
+    "senza_alcol": "🧃 Bez Alkoholu",
+    "condimento_label": "🍽️ Omáčka:",
+    "cottura_label": "🔥 Stupeň prepečenia:",
+    "turno_label": "📋 Poradie servírovania (povinné)",
+    "piatti_sel": "{n} / {s} jedál vybraných",
+    "persona": "👤 Osoba",
+    "conferma_btn": "✓ Potvrdiť Objednávku",
+    "condimento_row": "Omáčka:",
+    "vino_prompt": "Koľko fliaš?",
+    "vino_name": "Domáce Víno",
+    "vino_detail": "Na výber z vínneho lístka",
+    "turno": ["1. Chod", "2. Chod", "3. Chod", "4. Chod"],
     "wines": {
       "Vino Rosso della Casa": "Domáce Červené Víno",
       "Vino Bianco della Casa": "Domáce Biele Víno",
@@ -401,6 +482,24 @@ window.I18N_PATCH = {
     }
   },
   "hr": {
+    "sub_multi": "Odaberite {n} jela za svaku osobu",
+    "gusti_label": "🍦 Okusi (maks. 3):",
+    "gusti_sel": "Odabrano: {n}/3",
+    "seleziona_gusto": "Odaberite barem 1 okus",
+    "con_alcol": "🍷 S Alkoholom",
+    "senza_alcol": "🧃 Bez Alkohola",
+    "condimento_label": "🍽️ Umak:",
+    "cottura_label": "🔥 Stupanj pečenja:",
+    "turno_label": "📋 Redoslijed posluživanja (obavezno)",
+    "piatti_sel": "{n} / {s} jela odabrano",
+    "persona": "👤 Osoba",
+    "conferma_btn": "✓ Potvrdi Narudžbu",
+    "condimento_row": "Umak:",
+    "nessun_risultato": "Nema pronađenih rezultata",
+    "vino_prompt": "Koliko boca?",
+    "vino_name": "Kućno Vino",
+    "vino_detail": "Za odabir s vinske karte",
+    "turno": ["1. Jelo", "2. Jelo", "3. Jelo", "4. Jelo"],
     "wine_full_list": "📖 Cijeli Vinski List",
     "wines": {
       "Vino Rosso della Casa": "Kućno Crno Vino",
@@ -562,6 +661,20 @@ window.I18N_PATCH = {
     }
   },
   "sr": {
+    "turno": ["1. Јело", "2. Јело", "3. Јело", "4. Јело"],
+    "sub_multi": "Изаберите {n} јела за сваку особу",
+    "name_ph": "Име (опционо)",
+    "con_alcol": "🍷 Са Алкохолом",
+    "senza_alcol": "🧃 Без Алкохола",
+    "nessun_articolo": "Још нема ставки",
+    "piatti_sel": "{n} / {s} јела изабрано",
+    "persona": "👤 Особа",
+    "conferma_btn": "✓ Потврди Наруџбину",
+    "totale_stimato": "Процењени Укупан Износ",
+    "nessun_risultato": "Нема пронађених резултата",
+    "vino_prompt": "Колико боца?",
+    "vino_name": "Кућно Вино",
+    "vino_detail": "За избор са винске листе",
     "wine_full_list": "📖 Цео Винска Листа",
     "wines": {
       "Vino Rosso della Casa": "Кућно Црвено Вино",
@@ -723,6 +836,20 @@ window.I18N_PATCH = {
     }
   },
   "sl": {
+    "turno": ["1. Jed", "2. Jed", "3. Jed", "4. Jed"],
+    "sub_multi": "Izberite {n} jedi za vsako osebo",
+    "name_ph": "Ime (neobvezno)",
+    "con_alcol": "🍷 Z Alkoholom",
+    "senza_alcol": "🧃 Brez Alkohola",
+    "nessun_articolo": "Še ni izdelkov",
+    "piatti_sel": "{n} / {s} jedi izbranih",
+    "persona": "👤 Oseba",
+    "conferma_btn": "✓ Potrdi Naročilo",
+    "totale_stimato": "Ocenjeni Skupni Znesek",
+    "nessun_risultato": "Ni najdenih rezultatov",
+    "vino_prompt": "Koliko steklenic?",
+    "vino_name": "Hišno Vino",
+    "vino_detail": "Za izbiro s seznama vin",
     "wine_full_list": "📖 Celoten Vinski List",
     "wines": {
       "Vino Rosso della Casa": "Hišno Rdeče Vino",
@@ -884,6 +1011,25 @@ window.I18N_PATCH = {
     }
   },
   "ar": {
+    "sub_multi": "اختر {n} أطباق لكل شخص",
+    "name_ph": "الاسم (اختياري)",
+    "gusti_label": "🍦 النكهات (بحد أقصى 3):",
+    "gusti_sel": "تم اختيار: {n}/3",
+    "seleziona_gusto": "اختر نكهة واحدة على الأقل",
+    "con_alcol": "🍷 مع الكحول",
+    "senza_alcol": "🧃 بدون كحول",
+    "condimento_label": "🍽️ الصلصة:",
+    "cottura_label": "🔥 درجة النضج:",
+    "turno_label": "📋 ترتيب التقديم (إلزامي)",
+    "piatti_sel": "{n} / {s} أطباق مختارة",
+    "persona": "👤 شخص",
+    "conferma_btn": "✓ تأكيد الطلب",
+    "condimento_row": "الصلصة:",
+    "totale_stimato": "المجموع التقديري",
+    "nessun_risultato": "لم يتم العثور على نتائج",
+    "vino_prompt": "كم زجاجة؟",
+    "vino_name": "نبيذ منزلي",
+    "vino_detail": "يتم اختياره من قائمة النبيذ",
     "wine_full_list": "📖 قائمة النبيذ الكاملة",
     "wines": {
       "Vino Rosso della Casa": "نبيذ أحمر منزلي",
@@ -1045,6 +1191,15 @@ window.I18N_PATCH = {
     }
   },
   "zh-CN": {
+    "sub_multi": "为每人选择{n}道菜",
+    "name_ph": "姓名（可选）",
+    "con_alcol": "🍷 含酒精",
+    "senza_alcol": "🧃 不含酒精",
+    "piatti_sel": "已选 {n} / {s} 道菜",
+    "persona": "👤 客人",
+    "vino_prompt": "几瓶？",
+    "vino_name": "自家酿酒",
+    "vino_detail": "从酒单中选择",
     "wines": {
       "Vino Rosso della Casa": "招牌红酒",
       "Vino Bianco della Casa": "招牌白酒",
@@ -1222,6 +1377,16 @@ window.I18N_PATCH = {
     }
   },
   "ja": {
+    "sub_multi": "お一人様{n}品お選びください",
+    "name_ph": "お名前（任意）",
+    "con_alcol": "🍷 アルコールあり",
+    "senza_alcol": "🧃 アルコールなし",
+    "piatti_sel": "{n} / {s} 品選択済み",
+    "persona": "👤 お客様",
+    "conferma_btn": "✓ 注文を確定",
+    "vino_prompt": "何本ですか？",
+    "vino_name": "ハウスワイン",
+    "vino_detail": "ワインリストから選択してください",
     "wines": {
       "Vino Rosso della Casa": "ハウス赤ワイン",
       "Vino Bianco della Casa": "ハウス白ワイン",
@@ -1399,6 +1564,16 @@ window.I18N_PATCH = {
     }
   },
   "ko": {
+    "sub_multi": "1인당 {n}개 요리 선택",
+    "name_ph": "이름 (선택 사항)",
+    "con_alcol": "🍷 알코올 포함",
+    "senza_alcol": "🧃 알코올 없음",
+    "piatti_sel": "{n} / {s}개 요리 선택됨",
+    "persona": "👤 인원",
+    "conferma_btn": "✓ 주문 확인",
+    "vino_prompt": "몇 병인가요?",
+    "vino_name": "하우스 와인",
+    "vino_detail": "와인 리스트에서 선택",
     "wines": {
       "Vino Rosso della Casa": "하우스 레드 와인",
       "Vino Bianco della Casa": "하우스 화이트 와인",
@@ -1576,6 +1751,19 @@ window.I18N_PATCH = {
     }
   },
   "hi": {
+    "sub_multi": "प्रति व्यक्ति {n} व्यंजन चुनें",
+    "name_ph": "नाम (वैकल्पिक)",
+    "con_alcol": "🍷 शराब सहित",
+    "senza_alcol": "🧃 शराब रहित",
+    "piatti_sel": "{n} / {s} व्यंजन चुने गए",
+    "persona": "👤 व्यक्ति",
+    "conferma_btn": "✓ ऑर्डर की पुष्टि करें",
+    "totale_stimato": "अनुमानित कुल",
+    "nessun_risultato": "कोई परिणाम नहीं मिला",
+    "vino_prompt": "कितनी बोतलें?",
+    "vino_name": "हाउस वाइन",
+    "vino_detail": "वाइन सूची से चुनें",
+    "turno": ["1ला व्यंजन", "2रा व्यंजन", "3रा व्यंजन", "4था व्यंजन"],
     "wine_full_list": "📖 पूर्ण वाइन सूची",
     "wines": {
       "Vino Rosso della Casa": "हाउस रेड वाइन",
@@ -1740,6 +1928,19 @@ window.I18N_PATCH = {
     }
   },
   "bn": {
+    "sub_multi": "প্রতি ব্যক্তির জন্য {n}টি ডিশ বেছে নিন",
+    "name_ph": "নাম (ঐচ্ছিক)",
+    "con_alcol": "🍷 অ্যালকোহল সহ",
+    "senza_alcol": "🧃 অ্যালকোহল ছাড়া",
+    "piatti_sel": "{n} / {s}টি ডিশ নির্বাচিত",
+    "persona": "👤 ব্যক্তি",
+    "conferma_btn": "✓ অর্ডার নিশ্চিত করুন",
+    "totale_stimato": "আনুমানিক মোট",
+    "nessun_risultato": "কোনো ফলাফল পাওয়া যায়নি",
+    "vino_prompt": "কয়টি বোতল?",
+    "vino_name": "হাউস ওয়াইন",
+    "vino_detail": "ওয়াইন তালিকা থেকে বেছে নিন",
+    "turno": ["১ম কোর্স", "২য় কোর্স", "৩য় কোর্স", "৪র্থ কোর্স"],
     "wine_full_list": "📖 সম্পূর্ণ ওয়াইন তালিকা",
     "wines": {
       "Vino Rosso della Casa": "হাউস রেড ওয়াইন",
@@ -1904,6 +2105,19 @@ window.I18N_PATCH = {
     }
   },
   "ur": {
+    "sub_multi": "ہر شخص کے لیے {n} ڈشز منتخب کریں",
+    "name_ph": "نام (اختیاری)",
+    "con_alcol": "🍷 الکحل کے ساتھ",
+    "senza_alcol": "🧃 بغیر الکحل",
+    "piatti_sel": "{n} / {s} ڈشز منتخب",
+    "persona": "👤 شخص",
+    "conferma_btn": "✓ آرڈر کی تصدیق کریں",
+    "totale_stimato": "تخمینی کل",
+    "nessun_risultato": "کوئی نتیجہ نہیں ملا",
+    "vino_prompt": "کتنی بوتلیں؟",
+    "vino_name": "ہاؤس وائن",
+    "vino_detail": "وائن لسٹ سے منتخب کریں",
+    "turno": ["پہلا کورس", "دوسرا کورس", "تیسرا کورس", "چوتھا کورس"],
     "wine_full_list": "📖 مکمل وائن لسٹ",
     "wines": {
       "Vino Rosso della Casa": "ہاؤس ریڈ وائن",
@@ -2068,6 +2282,19 @@ window.I18N_PATCH = {
     }
   },
   "fa": {
+    "sub_multi": "برای هر نفر {n} غذا انتخاب کنید",
+    "name_ph": "نام (اختیاری)",
+    "con_alcol": "🍷 با الکل",
+    "senza_alcol": "🧃 بدون الکل",
+    "piatti_sel": "{n} / {s} غذا انتخاب شد",
+    "persona": "👤 نفر",
+    "conferma_btn": "✓ تأیید سفارش",
+    "totale_stimato": "مجموع تقریبی",
+    "nessun_risultato": "نتیجه‌ای یافت نشد",
+    "vino_prompt": "چند بطری؟",
+    "vino_name": "شراب خانگی",
+    "vino_detail": "از لیست شراب انتخاب شود",
+    "turno": ["غذای اول", "غذای دوم", "غذای سوم", "غذای چهارم"],
     "wine_full_list": "📖 لیست کامل شراب",
     "wines": {
       "Vino Rosso della Casa": "شراب قرمز خانگی",
@@ -2232,6 +2459,10 @@ window.I18N_PATCH = {
     }
   },
   "es": {
+    "sub_multi": "Elige {n} platos para cada persona",
+    "vino_prompt": "¿Cuántas botellas?",
+    "vino_name": "Vino de la Casa",
+    "vino_detail": "A elegir de la carta de vinos",
     "wine_full_list": "📖 Lista Completa de Vinos",
     "wines": {
       "Vino Rosso della Casa": "Vino Tinto de la Casa",
@@ -2411,6 +2642,10 @@ window.I18N_PATCH = {
     }
   },
   "pt": {
+    "sub_multi": "Escolha {n} pratos para cada pessoa",
+    "vino_prompt": "Quantas garrafas?",
+    "vino_name": "Vinho da Casa",
+    "vino_detail": "A escolher da carta de vinhos",
     "wine_full_list": "📖 Lista Completa de Vinhos",
     "wines": {
       "Vino Rosso della Casa": "Vinho Tinto da Casa",
@@ -2590,6 +2825,10 @@ window.I18N_PATCH = {
     }
   },
   "ru": {
+    "sub_multi": "Выберите {n} блюд на каждого человека",
+    "vino_prompt": "Сколько бутылок?",
+    "vino_name": "Домашнее Вино",
+    "vino_detail": "Выбирается из карты вин",
     "wine_full_list": "📖 Полный Список Вин",
     "wines": {
       "Vino Rosso della Casa": "Домашнее Красное Вино",
@@ -2769,6 +3008,10 @@ window.I18N_PATCH = {
     }
   },
   "nl": {
+    "sub_multi": "Kies {n} gerechten per persoon",
+    "vino_prompt": "Hoeveel flessen?",
+    "vino_name": "Huiswijn",
+    "vino_detail": "Te kiezen uit de wijnkaart",
     "wine_full_list": "📖 Volledige Wijnlijst",
     "wines": {
       "Vino Rosso della Casa": "Huiswijn Rood",
@@ -2948,6 +3191,10 @@ window.I18N_PATCH = {
     }
   },
   "pl": {
+    "sub_multi": "Wybierz {n} dania dla każdej osoby",
+    "vino_prompt": "Ile butelek?",
+    "vino_name": "Wino Domowe",
+    "vino_detail": "Do wyboru z karty win",
     "wine_full_list": "📖 Pełna Lista Win",
     "wines": {
       "Vino Rosso della Casa": "Wino Domowe Czerwone",
@@ -3127,6 +3374,10 @@ window.I18N_PATCH = {
     }
   },
   "uk": {
+    "sub_multi": "Виберіть {n} страв для кожної особи",
+    "vino_prompt": "Скільки пляшок?",
+    "vino_name": "Домашнє Вино",
+    "vino_detail": "На вибір з карти вин",
     "wine_full_list": "📖 Повний Список Вин",
     "wines": {
       "Vino Rosso della Casa": "Домашнє Червоне Вино",
@@ -3306,6 +3557,10 @@ window.I18N_PATCH = {
     }
   },
   "ro": {
+    "sub_multi": "Alegeți {n} feluri pentru fiecare persoană",
+    "vino_prompt": "Câte sticle?",
+    "vino_name": "Vin de Casă",
+    "vino_detail": "De ales din lista de vinuri",
     "wine_full_list": "📖 Lista Completă de Vinuri",
     "wines": {
       "Vino Rosso della Casa": "Vin Roșu de Casă",
@@ -3485,6 +3740,10 @@ window.I18N_PATCH = {
     }
   },
   "sv": {
+    "sub_multi": "Välj {n} rätter per person",
+    "vino_prompt": "Hur många flaskor?",
+    "vino_name": "Husets Vin",
+    "vino_detail": "Att välja från vinlistan",
     "wine_full_list": "📖 Fullständig Vinlista",
     "wines": {
       "Vino Rosso della Casa": "Husets Rödvin",
@@ -3664,6 +3923,10 @@ window.I18N_PATCH = {
     }
   },
   "da": {
+    "sub_multi": "Vælg {n} retter pr. person",
+    "vino_prompt": "Hvor mange flasker?",
+    "vino_name": "Husets Vin",
+    "vino_detail": "Vælges fra vinkortet",
     "wine_full_list": "📖 Fuld Vinliste",
     "wines": {
       "Vino Rosso della Casa": "Husets Rødvin",
@@ -3843,6 +4106,10 @@ window.I18N_PATCH = {
     }
   },
   "no": {
+    "sub_multi": "Velg {n} retter per person",
+    "vino_prompt": "Hvor mange flasker?",
+    "vino_name": "Husets Vin",
+    "vino_detail": "Velges fra vinkartet",
     "wine_full_list": "📖 Fullstendig Vinliste",
     "wines": {
       "Vino Rosso della Casa": "Husets Rødvin",
@@ -4022,6 +4289,10 @@ window.I18N_PATCH = {
     }
   },
   "fi": {
+    "sub_multi": "Valitse {n} ruokalajia per henkilö",
+    "vino_prompt": "Kuinka monta pulloa?",
+    "vino_name": "Talon Viini",
+    "vino_detail": "Valitaan viinilistalta",
     "wine_full_list": "📖 Koko Viinilista",
     "wines": {
       "Vino Rosso della Casa": "Talon Punaviini",
@@ -4201,6 +4472,10 @@ window.I18N_PATCH = {
     }
   },
   "el": {
+    "sub_multi": "Επιλέξτε {n} πιάτα για κάθε άτομο",
+    "vino_prompt": "Πόσα μπουκάλια;",
+    "vino_name": "Κρασί του Σπιτιού",
+    "vino_detail": "Προς επιλογή από τον κατάλογο κρασιών",
     "wine_full_list": "📖 Πλήρης Κατάλογος Κρασιών",
     "wines": {
       "Vino Rosso della Casa": "Κόκκινο Κρασί του Σπιτιού",
@@ -4380,6 +4655,10 @@ window.I18N_PATCH = {
     }
   },
   "cs": {
+    "sub_multi": "Vyberte {n} jídla pro každou osobu",
+    "vino_prompt": "Kolik lahví?",
+    "vino_name": "Domácí Víno",
+    "vino_detail": "K výběru z vinného lístku",
     "wine_full_list": "📖 Kompletní Vinný Lístek",
     "wines": {
       "Vino Rosso della Casa": "Domácí Červené Víno",
@@ -4559,6 +4838,10 @@ window.I18N_PATCH = {
     }
   },
   "hu": {
+    "sub_multi": "Válasszon {n} fogást minden személynek",
+    "vino_prompt": "Hány üveg?",
+    "vino_name": "Házi Bor",
+    "vino_detail": "A borlapról választható",
     "wine_full_list": "📖 Teljes Borlap",
     "wines": {
       "Vino Rosso della Casa": "Házi Vörösbor",
@@ -4738,6 +5021,10 @@ window.I18N_PATCH = {
     }
   },
   "vi": {
+    "sub_multi": "Chọn {n} món cho mỗi người",
+    "vino_prompt": "Bao nhiêu chai?",
+    "vino_name": "Rượu Vang Nhà",
+    "vino_detail": "Chọn từ danh sách rượu",
     "wine_full_list": "📖 Danh Sách Rượu Đầy Đủ",
     "wines": {
       "Vino Rosso della Casa": "Rượu Vang Đỏ Nhà Làm",
@@ -4922,6 +5209,10 @@ window.I18N_PATCH = {
     }
   },
   "th": {
+    "sub_multi": "เลือก {n} จานต่อคน",
+    "vino_prompt": "กี่ขวด?",
+    "vino_name": "ไวน์ประจำร้าน",
+    "vino_detail": "เลือกจากรายการไวน์",
     "wine_full_list": "📖 รายการไวน์ทั้งหมด",
     "wines": {
       "Vino Rosso della Casa": "ไวน์แดงประจำร้าน",
