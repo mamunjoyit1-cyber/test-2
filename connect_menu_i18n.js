@@ -243,12 +243,18 @@
   };
   function translateWineNames() {
     var pack = translations[currentLang];
-    if (!pack || !pack.wines) return;
-    document.querySelectorAll('.vini-row span[data-it]').forEach(function (el) {
-      var it = el.getAttribute('data-it');
-      var val = pack.wines[it];
-      if (val) el.textContent = val;
-    });
+    if (!pack) return;
+    if (pack.wines) {
+      document.querySelectorAll('.vini-row span[data-it]').forEach(function (el) {
+        var it = el.getAttribute('data-it');
+        var val = pack.wines[it];
+        if (val) el.textContent = val;
+      });
+    }
+    if (pack.wine_full_list) {
+      var btn = document.querySelector('.vini-modal-btn.primary');
+      if (btn) btn.textContent = pack.wine_full_list;
+    }
   }
   if (typeof openViniModal === 'function') {
     var _origOpenViniModal = openViniModal;
