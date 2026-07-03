@@ -1,6 +1,7 @@
 // Auto-generated: fills missing translation keys for tr, bg, sk, hr, sr, sl, ar, zh-CN, ja, ko, hi, bn, ur, fa
 window.I18N_PATCH = {
   "tr": {
+    "alla_carta": "Alakart",
     "sub_multi": "Her kişi için {n} yemek seçin",
     "name_ph": "İsim (isteğe bağlı)",
     "gusti_label": "🍦 Çeşitler (maks. 3):",
@@ -139,6 +140,7 @@ window.I18N_PATCH = {
     }
   },
   "bg": {
+    "alla_carta": "Ала Карт",
     "sub_multi": "Изберете {n} ястия за всеки човек",
     "name_ph": "Име (незадължително)",
     "gusti_label": "🍦 Вкусове (макс. 3):",
@@ -300,6 +302,7 @@ window.I18N_PATCH = {
     }
   },
   "sk": {
+    "alla_carta": "Á la carte",
     "sub_multi": "Vyberte {n} jedlá pre každú osobu",
     "gusti_label": "🍦 Príchute (max. 3):",
     "gusti_sel": "Vybrané: {n}/3",
@@ -482,6 +485,7 @@ window.I18N_PATCH = {
     }
   },
   "hr": {
+    "alla_carta": "À la carte",
     "sub_multi": "Odaberite {n} jela za svaku osobu",
     "gusti_label": "🍦 Okusi (maks. 3):",
     "gusti_sel": "Odabrano: {n}/3",
@@ -661,6 +665,7 @@ window.I18N_PATCH = {
     }
   },
   "sr": {
+    "alla_carta": "А ла карт",
     "turno": ["1. Јело", "2. Јело", "3. Јело", "4. Јело"],
     "sub_multi": "Изаберите {n} јела за сваку особу",
     "name_ph": "Име (опционо)",
@@ -836,6 +841,7 @@ window.I18N_PATCH = {
     }
   },
   "sl": {
+    "alla_carta": "À la carte",
     "turno": ["1. Jed", "2. Jed", "3. Jed", "4. Jed"],
     "sub_multi": "Izberite {n} jedi za vsako osebo",
     "name_ph": "Ime (neobvezno)",
@@ -1011,6 +1017,7 @@ window.I18N_PATCH = {
     }
   },
   "ar": {
+    "alla_carta": "قائمة الطعام",
     "sub_multi": "اختر {n} أطباق لكل شخص",
     "name_ph": "الاسم (اختياري)",
     "gusti_label": "🍦 النكهات (بحد أقصى 3):",
@@ -1191,6 +1198,7 @@ window.I18N_PATCH = {
     }
   },
   "zh-CN": {
+    "alla_carta": "单点菜品",
     "sub_multi": "为每人选择{n}道菜",
     "name_ph": "姓名（可选）",
     "con_alcol": "🍷 含酒精",
@@ -1377,6 +1385,7 @@ window.I18N_PATCH = {
     }
   },
   "ja": {
+    "alla_carta": "アラカルト",
     "sub_multi": "お一人様{n}品お選びください",
     "name_ph": "お名前（任意）",
     "con_alcol": "🍷 アルコールあり",
@@ -1564,6 +1573,7 @@ window.I18N_PATCH = {
     }
   },
   "ko": {
+    "alla_carta": "아라카르트",
     "sub_multi": "1인당 {n}개 요리 선택",
     "name_ph": "이름 (선택 사항)",
     "con_alcol": "🍷 알코올 포함",
@@ -1751,6 +1761,7 @@ window.I18N_PATCH = {
     }
   },
   "hi": {
+    "alla_carta": "अ ला कार्टे",
     "sub_multi": "प्रति व्यक्ति {n} व्यंजन चुनें",
     "name_ph": "नाम (वैकल्पिक)",
     "con_alcol": "🍷 शराब सहित",
@@ -1928,6 +1939,7 @@ window.I18N_PATCH = {
     }
   },
   "bn": {
+    "alla_carta": "আ লা কার্ট",
     "sub_multi": "প্রতি ব্যক্তির জন্য {n}টি ডিশ বেছে নিন",
     "name_ph": "নাম (ঐচ্ছিক)",
     "con_alcol": "🍷 অ্যালকোহল সহ",
@@ -2105,6 +2117,7 @@ window.I18N_PATCH = {
     }
   },
   "ur": {
+    "alla_carta": "آلا کارٹ",
     "sub_multi": "ہر شخص کے لیے {n} ڈشز منتخب کریں",
     "name_ph": "نام (اختیاری)",
     "con_alcol": "🍷 الکحل کے ساتھ",
@@ -2282,6 +2295,7 @@ window.I18N_PATCH = {
     }
   },
   "fa": {
+    "alla_carta": "آلاکارت",
     "sub_multi": "برای هر نفر {n} غذا انتخاب کنید",
     "name_ph": "نام (اختیاری)",
     "con_alcol": "🍷 با الکل",
@@ -2459,6 +2473,7 @@ window.I18N_PATCH = {
     }
   },
   "es": {
+    "alla_carta": "A la Carta",
     "sub_multi": "Elige {n} platos para cada persona",
     "vino_prompt": "¿Cuántas botellas?",
     "vino_name": "Vino de la Casa",
@@ -2642,6 +2657,7 @@ window.I18N_PATCH = {
     }
   },
   "pt": {
+    "alla_carta": "À la Carte",
     "sub_multi": "Escolha {n} pratos para cada pessoa",
     "vino_prompt": "Quantas garrafas?",
     "vino_name": "Vinho da Casa",
@@ -2825,6 +2841,7 @@ window.I18N_PATCH = {
     }
   },
   "ru": {
+    "alla_carta": "А-ля карт",
     "sub_multi": "Выберите {n} блюд на каждого человека",
     "vino_prompt": "Сколько бутылок?",
     "vino_name": "Домашнее Вино",
@@ -3008,6 +3025,7 @@ window.I18N_PATCH = {
     }
   },
   "nl": {
+    "alla_carta": "À la carte",
     "sub_multi": "Kies {n} gerechten per persoon",
     "vino_prompt": "Hoeveel flessen?",
     "vino_name": "Huiswijn",
@@ -3191,6 +3209,7 @@ window.I18N_PATCH = {
     }
   },
   "pl": {
+    "alla_carta": "À la carte",
     "sub_multi": "Wybierz {n} dania dla każdej osoby",
     "vino_prompt": "Ile butelek?",
     "vino_name": "Wino Domowe",
@@ -3374,6 +3393,7 @@ window.I18N_PATCH = {
     }
   },
   "uk": {
+    "alla_carta": "А-ля карт",
     "sub_multi": "Виберіть {n} страв для кожної особи",
     "vino_prompt": "Скільки пляшок?",
     "vino_name": "Домашнє Вино",
@@ -3557,6 +3577,7 @@ window.I18N_PATCH = {
     }
   },
   "ro": {
+    "alla_carta": "À la carte",
     "sub_multi": "Alegeți {n} feluri pentru fiecare persoană",
     "vino_prompt": "Câte sticle?",
     "vino_name": "Vin de Casă",
@@ -3740,6 +3761,7 @@ window.I18N_PATCH = {
     }
   },
   "sv": {
+    "alla_carta": "À la carte",
     "sub_multi": "Välj {n} rätter per person",
     "vino_prompt": "Hur många flaskor?",
     "vino_name": "Husets Vin",
@@ -3923,6 +3945,7 @@ window.I18N_PATCH = {
     }
   },
   "da": {
+    "alla_carta": "À la carte",
     "sub_multi": "Vælg {n} retter pr. person",
     "vino_prompt": "Hvor mange flasker?",
     "vino_name": "Husets Vin",
@@ -4106,6 +4129,7 @@ window.I18N_PATCH = {
     }
   },
   "no": {
+    "alla_carta": "À la carte",
     "sub_multi": "Velg {n} retter per person",
     "vino_prompt": "Hvor mange flasker?",
     "vino_name": "Husets Vin",
@@ -4289,6 +4313,7 @@ window.I18N_PATCH = {
     }
   },
   "fi": {
+    "alla_carta": "À la carte",
     "sub_multi": "Valitse {n} ruokalajia per henkilö",
     "vino_prompt": "Kuinka monta pulloa?",
     "vino_name": "Talon Viini",
@@ -4472,6 +4497,7 @@ window.I18N_PATCH = {
     }
   },
   "el": {
+    "alla_carta": "Α λα καρτ",
     "sub_multi": "Επιλέξτε {n} πιάτα για κάθε άτομο",
     "vino_prompt": "Πόσα μπουκάλια;",
     "vino_name": "Κρασί του Σπιτιού",
@@ -4655,6 +4681,7 @@ window.I18N_PATCH = {
     }
   },
   "cs": {
+    "alla_carta": "À la carte",
     "sub_multi": "Vyberte {n} jídla pro každou osobu",
     "vino_prompt": "Kolik lahví?",
     "vino_name": "Domácí Víno",
@@ -4838,6 +4865,7 @@ window.I18N_PATCH = {
     }
   },
   "hu": {
+    "alla_carta": "À la carte",
     "sub_multi": "Válasszon {n} fogást minden személynek",
     "vino_prompt": "Hány üveg?",
     "vino_name": "Házi Bor",
@@ -5021,6 +5049,7 @@ window.I18N_PATCH = {
     }
   },
   "vi": {
+    "alla_carta": "Gọi Món",
     "sub_multi": "Chọn {n} món cho mỗi người",
     "vino_prompt": "Bao nhiêu chai?",
     "vino_name": "Rượu Vang Nhà",
@@ -5209,6 +5238,7 @@ window.I18N_PATCH = {
     }
   },
   "th": {
+    "alla_carta": "อาลาคาร์ท",
     "sub_multi": "เลือก {n} จานต่อคน",
     "vino_prompt": "กี่ขวด?",
     "vino_name": "ไวน์ประจำร้าน",
