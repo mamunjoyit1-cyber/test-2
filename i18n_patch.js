@@ -1,6 +1,21 @@
 // Auto-generated: fills missing translation keys for tr, bg, sk, hr, sr, sl, ar, zh-CN, ja, ko, hi, bn, ur, fa
 window.I18N_PATCH = {
   "tr": {
+    "wines": {
+      "Vino Rosso della Casa": "Ev Kırmızı Şarabı",
+      "Vino Bianco della Casa": "Ev Beyaz Şarabı",
+      "Vino Rosato della Casa": "Ev Roze Şarabı"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanilya 🍦",
+      "Fiore di Latte 🥛": "Süt Kreması 🥛",
+      "Fragola 🍓": "Çilek 🍓",
+      "Nocciola 🌰": "Fındık 🌰",
+      "Limone 🍋": "Limon 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Çikolata 🍫",
+      "Caffè ☕": "Kahve ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -82,6 +97,21 @@ window.I18N_PATCH = {
     }
   },
   "bg": {
+    "wines": {
+      "Vino Rosso della Casa": "Домашно Червено Вино",
+      "Vino Bianco della Casa": "Домашно Бяло Вино",
+      "Vino Rosato della Casa": "Домашно Розе"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Ванилия 🍦",
+      "Fiore di Latte 🥛": "Прясно Мляко 🥛",
+      "Fragola 🍓": "Ягода 🍓",
+      "Nocciola 🌰": "Лешник 🌰",
+      "Limone 🍋": "Лимон 🍋",
+      "Mango 🥭": "Манго 🥭",
+      "Cioccolata 🍫": "Шоколад 🍫",
+      "Caffè ☕": "Кафе ☕"
+    },
     "kids_dishes": {
       "Trofie": "Трофие",
       "Ravioli": "Равиоли",
@@ -204,6 +234,21 @@ window.I18N_PATCH = {
     }
   },
   "sk": {
+    "wines": {
+      "Vino Rosso della Casa": "Domáce Červené Víno",
+      "Vino Bianco della Casa": "Domáce Biele Víno",
+      "Vino Rosato della Casa": "Domáce Ružové Víno"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanilka 🍦",
+      "Fiore di Latte 🥛": "Smotanová 🥛",
+      "Fragola 🍓": "Jahoda 🍓",
+      "Nocciola 🌰": "Lieskovec 🌰",
+      "Limone 🍋": "Citrón 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Čokoláda 🍫",
+      "Caffè ☕": "Káva ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -354,6 +399,21 @@ window.I18N_PATCH = {
     }
   },
   "hr": {
+    "wines": {
+      "Vino Rosso della Casa": "Kućno Crno Vino",
+      "Vino Bianco della Casa": "Kućno Bijelo Vino",
+      "Vino Rosato della Casa": "Kućno Rosé Vino"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanilija 🍦",
+      "Fiore di Latte 🥛": "Slatko Vrhnje 🥛",
+      "Fragola 🍓": "Jagoda 🍓",
+      "Nocciola 🌰": "Lješnjak 🌰",
+      "Limone 🍋": "Limun 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Čokolada 🍫",
+      "Caffè ☕": "Kava ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -499,6 +559,21 @@ window.I18N_PATCH = {
     }
   },
   "sr": {
+    "wines": {
+      "Vino Rosso della Casa": "Кућно Црвено Вино",
+      "Vino Bianco della Casa": "Кућно Бело Вино",
+      "Vino Rosato della Casa": "Кућно Розе Вино"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Ванила 🍦",
+      "Fiore di Latte 🥛": "Слатка Павлака 🥛",
+      "Fragola 🍓": "Јагода 🍓",
+      "Nocciola 🌰": "Лешник 🌰",
+      "Limone 🍋": "Лимун 🍋",
+      "Mango 🥭": "Манго 🥭",
+      "Cioccolata 🍫": "Чоколада 🍫",
+      "Caffè ☕": "Кафа ☕"
+    },
     "kids_dishes": {
       "Trofie": "Трофије",
       "Ravioli": "Равиоли",
@@ -644,6 +719,21 @@ window.I18N_PATCH = {
     }
   },
   "sl": {
+    "wines": {
+      "Vino Rosso della Casa": "Hišno Rdeče Vino",
+      "Vino Bianco della Casa": "Hišno Belo Vino",
+      "Vino Rosato della Casa": "Hišno Rose Vino"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanilija 🍦",
+      "Fiore di Latte 🥛": "Sladka Smetana 🥛",
+      "Fragola 🍓": "Jagoda 🍓",
+      "Nocciola 🌰": "Lešnik 🌰",
+      "Limone 🍋": "Limona 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Čokolada 🍫",
+      "Caffè ☕": "Kava ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -789,6 +879,21 @@ window.I18N_PATCH = {
     }
   },
   "ar": {
+    "wines": {
+      "Vino Rosso della Casa": "نبيذ أحمر منزلي",
+      "Vino Bianco della Casa": "نبيذ أبيض منزلي",
+      "Vino Rosato della Casa": "نبيذ روزيه منزلي"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "فانيليا 🍦",
+      "Fiore di Latte 🥛": "قشدة حليب 🥛",
+      "Fragola 🍓": "فراولة 🍓",
+      "Nocciola 🌰": "بندق 🌰",
+      "Limone 🍋": "ليمون 🍋",
+      "Mango 🥭": "مانجو 🥭",
+      "Cioccolata 🍫": "شوكولاتة 🍫",
+      "Caffè ☕": "قهوة ☕"
+    },
     "kids_dishes": {
       "Trofie": "تروفيه",
       "Ravioli": "رافيولي",
@@ -934,6 +1039,21 @@ window.I18N_PATCH = {
     }
   },
   "zh-CN": {
+    "wines": {
+      "Vino Rosso della Casa": "招牌红酒",
+      "Vino Bianco della Casa": "招牌白酒",
+      "Vino Rosato della Casa": "招牌桃红酒"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "香草 🍦",
+      "Fiore di Latte 🥛": "鲜奶油 🥛",
+      "Fragola 🍓": "草莓 🍓",
+      "Nocciola 🌰": "榛子 🌰",
+      "Limone 🍋": "柠檬 🍋",
+      "Mango 🥭": "芒果 🥭",
+      "Cioccolata 🍫": "巧克力 🍫",
+      "Caffè ☕": "咖啡 ☕"
+    },
     "kids_dishes": {
       "Trofie": "特罗菲面",
       "Ravioli": "意式饺子",
@@ -1096,6 +1216,21 @@ window.I18N_PATCH = {
     }
   },
   "ja": {
+    "wines": {
+      "Vino Rosso della Casa": "ハウス赤ワイン",
+      "Vino Bianco della Casa": "ハウス白ワイン",
+      "Vino Rosato della Casa": "ハウスロゼワイン"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "バニラ 🍦",
+      "Fiore di Latte 🥛": "ミルククリーム 🥛",
+      "Fragola 🍓": "イチゴ 🍓",
+      "Nocciola 🌰": "ヘーゼルナッツ 🌰",
+      "Limone 🍋": "レモン 🍋",
+      "Mango 🥭": "マンゴー 🥭",
+      "Cioccolata 🍫": "チョコレート 🍫",
+      "Caffè ☕": "コーヒー ☕"
+    },
     "kids_dishes": {
       "Trofie": "トロフィエ",
       "Ravioli": "ラビオリ",
@@ -1258,6 +1393,21 @@ window.I18N_PATCH = {
     }
   },
   "ko": {
+    "wines": {
+      "Vino Rosso della Casa": "하우스 레드 와인",
+      "Vino Bianco della Casa": "하우스 화이트 와인",
+      "Vino Rosato della Casa": "하우스 로제 와인"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "바닐라 🍦",
+      "Fiore di Latte 🥛": "밀크크림 🥛",
+      "Fragola 🍓": "딸기 🍓",
+      "Nocciola 🌰": "헤이즐넛 🌰",
+      "Limone 🍋": "레몬 🍋",
+      "Mango 🥭": "망고 🥭",
+      "Cioccolata 🍫": "초콜릿 🍫",
+      "Caffè ☕": "커피 ☕"
+    },
     "kids_dishes": {
       "Trofie": "트로피에",
       "Ravioli": "라비올리",
@@ -1420,6 +1570,21 @@ window.I18N_PATCH = {
     }
   },
   "hi": {
+    "wines": {
+      "Vino Rosso della Casa": "हाउस रेड वाइन",
+      "Vino Bianco della Casa": "हाउस व्हाइट वाइन",
+      "Vino Rosato della Casa": "हाउस रोज़े वाइन"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "वेनिला 🍦",
+      "Fiore di Latte 🥛": "मिल्क क्रीम 🥛",
+      "Fragola 🍓": "स्ट्रॉबेरी 🍓",
+      "Nocciola 🌰": "हेज़लनट 🌰",
+      "Limone 🍋": "नींबू 🍋",
+      "Mango 🥭": "आम 🥭",
+      "Cioccolata 🍫": "चॉकलेट 🍫",
+      "Caffè ☕": "कॉफ़ी ☕"
+    },
     "kids_dishes": {
       "Trofie": "ट्रोफी",
       "Ravioli": "रैवियोली",
@@ -1568,6 +1733,21 @@ window.I18N_PATCH = {
     }
   },
   "bn": {
+    "wines": {
+      "Vino Rosso della Casa": "হাউস রেড ওয়াইন",
+      "Vino Bianco della Casa": "হাউস হোয়াইট ওয়াইন",
+      "Vino Rosato della Casa": "হাউস রোজে ওয়াইন"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "ভ্যানিলা 🍦",
+      "Fiore di Latte 🥛": "মিল্ক ক্রিম 🥛",
+      "Fragola 🍓": "স্ট্রবেরি 🍓",
+      "Nocciola 🌰": "হ্যাজেলনাট 🌰",
+      "Limone 🍋": "লেবু 🍋",
+      "Mango 🥭": "আম 🥭",
+      "Cioccolata 🍫": "চকোলেট 🍫",
+      "Caffè ☕": "কফি ☕"
+    },
     "kids_dishes": {
       "Trofie": "ট্রোফি",
       "Ravioli": "রাভিওলি",
@@ -1716,6 +1896,21 @@ window.I18N_PATCH = {
     }
   },
   "ur": {
+    "wines": {
+      "Vino Rosso della Casa": "ہاؤس ریڈ وائن",
+      "Vino Bianco della Casa": "ہاؤس وائٹ وائن",
+      "Vino Rosato della Casa": "ہاؤس روزے وائن"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "ونیلا 🍦",
+      "Fiore di Latte 🥛": "ملک کریم 🥛",
+      "Fragola 🍓": "اسٹرابیری 🍓",
+      "Nocciola 🌰": "ہیزل نٹ 🌰",
+      "Limone 🍋": "لیموں 🍋",
+      "Mango 🥭": "آم 🥭",
+      "Cioccolata 🍫": "چاکلیٹ 🍫",
+      "Caffè ☕": "کافی ☕"
+    },
     "kids_dishes": {
       "Trofie": "ٹروفی",
       "Ravioli": "راویولی",
@@ -1864,6 +2059,21 @@ window.I18N_PATCH = {
     }
   },
   "fa": {
+    "wines": {
+      "Vino Rosso della Casa": "شراب قرمز خانگی",
+      "Vino Bianco della Casa": "شراب سفید خانگی",
+      "Vino Rosato della Casa": "شراب رزه خانگی"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "وانیل 🍦",
+      "Fiore di Latte 🥛": "خامه شیر 🥛",
+      "Fragola 🍓": "توت‌فرنگی 🍓",
+      "Nocciola 🌰": "فندق 🌰",
+      "Limone 🍋": "لیمو 🍋",
+      "Mango 🥭": "انبه 🥭",
+      "Cioccolata 🍫": "شکلات 🍫",
+      "Caffè ☕": "قهوه ☕"
+    },
     "kids_dishes": {
       "Trofie": "ترافیه",
       "Ravioli": "راویولی",
@@ -2012,6 +2222,21 @@ window.I18N_PATCH = {
     }
   },
   "es": {
+    "wines": {
+      "Vino Rosso della Casa": "Vino Tinto de la Casa",
+      "Vino Bianco della Casa": "Vino Blanco de la Casa",
+      "Vino Rosato della Casa": "Vino Rosado de la Casa"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vainilla 🍦",
+      "Fiore di Latte 🥛": "Nata Fresca 🥛",
+      "Fragola 🍓": "Fresa 🍓",
+      "Nocciola 🌰": "Avellana 🌰",
+      "Limone 🍋": "Limón 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Chocolate 🍫",
+      "Caffè ☕": "Café ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -2175,6 +2400,21 @@ window.I18N_PATCH = {
     }
   },
   "pt": {
+    "wines": {
+      "Vino Rosso della Casa": "Vinho Tinto da Casa",
+      "Vino Bianco della Casa": "Vinho Branco da Casa",
+      "Vino Rosato della Casa": "Vinho Rosé da Casa"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Baunilha 🍦",
+      "Fiore di Latte 🥛": "Nata Fresca 🥛",
+      "Fragola 🍓": "Morango 🍓",
+      "Nocciola 🌰": "Avelã 🌰",
+      "Limone 🍋": "Limão 🍋",
+      "Mango 🥭": "Manga 🥭",
+      "Cioccolata 🍫": "Chocolate 🍫",
+      "Caffè ☕": "Café ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -2338,6 +2578,21 @@ window.I18N_PATCH = {
     }
   },
   "ru": {
+    "wines": {
+      "Vino Rosso della Casa": "Домашнее Красное Вино",
+      "Vino Bianco della Casa": "Домашнее Белое Вино",
+      "Vino Rosato della Casa": "Домашнее Розовое Вино"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Ваниль 🍦",
+      "Fiore di Latte 🥛": "Сливочный 🥛",
+      "Fragola 🍓": "Клубника 🍓",
+      "Nocciola 🌰": "Фундук 🌰",
+      "Limone 🍋": "Лимон 🍋",
+      "Mango 🥭": "Манго 🥭",
+      "Cioccolata 🍫": "Шоколад 🍫",
+      "Caffè ☕": "Кофе ☕"
+    },
     "kids_dishes": {
       "Trofie": "Трофие",
       "Ravioli": "Равиоли",
@@ -2501,6 +2756,21 @@ window.I18N_PATCH = {
     }
   },
   "nl": {
+    "wines": {
+      "Vino Rosso della Casa": "Huiswijn Rood",
+      "Vino Bianco della Casa": "Huiswijn Wit",
+      "Vino Rosato della Casa": "Huiswijn Rosé"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanille 🍦",
+      "Fiore di Latte 🥛": "Roomijs 🥛",
+      "Fragola 🍓": "Aardbei 🍓",
+      "Nocciola 🌰": "Hazelnoot 🌰",
+      "Limone 🍋": "Citroen 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Chocolade 🍫",
+      "Caffè ☕": "Koffie ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -2664,6 +2934,21 @@ window.I18N_PATCH = {
     }
   },
   "pl": {
+    "wines": {
+      "Vino Rosso della Casa": "Wino Domowe Czerwone",
+      "Vino Bianco della Casa": "Wino Domowe Białe",
+      "Vino Rosato della Casa": "Wino Domowe Różowe"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Wanilia 🍦",
+      "Fiore di Latte 🥛": "Śmietankowe 🥛",
+      "Fragola 🍓": "Truskawka 🍓",
+      "Nocciola 🌰": "Orzech Laskowy 🌰",
+      "Limone 🍋": "Cytryna 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Czekolada 🍫",
+      "Caffè ☕": "Kawa ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -2827,6 +3112,21 @@ window.I18N_PATCH = {
     }
   },
   "uk": {
+    "wines": {
+      "Vino Rosso della Casa": "Домашнє Червоне Вино",
+      "Vino Bianco della Casa": "Домашнє Біле Вино",
+      "Vino Rosato della Casa": "Домашнє Рожеве Вино"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Ваніль 🍦",
+      "Fiore di Latte 🥛": "Вершковий 🥛",
+      "Fragola 🍓": "Полуниця 🍓",
+      "Nocciola 🌰": "Лісовий Горіх 🌰",
+      "Limone 🍋": "Лимон 🍋",
+      "Mango 🥭": "Манго 🥭",
+      "Cioccolata 🍫": "Шоколад 🍫",
+      "Caffè ☕": "Кава ☕"
+    },
     "kids_dishes": {
       "Trofie": "Трофіє",
       "Ravioli": "Равіолі",
@@ -2990,6 +3290,21 @@ window.I18N_PATCH = {
     }
   },
   "ro": {
+    "wines": {
+      "Vino Rosso della Casa": "Vin Roșu de Casă",
+      "Vino Bianco della Casa": "Vin Alb de Casă",
+      "Vino Rosato della Casa": "Vin Roz de Casă"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanilie 🍦",
+      "Fiore di Latte 🥛": "Frișcă 🥛",
+      "Fragola 🍓": "Căpșuni 🍓",
+      "Nocciola 🌰": "Alună 🌰",
+      "Limone 🍋": "Lămâie 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Ciocolată 🍫",
+      "Caffè ☕": "Cafea ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -3153,6 +3468,21 @@ window.I18N_PATCH = {
     }
   },
   "sv": {
+    "wines": {
+      "Vino Rosso della Casa": "Husets Rödvin",
+      "Vino Bianco della Casa": "Husets Vitvin",
+      "Vino Rosato della Casa": "Husets Rosévin"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanilj 🍦",
+      "Fiore di Latte 🥛": "Gräddig 🥛",
+      "Fragola 🍓": "Jordgubb 🍓",
+      "Nocciola 🌰": "Hasselnöt 🌰",
+      "Limone 🍋": "Citron 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Choklad 🍫",
+      "Caffè ☕": "Kaffe ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -3316,6 +3646,21 @@ window.I18N_PATCH = {
     }
   },
   "da": {
+    "wines": {
+      "Vino Rosso della Casa": "Husets Rødvin",
+      "Vino Bianco della Casa": "Husets Hvidvin",
+      "Vino Rosato della Casa": "Husets Rosévin"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanilje 🍦",
+      "Fiore di Latte 🥛": "Fløde 🥛",
+      "Fragola 🍓": "Jordbær 🍓",
+      "Nocciola 🌰": "Hasselnød 🌰",
+      "Limone 🍋": "Citron 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Chokolade 🍫",
+      "Caffè ☕": "Kaffe ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -3479,6 +3824,21 @@ window.I18N_PATCH = {
     }
   },
   "no": {
+    "wines": {
+      "Vino Rosso della Casa": "Husets Rødvin",
+      "Vino Bianco della Casa": "Husets Hvitvin",
+      "Vino Rosato della Casa": "Husets Rosévin"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanilje 🍦",
+      "Fiore di Latte 🥛": "Fløte 🥛",
+      "Fragola 🍓": "Jordbær 🍓",
+      "Nocciola 🌰": "Hasselnøtt 🌰",
+      "Limone 🍋": "Sitron 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Sjokolade 🍫",
+      "Caffè ☕": "Kaffe ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -3642,6 +4002,21 @@ window.I18N_PATCH = {
     }
   },
   "fi": {
+    "wines": {
+      "Vino Rosso della Casa": "Talon Punaviini",
+      "Vino Bianco della Casa": "Talon Valkoviini",
+      "Vino Rosato della Casa": "Talon Roseeviini"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanilja 🍦",
+      "Fiore di Latte 🥛": "Kermainen 🥛",
+      "Fragola 🍓": "Mansikka 🍓",
+      "Nocciola 🌰": "Hasselpähkinä 🌰",
+      "Limone 🍋": "Sitruuna 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Suklaa 🍫",
+      "Caffè ☕": "Kahvi ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -3805,6 +4180,21 @@ window.I18N_PATCH = {
     }
   },
   "el": {
+    "wines": {
+      "Vino Rosso della Casa": "Κόκκινο Κρασί του Σπιτιού",
+      "Vino Bianco della Casa": "Λευκό Κρασί του Σπιτιού",
+      "Vino Rosato della Casa": "Ροζέ Κρασί του Σπιτιού"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Βανίλια 🍦",
+      "Fiore di Latte 🥛": "Κρέμα Γάλακτος 🥛",
+      "Fragola 🍓": "Φράουλα 🍓",
+      "Nocciola 🌰": "Φουντούκι 🌰",
+      "Limone 🍋": "Λεμόνι 🍋",
+      "Mango 🥭": "Μάνγκο 🥭",
+      "Cioccolata 🍫": "Σοκολάτα 🍫",
+      "Caffè ☕": "Καφές ☕"
+    },
     "kids_dishes": {
       "Trofie": "Τροφιέ",
       "Ravioli": "Ραβιόλι",
@@ -3968,6 +4358,21 @@ window.I18N_PATCH = {
     }
   },
   "cs": {
+    "wines": {
+      "Vino Rosso della Casa": "Domácí Červené Víno",
+      "Vino Bianco della Casa": "Domácí Bílé Víno",
+      "Vino Rosato della Casa": "Domácí Růžové Víno"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanilka 🍦",
+      "Fiore di Latte 🥛": "Smetanová 🥛",
+      "Fragola 🍓": "Jahoda 🍓",
+      "Nocciola 🌰": "Lískový Oříšek 🌰",
+      "Limone 🍋": "Citron 🍋",
+      "Mango 🥭": "Mango 🥭",
+      "Cioccolata 🍫": "Čokoláda 🍫",
+      "Caffè ☕": "Káva ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -4131,6 +4536,21 @@ window.I18N_PATCH = {
     }
   },
   "hu": {
+    "wines": {
+      "Vino Rosso della Casa": "Házi Vörösbor",
+      "Vino Bianco della Casa": "Házi Fehérbor",
+      "Vino Rosato della Casa": "Házi Rosé Bor"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vanília 🍦",
+      "Fiore di Latte 🥛": "Tejszínes 🥛",
+      "Fragola 🍓": "Eper 🍓",
+      "Nocciola 🌰": "Mogyoró 🌰",
+      "Limone 🍋": "Citrom 🍋",
+      "Mango 🥭": "Mangó 🥭",
+      "Cioccolata 🍫": "Csokoládé 🍫",
+      "Caffè ☕": "Kávé ☕"
+    },
     "kids_dishes": {
       "Trofie": "Trofie",
       "Ravioli": "Ravioli",
@@ -4294,6 +4714,21 @@ window.I18N_PATCH = {
     }
   },
   "vi": {
+    "wines": {
+      "Vino Rosso della Casa": "Rượu Vang Đỏ Nhà Làm",
+      "Vino Bianco della Casa": "Rượu Vang Trắng Nhà Làm",
+      "Vino Rosato della Casa": "Rượu Vang Hồng Nhà Làm"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "Vani 🍦",
+      "Fiore di Latte 🥛": "Kem Sữa 🥛",
+      "Fragola 🍓": "Dâu Tây 🍓",
+      "Nocciola 🌰": "Hạt Dẻ 🌰",
+      "Limone 🍋": "Chanh 🍋",
+      "Mango 🥭": "Xoài 🥭",
+      "Cioccolata 🍫": "Sô Cô La 🍫",
+      "Caffè ☕": "Cà Phê ☕"
+    },
     "subtitle": "✦ NHÀ HÀNG ✦",
     "cat_antipasti": "🥗 Khai Vị",
     "cat_primi": "🍝 Món Đầu",
@@ -4462,6 +4897,21 @@ window.I18N_PATCH = {
     }
   },
   "th": {
+    "wines": {
+      "Vino Rosso della Casa": "ไวน์แดงประจำร้าน",
+      "Vino Bianco della Casa": "ไวน์ขาวประจำร้าน",
+      "Vino Rosato della Casa": "ไวน์โรเซ่ประจำร้าน"
+    },
+    "flavors": {
+      "Vaniglia 🍦": "วานิลลา 🍦",
+      "Fiore di Latte 🥛": "ครีมนม 🥛",
+      "Fragola 🍓": "สตรอว์เบอร์รี 🍓",
+      "Nocciola 🌰": "เฮเซลนัท 🌰",
+      "Limone 🍋": "มะนาว 🍋",
+      "Mango 🥭": "มะม่วง 🥭",
+      "Cioccolata 🍫": "ช็อกโกแลต 🍫",
+      "Caffè ☕": "กาแฟ ☕"
+    },
     "subtitle": "✦ ร้านอาหาร ✦",
     "cat_antipasti": "🥗 อาหารเรียกน้ำย่อย",
     "cat_primi": "🍝 จานแรก",
