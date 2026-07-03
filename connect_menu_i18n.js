@@ -169,7 +169,18 @@
     });
   }
 
-  // Cart bucket labels (📋 Menù / 🍰 Dolci / 🍦 Gelato / 🍷 Bevande)
+  // Gelato flavor translations — merged directly into GELATO_FLAVORS objects;
+  // the site's own flavorLabel()/renderInlineGelato() already read f[currentLang].
+  if (typeof GELATO_FLAVORS !== 'undefined') {
+    Object.keys(translations).forEach(function (code) {
+      var pack = translations[code];
+      if (!pack.flavors) return;
+      GELATO_FLAVORS.forEach(function (f) {
+        var val = pack.flavors[f.it];
+        if (val) f[code] = val;
+      });
+    });
+  }
   if (typeof STATIC_BUCKET_MAP === 'object') {
     Object.keys(translations).forEach(function (code) {
       var pack = translations[code];
@@ -230,25 +241,44 @@
     'Prosciutto di Parma': 'Prosciutto di Parma con Melone o Grana',
     'Agnello alla Griglia': 'Costine di Agnello alla Griglia'
   };
+  function translateWineNames() {
+    var pack = translations[currentLang];
+    if (!pack || !pack.wines) return;
+    document.querySelectorAll('.vini-row span[data-it]').forEach(function (el) {
+      var it = el.getAttribute('data-it');
+      var val = pack.wines[it];
+      if (val) el.textContent = val;
+    });
+  }
+  if (typeof openViniModal === 'function') {
+    var _origOpenViniModal = openViniModal;
+    openViniModal = function () {
+      _origOpenViniModal.apply(this, arguments);
+      translateWineNames();
+    };
+  }
   function translatePkgDishNames() {
     var pack = translations[currentLang];
     if (!pack) return;
     var dishes = pack.dishes || {};
     var kids = pack.kids_dishes || {};
     document.querySelectorAll('.pkg-dish-name').forEach(function (el) {
+      var existing = el.querySelector('.pkg-sub-trans');
+      if (existing) existing.remove();
+      var it = '';
       for (var i = 0; i < el.childNodes.length; i++) {
         var node = el.childNodes[i];
-        if (node.nodeType === 3 && node.textContent.trim()) {
-          var it = node.textContent.trim();
-          var lookupKey = PKG_DISH_ALIAS[it] || it;
-          var val = dishes[lookupKey];
-          if (val) {
-            node.textContent = val.replace(/^\(|\)$/g, '');
-          } else if (kids[it]) {
-            node.textContent = kids[it];
-          }
-          break;
-        }
+        if (node.nodeType === 3 && node.textContent.trim()) { it = node.textContent.trim(); break; }
+      }
+      if (!it) return;
+      var lookupKey = PKG_DISH_ALIAS[it] || it;
+      var subText = dishes[lookupKey] || kids[it];
+      if (subText) {
+        var sub = document.createElement('div');
+        sub.className = 'pkg-sub-trans';
+        sub.style.cssText = 'font-size:12px;color:#7a5a3a;font-style:italic;margin-top:2px;';
+        sub.textContent = subText;
+        el.appendChild(sub);
       }
     });
   }
@@ -446,6 +476,7 @@
     translateSectionHeads();
     translatePkgDishNames();
     translatePkgSauceChips();
+    translateWineNames();
   };
 
   // 4) Rebuild the "More Languages" dropdown cleanly, grouped and ordered
