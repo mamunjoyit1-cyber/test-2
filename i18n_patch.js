@@ -1,6 +1,7 @@
 // Auto-generated: fills missing translation keys for tr, bg, sk, hr, sr, sl, ar, zh-CN, ja, ko, hi, bn, ur, fa
 window.I18N_PATCH = {
   "tr": {
+    "wine_full_list": "📖 Tam Şarap Listesi",
     "wines": {
       "Vino Rosso della Casa": "Ev Kırmızı Şarabı",
       "Vino Bianco della Casa": "Ev Beyaz Şarabı",
@@ -97,6 +98,7 @@ window.I18N_PATCH = {
     }
   },
   "bg": {
+    "wine_full_list": "📖 Пълен Списък с Вина",
     "wines": {
       "Vino Rosso della Casa": "Домашно Червено Вино",
       "Vino Bianco della Casa": "Домашно Бяло Вино",
@@ -399,6 +401,7 @@ window.I18N_PATCH = {
     }
   },
   "hr": {
+    "wine_full_list": "📖 Cijeli Vinski List",
     "wines": {
       "Vino Rosso della Casa": "Kućno Crno Vino",
       "Vino Bianco della Casa": "Kućno Bijelo Vino",
@@ -559,6 +562,7 @@ window.I18N_PATCH = {
     }
   },
   "sr": {
+    "wine_full_list": "📖 Цео Винска Листа",
     "wines": {
       "Vino Rosso della Casa": "Кућно Црвено Вино",
       "Vino Bianco della Casa": "Кућно Бело Вино",
@@ -719,6 +723,7 @@ window.I18N_PATCH = {
     }
   },
   "sl": {
+    "wine_full_list": "📖 Celoten Vinski List",
     "wines": {
       "Vino Rosso della Casa": "Hišno Rdeče Vino",
       "Vino Bianco della Casa": "Hišno Belo Vino",
@@ -879,6 +884,7 @@ window.I18N_PATCH = {
     }
   },
   "ar": {
+    "wine_full_list": "📖 قائمة النبيذ الكاملة",
     "wines": {
       "Vino Rosso della Casa": "نبيذ أحمر منزلي",
       "Vino Bianco della Casa": "نبيذ أبيض منزلي",
@@ -1570,6 +1576,7 @@ window.I18N_PATCH = {
     }
   },
   "hi": {
+    "wine_full_list": "📖 पूर्ण वाइन सूची",
     "wines": {
       "Vino Rosso della Casa": "हाउस रेड वाइन",
       "Vino Bianco della Casa": "हाउस व्हाइट वाइन",
@@ -1733,6 +1740,7 @@ window.I18N_PATCH = {
     }
   },
   "bn": {
+    "wine_full_list": "📖 সম্পূর্ণ ওয়াইন তালিকা",
     "wines": {
       "Vino Rosso della Casa": "হাউস রেড ওয়াইন",
       "Vino Bianco della Casa": "হাউস হোয়াইট ওয়াইন",
@@ -1896,6 +1904,7 @@ window.I18N_PATCH = {
     }
   },
   "ur": {
+    "wine_full_list": "📖 مکمل وائن لسٹ",
     "wines": {
       "Vino Rosso della Casa": "ہاؤس ریڈ وائن",
       "Vino Bianco della Casa": "ہاؤس وائٹ وائن",
@@ -2059,6 +2068,7 @@ window.I18N_PATCH = {
     }
   },
   "fa": {
+    "wine_full_list": "📖 لیست کامل شراب",
     "wines": {
       "Vino Rosso della Casa": "شراب قرمز خانگی",
       "Vino Bianco della Casa": "شراب سفید خانگی",
@@ -2222,6 +2232,7 @@ window.I18N_PATCH = {
     }
   },
   "es": {
+    "wine_full_list": "📖 Lista Completa de Vinos",
     "wines": {
       "Vino Rosso della Casa": "Vino Tinto de la Casa",
       "Vino Bianco della Casa": "Vino Blanco de la Casa",
@@ -2400,6 +2411,7 @@ window.I18N_PATCH = {
     }
   },
   "pt": {
+    "wine_full_list": "📖 Lista Completa de Vinhos",
     "wines": {
       "Vino Rosso della Casa": "Vinho Tinto da Casa",
       "Vino Bianco della Casa": "Vinho Branco da Casa",
@@ -2578,6 +2590,7 @@ window.I18N_PATCH = {
     }
   },
   "ru": {
+    "wine_full_list": "📖 Полный Список Вин",
     "wines": {
       "Vino Rosso della Casa": "Домашнее Красное Вино",
       "Vino Bianco della Casa": "Домашнее Белое Вино",
@@ -2756,6 +2769,7 @@ window.I18N_PATCH = {
     }
   },
   "nl": {
+    "wine_full_list": "📖 Volledige Wijnlijst",
     "wines": {
       "Vino Rosso della Casa": "Huiswijn Rood",
       "Vino Bianco della Casa": "Huiswijn Wit",
@@ -2934,6 +2948,7 @@ window.I18N_PATCH = {
     }
   },
   "pl": {
+    "wine_full_list": "📖 Pełna Lista Win",
     "wines": {
       "Vino Rosso della Casa": "Wino Domowe Czerwone",
       "Vino Bianco della Casa": "Wino Domowe Białe",
@@ -3112,6 +3127,7 @@ window.I18N_PATCH = {
     }
   },
   "uk": {
+    "wine_full_list": "📖 Повний Список Вин",
     "wines": {
       "Vino Rosso della Casa": "Домашнє Червоне Вино",
       "Vino Bianco della Casa": "Домашнє Біле Вино",
@@ -3290,6 +3306,7 @@ window.I18N_PATCH = {
     }
   },
   "ro": {
+    "wine_full_list": "📖 Lista Completă de Vinuri",
     "wines": {
       "Vino Rosso della Casa": "Vin Roșu de Casă",
       "Vino Bianco della Casa": "Vin Alb de Casă",
@@ -3468,6 +3485,7 @@ window.I18N_PATCH = {
     }
   },
   "sv": {
+    "wine_full_list": "📖 Fullständig Vinlista",
     "wines": {
       "Vino Rosso della Casa": "Husets Rödvin",
       "Vino Bianco della Casa": "Husets Vitvin",
@@ -3646,6 +3664,7 @@ window.I18N_PATCH = {
     }
   },
   "da": {
+    "wine_full_list": "📖 Fuld Vinliste",
     "wines": {
       "Vino Rosso della Casa": "Husets Rødvin",
       "Vino Bianco della Casa": "Husets Hvidvin",
@@ -3824,6 +3843,7 @@ window.I18N_PATCH = {
     }
   },
   "no": {
+    "wine_full_list": "📖 Fullstendig Vinliste",
     "wines": {
       "Vino Rosso della Casa": "Husets Rødvin",
       "Vino Bianco della Casa": "Husets Hvitvin",
@@ -4002,6 +4022,7 @@ window.I18N_PATCH = {
     }
   },
   "fi": {
+    "wine_full_list": "📖 Koko Viinilista",
     "wines": {
       "Vino Rosso della Casa": "Talon Punaviini",
       "Vino Bianco della Casa": "Talon Valkoviini",
@@ -4180,6 +4201,7 @@ window.I18N_PATCH = {
     }
   },
   "el": {
+    "wine_full_list": "📖 Πλήρης Κατάλογος Κρασιών",
     "wines": {
       "Vino Rosso della Casa": "Κόκκινο Κρασί του Σπιτιού",
       "Vino Bianco della Casa": "Λευκό Κρασί του Σπιτιού",
@@ -4358,6 +4380,7 @@ window.I18N_PATCH = {
     }
   },
   "cs": {
+    "wine_full_list": "📖 Kompletní Vinný Lístek",
     "wines": {
       "Vino Rosso della Casa": "Domácí Červené Víno",
       "Vino Bianco della Casa": "Domácí Bílé Víno",
@@ -4536,6 +4559,7 @@ window.I18N_PATCH = {
     }
   },
   "hu": {
+    "wine_full_list": "📖 Teljes Borlap",
     "wines": {
       "Vino Rosso della Casa": "Házi Vörösbor",
       "Vino Bianco della Casa": "Házi Fehérbor",
@@ -4714,6 +4738,7 @@ window.I18N_PATCH = {
     }
   },
   "vi": {
+    "wine_full_list": "📖 Danh Sách Rượu Đầy Đủ",
     "wines": {
       "Vino Rosso della Casa": "Rượu Vang Đỏ Nhà Làm",
       "Vino Bianco della Casa": "Rượu Vang Trắng Nhà Làm",
@@ -4897,6 +4922,7 @@ window.I18N_PATCH = {
     }
   },
   "th": {
+    "wine_full_list": "📖 รายการไวน์ทั้งหมด",
     "wines": {
       "Vino Rosso della Casa": "ไวน์แดงประจำร้าน",
       "Vino Bianco della Casa": "ไวน์ขาวประจำร้าน",
