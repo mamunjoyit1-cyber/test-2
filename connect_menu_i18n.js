@@ -375,7 +375,17 @@
   }
 
   function normKey(s) {
-    return (s || '').normalize ? s.normalize('NFC').trim() : (s || '').trim();
+    return (s || '').normalize ? (s || '').normalize('NFC').trim() : (s || '').trim();
+  }
+  function extractItalianName(nameEl) {
+    var nt = nameEl.querySelector('.notranslate');
+    if (nt) return nt.textContent.trim();
+    var clone = nameEl.cloneNode(true);
+    var sub = clone.querySelector('.sub-trans');
+    if (sub) sub.parentNode.removeChild(sub);
+    var pkgSub = clone.querySelector('.pkg-sub-trans');
+    if (pkgSub) pkgSub.parentNode.removeChild(pkgSub);
+    return clone.textContent.trim();
   }
   function applyDishSubtitles(pack) {
     var dishes = pack.dishes || {};
@@ -384,16 +394,7 @@
     document.querySelectorAll('.item-name').forEach(function (nameEl) {
       var subEl = nameEl.querySelector('.sub-trans');
       if (!subEl) return;
-      var itName = '';
-      var nt = nameEl.querySelector('.notranslate');
-      if (nt) {
-        itName = nt.textContent.trim();
-      } else {
-        for (var i = 0; i < nameEl.childNodes.length; i++) {
-          var node = nameEl.childNodes[i];
-          if (node.nodeType === 3 && node.textContent.trim()) { itName = node.textContent.trim(); break; }
-        }
-      }
+      var itName = extractItalianName(nameEl);
       var txt = dishes[itName] || normDishes[normKey(itName)];
       if (txt) {
         subEl.textContent = txt;
@@ -516,6 +517,21 @@
     safeRun(function () { translatePkgDishNames(); });
     safeRun(function () { translatePkgSauceChips(); });
     safeRun(function () { translateWineNames(); });
+
+    // Defensive re-pass: reported symptom was "needs to be selected twice" —
+    // some elements weren't ready on the very first synchronous pass. Redo
+    // everything a moment later so a second click is never needed.
+    setTimeout(function () {
+      if (currentLang !== code) return; // user switched language again meanwhile
+      safeRun(function () { applyDishSubtitles(pack); });
+      safeRun(function () { applyStaticUi(pack); });
+      safeRun(function () { if (typeof refreshDyn === 'function') refreshDyn(); });
+      safeRun(function () { translateCotturaChips(); });
+      safeRun(function () { translateSectionHeads(); });
+      safeRun(function () { translatePkgDishNames(); });
+      safeRun(function () { translatePkgSauceChips(); });
+      safeRun(function () { translateWineNames(); });
+    }, 200);
   };
 
   // 4) Rebuild the "More Languages" dropdown cleanly, grouped and ordered
