@@ -245,6 +245,10 @@
     'Prosciutto di Parma': 'Prosciutto di Parma con Melone o Grana',
     'Agnello alla Griglia': 'Costine di Agnello alla Griglia'
   };
+  function safeRun(fn) {
+    try { fn(); } catch (e) { console.warn('[connect_menu_i18n] step failed, continuing:', e); }
+  }
+
   function translateWineNames() {
     var pack = translations[currentLang];
     if (!pack) return;
@@ -499,19 +503,19 @@
     }
 
     var pack = translations[code] || {};
-    applyDishSubtitles(pack);
-    applyStaticUi(pack);
+    safeRun(function () { applyDishSubtitles(pack); });
+    safeRun(function () { applyStaticUi(pack); });
 
     // Switch the site's own language state so popup/cart/package text (T{})
     // and sauce/flavor labels use this language too — with automatic
     // per-key fallback to Italian for anything not yet translated.
     if (typeof currentLang !== 'undefined') currentLang = code;
-    if (typeof refreshDyn === 'function') refreshDyn();
-    translateCotturaChips();
-    translateSectionHeads();
-    translatePkgDishNames();
-    translatePkgSauceChips();
-    translateWineNames();
+    safeRun(function () { if (typeof refreshDyn === 'function') refreshDyn(); });
+    safeRun(function () { translateCotturaChips(); });
+    safeRun(function () { translateSectionHeads(); });
+    safeRun(function () { translatePkgDishNames(); });
+    safeRun(function () { translatePkgSauceChips(); });
+    safeRun(function () { translateWineNames(); });
   };
 
   // 4) Rebuild the "More Languages" dropdown cleanly, grouped and ordered
