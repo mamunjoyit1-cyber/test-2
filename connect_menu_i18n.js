@@ -463,6 +463,25 @@
     setText('.cart-total > span:first-child', pack.cart_total);
   }
 
+  // CRITICAL FIX: the site's own applyLang(lang) wipes EVERY .sub-trans box
+  // on the whole page whenever it runs with a language it doesn't know
+  // (any of our 30 patched languages), because it looks for a matching
+  // data-<lang> attribute that only exists for it/fr/en/de. applyLang()
+  // gets called automatically e.g. every time the wine modal opens
+  // (openViniModal -> applyLang(currentLang)), silently erasing every dish
+  // subtitle on the page. We intercept it here and, for our languages,
+  // re-apply our own (correct) subtitles instead of letting it wipe them.
+  if (typeof applyLang === 'function') {
+    var _origApplyLang = applyLang;
+    applyLang = function (lang) {
+      if (translations[lang]) {
+        applyDishSubtitles(translations[lang]);
+        return;
+      }
+      _origApplyLang(lang);
+    };
+  }
+
   // 3) The actual language switch used by dropdown items
   window.setPatchLang = function (code) {
     if (typeof closeDropdown === 'function') closeDropdown();
