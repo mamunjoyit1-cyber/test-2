@@ -43,7 +43,7 @@ window.I18N_PATCH = {
     "add_person": "+ Kişi ekle",
     "add_vino_cart": "Siparişe Ekle",
     "vino_back": "Şaraplara Dön",
-    "wine_full_list": "📖 Tam Şarap Listesi",
+    "wine_full_list": "🍷 Dijital Şarap Listesi için Tıklayın➔",
     "wines": {
       "Vino Rosso della Casa": "Ev Kırmızı Şarabı",
       "Vino Bianco della Casa": "Ev Beyaz Şarabı",
@@ -164,7 +164,7 @@ window.I18N_PATCH = {
     "vino_name": "Домашно Вино",
     "vino_detail": "За избор от винената карта",
     "turno": ["1-во Хранене", "2-ро Хранене", "3-то Хранене", "4-то Хранене"],
-    "wine_full_list": "📖 Пълен Списък с Вина",
+    "wine_full_list": "🍷 Кликнете тук за Дигиталната Винена Карта➔",
     "wines": {
       "Vino Rosso della Casa": "Домашно Червено Вино",
       "Vino Bianco della Casa": "Домашно Бяло Вино",
@@ -414,7 +414,7 @@ window.I18N_PATCH = {
     "wine_title": "Vinný Lístok",
     "wine_sub": "Vyberte víno alebo otvorte celý zoznam",
     "wine_house_label": "Domáce Vína — Pohár",
-    "wine_full_list": "📖 Celý Vinný Lístok",
+    "wine_full_list": "🍷 Kliknite sem pre Digitálny Vínny Lístok➔",
     "wine_add_cart": "Pridať do Objednávky",
     "wine_back": "Späť na Vína",
     "sauces": {
@@ -504,7 +504,7 @@ window.I18N_PATCH = {
     "vino_name": "Kućno Vino",
     "vino_detail": "Za odabir s vinske karte",
     "turno": ["1. Jelo", "2. Jelo", "3. Jelo", "4. Jelo"],
-    "wine_full_list": "📖 Cijeli Vinski List",
+    "wine_full_list": "🍷 Kliknite ovdje za Digitalnu Vinsku Kartu➔",
     "wines": {
       "Vino Rosso della Casa": "Kućno Crno Vino",
       "Vino Bianco della Casa": "Kućno Bijelo Vino",
@@ -680,7 +680,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Колико боца?",
     "vino_name": "Кућно Вино",
     "vino_detail": "За избор са винске листе",
-    "wine_full_list": "📖 Цео Винска Листа",
+    "wine_full_list": "🍷 Кликните овде за Дигиталну Винску Листу➔",
     "wines": {
       "Vino Rosso della Casa": "Кућно Црвено Вино",
       "Vino Bianco della Casa": "Кућно Бело Вино",
@@ -856,7 +856,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Koliko steklenic?",
     "vino_name": "Hišno Vino",
     "vino_detail": "Za izbiro s seznama vin",
-    "wine_full_list": "📖 Celoten Vinski List",
+    "wine_full_list": "🍷 Kliknite tukaj za Digitalni Vinski List➔",
     "wines": {
       "Vino Rosso della Casa": "Hišno Rdeče Vino",
       "Vino Bianco della Casa": "Hišno Belo Vino",
@@ -1037,7 +1037,7 @@ window.I18N_PATCH = {
     "vino_prompt": "كم زجاجة؟",
     "vino_name": "نبيذ منزلي",
     "vino_detail": "يتم اختياره من قائمة النبيذ",
-    "wine_full_list": "📖 قائمة النبيذ الكاملة",
+    "wine_full_list": "🍷 اضغط هنا لقائمة النبيذ الرقمية➔",
     "wines": {
       "Vino Rosso della Casa": "نبيذ أحمر منزلي",
       "Vino Bianco della Casa": "نبيذ أبيض منزلي",
@@ -1314,7 +1314,7 @@ window.I18N_PATCH = {
     "wine_title": "酒单",
     "wine_sub": "选择一款酒或打开完整酒单",
     "wine_house_label": "自酿酒 — 杯装",
-    "wine_full_list": "📖 完整酒单",
+    "wine_full_list": "🍷 点击这里查看电子酒单➔",
     "wine_add_cart": "加入订单",
     "wine_back": "返回酒单",
     "sauces": {
@@ -1502,7 +1502,7 @@ window.I18N_PATCH = {
     "wine_title": "ワインリスト",
     "wine_sub": "ワインを選ぶか、フルリストを開いてください",
     "wine_house_label": "ハウスワイン — グラス",
-    "wine_full_list": "📖 全ワインリスト",
+    "wine_full_list": "🍷 デジタルワインリストはこちら➔",
     "wine_add_cart": "注文に追加",
     "wine_back": "ワイン一覧に戻る",
     "sauces": {
@@ -1690,7 +1690,7 @@ window.I18N_PATCH = {
     "wine_title": "와인 리스트",
     "wine_sub": "와인을 선택하거나 전체 리스트를 열어보세요",
     "wine_house_label": "하우스 와인 — 잔",
-    "wine_full_list": "📖 전체 와인 리스트",
+    "wine_full_list": "🍷 디지털 와인 리스트 보러 가기➔",
     "wine_add_cart": "주문에 추가",
     "wine_back": "와인으로 돌아가기",
     "sauces": {
@@ -1775,7 +1775,7 @@ window.I18N_PATCH = {
     "vino_name": "हाउस वाइन",
     "vino_detail": "वाइन सूची से चुनें",
     "turno": ["1ला व्यंजन", "2रा व्यंजन", "3रा व्यंजन", "4था व्यंजन"],
-    "wine_full_list": "📖 पूर्ण वाइन सूची",
+    "wine_full_list": "🍷 डिजिटल वाइन लिस्ट के लिए यहाँ क्लिक करें➔",
     "wines": {
       "Vino Rosso della Casa": "हाउस रेड वाइन",
       "Vino Bianco della Casa": "हाउस व्हाइट वाइन",
@@ -1953,7 +1953,7 @@ window.I18N_PATCH = {
     "vino_name": "হাউস ওয়াইন",
     "vino_detail": "ওয়াইন তালিকা থেকে বেছে নিন",
     "turno": ["১ম কোর্স", "২য় কোর্স", "৩য় কোর্স", "৪র্থ কোর্স"],
-    "wine_full_list": "📖 সম্পূর্ণ ওয়াইন তালিকা",
+    "wine_full_list": "🍷 ডিজিটাল ওয়াইন তালিকার জন্য এখানে ক্লিক করুন➔",
     "wines": {
       "Vino Rosso della Casa": "হাউস রেড ওয়াইন",
       "Vino Bianco della Casa": "হাউস হোয়াইট ওয়াইন",
@@ -2131,7 +2131,7 @@ window.I18N_PATCH = {
     "vino_name": "ہاؤس وائن",
     "vino_detail": "وائن لسٹ سے منتخب کریں",
     "turno": ["پہلا کورس", "دوسرا کورس", "تیسرا کورس", "چوتھا کورس"],
-    "wine_full_list": "📖 مکمل وائن لسٹ",
+    "wine_full_list": "🍷 ڈیجیٹل وائن لسٹ کے لیے یہاں کلک کریں➔",
     "wines": {
       "Vino Rosso della Casa": "ہاؤس ریڈ وائن",
       "Vino Bianco della Casa": "ہاؤس وائٹ وائن",
@@ -2309,7 +2309,7 @@ window.I18N_PATCH = {
     "vino_name": "شراب خانگی",
     "vino_detail": "از لیست شراب انتخاب شود",
     "turno": ["غذای اول", "غذای دوم", "غذای سوم", "غذای چهارم"],
-    "wine_full_list": "📖 لیست کامل شراب",
+    "wine_full_list": "🍷 برای لیست شراب دیجیتال اینجا کلیک کنید➔",
     "wines": {
       "Vino Rosso della Casa": "شراب قرمز خانگی",
       "Vino Bianco della Casa": "شراب سفید خانگی",
@@ -2478,7 +2478,7 @@ window.I18N_PATCH = {
     "vino_prompt": "¿Cuántas botellas?",
     "vino_name": "Vino de la Casa",
     "vino_detail": "A elegir de la carta de vinos",
-    "wine_full_list": "📖 Lista Completa de Vinos",
+    "wine_full_list": "🍷 Haz Clic Aquí para la Carta de Vinos Digital➔",
     "wines": {
       "Vino Rosso della Casa": "Vino Tinto de la Casa",
       "Vino Bianco della Casa": "Vino Blanco de la Casa",
@@ -2662,7 +2662,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Quantas garrafas?",
     "vino_name": "Vinho da Casa",
     "vino_detail": "A escolher da carta de vinhos",
-    "wine_full_list": "📖 Lista Completa de Vinhos",
+    "wine_full_list": "🍷 Clique Aqui para a Carta de Vinhos Digital➔",
     "wines": {
       "Vino Rosso della Casa": "Vinho Tinto da Casa",
       "Vino Bianco della Casa": "Vinho Branco da Casa",
@@ -2846,7 +2846,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Сколько бутылок?",
     "vino_name": "Домашнее Вино",
     "vino_detail": "Выбирается из карты вин",
-    "wine_full_list": "📖 Полный Список Вин",
+    "wine_full_list": "🍷 Нажмите здесь для Цифровой Винной Карты➔",
     "wines": {
       "Vino Rosso della Casa": "Домашнее Красное Вино",
       "Vino Bianco della Casa": "Домашнее Белое Вино",
@@ -3030,7 +3030,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Hoeveel flessen?",
     "vino_name": "Huiswijn",
     "vino_detail": "Te kiezen uit de wijnkaart",
-    "wine_full_list": "📖 Volledige Wijnlijst",
+    "wine_full_list": "🍷 Klik Hier voor de Digitale Wijnkaart➔",
     "wines": {
       "Vino Rosso della Casa": "Huiswijn Rood",
       "Vino Bianco della Casa": "Huiswijn Wit",
@@ -3214,7 +3214,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Ile butelek?",
     "vino_name": "Wino Domowe",
     "vino_detail": "Do wyboru z karty win",
-    "wine_full_list": "📖 Pełna Lista Win",
+    "wine_full_list": "🍷 Kliknij Tutaj po Cyfrową Kartę Win➔",
     "wines": {
       "Vino Rosso della Casa": "Wino Domowe Czerwone",
       "Vino Bianco della Casa": "Wino Domowe Białe",
@@ -3398,7 +3398,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Скільки пляшок?",
     "vino_name": "Домашнє Вино",
     "vino_detail": "На вибір з карти вин",
-    "wine_full_list": "📖 Повний Список Вин",
+    "wine_full_list": "🍷 Натисніть тут для Цифрової Карти Вин➔",
     "wines": {
       "Vino Rosso della Casa": "Домашнє Червоне Вино",
       "Vino Bianco della Casa": "Домашнє Біле Вино",
@@ -3582,7 +3582,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Câte sticle?",
     "vino_name": "Vin de Casă",
     "vino_detail": "De ales din lista de vinuri",
-    "wine_full_list": "📖 Lista Completă de Vinuri",
+    "wine_full_list": "🍷 Apasă Aici pentru Lista Digitală de Vinuri➔",
     "wines": {
       "Vino Rosso della Casa": "Vin Roșu de Casă",
       "Vino Bianco della Casa": "Vin Alb de Casă",
@@ -3766,7 +3766,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Hur många flaskor?",
     "vino_name": "Husets Vin",
     "vino_detail": "Att välja från vinlistan",
-    "wine_full_list": "📖 Fullständig Vinlista",
+    "wine_full_list": "🍷 Klicka Här för den Digitala Vinlistan➔",
     "wines": {
       "Vino Rosso della Casa": "Husets Rödvin",
       "Vino Bianco della Casa": "Husets Vitvin",
@@ -3950,7 +3950,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Hvor mange flasker?",
     "vino_name": "Husets Vin",
     "vino_detail": "Vælges fra vinkortet",
-    "wine_full_list": "📖 Fuld Vinliste",
+    "wine_full_list": "🍷 Klik Her for det Digitale Vinkort➔",
     "wines": {
       "Vino Rosso della Casa": "Husets Rødvin",
       "Vino Bianco della Casa": "Husets Hvidvin",
@@ -4134,7 +4134,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Hvor mange flasker?",
     "vino_name": "Husets Vin",
     "vino_detail": "Velges fra vinkartet",
-    "wine_full_list": "📖 Fullstendig Vinliste",
+    "wine_full_list": "🍷 Klikk Her for det Digitale Vinkartet➔",
     "wines": {
       "Vino Rosso della Casa": "Husets Rødvin",
       "Vino Bianco della Casa": "Husets Hvitvin",
@@ -4318,7 +4318,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Kuinka monta pulloa?",
     "vino_name": "Talon Viini",
     "vino_detail": "Valitaan viinilistalta",
-    "wine_full_list": "📖 Koko Viinilista",
+    "wine_full_list": "🍷 Klikkaa Tästä Digitaaliseen Viinilistaan➔",
     "wines": {
       "Vino Rosso della Casa": "Talon Punaviini",
       "Vino Bianco della Casa": "Talon Valkoviini",
@@ -4502,7 +4502,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Πόσα μπουκάλια;",
     "vino_name": "Κρασί του Σπιτιού",
     "vino_detail": "Προς επιλογή από τον κατάλογο κρασιών",
-    "wine_full_list": "📖 Πλήρης Κατάλογος Κρασιών",
+    "wine_full_list": "🍷 Κάντε Κλικ Εδώ για τον Ψηφιακό Κατάλογο Κρασιών➔",
     "wines": {
       "Vino Rosso della Casa": "Κόκκινο Κρασί του Σπιτιού",
       "Vino Bianco della Casa": "Λευκό Κρασί του Σπιτιού",
@@ -4686,7 +4686,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Kolik lahví?",
     "vino_name": "Domácí Víno",
     "vino_detail": "K výběru z vinného lístku",
-    "wine_full_list": "📖 Kompletní Vinný Lístek",
+    "wine_full_list": "🍷 Klikněte Zde pro Digitální Vinný Lístek➔",
     "wines": {
       "Vino Rosso della Casa": "Domácí Červené Víno",
       "Vino Bianco della Casa": "Domácí Bílé Víno",
@@ -4870,7 +4870,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Hány üveg?",
     "vino_name": "Házi Bor",
     "vino_detail": "A borlapról választható",
-    "wine_full_list": "📖 Teljes Borlap",
+    "wine_full_list": "🍷 Kattintson Ide a Digitális Borlapért➔",
     "wines": {
       "Vino Rosso della Casa": "Házi Vörösbor",
       "Vino Bianco della Casa": "Házi Fehérbor",
@@ -5054,7 +5054,7 @@ window.I18N_PATCH = {
     "vino_prompt": "Bao nhiêu chai?",
     "vino_name": "Rượu Vang Nhà",
     "vino_detail": "Chọn từ danh sách rượu",
-    "wine_full_list": "📖 Danh Sách Rượu Đầy Đủ",
+    "wine_full_list": "🍷 Nhấn Vào Đây để Xem Danh Sách Rượu Vang Điện Tử➔",
     "wines": {
       "Vino Rosso della Casa": "Rượu Vang Đỏ Nhà Làm",
       "Vino Bianco della Casa": "Rượu Vang Trắng Nhà Làm",
@@ -5243,7 +5243,7 @@ window.I18N_PATCH = {
     "vino_prompt": "กี่ขวด?",
     "vino_name": "ไวน์ประจำร้าน",
     "vino_detail": "เลือกจากรายการไวน์",
-    "wine_full_list": "📖 รายการไวน์ทั้งหมด",
+    "wine_full_list": "🍷 คลิกที่นี่เพื่อดูรายการไวน์ดิจิทัล➔",
     "wines": {
       "Vino Rosso della Casa": "ไวน์แดงประจำร้าน",
       "Vino Bianco della Casa": "ไวน์ขาวประจำร้าน",
