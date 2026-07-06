@@ -530,9 +530,16 @@ html body { margin-top: 0 !important; }
 </div>
 <div class="cart-panel" id="cart-panel" onclick="event.stopPropagation()">
   <div class="cart-title" data-it="📋 Il Tuo Ordine" data-fr="📋 Votre Commande" data-en="📋 Your Order" data-de="📋 Ihre Bestellung">📋 Il Tuo Ordine</div>
+  <div class="table-select-wrap" style="margin-bottom:12px;">
+    <label for="tableSelect" style="display:block;color:#d4af37;font-weight:bold;font-size:13px;margin-bottom:6px;" data-it="🪑 Numero Tavolo" data-fr="🪑 Numéro de Table" data-en="🪑 Table Number" data-de="🪑 Tischnummer">🪑 Numero Tavolo</label>
+    <select id="tableSelect" style="width:100%;padding:10px 14px;border-radius:14px;border:1px solid #d4af37;background:#2a1d19;color:#f9f1e2;font-size:14px;font-family:inherit;outline:none;">
+      <option value="" data-it="-- Seleziona Tavolo --" data-fr="-- Choisir la Table --" data-en="-- Select Table --" data-de="-- Tisch wählen --">-- Seleziona Tavolo --</option>
+    </select>
+  </div>
   <div id="cart-content"><div class="cart-empty">Nessun articolo ancora</div></div>
   <div class="cart-total" id="cart-total" style="display:none;"><span data-it="Totale stimato" data-fr="Total estimé" data-en="Estimated total" data-de="Geschätzter Gesamtbetrag">Totale stimato</span><span id="total-amount">€0</span></div>
-  <button class="waiter-btn" id="waiter-btn" disabled onclick="showOverlay()" data-it="📲 Mostra al Cameriere" data-fr="📲 Montrer au Serveur" data-en="📲 Show to Waiter" data-de="📲 Dem Kellner zeigen">📲 Mostra al Cameriere</button>
+  <button class="waiter-btn" id="waiter-btn" disabled onclick="sendOrder()" data-it="📤 Invia Ordine" data-fr="📤 Envoyer la Commande" data-en="📤 Send Order" data-de="📤 Bestellung Senden">📤 Invia Ordine</button>
+  <button class="waiter-btn" id="show-waiter-btn" disabled onclick="showOverlay()" style="background:transparent;border:1px solid #d4af37;color:#d4af37;margin-top:8px;" data-it="📲 Mostra al Cameriere" data-fr="📲 Montrer au Serveur" data-en="📲 Show to Waiter" data-de="📲 Dem Kellner zeigen">📲 Mostra al Cameriere</button>
 </div>
 
 <!-- POPUP -->
@@ -554,7 +561,7 @@ html body { margin-top: 0 !important; }
   <div class="overlay-header"><div class="overlay-logo">✦ LAGO BIN ✦</div><div class="overlay-sub" data-it="Riepilogo Ordine" data-fr="Récapitulatif" data-en="Order Summary" data-de="Bestellübersicht">Riepilogo Ordine</div></div>
   <div id="overlay-content"></div>
   <button class="overlay-close" onclick="closeOverlay()" data-it="✕ Chiudi / Close" data-fr="✕ Fermer" data-en="✕ Close" data-de="✕ Schließen">✕ Chiudi / Close</button>
-  <div class="overlay-note" data-it="Mostra questo schermo al cameriere" data-fr="Montrez cet écran au serveur" data-en="Show this screen to the waiter" data-de="Zeigen Sie dies dem Kellner">Mostra questo schermo al cameriere</div>
+  <div class="overlay-note" id="overlay-note-text" data-it="✅ Ordine inviato! Il cameriere lo riceverà a breve." data-fr="✅ Commande envoyée! Le serveur la recevra bientôt." data-en="✅ Order sent! The waiter will receive it shortly." data-de="✅ Bestellung gesendet! Der Kellner erhält sie in Kürze.">✅ Ordine inviato! Il cameriere lo riceverà a breve.</div>
 </div>
 
 <!-- CARTA DEI VINI MODAL -->
@@ -584,6 +591,9 @@ html body { margin-top: 0 !important; }
   </div>
 </div>
 
+<!-- FIREBASE SDK (must load before the script below) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 // ── GELATO FLAVORS with multilingual labels (FIX) ──
 const GELATO_FLAVORS=[
@@ -1100,9 +1110,9 @@ function updateCart(){
         '</div></div>';
     });
   });
-  const cc=document.getElementById('cart-content'),tc=document.getElementById('cart-total'),wb=document.getElementById('waiter-btn');
-  if(hasContent){cc.innerHTML=html;tc.style.display='flex';document.getElementById('total-amount').textContent='€'+totalPrice;wb.disabled=false;}
-  else{cc.innerHTML='<div class="cart-empty">'+t('nessun_articolo')+'</div>';tc.style.display='none';wb.disabled=true;}
+  const cc=document.getElementById('cart-content'),tc=document.getElementById('cart-total'),wb=document.getElementById('waiter-btn'),swb=document.getElementById('show-waiter-btn');
+  if(hasContent){cc.innerHTML=html;tc.style.display='flex';document.getElementById('total-amount').textContent='€'+totalPrice;wb.disabled=false;if(swb)swb.disabled=false;}
+  else{cc.innerHTML='<div class="cart-empty">'+t('nessun_articolo')+'</div>';tc.style.display='none';wb.disabled=true;if(swb)swb.disabled=true;}
   document.getElementById('cart-badge').textContent=totalItems;
   Object.keys(ITEMS).forEach(id=>{
     const qd=document.getElementById('qty-'+id);if(qd)qd.textContent=cart.filter(c=>c.itemId===id).length;
@@ -1116,11 +1126,19 @@ function addSameItem(gk){const e=cart.find(c=>(c.itemId+'||'+(c.detail||'')+'||'
 function toggleCart(){document.getElementById('cart-panel').classList.toggle('open');}
 
 // ── OVERLAY ──
-function showOverlay(){
+const OVERLAY_NOTE_SENT={it:'✅ Ordine inviato! Il cameriere lo riceverà a breve.',fr:'✅ Commande envoyée! Le serveur la recevra bientôt.',en:'✅ Order sent! The waiter will receive it shortly.',de:'✅ Bestellung gesendet! Der Kellner erhält sie in Kürze.'};
+const OVERLAY_NOTE_SHOW={it:'Mostra questo schermo al cameriere',fr:'Montrez cet écran au serveur',en:'Show this screen to the waiter',de:'Zeigen Sie dies dem Kellner'};
+function showOverlay(cartSnapshot,wasSent){
   window.__alaCartaShownOv=false;
+  const sourceCart = cartSnapshot || cart;
+  const noteEl=document.getElementById('overlay-note-text');
+  if(noteEl){
+    const dict = wasSent ? OVERLAY_NOTE_SENT : OVERLAY_NOTE_SHOW;
+    noteEl.textContent = dict[currentLang] || dict.it;
+  }
   let html='',total=0;
   const buckets={};
-  cart.forEach(e=>{
+  sourceCart.forEach(e=>{
     let bid;
     if(e.isPkg) bid='menu';
     else if(['dolci','gelato','bevande'].includes(e.course)) bid=e.course;
@@ -1230,8 +1248,99 @@ function searchMenu(q){
   box.style.display='block';
 }
 
+// ── FIREBASE CONFIG ──
+// ⚠️ IMPORTANT: Replace the values below with YOUR Firebase project's config.
+// You get this from: Firebase Console → Project Settings → General → "Your apps" → Web app → SDK setup snippet
+const firebaseConfig = {
+  apiKey: "AIzaSyAAVvNWOTCUp9PT44pRvIWVnNBOzjxYdeI",
+  authDomain: "lagobin-orders.firebaseapp.com",
+  projectId: "lagobin-orders",
+  storageBucket: "lagobin-orders.firebasestorage.app",
+  messagingSenderId: "202005520791",
+  appId: "1:202005520791:web:8211a8b59b4fcea1eee4d2"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// ── TABLE NUMBER DROPDOWN ──
+// Change this number to match how many tables you actually have.
+const TOTAL_TABLES = 54;
+function populateTableSelect(){
+  const sel=document.getElementById('tableSelect');
+  if(!sel)return;
+  for(let i=1;i<=TOTAL_TABLES;i++){
+    const opt=document.createElement('option');
+    opt.value=i;
+    opt.textContent='Tavolo '+i;
+    sel.appendChild(opt);
+  }
+}
+
+// ── DETERMINE FOOD vs DRINK CATEGORY ──
+// 'bevande' course = drinks (currently only Wine goes through this).
+// Everything else (antipasti/primi/secondi/contorni/dolci/gelato/menu) = food.
+function categoryFor(entry){
+  return entry.course==='bevande' ? 'drink' : 'food';
+}
+
+// ── SEND ORDER TO FIREBASE ──
+async function sendOrder(){
+  const tableSel=document.getElementById('tableSelect');
+  const tableNum=tableSel?tableSel.value:'';
+  if(!tableNum){
+    alert(currentLang==='it'?'⚠️ Seleziona il numero del tavolo prima di inviare!':
+          currentLang==='fr'?'⚠️ Veuillez sélectionner le numéro de table!':
+          currentLang==='de'?'⚠️ Bitte wählen Sie die Tischnummer!':
+          '⚠️ Please select your table number first!');
+    return;
+  }
+  if(!cart.length)return;
+
+  const btn=document.getElementById('waiter-btn');
+  const originalText=btn.textContent;
+  btn.disabled=true;
+  btn.textContent='⏳ ...';
+
+  const items=cart.map(e=>({
+    name:e.name,
+    detail:e.detail||'',
+    person:e.person||'',
+    turno:e.turno||'',
+    course:e.course||'',
+    category:categoryFor(e),
+    price:e.price
+  }));
+  const total=cart.reduce((s,e)=>s+e.price,0);
+  const cartSnapshot=JSON.parse(JSON.stringify(cart));
+
+  const orderData={
+    table:tableNum,
+    items:items,
+    total:total,
+    status:'pending',
+    createdAt:firebase.firestore.FieldValue.serverTimestamp()
+  };
+
+  try{
+    await db.collection('orders').add(orderData);
+    cart.length=0;
+    updateCart();
+    tableSel.value='';
+    showOverlay(cartSnapshot,true);
+  }catch(err){
+    console.error('Order submission failed:',err);
+    alert(currentLang==='it'?'❌ Errore durante l\'invio. Riprova.':
+          currentLang==='fr'?'❌ Erreur lors de l\'envoi. Réessayez.':
+          currentLang==='de'?'❌ Fehler beim Senden. Bitte erneut versuchen.':
+          '❌ Error sending order. Please try again.');
+  }finally{
+    btn.disabled=cart.length===0;
+    btn.textContent=originalText;
+  }
+}
+
 // ── INIT ──
-document.addEventListener('DOMContentLoaded',()=>{updateCart();renderInlineGelato();});
+document.addEventListener('DOMContentLoaded',()=>{populateTableSelect();updateCart();renderInlineGelato();});
 document.addEventListener('click',e=>{
   if(!e.target.closest('.translate-wrap'))closeDropdown();
   const panel=document.getElementById('cart-panel'),fab=document.querySelector('.cart-fab');
