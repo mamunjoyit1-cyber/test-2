@@ -378,7 +378,7 @@
     return (s || '').normalize ? (s || '').normalize('NFC').trim() : (s || '').trim();
   }
   function extractItalianName(nameEl) {
-    var nt = nameEl.querySelector('.notranslate');
+    var nt = nameEl.querySelector('.notranslate:not(.sub-trans)');
     if (nt) return nt.textContent.trim();
     var clone = nameEl.cloneNode(true);
     var sub = clone.querySelector('.sub-trans');
