@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lago Bin – Admin Dashboard</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; color: #f9f1e2; min-height: 100vh; }
+.header { background: linear-gradient(135deg, #0f0303 0%, #260707 50%, #0f0303 100%); padding: 24px 20px; text-align: center; border-bottom: 4px solid #d4af37; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.header h1 { color: #fff; font-size: 26px; letter-spacing: 3px; }
+.header .sub { color: #d4af37; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+.logout-btn { background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: inherit; font-size: 13px; }
+.logout-btn:hover { background: rgba(212,175,55,0.15); }
+
+/* LOGIN */
+#login-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+.login-box { background: #221815; border: 2px solid #d4af37; border-radius: 16px; padding: 40px 32px; max-width: 360px; width: 100%; text-align: center; }
+.login-box h2 { color: #d4af37; letter-spacing: 3px; margin-bottom: 6px; font-size: 22px; }
+.login-box .sub { color: #bca07d; font-size: 13px; margin-bottom: 24px; font-style: italic; }
+.login-box input { width: 100%; padding: 12px 16px; margin-bottom: 12px; border-radius: 10px; border: 1px solid #d4af37; background: #2a1d19; color: #f9f1e2; font-size: 14px; font-family: inherit; outline: none; }
+.login-box button { width: 100%; padding: 13px; border-radius: 24px; border: none; background: #d4af37; color: #150e0b; font-weight: bold; font-size: 14px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+.login-box button:hover { background: #f0c93a; }
+.login-error { color: #ff6b6b; font-size: 13px; margin-top: 10px; min-height: 16px; }
+
+/* DASHBOARD */
+#dashboard { display: none; padding: 20px; max-width: 900px; margin: 0 auto; }
+.empty-state { text-align: center; color: #7a6a5a; padding: 60px 20px; font-style: italic; }
+.order-card { background: #221815; border: 1px solid rgba(212,175,55,0.4); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+.order-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+.table-label { font-size: 20px; font-weight: bold; color: #d4af37; display: flex; align-items: center; gap: 8px; }
+.table-label input { width: 60px; padding: 6px 10px; border-radius: 8px; border: 1px solid #d4af37; background: #2a1d19; color: #f9f1e2; font-size: 16px; font-family: inherit; text-align: center; }
+.order-count { font-size: 12px; color: #bca07d; }
+
+.area-toggle { display: flex; gap: 8px; }
+.area-btn { padding: 8px 16px; border-radius: 20px; border: 1px solid #d4af37; background: transparent; color: #d4af37; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: bold; }
+.area-btn.active { background: #d4af37; color: #150e0b; }
+
+.item-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(212,175,55,0.15); gap: 10px; }
+.item-row .item-info { flex: 1; }
+.item-row .item-name { font-size: 14px; font-weight: 600; }
+.item-row .item-name.drink { color: #7ec8e3; }
+.item-row .item-detail { font-size: 12px; color: #bca07d; font-style: italic; }
+.item-row .item-price { font-weight: bold; color: #d4af37; font-size: 14px; }
+.item-remove { background: none; border: none; color: #ff6b6b; font-size: 16px; cursor: pointer; padding: 4px 8px; }
+
+.add-item-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.add-item-row input { flex: 1; min-width: 100px; padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.4); background: #2a1d19; color: #f9f1e2; font-size: 13px; font-family: inherit; }
+.add-item-row select { padding: 8px; border-radius: 8px; border: 1px solid rgba(212,175,55,0.4); background: #2a1d19; color: #f9f1e2; font-size: 13px; font-family: inherit; }
+.add-item-btn { padding: 8px 14px; border-radius: 8px; border: none; background: rgba(212,175,55,0.25); color: #d4af37; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: bold; }
+
+.card-total { text-align: right; margin: 14px 0; font-size: 16px; font-weight: bold; color: #d4af37; }
+.card-actions { display: flex; gap: 10px; }
+.approve-btn { flex: 1; padding: 13px; border-radius: 22px; border: none; background: #2e7d32; color: #fff; font-weight: bold; font-size: 14px; cursor: pointer; font-family: inherit; }
+.approve-btn:hover { background: #357a38; }
+.approve-btn:disabled { background: rgba(255,255,255,0.1); color: #7a6a5a; cursor: not-allowed; }
+.cancel-btn { padding: 13px 18px; border-radius: 22px; border: 1px solid #ff6b6b; background: transparent; color: #ff6b6b; font-weight: bold; font-size: 14px; cursor: pointer; font-family: inherit; }
+
+.pending-time { font-size: 11px; color: #7a6a5a; margin-top: 4px; }
+
+/* MENU AVAILABILITY SECTION */
+.menu-mgmt { background: #221815; border: 1px solid rgba(212,175,55,0.4); border-radius: 16px; padding: 20px; margin-bottom: 24px; }
+.menu-mgmt h3 { color: #d4af37; font-size: 16px; margin-bottom: 4px; }
+.menu-mgmt .mgmt-sub { color: #bca07d; font-size: 12px; font-style: italic; margin-bottom: 14px; }
+.mgmt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 10px; margin-bottom: 18px; }
+.mgmt-section-title { color: #d4af37; font-size: 13px; font-weight: bold; margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 1px; }
+.mgmt-row { display: flex; justify-content: space-between; align-items: center; background: #2a1d19; border-radius: 10px; padding: 10px 14px; }
+.mgmt-row .mgmt-name { font-size: 13px; }
+.mgmt-switch { width: 42px; height: 24px; border-radius: 12px; border: 1px solid #d4af37; background: rgba(255,255,255,0.05); position: relative; cursor: pointer; flex-shrink: 0; }
+.mgmt-switch.on { background: #2e7d32; border-color: #2e7d32; }
+.mgmt-switch .knob { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: #f9f1e2; transition: left 0.15s; }
+.mgmt-switch.on .knob { left: 20px; }
+
+/* PRINT AREA - hidden on screen, shown only when printing */
+#print-area { display: none; }
+@media print {
+  body * { visibility: hidden; }
+  #print-area, #print-area * { visibility: visible; }
+  #print-area { display: block !important; position: absolute; top: 0; left: 0; width: 78mm; padding: 4mm; font-family: 'Courier New', monospace; color: #000; }
+  .receipt-title { text-align: center; font-size: 16px; font-weight: bold; border: 2px solid #000; padding: 4px; margin-bottom: 8px; }
+  .receipt-meta { font-size: 12px; margin-bottom: 8px; }
+  .receipt-item { font-size: 13px; margin-bottom: 6px; }
+  .receipt-item .rname { font-weight: bold; }
+  .receipt-item .rdetail { font-size: 11px; }
+  .receipt-turno { font-weight: bold; font-size: 13px; margin: 8px 0 4px; border-top: 1px dashed #000; padding-top: 4px; }
+  .receipt-total { border-top: 2px solid #000; margin-top: 10px; padding-top: 6px; font-size: 15px; font-weight: bold; text-align: right; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-box">
+    <h2>✦ LAGO BIN ✦</h2>
+    <div class="sub">Admin Dashboard</div>
+    <input type="email" id="loginEmail" placeholder="Email" autocomplete="username">
+    <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password">
+    <button onclick="doLogin()">Accedi</button>
+    <div class="login-error" id="loginError"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <div class="header">
+    <div>
+      <h1>LAGO BIN</h1>
+      <div class="sub">Admin — Ordini in Attesa</div>
+    </div>
+    <button class="logout-btn" onclick="doLogout()">Esci</button>
+  </div>
+  <div style="padding:20px 0;">
+    <div class="menu-mgmt">
+      <h3>🍽️ Gestione Disponibilità Menu</h3>
+      <div class="mgmt-sub">Disattiva un articolo per nasconderlo dal menu dei clienti (es. finito in cucina).</div>
+      <div id="menu-mgmt-container"></div>
+    </div>
+    <div id="orders-container"></div>
+  </div>
+</div>
+
+<!-- HIDDEN PRINT AREA -->
+<div id="print-area"></div>
+
+<!-- FIREBASE SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+// ── FIREBASE CONFIG (same project as the customer site) ──
+const firebaseConfig = {
+  apiKey: "AIzaSyAAVvNWOTCUp9PT44pRvIWVnNBOzjxYdeI",
+  authDomain: "lagobin-orders.firebaseapp.com",
+  projectId: "lagobin-orders",
+  storageBucket: "lagobin-orders.firebasestorage.app",
+  messagingSenderId: "202005520791",
+  appId: "1:202005520791:web:8211a8b59b4fcea1eee4d2"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// ── PRINTER ROUTING CONFIG ──
+// These must match the EXACT printer names installed in Windows.
+const PRINTER_ROUTES = {
+  esterno: {
+    label: 'Rist. Esterno',
+    full: { printer: 'POS-80C (Ristorante3)', title: 'Rist. Esterno' },
+    kitchen: { printer: 'POS-80C Cucina', title: 'CUCINA' },
+    bar: null // no separate bar printer for esterno currently
+  },
+  interno: {
+    label: 'Rist. Interno',
+    full: { printer: 'POS-80 RISTORANTE2', title: 'Rist. Interno' },
+    kitchen: { printer: 'POS-80C Cucina', title: 'CUCINA' },
+    bar: { printer: 'POS-80 BARINTERNO', title: 'BAR' }
+  }
+};
+
+// ── FULL MENU AVAILABILITY MANAGEMENT (all categories) ──
+const COURSE_LABELS = {antipasti:'🥗 Antipasti', primi:'🍝 Primi', secondi:'🥩 Secondi', contorni:'🥦 Contorni', dolci:'🍰 Dolci', gelato:'🍨 Gelato'};
+const ALL_MENU_ITEMS = [
+  {id:'antipasto_tipico',name:'Antipasto Tipico del Lago Bin',course:'antipasti'},
+  {id:'salumiere',name:'Assortimento del Salumiere',course:'antipasti'},
+  {id:'prosciutto',name:'Prosciutto di Parma',course:'antipasti'},
+  {id:'misto_caldo',name:'Antipasto Misto Caldo e Freddo',course:'antipasti'},
+  {id:'lumache',name:'Lumache in Umido',course:'antipasti'},
+  {id:'brandacujan',name:'Brandacujan',course:'antipasti'},
+  {id:'tartare_manzo',name:'Tartare di Manzo al Coltello',course:'antipasti'},
+  {id:'tomino',name:"Tomino d'Alpeggio Caldo",course:'antipasti'},
+  {id:'tartare_pesce',name:'Tartare di Pesce',course:'antipasti'},
+  {id:'antipasto_mare',name:'Antipasto Misto di Mare',course:'antipasti'},
+  {id:'ravioli_nonna',name:'Ravioli della Nonna',course:'primi'},
+  {id:'ravioli_coniglio',name:'Ravioli al Coniglio',course:'primi'},
+  {id:'tagliatelle_sel',name:'Tagliatelle di Pasta Fresca',course:'primi'},
+  {id:'tagliatelle_mare',name:'Tagliatelle ai Frutti di Mare',course:'primi'},
+  {id:'mezzelune',name:'Mezzelune di Magro',course:'primi'},
+  {id:'troffie',name:'Troffie',course:'primi'},
+  {id:'troffie_gamberetti',name:'Troffie con Gamberetti e Zucchine',course:'primi'},
+  {id:'gnocchi',name:'Gnocchi di Patate',course:'primi'},
+  {id:'risotto',name:'Risotto ai Frutti di Mare',course:'primi'},
+  {id:'duo_primi',name:'Duo di Primi',course:'primi'},
+  {id:'coniglio',name:'Coniglio alla Rocchettina',course:'secondi'},
+  {id:'selvaggina',name:'Selvaggina al Vino Rosso',course:'secondi'},
+  {id:'agnello',name:'Costine di Agnello alla Griglia',course:'secondi'},
+  {id:'grigliata',name:'Grigliata Mista di Carne',course:'secondi'},
+  {id:'roastbeef',name:'Roast Beef',course:'secondi'},
+  {id:'filetto',name:'Filetto di Manzo',course:'secondi'},
+  {id:'pescato',name:'Pescato o Gamberoni',course:'secondi'},
+  {id:'grigliata_pesce',name:'Grigliata Mista di Pesce',course:'secondi'},
+  {id:'formaggi',name:'Assortimento di Formaggi',course:'contorni'},
+  {id:'verdure',name:'Grigliata di Verdure',course:'contorni'},
+  {id:'insalata',name:'Insalata Mista',course:'contorni'},
+  {id:'tiramisu',name:'Tiramisù',course:'dolci'},
+  {id:'pannacotta',name:'Panna Cotta',course:'dolci'},
+  {id:'cremecaramel',name:'Crème Caramel',course:'dolci'},
+  {id:'cremacatalana',name:'Crema Catalana',course:'dolci'},
+  {id:'semifreddo',name:'Semifreddo',course:'dolci'},
+  {id:'crumble',name:'Crumble di Mele',course:'dolci'},
+  {id:'bunet',name:'Bunet',course:'dolci'},
+  {id:'macedonia',name:'Macedonia di Frutta',course:'dolci'},
+  {id:'assort_dolci',name:'Assortimento Dolci',course:'dolci'},
+  {id:'gelato',name:'Gelato Artigianale',course:'gelato'},
+  {id:'sorbetto',name:'Sorbetto',course:'gelato'}
+];
+let menuAvailabilityUnsub=null;
+function startMenuAvailabilityListener(){
+  if(menuAvailabilityUnsub)menuAvailabilityUnsub();
+  menuAvailabilityUnsub=db.collection('menuAvailability').onSnapshot(snap=>{
+    const state={};
+    snap.forEach(doc=>{state[doc.id]=doc.data().available!==false;});
+    renderMenuMgmt(state);
+  }, err=>console.error('Menu availability listener error:',err));
+}
+function renderMenuMgmt(state){
+  const container=document.getElementById('menu-mgmt-container');
+  if(!container)return;
+  const byCourse={};
+  ALL_MENU_ITEMS.forEach(it=>{ if(!byCourse[it.course])byCourse[it.course]=[]; byCourse[it.course].push(it); });
+  let html='';
+  Object.keys(COURSE_LABELS).forEach(course=>{
+    if(!byCourse[course])return;
+    html+='<div class="mgmt-section-title">'+COURSE_LABELS[course]+'</div>';
+    html+='<div class="mgmt-grid">';
+    byCourse[course].forEach(it=>{
+      const isOn = state[it.id]!==false;
+      html+='<div class="mgmt-row"><span class="mgmt-name">'+it.name+'</span>'
+        + '<div class="mgmt-switch '+(isOn?'on':'')+'" onclick="toggleAvailability(\''+it.id+'\','+(!isOn)+')"><div class="knob"></div></div></div>';
+    });
+    html+='</div>';
+  });
+  container.innerHTML=html;
+}
+function toggleAvailability(itemId,newValue){
+  db.collection('menuAvailability').doc(itemId).set({available:newValue},{merge:true}).catch(err=>console.error(err));
+}
+
+// ── AUTH ──
+function doLogin(){
+  const email=document.getElementById('loginEmail').value.trim();
+  const pass=document.getElementById('loginPassword').value;
+  const errEl=document.getElementById('loginError');
+  errEl.textContent='';
+  if(!email||!pass){errEl.textContent='Inserisci email e password.';return;}
+  auth.signInWithEmailAndPassword(email,pass).catch(err=>{
+    errEl.textContent='❌ Accesso fallito: email o password errata.';
+    console.error(err);
+  });
+}
+function doLogout(){ auth.signOut(); }
+
+auth.onAuthStateChanged(user=>{
+  if(user){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('dashboard').style.display='block';
+    startListening();
+  }else{
+    document.getElementById('login-screen').style.display='flex';
+    document.getElementById('dashboard').style.display='none';
+  }
+});
+
+// ── LIVE ORDERS LISTENER ──
+let ordersUnsub=null;
+let selectedArea={}; // { tableNumber: 'esterno'|'interno' }
+
+function startListening(){
+  if(ordersUnsub)ordersUnsub();
+  ordersUnsub=db.collection('orders').where('status','==','pending')
+    .onSnapshot(renderOrders, err=>console.error('Listener error:',err));
+  startMenuAvailabilityListener();
+}
+
+function renderOrders(snapshot){
+  const container=document.getElementById('orders-container');
+  if(snapshot.empty){
+    container.innerHTML='<div class="empty-state">Nessun ordine in attesa al momento.</div>';
+    return;
+  }
+  // Group documents by table number
+  const groups={};
+  snapshot.forEach(doc=>{
+    const data=doc.data();
+    const tbl=data.table||'—';
+    if(!groups[tbl])groups[tbl]=[];
+    groups[tbl].push({id:doc.id,...data});
+  });
+
+  let html='';
+  Object.keys(groups).sort((a,b)=>Number(a)-Number(b)).forEach(tbl=>{
+    const docs=groups[tbl];
+    const allItems=[];
+    docs.forEach(d=>(d.items||[]).forEach((it,idx)=>allItems.push({...it,__docId:d.id,__idx:idx})));
+    const total=allItems.reduce((s,it)=>s+(Number(it.price)||0),0);
+    const area=selectedArea[tbl]||'';
+    const earliestTime=docs.map(d=>d.createdAt?.toDate?.()||new Date()).sort((a,b)=>a-b)[0];
+    const timeStr=earliestTime?earliestTime.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'}):'';
+
+    html+='<div class="order-card" data-table="'+tbl+'">';
+    html+='  <div class="order-card-header">';
+    html+='    <div class="table-label">🪑 Tavolo <input type="text" value="'+tbl+'" onchange="changeTableNumber(\''+tbl+'\',this.value)"></div>';
+    html+='    <div class="area-toggle">';
+    html+='      <button class="area-btn '+(area==='esterno'?'active':'')+'" onclick="setArea(\''+tbl+'\',\'esterno\')">🌤️ Esterno</button>';
+    html+='      <button class="area-btn '+(area==='interno'?'active':'')+'" onclick="setArea(\''+tbl+'\',\'interno\')">🏠 Interno</button>';
+    html+='    </div>';
+    html+='  </div>';
+    html+='  <div class="order-count">'+docs.length+' ordine/i · ricevuto alle '+timeStr+'</div>';
+    html+='  <div class="pending-time"></div>';
+    html+='  <div style="margin-top:12px;">';
+    allItems.forEach(it=>{
+      html+='<div class="item-row">';
+      html+='  <div class="item-info">';
+      html+='    <div class="item-name '+(it.category==='drink'?'drink':'')+'">'+(it.category==='drink'?'🍷':'🍽️')+' '+it.name+(it.turno?' <span style="font-weight:normal;color:#bca07d;">('+it.turno+')</span>':'')+'</div>';
+      if(it.detail)html+='    <div class="item-detail">'+it.detail+'</div>';
+      html+='  </div>';
+      html+='  <div class="item-price">€'+it.price+'</div>';
+      html+='  <button class="item-remove" onclick="removeItem(\''+it.__docId+'\','+it.__idx+')">✕</button>';
+      html+='</div>';
+    });
+    html+='  </div>';
+    html+='  <div class="add-item-row">';
+    html+='    <input type="text" id="newname-'+tbl+'" placeholder="Nome piatto/bevanda">';
+    html+='    <input type="number" id="newprice-'+tbl+'" placeholder="€" style="width:70px;">';
+    html+='    <select id="newcat-'+tbl+'"><option value="food">🍽️ Cibo</option><option value="drink">🍷 Bevanda</option></select>';
+    html+='    <button class="add-item-btn" onclick="addManualItem(\''+tbl+'\',\''+docs[0].id+'\')">+ Aggiungi</button>';
+    html+='  </div>';
+    html+='  <div class="card-total">Totale: €'+total+'</div>';
+    html+='  <div class="card-actions">';
+    html+='    <button class="approve-btn" '+(area?'':'disabled')+' onclick="approveTable(\''+tbl+'\')">✅ Approva e Stampa</button>';
+    html+='    <button class="cancel-btn" onclick="cancelTable(\''+tbl+'\')">✕ Annulla</button>';
+    html+='  </div>';
+    html+='</div>';
+  });
+  container.innerHTML=html;
+}
+
+function setArea(tbl,area){
+  selectedArea[tbl]=area;
+  db.collection('orders').where('status','==','pending').get().then(renderOrders);
+}
+
+// ── EDIT: change table number for a specific order doc ──
+function changeTableNumber(oldTbl,newTbl){
+  if(!newTbl||newTbl===oldTbl)return;
+  db.collection('orders').where('table','==',oldTbl).where('status','==','pending').get().then(snap=>{
+    const batch=db.batch();
+    snap.forEach(doc=>batch.update(doc.ref,{table:newTbl}));
+    return batch.commit();
+  }).catch(err=>console.error(err));
+}
+
+// ── EDIT: remove an item from an order doc ──
+function removeItem(docId,itemIdx){
+  const ref=db.collection('orders').doc(docId);
+  ref.get().then(doc=>{
+    const data=doc.data();
+    const items=(data.items||[]).slice();
+    items.splice(itemIdx,1);
+    const total=items.reduce((s,it)=>s+(Number(it.price)||0),0);
+    return ref.update({items,total});
+  }).catch(err=>console.error(err));
+}
+
+// ── EDIT: manually add an item (e.g. something ordered verbally) ──
+function addManualItem(tbl,anyDocId){
+  const nameEl=document.getElementById('newname-'+tbl);
+  const priceEl=document.getElementById('newprice-'+tbl);
+  const catEl=document.getElementById('newcat-'+tbl);
+  const name=nameEl.value.trim();
+  const price=Number(priceEl.value)||0;
+  const category=catEl.value;
+  if(!name)return;
+  const ref=db.collection('orders').doc(anyDocId);
+  ref.get().then(doc=>{
+    const data=doc.data();
+    const items=(data.items||[]).slice();
+    items.push({name,price,category,course:category==='drink'?'bevande':'manuale',detail:'',person:'',turno:''});
+    const total=items.reduce((s,it)=>s+(Number(it.price)||0),0);
+    return ref.update({items,total});
+  }).then(()=>{nameEl.value='';priceEl.value='';}).catch(err=>console.error(err));
+}
+
+// ── CANCEL an entire table's pending orders ──
+function cancelTable(tbl){
+  if(!confirm('Annullare tutti gli ordini del Tavolo '+tbl+'?'))return;
+  db.collection('orders').where('table','==',tbl).where('status','==','pending').get().then(snap=>{
+    const batch=db.batch();
+    snap.forEach(doc=>batch.update(doc.ref,{status:'cancelled'}));
+    return batch.commit();
+  }).catch(err=>console.error(err));
+}
+
+// ── PRINT RECEIPT BUILDING ──
+function buildReceiptHTML(job,tbl,items,showPrice){
+  const now=new Date();
+  const dateStr=now.toLocaleDateString('it-IT')+' '+now.toLocaleTimeString('it-IT');
+  let html='<div class="receipt-title">'+job.title+'</div>';
+  html+='<div class="receipt-meta">Tavolo: <b>'+tbl+'</b><br>'+dateStr+'</div>';
+  // group by turno for readability
+  const byTurno={};
+  items.forEach(it=>{
+    const key=it.turno||'—';
+    if(!byTurno[key])byTurno[key]=[];
+    byTurno[key].push(it);
+  });
+  Object.keys(byTurno).forEach(turno=>{
+    if(turno!=='—')html+='<div class="receipt-turno">'+turno+'</div>';
+    byTurno[turno].forEach(it=>{
+      html+='<div class="receipt-item"><span class="rname">'+(it.person?it.person+' — ':'')+it.name+'</span>';
+      if(showPrice)html+=' <span style="float:right;">€'+it.price+'</span>';
+      html+='<br>';
+      if(it.detail)html+='<span class="rdetail">'+it.detail+'</span>';
+      html+='</div>';
+    });
+  });
+  if(showPrice){
+    const total=items.reduce((s,it)=>s+(Number(it.price)||0),0);
+    html+='<div class="receipt-total">TOTALE: €'+total+'</div>';
+  }
+  return html;
+}
+
+function doPrint(){
+  return new Promise(resolve=>{
+    function handler(){window.removeEventListener('afterprint',handler);resolve();}
+    window.addEventListener('afterprint',handler);
+    window.print();
+  });
+}
+
+async function printJobs(jobs,tbl){
+  for(const job of jobs){
+    if(!job.items.length)continue;
+    document.getElementById('print-area').innerHTML=buildReceiptHTML(job,tbl,job.items,job.showPrice);
+    alert('🖨️ Nella finestra di stampa, seleziona la stampante:\n\n"'+job.printer+'"\n\nPremi OK per continuare, poi clicca Stampa.');
+    await doPrint();
+  }
+}
+
+// ── APPROVE: build print jobs per routing rules and mark orders approved ──
+async function approveTable(tbl){
+  const area=selectedArea[tbl];
+  if(!area){alert('Seleziona prima Esterno o Interno.');return;}
+  const route=PRINTER_ROUTES[area];
+
+  const snap=await db.collection('orders').where('table','==',tbl).where('status','==','pending').get();
+  const allItems=[];
+  const docIds=[];
+  snap.forEach(doc=>{
+    docIds.push(doc.id);
+    (doc.data().items||[]).forEach(it=>allItems.push(it));
+  });
+  if(!allItems.length)return;
+
+  const foodItems=allItems.filter(it=>it.category!=='drink');
+  const drinkItems=allItems.filter(it=>it.category==='drink');
+
+  const jobs=[
+    {printer:route.full.printer, title:route.full.title, items:allItems, showPrice:true},
+    {printer:route.kitchen.printer, title:route.kitchen.title, items:foodItems, showPrice:false}
+  ];
+  if(route.bar){
+    jobs.push({printer:route.bar.printer, title:route.bar.title, items:drinkItems, showPrice:false});
+  }
+
+  await printJobs(jobs,tbl);
+
+  // Mark all this table's orders as approved
+  const batch=db.batch();
+  docIds.forEach(id=>batch.update(db.collection('orders').doc(id),{status:'approved',approvedAt:firebase.firestore.FieldValue.serverTimestamp()}));
+  await batch.commit();
+  delete selectedArea[tbl];
+}
+</script>
+</body>
+</html>
