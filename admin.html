@@ -763,7 +763,7 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName){
       html+='<div class="receipt-item"><span class="rname">'+(it.person?it.person+' — ':'')+it.name+(isMenuFisso?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+'</span>';
       if(showPrice)html+=' <span style="float:right;">€'+it.price+'</span>';
       html+='<br>';
-      if(it.detail&&it.course!=='menu')html+='<span class="rdetail">'+it.detail+'</span>';
+      if(it.detail)html+='<span class="rdetail">'+it.detail+'</span>';
       html+='</div>';
     });
   });
@@ -786,7 +786,7 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName){
       html+='<div class="person-summary-block">';
       html+='<div class="person-summary-name">👤 '+person+'</div>';
       items2.forEach(it=>{
-        html+='<div class="person-summary-item">'+it.name+(it.course==='menu'?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+(it.detail&&it.course!=='menu'?' <span class="rdetail">('+it.detail+')</span>':'')+' <span style="float:right;">€'+it.price+'</span></div>';
+        html+='<div class="person-summary-item">'+it.name+(it.course==='menu'?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+(it.detail?' <span class="rdetail">('+it.detail+')</span>':'')+' <span style="float:right;">€'+it.price+'</span></div>';
       });
       html+='<div class="person-summary-subtotal">Subtotale: €'+subtotal+'</div>';
       html+='</div>';
@@ -920,7 +920,7 @@ function renderHistory(orders){
     });
     html+='  <div class="card-total">Totale: €'+total+'</div>';
     html+='  <div class="card-actions"><button class="decline-btn" style="border-color:#d4af37;color:#d4af37;" onclick="reprintOrder(\''+o.id+'\')">🖨️ Ristampa</button>'
-      +(isAdminUser?'<button class="cancel-btn" onclick="deleteHistoryOrder(\''+o.id+'\')">🗑️ Elimina</button>':'')
+      +'<button class="cancel-btn" onclick="deleteHistoryOrder(\''+o.id+'\')">🗑️ Elimina</button>'
       +'</div>';
     html+='</div>';
   });
@@ -943,7 +943,6 @@ async function reprintOrder(docId){
   }
 }
 function deleteHistoryOrder(docId){
-  if(!isAdminUser)return;
   if(!confirm('Eliminare definitivamente questo ordine dallo storico?'))return;
   db.collection('orders').doc(docId).delete().then(loadHistory).catch(err=>console.error(err));
 }
