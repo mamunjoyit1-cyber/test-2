@@ -775,7 +775,7 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName,billingItems
       const tag = isMenuFisso ? ' <span class="menu-fisso-tag">MENU FISSO</span>' : (isMenuComponent ? ' <span class="menu-fisso-tag">MENU</span>' : '');
       html+='<div class="receipt-item"><span class="rname">'+(it.person?it.person+' — ':'')+it.name+tag+'</span>';
       html+='<br>';
-      if(it.detail)html+='<span class="rdetail">'+it.detail+'</span>';
+      if(it.detail && it.name!=='Menù del Lago Bin')html+='<span class="rdetail">'+it.detail+'</span>';
       html+='</div>';
     });
   });
@@ -800,7 +800,7 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName,billingItems
       html+='<div class="person-summary-block">';
       html+='<div class="person-summary-name">👤 '+person+'</div>';
       items2.forEach(it=>{
-        html+='<div class="person-summary-item">'+it.name+(it.name==='Menù del Lago Bin'?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+(it.detail?' <span class="rdetail">('+it.detail+')</span>':'')+' <span style="float:right;">€'+it.price+'</span></div>';
+        html+='<div class="person-summary-item">'+it.name+(it.name==='Menù del Lago Bin'?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+(it.detail&&it.name!=='Menù del Lago Bin'?' <span class="rdetail">('+it.detail+')</span>':'')+' <span style="float:right;">€'+it.price+'</span></div>';
       });
       html+='<div class="person-summary-subtotal">Subtotale: €'+subtotal+'</div>';
       html+='</div>';
