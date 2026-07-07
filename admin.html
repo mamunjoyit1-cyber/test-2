@@ -88,6 +88,7 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   body * { visibility: hidden; }
   #print-area, #print-area * { visibility: visible; }
   #print-area { display: block !important; position: absolute; top: 0; left: 0; width: 78mm; padding: 4mm; font-family: 'Courier New', monospace; color: #000; }
+  .receipt-table-big { text-align: center; font-size: 22px; font-weight: bold; margin-bottom: 4px; letter-spacing: 1px; }
   .receipt-title { text-align: center; font-size: 16px; font-weight: bold; border: 2px solid #000; padding: 4px; margin-bottom: 8px; }
   .receipt-online-tag { text-align: center; font-size: 13px; font-weight: bold; border: 1.5px dashed #000; padding: 3px; margin-bottom: 8px; }
   .receipt-meta { font-size: 12px; margin-bottom: 8px; }
@@ -744,12 +745,15 @@ function cancelTable(tbl){
 }
 
 // ── PRINT RECEIPT BUILDING ──
-function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName){
+function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName,billingItems){
   const now=new Date();
   const dateStr=now.toLocaleDateString('it-IT')+' '+now.toLocaleTimeString('it-IT');
-  let html='<div class="receipt-title">'+job.title+'</div>';
-  html+='<div class="receipt-meta">Tavolo: <b>'+tbl+'</b>'+(room?' · Camera: <b>'+room+'</b>':'')+'<br>'+dateStr+(operatorName?'<br>Cameriere: '+operatorName:'')+'</div>';
-  // group by turno for readability (kitchen/bar reference — unchanged)
+  let html='<div class="receipt-table-big">TAVOLO '+tbl+'</div>';
+  html+='<div class="receipt-title">'+job.title+'</div>';
+  html+='<div class="receipt-meta">'+(room?'Camera: <b>'+room+'</b><br>':'')+dateStr+(operatorName?'<br>Cameriere: '+operatorName:'')+'</div>';
+  // group by turno for readability — applies to EVERY job (full/kitchen/bar), so packages
+  // show their component dishes under the correct turno just like à la carte items.
+  // No prices here (kitchen/bar never had them; the full copy now keeps them only in the Riepilogo below).
   const byTurno={};
   items.forEach(it=>{
     const key=it.turno||'—';
@@ -760,20 +764,23 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName){
     if(turno!=='—')html+='<div class="receipt-turno">'+turno+'</div>';
     byTurno[turno].forEach(it=>{
       const isMenuFisso = it.name==='Menù del Lago Bin';
-      html+='<div class="receipt-item"><span class="rname">'+(it.person?it.person+' — ':'')+it.name+(isMenuFisso?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+'</span>';
-      if(showPrice)html+=' <span style="float:right;">€'+it.price+'</span>';
+      const isMenuComponent = it.course==='menu_component';
+      const tag = isMenuFisso ? ' <span class="menu-fisso-tag">MENU FISSO</span>' : (isMenuComponent ? ' <span class="menu-fisso-tag">MENU</span>' : '');
+      html+='<div class="receipt-item"><span class="rname">'+(it.person?it.person+' — ':'')+it.name+tag+'</span>';
       html+='<br>';
       if(it.detail)html+='<span class="rdetail">'+it.detail+'</span>';
       html+='</div>';
     });
   });
   if(showPrice){
-    const total=items.reduce((s,it)=>s+(Number(it.price)||0),0);
+    const billing=billingItems||items;
+    const total=billing.reduce((s,it)=>s+(Number(it.price)||0),0);
     html+='<div class="receipt-total">TOTALE: €'+total+'</div>';
 
     // ── Person-grouped summary — billing copy only, for entering into the main gestionale ──
+    // Uses the ORIGINAL (non-expanded) items so each package shows once, at its real price.
     const byPerson={};
-    items.forEach(it=>{
+    billing.forEach(it=>{
       const key=(it.person&&it.person.trim())?it.person.trim():'Senza nome';
       if(!byPerson[key])byPerson[key]=[];
       byPerson[key].push(it);
@@ -808,36 +815,41 @@ function doPrint(){
 async function printJobs(jobs,tbl,room,operatorName){
   for(const job of jobs){
     if(!job.items.length)continue;
-    document.getElementById('print-area').innerHTML=buildReceiptHTML(job,tbl,job.items,job.showPrice,room,operatorName);
+    document.getElementById('print-area').innerHTML=buildReceiptHTML(job,tbl,job.items,job.showPrice,room,operatorName,job.billingItems);
     alert('🖨️ Nella finestra di stampa, seleziona la stampante:\n\n"'+job.printer+'"\n\nPremi OK per continuare, poi clicca Stampa.');
     await doPrint();
   }
 }
 
 // ── APPROVE: build print jobs per routing rules and mark orders approved ──
+// Expands any package with a dishBreakdown into its individual dishes (tagged "MENU"),
+// so every job's turno-grouped display shows real dishes, not just the package label.
+function expandForDisplay(rawItems){
+  const out=[];
+  rawItems.forEach(it=>{
+    if(it.course==='menu' && it.dishBreakdown && it.dishBreakdown.length){
+      it.dishBreakdown.forEach(d=>{
+        out.push({name:d.name,turno:d.turno,detail:'',category:it.category,course:'menu_component',person:it.person});
+      });
+    }else{
+      out.push(it);
+    }
+  });
+  return out;
+}
+
 // ── Build the printer job list (full/kitchen/bar) for a set of items, given an area ──
 function buildJobsForArea(area,allItems){
   const route=PRINTER_ROUTES[area]||PRINTER_ROUTES.esterno;
-  const foodItems=[];
-  allItems.forEach(it=>{
-    if(it.category==='drink')return;
-    if(it.course==='menu' && it.dishBreakdown && it.dishBreakdown.length){
-      // Break the package into its individually-chosen dishes, grouped into the
-      // correct turno, so the kitchen sees them alongside the à la carte items.
-      it.dishBreakdown.forEach(d=>{
-        foodItems.push({name:d.name,turno:d.turno,detail:'',price:0,category:'food',course:'menu_component',person:it.person});
-      });
-    }else{
-      foodItems.push(it);
-    }
-  });
-  const drinkItems=allItems.filter(it=>it.category==='drink');
+  const expandedAll=expandForDisplay(allItems);
+  const expandedFood=expandedAll.filter(it=>it.category!=='drink');
+  const expandedDrink=expandedAll.filter(it=>it.category==='drink');
   const jobs=[
-    {printer:route.full.printer, title:route.full.title, items:allItems, showPrice:true},
-    {printer:route.kitchen.printer, title:route.kitchen.title, items:foodItems, showPrice:false}
+    {printer:route.full.printer, title:route.full.title, items:expandedAll, billingItems:allItems, showPrice:true},
+    {printer:route.kitchen.printer, title:route.kitchen.title, items:expandedFood, showPrice:false}
   ];
   if(route.bar){
-    jobs.push({printer:route.bar.printer, title:route.bar.title, items:drinkItems, showPrice:false});
+    jobs.push({printer:route.bar.printer, title:route.bar.title, items:expandedDrink, showPrice:false});
   }
   return jobs;
 }
