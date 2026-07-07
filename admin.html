@@ -760,7 +760,14 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName,billingItems
     if(!byTurno[key])byTurno[key]=[];
     byTurno[key].push(it);
   });
-  Object.keys(byTurno).forEach(turno=>{
+  // Sort turno groups in the correct serving order (1°, 2°, 3°, 4°...), not the order
+  // items happened to arrive in — items without a turno are shown last.
+  const sortedTurni=Object.keys(byTurno).sort((a,b)=>{
+    if(a==='—')return 1;
+    if(b==='—')return -1;
+    return parseInt(a,10)-parseInt(b,10);
+  });
+  sortedTurni.forEach(turno=>{
     if(turno!=='—')html+='<div class="receipt-turno">'+turno+'</div>';
     byTurno[turno].forEach(it=>{
       const isMenuFisso = it.name==='Menù del Lago Bin';
