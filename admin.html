@@ -759,7 +759,7 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName){
   Object.keys(byTurno).forEach(turno=>{
     if(turno!=='—')html+='<div class="receipt-turno">'+turno+'</div>';
     byTurno[turno].forEach(it=>{
-      const isMenuFisso = it.course==='menu';
+      const isMenuFisso = it.name==='Menù del Lago Bin';
       html+='<div class="receipt-item"><span class="rname">'+(it.person?it.person+' — ':'')+it.name+(isMenuFisso?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+'</span>';
       if(showPrice)html+=' <span style="float:right;">€'+it.price+'</span>';
       html+='<br>';
@@ -786,7 +786,7 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName){
       html+='<div class="person-summary-block">';
       html+='<div class="person-summary-name">👤 '+person+'</div>';
       items2.forEach(it=>{
-        html+='<div class="person-summary-item">'+it.name+(it.course==='menu'?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+(it.detail?' <span class="rdetail">('+it.detail+')</span>':'')+' <span style="float:right;">€'+it.price+'</span></div>';
+        html+='<div class="person-summary-item">'+it.name+(it.name==='Menù del Lago Bin'?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+(it.detail?' <span class="rdetail">('+it.detail+')</span>':'')+' <span style="float:right;">€'+it.price+'</span></div>';
       });
       html+='<div class="person-summary-subtotal">Subtotale: €'+subtotal+'</div>';
       html+='</div>';
@@ -818,7 +818,19 @@ async function printJobs(jobs,tbl,room,operatorName){
 // ── Build the printer job list (full/kitchen/bar) for a set of items, given an area ──
 function buildJobsForArea(area,allItems){
   const route=PRINTER_ROUTES[area]||PRINTER_ROUTES.esterno;
-  const foodItems=allItems.filter(it=>it.category!=='drink');
+  const foodItems=[];
+  allItems.forEach(it=>{
+    if(it.category==='drink')return;
+    if(it.course==='menu' && it.dishBreakdown && it.dishBreakdown.length){
+      // Break the package into its individually-chosen dishes, grouped into the
+      // correct turno, so the kitchen sees them alongside the à la carte items.
+      it.dishBreakdown.forEach(d=>{
+        foodItems.push({name:d.name,turno:d.turno,detail:'',price:0,category:'food',course:'menu_component',person:it.person});
+      });
+    }else{
+      foodItems.push(it);
+    }
+  });
   const drinkItems=allItems.filter(it=>it.category==='drink');
   const jobs=[
     {printer:route.full.printer, title:route.full.title, items:allItems, showPrice:true},
