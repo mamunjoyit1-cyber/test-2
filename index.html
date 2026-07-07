@@ -1339,8 +1339,23 @@ async function sendOrder(){
   }
 }
 
+// ── MENU ITEM AVAILABILITY (hides any item the admin marked unavailable, any category) ──
+async function applyMenuAvailability(){
+  try{
+    const snap = await db.collection('menuAvailability').get();
+    snap.forEach(doc=>{
+      if(doc.data().available===false){
+        const el=document.getElementById('item-'+doc.id);
+        if(el)el.style.display='none';
+      }
+    });
+  }catch(err){
+    console.error('Could not load menu availability:',err);
+  }
+}
+
 // ── INIT ──
-document.addEventListener('DOMContentLoaded',()=>{populateTableSelect();updateCart();renderInlineGelato();});
+document.addEventListener('DOMContentLoaded',()=>{populateTableSelect();updateCart();renderInlineGelato();applyMenuAvailability();});
 document.addEventListener('click',e=>{
   if(!e.target.closest('.translate-wrap'))closeDropdown();
   const panel=document.getElementById('cart-panel'),fab=document.querySelector('.cart-fab');
