@@ -25,11 +25,17 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 
 /* DASHBOARD */
 #dashboard { display: none; padding: 20px; max-width: 900px; margin: 0 auto; }
+.tab-nav { display: flex; gap: 8px; margin-top: 16px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 0; }
+.main-tab-btn { flex: 1; padding: 12px 8px; border: none; background: transparent; color: #bca07d; font-family: inherit; font-size: 14px; font-weight: bold; cursor: pointer; border-bottom: 3px solid transparent; }
+.main-tab-btn.active { color: #d4af37; border-bottom-color: #d4af37; }
 .empty-state { text-align: center; color: #7a6a5a; padding: 60px 20px; font-style: italic; }
 .order-card { background: #221815; border: 1px solid rgba(212,175,55,0.4); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
 .order-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
 .table-label { font-size: 20px; font-weight: bold; color: #d4af37; display: flex; align-items: center; gap: 8px; }
 .table-label input { width: 60px; padding: 6px 10px; border-radius: 8px; border: 1px solid #d4af37; background: #2a1d19; color: #f9f1e2; font-size: 16px; font-family: inherit; text-align: center; }
+.table-room-row { display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; overflow-x: auto; margin-bottom: 10px; }
+.table-badge { background: #d4af37; color: #2a1d19; font-weight: 900; font-size: 20px; padding: 6px 14px; border-radius: 10px; display: flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0; }
+.table-badge input { width: 50px; padding: 4px 6px; border-radius: 6px; border: none; background: #2a1d19; color: #f9f1e2; font-size: 18px; font-weight: 900; font-family: inherit; text-align: center; }
 .order-count { font-size: 12px; color: #bca07d; }
 .complete-badge { font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 12px; display: inline-block; margin-top: 4px; }
 .complete-badge.done { background: rgba(46,125,50,0.25); color: #6fcf73; }
@@ -89,7 +95,14 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
   .receipt-item .rname { font-weight: bold; }
   .receipt-item .rdetail { font-size: 11px; }
   .receipt-turno { font-weight: bold; font-size: 13px; margin: 8px 0 4px; border-top: 1px dashed #000; padding-top: 4px; }
+  .menu-fisso-tag { font-size: 9px; font-weight: bold; border: 1px solid #000; border-radius: 3px; padding: 1px 5px; margin-left: 4px; letter-spacing: 0.5px; white-space: nowrap; }
   .receipt-total { border-top: 2px solid #000; margin-top: 10px; padding-top: 6px; font-size: 15px; font-weight: bold; text-align: right; }
+  .receipt-divider { border-top: 2px dashed #000; margin: 12px 0 8px; }
+  .person-summary-title { font-weight: bold; font-size: 12px; text-align: center; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .person-summary-block { font-size: 11px; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px dotted #999; }
+  .person-summary-name { font-weight: bold; font-size: 12px; margin-bottom: 2px; }
+  .person-summary-item { margin-left: 8px; }
+  .person-summary-subtotal { text-align: right; font-weight: bold; font-size: 11px; margin-top: 2px; }
 }
 </style>
 </head>
@@ -117,22 +130,36 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
     <button class="logout-btn" id="notif-btn" onclick="enableNotifications()" style="margin-right:8px;">🔔 Notifiche</button>
     <button class="logout-btn" onclick="doLogout()">Esci</button>
   </div>
+  <div class="tab-nav">
+    <button class="main-tab-btn active" id="maintab-orders-btn" onclick="switchMainTab('orders')">📋 Ordini</button>
+    <button class="main-tab-btn" id="maintab-menu-btn" onclick="switchMainTab('menu')">🍽️ Menu</button>
+  </div>
   <div style="padding:20px 0;">
-    <div class="menu-mgmt">
-      <h3>🍽️ Gestione Disponibilità Menu</h3>
-      <div class="mgmt-sub">Disattiva un articolo per nasconderlo dal menu dei clienti (es. finito in cucina).</div>
-      <div id="menu-mgmt-container"></div>
-    </div>
-    <div id="orders-container"></div>
-
-    <div class="menu-mgmt">
-      <h3>📜 Storico Ordini</h3>
-      <div class="mgmt-sub">Ordini approvati, per data (oggi selezionato di default).</div>
-      <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
-        <input type="date" id="historyDate" onchange="loadHistory()" style="padding:8px 12px;border-radius:8px;border:1px solid #d4af37;background:#2a1d19;color:#f9f1e2;font-family:inherit;">
-        <button class="add-item-btn" onclick="loadHistory()">🔄 Aggiorna</button>
+    <div id="maintab-orders">
+      <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
+        <button class="add-item-btn" onclick="toggleHistorySection()" id="history-toggle-btn">📜 Storico Ordini</button>
       </div>
-      <div id="history-container"><div class="empty-state">Caricamento...</div></div>
+      <div id="orders-container"></div>
+
+      <div id="history-section" style="display:none;margin-top:20px;">
+        <div class="menu-mgmt">
+          <h3>📜 Storico Ordini</h3>
+          <div class="mgmt-sub">Ordini approvati, per data (oggi selezionato di default).</div>
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap;">
+            <input type="date" id="historyDate" onchange="loadHistory()" style="padding:8px 12px;border-radius:8px;border:1px solid #d4af37;background:#2a1d19;color:#f9f1e2;font-family:inherit;">
+            <button class="add-item-btn" onclick="loadHistory()">🔄 Aggiorna</button>
+          </div>
+          <div id="history-container"><div class="empty-state">Caricamento...</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="maintab-menu" style="display:none;">
+      <div class="menu-mgmt">
+        <h3>🍽️ Gestione Disponibilità Menu</h3>
+        <div class="mgmt-sub">Disattiva un articolo per nasconderlo dal menu dei clienti (es. finito in cucina).</div>
+        <div id="menu-mgmt-container"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -175,12 +202,15 @@ const PRINTER_ROUTES = {
   }
 };
 
+// ── TURNO OPTIONS (must match the Italian values stored by the customer site) ──
+const TURNO_OPTIONS=['1° turno','2° turno','3° turno','4° turno'];
+
 // ── FULL MENU AVAILABILITY MANAGEMENT (all categories) ──
 const COURSE_LABELS = {antipasti:'🥗 Antipasti', primi:'🍝 Primi', secondi:'🥩 Secondi', contorni:'🥦 Contorni', dolci:'🍰 Dolci', gelato:'🍨 Gelato'};
 const ALL_MENU_ITEMS = [
   {id:'antipasto_tipico',name:'Antipasto Tipico del Lago Bin',course:'antipasti',price:15},
   {id:'salumiere',name:'Assortimento del Salumiere',course:'antipasti',price:15},
-  {id:'prosciutto',name:'Prosciutto di Parma',course:'antipasti',price:13},
+  {id:'prosciutto',name:'Prosciutto di Parma',course:'antipasti',price:13,sauces:['Melone','Grana']},
   {id:'misto_caldo',name:'Antipasto Misto Caldo e Freddo',course:'antipasti',price:25},
   {id:'lumache',name:'Lumache in Umido',course:'antipasti',price:18},
   {id:'brandacujan',name:'Brandacujan',course:'antipasti',price:15},
@@ -188,23 +218,23 @@ const ALL_MENU_ITEMS = [
   {id:'tomino',name:"Tomino d'Alpeggio Caldo",course:'antipasti',price:12},
   {id:'tartare_pesce',name:'Tartare di Pesce',course:'antipasti',price:18},
   {id:'antipasto_mare',name:'Antipasto Misto di Mare',course:'antipasti',price:25},
-  {id:'ravioli_nonna',name:'Ravioli della Nonna',course:'primi',price:18},
+  {id:'ravioli_nonna',name:'Ravioli della Nonna',course:'primi',price:18,sauces:['Pomodoro','Burro e Salvia','Funghi','Burro e Timo']},
   {id:'ravioli_coniglio',name:'Ravioli al Coniglio',course:'primi',price:20},
-  {id:'tagliatelle_sel',name:'Tagliatelle di Pasta Fresca',course:'primi',price:15},
+  {id:'tagliatelle_sel',name:'Tagliatelle di Pasta Fresca',course:'primi',price:15,sauces:['Selvaggina','Funghi','Pesto Fresco']},
   {id:'tagliatelle_mare',name:'Tagliatelle ai Frutti di Mare',course:'primi',price:18},
-  {id:'mezzelune',name:'Mezzelune di Magro',course:'primi',price:15},
-  {id:'troffie',name:'Troffie',course:'primi',price:15},
+  {id:'mezzelune',name:'Mezzelune di Magro',course:'primi',price:15,sauces:['Burro e Salvia','Noci']},
+  {id:'troffie',name:'Troffie',course:'primi',price:15,sauces:['Pesto Fresco','Primavera']},
   {id:'troffie_gamberetti',name:'Troffie con Gamberetti e Zucchine',course:'primi',price:18},
-  {id:'gnocchi',name:'Gnocchi di Patate',course:'primi',price:13},
+  {id:'gnocchi',name:'Gnocchi di Patate',course:'primi',price:13,sauces:['Funghi','Formaggi e Gorgonzola','Burro e Salvia']},
   {id:'risotto',name:'Risotto ai Frutti di Mare',course:'primi',price:20},
-  {id:'duo_primi',name:'Duo di Primi',course:'primi',price:25},
+  {id:'duo_primi',name:'Duo di Primi',course:'primi',price:25,multiSelect:2,sauces:['Ravioli della Nonna','Ravioli al Coniglio','Tagliatelle Selvaggina','Tagliatelle Funghi','Tagliatelle Pesto','Tagliatelle Frutti di Mare','Mezzelune Burro e Salvia','Mezzelune Noci','Troffie Pesto','Troffie Primavera','Troffie Gamberetti','Gnocchi Funghi','Gnocchi Formaggi','Gnocchi Burro e Salvia','Risotto Frutti di Mare']},
   {id:'coniglio',name:'Coniglio alla Rocchettina',course:'secondi',price:15},
   {id:'selvaggina',name:'Selvaggina al Vino Rosso',course:'secondi',price:18},
   {id:'agnello',name:'Costine di Agnello alla Griglia',course:'secondi',price:18},
   {id:'grigliata',name:'Grigliata Mista di Carne',course:'secondi',price:20},
   {id:'roastbeef',name:'Roast Beef',course:'secondi',price:18},
-  {id:'filetto',name:'Filetto di Manzo',course:'secondi',price:25},
-  {id:'pescato',name:'Pescato o Gamberoni',course:'secondi',price:18},
+  {id:'filetto',name:'Filetto di Manzo',course:'secondi',price:25,sauces:['Pepe Verde','Gorgonzola','Griglia'],cottura:true},
+  {id:'pescato',name:'Pescato o Gamberoni',course:'secondi',price:18,sauces:['Al Forno','Alla Griglia']},
   {id:'grigliata_pesce',name:'Grigliata Mista di Pesce',course:'secondi',price:25},
   {id:'formaggi',name:'Assortimento di Formaggi',course:'contorni',price:10},
   {id:'verdure',name:'Grigliata di Verdure',course:'contorni',price:10},
@@ -218,9 +248,10 @@ const ALL_MENU_ITEMS = [
   {id:'bunet',name:'Bunet',course:'dolci',price:6},
   {id:'macedonia',name:'Macedonia di Frutta',course:'dolci',price:6},
   {id:'assort_dolci',name:'Assortimento Dolci',course:'dolci',price:8},
-  {id:'gelato',name:'Gelato Artigianale',course:'gelato',price:6},
-  {id:'sorbetto',name:'Sorbetto',course:'gelato',price:3}
+  {id:'gelato',name:'Gelato Artigianale',course:'gelato',price:6,isGelato:true},
+  {id:'sorbetto',name:'Sorbetto',course:'gelato',price:3,isSorbetto:true}
 ];
+const COTTURA_OPTIONS=['🔴 Al Sangue','🟠 Blue','🟡 Media Cottura','✅ Ben Cotto'];
 
 // ── GELATO FLAVOR LIST (for availability toggling only — separate from dish list) ──
 const GELATO_FLAVOR_ITEMS = [
@@ -234,11 +265,13 @@ const GELATO_FLAVOR_ITEMS = [
   {id:'gusto_caffe',name:'Caffè ☕'}
 ];
 let menuAvailabilityUnsub=null;
+let availabilityState={};
 function startMenuAvailabilityListener(){
   if(menuAvailabilityUnsub)menuAvailabilityUnsub();
   menuAvailabilityUnsub=db.collection('menuAvailability').onSnapshot(snap=>{
     const state={};
     snap.forEach(doc=>{state[doc.id]=doc.data().available!==false;});
+    availabilityState=state;
     renderMenuMgmt(state);
   }, err=>console.error('Menu availability listener error:',err));
 }
@@ -272,6 +305,20 @@ function renderMenuMgmt(state){
 }
 function toggleAvailability(itemId,newValue){
   db.collection('menuAvailability').doc(itemId).set({available:newValue},{merge:true}).catch(err=>console.error(err));
+}
+
+// ── MAIN TAB SWITCHING (Ordini is the default/home tab) ──
+function switchMainTab(tab){
+  ['orders','menu'].forEach(t=>{
+    document.getElementById('maintab-'+t).style.display = (t===tab)?'block':'none';
+    document.getElementById('maintab-'+t+'-btn').classList.toggle('active', t===tab);
+  });
+}
+function toggleHistorySection(){
+  const sec=document.getElementById('history-section');
+  const isOpen=sec.style.display!=='none';
+  sec.style.display=isOpen?'none':'block';
+  if(!isOpen)loadHistory();
 }
 
 // ── USER DISPLAY NAMES & ADMIN ROLE ──
@@ -411,9 +458,11 @@ function renderOrders(snapshot){
     tableAnyDocId[tbl]=docs[0].id;
 
     html+='<div class="order-card" data-table="'+tbl+'">';
-    html+='  <div class="order-card-header">';
-    html+='    <div class="table-label">🪑 Tavolo <input type="text" value="'+tbl+'" onchange="changeTableNumber(\''+tbl+'\',this.value)"></div>';
-    html+='    <div class="table-label" style="font-size:14px;">🔑 Camera <input type="text" value="'+roomVal+'" placeholder="n." style="width:70px;" onchange="changeRoomNumber(\''+tbl+'\',this.value)"></div>';
+    html+='  <div class="order-card-header" style="flex-direction:column;align-items:stretch;">';
+    html+='    <div class="table-room-row">';
+    html+='      <div class="table-badge">🪑 <input type="text" value="'+tbl+'" onchange="changeTableNumber(\''+tbl+'\',this.value)"></div>';
+    html+='      <div class="table-label" style="font-size:14px;">🔑 Camera <input type="text" value="'+roomVal+'" placeholder="n." style="width:70px;" onchange="changeRoomNumber(\''+tbl+'\',this.value)"></div>';
+    html+='    </div>';
     html+='    <div class="area-toggle">';
     html+='      <button class="area-btn '+(area==='esterno'?'active':'')+'" onclick="setArea(\''+tbl+'\',\'esterno\')">🌤️ Esterno</button>';
     html+='      <button class="area-btn '+(area==='interno'?'active':'')+'" onclick="setArea(\''+tbl+'\',\'interno\')">🏠 Interno</button>';
@@ -439,14 +488,17 @@ function renderOrders(snapshot){
     html+='    <div style="display:flex;gap:8px;flex-wrap:wrap;">';
     html+='      <select id="newcat-'+tbl+'" onchange="renderProductPicker(\''+tbl+'\')"><option value="">📂 Categoria...</option><option value="antipasti">🥗 Antipasti</option><option value="primi">🍝 Primi</option><option value="secondi">🥩 Secondi</option><option value="contorni">🥦 Contorni</option><option value="dolci">🍰 Dolci</option><option value="gelato">🍨 Gelato</option></select>';
     html+='      <input type="text" id="newsearch-'+tbl+'" placeholder="🔎 Cerca piatto..." oninput="renderProductPicker(\''+tbl+'\')" style="flex:1;">';
+    html+='      <select id="newturno-'+tbl+'" title="Turno per il piatto selezionato"><option value="">📋 Turno...</option>'+TURNO_OPTIONS.map(t=>'<option value="'+t+'">'+t+'</option>').join('')+'</select>';
     html+='    </div>';
     html+='    <div id="productlist-'+tbl+'" style="display:flex;flex-direction:column;gap:4px;max-height:160px;overflow-y:auto;margin-top:6px;"></div>';
+    html+='    <div id="customize-'+tbl+'"></div>';
     html+='    <div style="margin-top:8px;">';
     html+='      <a href="javascript:void(0)" onclick="toggleManualEntry(\''+tbl+'\')" style="color:#bca07d;font-size:12px;text-decoration:underline;">+ Voce manuale (es. vino specifico)</a>';
     html+='      <div id="manualentry-'+tbl+'" style="display:none;gap:8px;flex-wrap:wrap;margin-top:8px;flex-direction:row;">';
     html+='        <input type="text" id="newname-'+tbl+'" placeholder="Nome piatto/bevanda" style="flex:1;min-width:100px;">';
     html+='        <input type="number" id="newprice-'+tbl+'" placeholder="€" style="width:70px;">';
     html+='        <select id="newmancat-'+tbl+'"><option value="food">🍽️ Cibo</option><option value="drink">🍷 Bevanda</option></select>';
+    html+='        <select id="newmanturno-'+tbl+'"><option value="">📋 Turno...</option>'+TURNO_OPTIONS.map(t=>'<option value="'+t+'">'+t+'</option>').join('')+'</select>';
     html+='        <button class="add-item-btn" onclick="addManualItem(\''+tbl+'\',tableAnyDocId[\''+tbl+'\'])">+ Aggiungi</button>';
     html+='      </div>';
     html+='    </div>';
@@ -459,6 +511,8 @@ function renderOrders(snapshot){
     html+='</div>';
   });
   container.innerHTML=html;
+  // Restore any in-progress customize panel that existed before this re-render
+  Object.keys(pendingCustomize).forEach(t=>renderCustomizePanel(t));
 }
 
 function setArea(tbl,area){
@@ -514,26 +568,147 @@ function renderProductPicker(tbl){
   if(!cat&&!q){listEl.innerHTML='';return;}
   if(!results.length){listEl.innerHTML='<div style="color:#7a6a5a;font-size:12px;font-style:italic;padding:6px;">Nessun risultato</div>';return;}
   listEl.innerHTML=results.slice(0,30).map(it=>
-    '<div style="display:flex;justify-content:space-between;align-items:center;background:#2a1d19;border-radius:8px;padding:8px 12px;cursor:pointer;" onclick="addMasterItem(\''+tbl+'\',\''+it.id+'\')">'
+    '<div style="display:flex;justify-content:space-between;align-items:center;background:#2a1d19;border-radius:8px;padding:8px 12px;cursor:pointer;" onclick="selectMasterItem(\''+tbl+'\',\''+it.id+'\')">'
     +'<span style="font-size:13px;">'+it.name+'</span><span style="color:#d4af37;font-weight:bold;font-size:13px;">€'+it.price+'</span></div>'
   ).join('');
 }
-function addMasterItem(tbl,itemId){
+
+// ── CUSTOMIZE STEP (sauce / cottura / duo di primi / gelato-sorbetto flavors) ──
+let pendingCustomize={}; // { [tbl]: {itemId, sauce, multiSauces:[], cottura, flavors:[], sorbettoType} }
+
+function availableGelatoChipsForAdmin(){
+  return GELATO_FLAVOR_ITEMS.filter(f=>availabilityState[f.id]!==false);
+}
+
+function selectMasterItem(tbl,itemId){
   const item=ALL_MENU_ITEMS.find(it=>it.id===itemId);
   if(!item)return;
+  const needsCustomize = (item.sauces&&item.sauces.length) || item.cottura || item.isGelato || item.isSorbetto;
+  if(!needsCustomize){
+    finalizeMasterItemAdd(tbl,item,'');
+    return;
+  }
+  pendingCustomize[tbl]={itemId,sauce:'',multiSauces:[],cottura:'',flavors:[],sorbettoType:''};
+  renderCustomizePanel(tbl);
+}
+function renderCustomizePanel(tbl){
+  const c=pendingCustomize[tbl];
+  const el=document.getElementById('customize-'+tbl);
+  if(!el)return;
+  if(!c){el.innerHTML='';return;}
+  const item=ALL_MENU_ITEMS.find(it=>it.id===c.itemId);
+  if(!item){el.innerHTML='';return;}
+  let html='<div style="background:#1a110e;border:1px solid rgba(212,175,55,0.5);border-radius:10px;padding:10px 12px;margin-top:8px;">';
+  html+='<div style="font-size:13px;font-weight:bold;color:#d4af37;margin-bottom:8px;">'+item.name+'</div>';
+
+  if(item.isGelato){
+    html+='<div style="font-size:11px;color:#bca07d;margin-bottom:6px;">🍦 Scegli fino a 3 gusti ('+c.flavors.length+'/3):</div><div style="display:flex;gap:6px;flex-wrap:wrap;">';
+    availableGelatoChipsForAdmin().forEach(f=>{
+      const sel=c.flavors.includes(f.name);
+      const maxed=!sel&&c.flavors.length>=3;
+      html+='<button type="button" '+(maxed?'disabled':'')+' onclick="toggleCustomizeFlavor(\''+tbl+'\',\''+f.name.replace(/'/g,"\\'")+'\')" style="border:1.5px solid rgba(212,175,55,0.4);border-radius:20px;background:'+(sel?'#b31e1e':'#2a1d19')+';color:'+(sel?'#fff':'#bca07d')+';font-size:12px;font-weight:bold;padding:5px 12px;cursor:pointer;">'+f.name+'</button>';
+    });
+    html+='</div>';
+  }else if(item.isSorbetto){
+    html+='<div style="font-size:11px;color:#bca07d;margin-bottom:6px;">🍹 Con o senza alcol?</div><div style="display:flex;gap:6px;flex-wrap:wrap;">';
+    [['Alcolico','🍷 Con Alcol'],['Senza Alcol','🧃 Senza Alcol']].forEach(([val,label])=>{
+      const sel=c.sorbettoType===val;
+      html+='<button type="button" onclick="setCustomizeSorbetto(\''+tbl+'\',\''+val+'\')" style="border:1.5px solid rgba(212,175,55,0.4);border-radius:20px;background:'+(sel?'#b31e1e':'#2a1d19')+';color:'+(sel?'#fff':'#bca07d')+';font-size:12px;font-weight:bold;padding:5px 12px;cursor:pointer;">'+label+'</button>';
+    });
+    html+='</div>';
+  }else if(item.multiSelect){
+    html+='<div style="font-size:11px;color:#bca07d;margin-bottom:6px;">🍽️ Scegli '+item.multiSelect+' piatti ('+c.multiSauces.length+'/'+item.multiSelect+'):</div><div style="display:flex;gap:6px;flex-wrap:wrap;">';
+    item.sauces.forEach(s=>{
+      const sel=c.multiSauces.includes(s);
+      const maxed=!sel&&c.multiSauces.length>=item.multiSelect;
+      html+='<button type="button" '+(maxed?'disabled':'')+' onclick="toggleCustomizeMultiSauce(\''+tbl+'\',\''+s.replace(/'/g,"\\'")+'\')" style="border:1.5px solid rgba(212,175,55,0.4);border-radius:20px;background:'+(sel?'#b31e1e':'#2a1d19')+';color:'+(sel?'#fff':'#bca07d')+';font-size:12px;font-weight:bold;padding:5px 12px;cursor:pointer;">'+s+'</button>';
+    });
+    html+='</div>';
+  }else if(item.sauces&&item.sauces.length){
+    html+='<div style="font-size:11px;color:#bca07d;margin-bottom:6px;">🍽️ Condimento:</div><div style="display:flex;gap:6px;flex-wrap:wrap;">';
+    item.sauces.forEach(s=>{
+      const sel=c.sauce===s;
+      html+='<button type="button" onclick="setCustomizeSauce(\''+tbl+'\',\''+s.replace(/'/g,"\\'")+'\')" style="border:1.5px solid rgba(212,175,55,0.4);border-radius:20px;background:'+(sel?'#b31e1e':'#2a1d19')+';color:'+(sel?'#fff':'#bca07d')+';font-size:12px;font-weight:bold;padding:5px 12px;cursor:pointer;">'+s+'</button>';
+    });
+    html+='</div>';
+  }
+
+  if(item.cottura){
+    html+='<div style="font-size:11px;color:#bca07d;margin:8px 0 6px;">🔥 Cottura:</div><div style="display:flex;gap:6px;flex-wrap:wrap;">';
+    COTTURA_OPTIONS.forEach(co=>{
+      const sel=c.cottura===co;
+      html+='<button type="button" onclick="setCustomizeCottura(\''+tbl+'\',\''+co+'\')" style="border:1.5px solid rgba(212,175,55,0.4);border-radius:20px;background:'+(sel?'#b31e1e':'#2a1d19')+';color:'+(sel?'#fff':'#bca07d')+';font-size:12px;font-weight:bold;padding:5px 12px;cursor:pointer;">'+co+'</button>';
+    });
+    html+='</div>';
+  }
+
+  const ok=isCustomizeComplete(item,c);
+  html+='<div style="margin-top:10px;display:flex;gap:8px;">';
+  html+='<button class="add-item-btn" '+(ok?'':'disabled')+' onclick="finalizeMasterItemAdd(\''+tbl+'\')">✓ Aggiungi</button>';
+  html+='<a href="javascript:void(0)" onclick="cancelCustomize(\''+tbl+'\')" style="color:#bca07d;font-size:12px;text-decoration:underline;align-self:center;">Annulla</a>';
+  html+='</div></div>';
+  el.innerHTML=html;
+}
+function isCustomizeComplete(item,c){
+  if(item.isGelato)return c.flavors.length>0;
+  if(item.isSorbetto)return !!c.sorbettoType;
+  if(item.multiSelect)return c.multiSauces.length>=item.multiSelect;
+  if(item.sauces&&item.sauces.length&&!c.sauce)return false;
+  if(item.cottura&&!c.cottura)return false;
+  return true;
+}
+function toggleCustomizeFlavor(tbl,f){
+  const c=pendingCustomize[tbl]; if(!c)return;
+  if(c.flavors.includes(f))c.flavors=c.flavors.filter(x=>x!==f);
+  else if(c.flavors.length<3)c.flavors.push(f);
+  renderCustomizePanel(tbl);
+}
+function setCustomizeSorbetto(tbl,v){ const c=pendingCustomize[tbl]; if(c){c.sorbettoType=v; renderCustomizePanel(tbl);} }
+function toggleCustomizeMultiSauce(tbl,s){
+  const c=pendingCustomize[tbl]; if(!c)return;
+  const item=ALL_MENU_ITEMS.find(it=>it.id===c.itemId);
+  if(c.multiSauces.includes(s))c.multiSauces=c.multiSauces.filter(x=>x!==s);
+  else if(c.multiSauces.length<item.multiSelect)c.multiSauces.push(s);
+  renderCustomizePanel(tbl);
+}
+function setCustomizeSauce(tbl,s){ const c=pendingCustomize[tbl]; if(c){c.sauce=s; renderCustomizePanel(tbl);} }
+function setCustomizeCottura(tbl,co){ const c=pendingCustomize[tbl]; if(c){c.cottura=co; renderCustomizePanel(tbl);} }
+function cancelCustomize(tbl){ delete pendingCustomize[tbl]; renderCustomizePanel(tbl); }
+
+function finalizeMasterItemAdd(tbl,directItem,directDetail){
+  let item,detail;
+  if(directItem){
+    item=directItem; detail=directDetail||'';
+  }else{
+    const c=pendingCustomize[tbl];
+    if(!c)return;
+    item=ALL_MENU_ITEMS.find(it=>it.id===c.itemId);
+    if(!item||!isCustomizeComplete(item,c))return;
+    const d=[];
+    if(item.isGelato)d.push(c.flavors.join(', '));
+    else if(item.isSorbetto)d.push(c.sorbettoType==='Alcolico'?'🍷 Con Alcol':'🧃 Senza Alcol');
+    else if(item.multiSelect&&c.multiSauces.length)d.push(c.multiSauces.join(' + '));
+    else if(c.sauce)d.push(c.sauce);
+    if(item.cottura&&c.cottura)d.push('Cottura: '+c.cottura);
+    detail=d.join(' · ');
+  }
   const anyDocId=tableAnyDocId[tbl];
   if(!anyDocId)return;
+  const turnoEl=document.getElementById('newturno-'+tbl);
+  const turno=turnoEl?turnoEl.value:'';
   const ref=db.collection('orders').doc(anyDocId);
   ref.get().then(doc=>{
     const data=doc.data();
     const items=(data.items||[]).slice();
-    items.push({name:item.name,price:item.price,category:'food',course:item.course,detail:'',person:'',turno:''});
+    items.push({name:item.name,price:item.price,category:'food',course:item.course,detail,person:'',turno});
     const total=items.reduce((s,it)=>s+(Number(it.price)||0),0);
     return ref.update({items,total});
   }).then(()=>{
     const searchEl=document.getElementById('newsearch-'+tbl);
     if(searchEl)searchEl.value='';
+    delete pendingCustomize[tbl];
     renderProductPicker(tbl);
+    renderCustomizePanel(tbl);
   }).catch(err=>console.error(err));
 }
 
@@ -542,15 +717,17 @@ function addManualItem(tbl,anyDocId){
   const nameEl=document.getElementById('newname-'+tbl);
   const priceEl=document.getElementById('newprice-'+tbl);
   const catEl=document.getElementById('newmancat-'+tbl);
+  const turnoEl=document.getElementById('newmanturno-'+tbl);
   const name=nameEl.value.trim();
   const price=Number(priceEl.value)||0;
   const category=catEl.value;
+  const turno=turnoEl?turnoEl.value:'';
   if(!name)return;
   const ref=db.collection('orders').doc(anyDocId);
   ref.get().then(doc=>{
     const data=doc.data();
     const items=(data.items||[]).slice();
-    items.push({name,price,category,course:category==='drink'?'bevande':'manuale',detail:'',person:'',turno:''});
+    items.push({name,price,category,course:category==='drink'?'bevande':'manuale',detail:'',person:'',turno});
     const total=items.reduce((s,it)=>s+(Number(it.price)||0),0);
     return ref.update({items,total});
   }).then(()=>{nameEl.value='';priceEl.value='';}).catch(err=>console.error(err));
@@ -571,9 +748,8 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName){
   const now=new Date();
   const dateStr=now.toLocaleDateString('it-IT')+' '+now.toLocaleTimeString('it-IT');
   let html='<div class="receipt-title">'+job.title+'</div>';
-  if(showPrice)html+='<div class="receipt-online-tag">🌐 ORDINE ONLINE — Da inserire nel gestionale</div>';
   html+='<div class="receipt-meta">Tavolo: <b>'+tbl+'</b>'+(room?' · Camera: <b>'+room+'</b>':'')+'<br>'+dateStr+(operatorName?'<br>Cameriere: '+operatorName:'')+'</div>';
-  // group by turno for readability
+  // group by turno for readability (kitchen/bar reference — unchanged)
   const byTurno={};
   items.forEach(it=>{
     const key=it.turno||'—';
@@ -583,16 +759,40 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName){
   Object.keys(byTurno).forEach(turno=>{
     if(turno!=='—')html+='<div class="receipt-turno">'+turno+'</div>';
     byTurno[turno].forEach(it=>{
-      html+='<div class="receipt-item"><span class="rname">'+(it.person?it.person+' — ':'')+it.name+'</span>';
+      const isMenuFisso = it.course==='menu';
+      html+='<div class="receipt-item"><span class="rname">'+(it.person?it.person+' — ':'')+it.name+(isMenuFisso?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+'</span>';
       if(showPrice)html+=' <span style="float:right;">€'+it.price+'</span>';
       html+='<br>';
-      if(it.detail)html+='<span class="rdetail">'+it.detail+'</span>';
+      if(it.detail&&it.course!=='menu')html+='<span class="rdetail">'+it.detail+'</span>';
       html+='</div>';
     });
   });
   if(showPrice){
     const total=items.reduce((s,it)=>s+(Number(it.price)||0),0);
     html+='<div class="receipt-total">TOTALE: €'+total+'</div>';
+
+    // ── Person-grouped summary — billing copy only, for entering into the main gestionale ──
+    const byPerson={};
+    items.forEach(it=>{
+      const key=(it.person&&it.person.trim())?it.person.trim():'Senza nome';
+      if(!byPerson[key])byPerson[key]=[];
+      byPerson[key].push(it);
+    });
+    html+='<div class="receipt-divider"></div>';
+    html+='<div class="person-summary-title">📋 Riepilogo per Persona</div>';
+    Object.keys(byPerson).forEach(person=>{
+      const items2=byPerson[person];
+      const subtotal=items2.reduce((s,it)=>s+(Number(it.price)||0),0);
+      html+='<div class="person-summary-block">';
+      html+='<div class="person-summary-name">👤 '+person+'</div>';
+      items2.forEach(it=>{
+        html+='<div class="person-summary-item">'+it.name+(it.course==='menu'?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+(it.detail&&it.course!=='menu'?' <span class="rdetail">('+it.detail+')</span>':'')+' <span style="float:right;">€'+it.price+'</span></div>';
+      });
+      html+='<div class="person-summary-subtotal">Subtotale: €'+subtotal+'</div>';
+      html+='</div>';
+    });
+
+    html+='<div class="receipt-online-tag">🌐 ORDINE ONLINE — Da inserire nel gestionale</div>';
   }
   return html;
 }
@@ -615,10 +815,24 @@ async function printJobs(jobs,tbl,room,operatorName){
 }
 
 // ── APPROVE: build print jobs per routing rules and mark orders approved ──
+// ── Build the printer job list (full/kitchen/bar) for a set of items, given an area ──
+function buildJobsForArea(area,allItems){
+  const route=PRINTER_ROUTES[area]||PRINTER_ROUTES.esterno;
+  const foodItems=allItems.filter(it=>it.category!=='drink');
+  const drinkItems=allItems.filter(it=>it.category==='drink');
+  const jobs=[
+    {printer:route.full.printer, title:route.full.title, items:allItems, showPrice:true},
+    {printer:route.kitchen.printer, title:route.kitchen.title, items:foodItems, showPrice:false}
+  ];
+  if(route.bar){
+    jobs.push({printer:route.bar.printer, title:route.bar.title, items:drinkItems, showPrice:false});
+  }
+  return jobs;
+}
+
 async function approveTable(tbl){
   const area=selectedArea[tbl];
   if(!area){alert('Seleziona prima Esterno o Interno.');return;}
-  const route=PRINTER_ROUTES[area];
 
   const snap=await db.collection('orders').where('table','==',tbl).where('status','==','pending').get();
   const allItems=[];
@@ -631,27 +845,19 @@ async function approveTable(tbl){
   });
   if(!allItems.length)return;
 
-  const foodItems=allItems.filter(it=>it.category!=='drink');
-  const drinkItems=allItems.filter(it=>it.category==='drink');
-
-  const jobs=[
-    {printer:route.full.printer, title:route.full.title, items:allItems, showPrice:true},
-    {printer:route.kitchen.printer, title:route.kitchen.title, items:foodItems, showPrice:false}
-  ];
-  if(route.bar){
-    jobs.push({printer:route.bar.printer, title:route.bar.title, items:drinkItems, showPrice:false});
-  }
+  const jobs=buildJobsForArea(area,allItems);
 
   const operatorName=staffName(currentUserEmail);
   await printJobs(jobs,tbl,room,operatorName);
 
-  // Mark all this table's orders as approved (with who approved them, for history + receipt)
+  // Mark all this table's orders as approved (with who approved them + area, for history + reprint + receipt)
   const batch=db.batch();
   docIds.forEach(id=>batch.update(db.collection('orders').doc(id),{
     status:'approved',
     approvedAt:firebase.firestore.FieldValue.serverTimestamp(),
     approvedByEmail:currentUserEmail,
-    approvedByName:operatorName
+    approvedByName:operatorName,
+    area:area
   }));
   await batch.commit();
   delete selectedArea[tbl];
@@ -706,19 +912,35 @@ function renderHistory(orders){
     const timeStr=o.__time.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
     html+='<div class="order-card">';
     html+='  <div class="order-card-header">';
-    html+='    <div class="table-label" style="font-size:16px;">🪑 Tavolo '+(o.table||'—')+(o.room?' · 🔑 Camera '+o.room:'')+'</div>';
+    html+='    <div class="table-room-row" style="margin-bottom:0;"><div class="table-badge" style="font-size:16px;padding:5px 12px;">🪑 '+(o.table||'—')+'</div>'+(o.room?'<div class="table-label" style="font-size:13px;">🔑 Camera '+o.room+'</div>':'')+'</div>';
     html+='    <div class="order-count">'+timeStr+(o.approvedByName?' · '+o.approvedByName:'')+'</div>';
     html+='  </div>';
     (o.items||[]).forEach(it=>{
       html+='<div class="item-row"><div class="item-info"><div class="item-name">'+it.name+'</div></div><div class="item-price">€'+it.price+'</div></div>';
     });
     html+='  <div class="card-total">Totale: €'+total+'</div>';
-    if(isAdminUser){
-      html+='  <div class="card-actions"><button class="cancel-btn" onclick="deleteHistoryOrder(\''+o.id+'\')">🗑️ Elimina</button></div>';
-    }
+    html+='  <div class="card-actions"><button class="decline-btn" style="border-color:#d4af37;color:#d4af37;" onclick="reprintOrder(\''+o.id+'\')">🖨️ Ristampa</button>'
+      +(isAdminUser?'<button class="cancel-btn" onclick="deleteHistoryOrder(\''+o.id+'\')">🗑️ Elimina</button>':'')
+      +'</div>';
     html+='</div>';
   });
   container.innerHTML=html;
+}
+async function reprintOrder(docId){
+  try{
+    const doc=await db.collection('orders').doc(docId).get();
+    if(!doc.exists){alert('Ordine non trovato.');return;}
+    const data=doc.data();
+    const items=data.items||[];
+    if(!items.length){alert('Nessun articolo da ristampare.');return;}
+    const area=data.area||'esterno';
+    const jobs=buildJobsForArea(area,items);
+    const operatorName=data.approvedByName||staffName(currentUserEmail);
+    await printJobs(jobs,data.table||'—',data.room||'',operatorName);
+  }catch(err){
+    console.error('Reprint error:',err);
+    alert('Errore durante la ristampa.');
+  }
 }
 function deleteHistoryOrder(docId){
   if(!isAdminUser)return;
