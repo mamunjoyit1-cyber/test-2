@@ -538,6 +538,10 @@ html body { margin-top: 0 !important; }
   </div>
   <div id="cart-content"><div class="cart-empty">Nessun articolo ancora</div></div>
   <div class="cart-total" id="cart-total" style="display:none;"><span data-it="Totale stimato" data-fr="Total estimé" data-en="Estimated total" data-de="Geschätzter Gesamtbetrag">Totale stimato</span><span id="total-amount">€0</span></div>
+  <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#d4af37;margin:10px 0;cursor:pointer;">
+    <input type="checkbox" id="lastOrderCheck" style="width:18px;height:18px;">
+    <span data-it="✅ Questo è l'ultimo ordine del tavolo (nessun altro deve ordinare)" data-fr="✅ Ceci est la dernière commande de la table" data-en="✅ This is the table's last order (no one else still needs to order)" data-de="✅ Dies ist die letzte Bestellung des Tisches">✅ Questo è l'ultimo ordine del tavolo (nessun altro deve ordinare)</span>
+  </label>
   <button class="waiter-btn" id="waiter-btn" disabled onclick="sendOrder()" data-it="📤 Invia Ordine" data-fr="📤 Envoyer la Commande" data-en="📤 Send Order" data-de="📤 Bestellung Senden">📤 Invia Ordine</button>
   <button class="waiter-btn" id="show-waiter-btn" disabled onclick="showOverlay()" style="background:transparent;border:1px solid #d4af37;color:#d4af37;margin-top:8px;" data-it="📲 Mostra al Cameriere" data-fr="📲 Montrer au Serveur" data-en="📲 Show to Waiter" data-de="📲 Dem Kellner zeigen">📲 Mostra al Cameriere</button>
 </div>
@@ -596,16 +600,19 @@ html body { margin-top: 0 !important; }
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 // ── GELATO FLAVORS with multilingual labels (FIX) ──
+// 'id' must match the id used in admin.html's GELATO_FLAVOR_ITEMS (prefixed gusto_) so availability toggles work.
 const GELATO_FLAVORS=[
-  {it:'Vaniglia 🍦',fr:'Vanille 🍦',en:'Vanilla 🍦',de:'Vanille 🍦'},
-  {it:'Fiore di Latte 🥛',fr:'Fior di Latte 🥛',en:'Fresh Cream 🥛',de:'Milchblume 🥛'},
-  {it:'Fragola 🍓',fr:'Fraise 🍓',en:'Strawberry 🍓',de:'Erdbeere 🍓'},
-  {it:'Nocciola 🌰',fr:'Noisette 🌰',en:'Hazelnut 🌰',de:'Haselnuss 🌰'},
-  {it:'Limone 🍋',fr:'Citron 🍋',en:'Lemon 🍋',de:'Zitrone 🍋'},
-  {it:'Mango 🥭',fr:'Mangue 🥭',en:'Mango 🥭',de:'Mango 🥭'},
-  {it:'Cioccolata 🍫',fr:'Chocolat 🍫',en:'Chocolate 🍫',de:'Schokolade 🍫'},
-  {it:'Caffè ☕',fr:'Café ☕',en:'Coffee ☕',de:'Kaffee ☕'}
+  {id:'gusto_vaniglia',it:'Vaniglia 🍦',fr:'Vanille 🍦',en:'Vanilla 🍦',de:'Vanille 🍦'},
+  {id:'gusto_fiordilatte',it:'Fiore di Latte 🥛',fr:'Fior di Latte 🥛',en:'Fresh Cream 🥛',de:'Milchblume 🥛'},
+  {id:'gusto_fragola',it:'Fragola 🍓',fr:'Fraise 🍓',en:'Strawberry 🍓',de:'Erdbeere 🍓'},
+  {id:'gusto_nocciola',it:'Nocciola 🌰',fr:'Noisette 🌰',en:'Hazelnut 🌰',de:'Haselnuss 🌰'},
+  {id:'gusto_limone',it:'Limone 🍋',fr:'Citron 🍋',en:'Lemon 🍋',de:'Zitrone 🍋'},
+  {id:'gusto_mango',it:'Mango 🥭',fr:'Mangue 🥭',en:'Mango 🥭',de:'Mango 🥭'},
+  {id:'gusto_cioccolata',it:'Cioccolata 🍫',fr:'Chocolat 🍫',en:'Chocolate 🍫',de:'Schokolade 🍫'},
+  {id:'gusto_caffe',it:'Caffè ☕',fr:'Café ☕',en:'Coffee ☕',de:'Kaffee ☕'}
 ];
+let unavailableFlavorIds=new Set();
+function availableGelatoFlavors(){return GELATO_FLAVORS.filter(f=>!unavailableFlavorIds.has(f.id));}
 function flavorLabel(itKey){const f=GELATO_FLAVORS.find(x=>x.it===itKey);return f?(f[currentLang]||f.it):itKey;}
 
 // Turno options - language-aware display, but stored in IT for cart
@@ -837,7 +844,7 @@ function renderInlineGelato(){
   const c=document.getElementById('inline-flavours-gelato'),note=document.getElementById('flavour-note-gelato');
   if(!c)return;
   const count=inlineGelatoFlavors.length;
-  c.innerHTML=GELATO_FLAVORS.map(f=>{
+  c.innerHTML=availableGelatoFlavors().map(f=>{
     const sel=inlineGelatoFlavors.includes(f.it),maxed=!sel&&count>=3;
     return'<button class="flavour-chip'+(sel?' selected':'')+(maxed?' maxed':'')+'" onclick="toggleInlineFlavor(\''+f.it.replace(/'/g,"\\'")+'\')">'+( f[currentLang]||f.it)+'</button>';
   }).join('');
@@ -895,7 +902,7 @@ function renderPopupPersons(){
     if(item.isGelato){
       const count=p.flavors.length;
       sauce='<div class="sauce-label-sm">'+t('gusti_label')+'</div><div class="chip-group">'+
-        GELATO_FLAVORS.map(f=>{const sel=p.flavors.includes(f.it),mx=!sel&&count>=3;return'<button class="chip'+(sel?' selected':'')+(mx?' maxed':'')+'" onclick="togglePopupFlavor('+p.pid+',\''+f.it.replace(/'/g,"\\'")+'\')">'+( f[currentLang]||f.it)+'</button>';}).join('')+
+        availableGelatoFlavors().map(f=>{const sel=p.flavors.includes(f.it),mx=!sel&&count>=3;return'<button class="chip'+(sel?' selected':'')+(mx?' maxed':'')+'" onclick="togglePopupFlavor('+p.pid+',\''+f.it.replace(/'/g,"\\'")+'\')">'+( f[currentLang]||f.it)+'</button>';}).join('')+
         '</div>'+(count===0?'<div style="font-size:11px;color:#b31e1e;font-style:italic;">'+t('seleziona_gusto')+'</div>':'');
     }else if(item.isSorbetto){
       sauce='<div class="sauce-label-sm">'+t('preferenza_label')+'</div><div class="chip-group">'+
@@ -1312,12 +1319,15 @@ async function sendOrder(){
   }));
   const total=cart.reduce((s,e)=>s+e.price,0);
   const cartSnapshot=JSON.parse(JSON.stringify(cart));
+  const lastOrderCheck=document.getElementById('lastOrderCheck');
+  const isLastOrder=lastOrderCheck?lastOrderCheck.checked:false;
 
   const orderData={
     table:tableNum,
     items:items,
     total:total,
     status:'pending',
+    lastOrder:isLastOrder,
     createdAt:firebase.firestore.FieldValue.serverTimestamp()
   };
 
@@ -1326,6 +1336,7 @@ async function sendOrder(){
     cart.length=0;
     updateCart();
     tableSel.value='';
+    if(lastOrderCheck)lastOrderCheck.checked=false;
     showOverlay(cartSnapshot,true);
   }catch(err){
     console.error('Order submission failed:',err);
@@ -1343,12 +1354,18 @@ async function sendOrder(){
 async function applyMenuAvailability(){
   try{
     const snap = await db.collection('menuAvailability').get();
+    unavailableFlavorIds=new Set();
     snap.forEach(doc=>{
       if(doc.data().available===false){
-        const el=document.getElementById('item-'+doc.id);
-        if(el)el.style.display='none';
+        if(doc.id.startsWith('gusto_')){
+          unavailableFlavorIds.add(doc.id);
+        }else{
+          const el=document.getElementById('item-'+doc.id);
+          if(el)el.style.display='none';
+        }
       }
     });
+    renderInlineGelato();
   }catch(err){
     console.error('Could not load menu availability:',err);
   }
