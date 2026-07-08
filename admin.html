@@ -85,11 +85,11 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 /* PRINT AREA - hidden on screen, shown only when printing */
 #print-area { display: none; }
 @media print {
-  @page { size: 78mm auto; margin: 0; }
+  @page { size: 72mm auto; margin: 0; }
 @media print {
   body * { visibility: hidden; }
   #print-area, #print-area * { visibility: visible; }
-  #print-area { display: block !important; position: absolute; top: 0; left: 0; width: 78mm; padding: 4mm; font-family: 'Courier New', monospace; color: #000; }
+  #print-area { display: block !important; position: absolute; top: 0; left: 0; width: 72mm; padding: 4mm; font-family: 'Courier New', monospace; color: #000; }
   .receipt-table-big { text-align: center; font-size: 22px; font-weight: bold; margin-bottom: 4px; letter-spacing: 1px; }
   function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName,billingItems){
   const now=new Date();
