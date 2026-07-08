@@ -85,7 +85,23 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 /* PRINT AREA - hidden on screen, shown only when printing */
 #print-area { display: none; }
 @media print {
-  @page { size: 72mm auto; margin: 0; }
+  @page {
+  size: 72mm auto;
+  margin: 0;
+}
+
+body {
+  width: 72mm;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  page-break-before: avoid;
+  page-break-after: avoid;
+  page-break-inside: avoid;
+}
+
 @media print {
   body * { visibility: hidden; }
   #print-area, #print-area * { visibility: visible; }
