@@ -85,11 +85,84 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 /* PRINT AREA - hidden on screen, shown only when printing */
 #print-area { display: none; }
 @media print {
+  @page { size: 78mm auto; margin: 0; }
+@media print {
   body * { visibility: hidden; }
   #print-area, #print-area * { visibility: visible; }
   #print-area { display: block !important; position: absolute; top: 0; left: 0; width: 78mm; padding: 4mm; font-family: 'Courier New', monospace; color: #000; }
   .receipt-table-big { text-align: center; font-size: 22px; font-weight: bold; margin-bottom: 4px; letter-spacing: 1px; }
-  .receipt-title { text-align: center; font-size: 16px; font-weight: bold; border: 2px solid #000; padding: 4px; margin-bottom: 8px; }
+  function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName,billingItems){
+  const now=new Date();
+  const dateStr=now.toLocaleDateString('it-IT');
+  const timeStr=now.toLocaleTimeString('it-IT');
+
+  let html='<div class="receipt-title">'+job.title+'</div>';
+  html+='<div class="receipt-meta-row"><span>Cameriere</span><span>'+(operatorName||'')+'</span></div>';
+  html+='<div class="receipt-meta-row"><span>Prodotti</span><span>'+items.length+'</span></div>';
+  if(room)html+='<div class="receipt-meta-row"><span>Camera</span><span>'+room+'</span></div>';
+  html+='<div class="receipt-tavolo-box"><span>Tavolo</span><span>'+tbl+'</span></div>';
+  html+='<div class="receipt-divider-line"></div>';
+
+  const byTurno={};
+  items.forEach(it=>{
+    const key=it.turno||'—';
+    if(!byTurno[key])byTurno[key]=[];
+    byTurno[key].push(it);
+  });
+  const sortedTurni=Object.keys(byTurno).sort((a,b)=>{
+    if(a==='—')return 1;
+    if(b==='—')return -1;
+    return parseInt(a,10)-parseInt(b,10);
+  });
+  sortedTurni.forEach(turno=>{
+    if(turno!=='—')html+='<div class="receipt-turno">'+turno+'</div>';
+    const counts=[];
+    byTurno[turno].forEach(it=>{
+      const label=(it.person?it.person+' — ':'')+it.name+(it.detail&&it.name!=='Menù del Lago Bin'?' ('+it.detail+')':'');
+      const found=counts.find(c=>c.label===label);
+      if(found)found.qty++;
+      else counts.push({label,qty:1});
+    });
+    counts.forEach(c=>{
+      html+='<div class="receipt-item"><span class="rqty">'+c.qty+'</span> <span class="rname">'+c.label+'</span></div>';
+    });
+  });
+
+  html+='<div class="receipt-footer-row"><span>'+dateStr+'</span><span>'+timeStr+'</span></div>';
+
+  if(showPrice){
+    const billing=billingItems||items;
+    const total=billing.reduce((s,it)=>s+(Number(it.price)||0),0);
+    html+='<div class="receipt-total">TOTALE: €'+total+'</div>';
+
+    const byPerson={};
+    billing.forEach(it=>{
+      const key=(it.person&&it.person.trim())?it.person.trim():'Senza nome';
+      if(!byPerson[key])byPerson[key]=[];
+      byPerson[key].push(it);
+    });
+    html+='<div class="receipt-divider"></div>';
+    html+='<div class="person-summary-title">📋 Riepilogo per Persona</div>';
+    Object.keys(byPerson).forEach(person=>{
+      const items2=byPerson[person];
+      const subtotal=items2.reduce((s,it)=>s+(Number(it.price)||0),0);
+      html+='<div class="person-summary-block">';
+      html+='<div class="person-summary-name">👤 '+person+'</div>';
+      items2.forEach(it=>{
+        html+='<div class="person-summary-item">'+it.name+(it.name==='Menù del Lago Bin'?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+(it.detail&&it.name!=='Menù del Lago Bin'?' <span class="rdetail">('+it.detail+')</span>':'')+' <span style="float:right;">€'+it.price+'</span></div>';
+      });
+      html+='<div class="person-summary-subtotal">Subtotale: €'+subtotal+'</div>';
+      html+='</div>';
+    });
+    html+='<div class="receipt-online-tag">🌐 ORDINE ONLINE — Da inserire nel gestionale</div>';
+  }
+  return html;
+}
+  .receipt-meta-row { font-size: 13px; display: flex; justify-content: space-between; margin-bottom: 2px; }
+  .receipt-tavolo-box { border: 2px solid #000; font-size: 18px; font-weight: bold; padding: 3px 6px; margin: 6px 0; display: flex; justify-content: space-between; }
+  .receipt-divider-line { border-top: 1px solid #000; margin: 6px 0; }
+  .receipt-footer-row { font-size: 11px; border-top: 1px dashed #000; padding-top: 4px; margin-top: 10px; display: flex; justify-content: space-between; }
+  .rqty { font-weight: bold; }
   .receipt-online-tag { text-align: center; font-size: 13px; font-weight: bold; border: 1.5px dashed #000; padding: 3px; margin-bottom: 8px; }
   .receipt-meta { font-size: 12px; margin-bottom: 8px; }
   .receipt-item { font-size: 13px; margin-bottom: 6px; }
