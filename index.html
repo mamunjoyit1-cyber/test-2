@@ -200,11 +200,17 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 .sub-section { display: none; }
 .sub-section.active { display: block; }
 .cocktail-list { background: #fdf5e6; border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; }
-.price-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px dotted rgba(212,175,55,0.15); font-size: 15px; color: #1a0505; font-weight: 500; }
+.price-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px dotted rgba(212,175,55,0.15); font-size: 15px; color: #1a0505; font-weight: 500; gap: 10px; }
 .price-row:last-child { border-bottom: none; }
 .cocktail-group { color: #b31e1e; font-size: 12px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin: 14px 0 8px; }
 .cocktail-name { font-size: 14.5px; color: #1a0505; padding: 4px 0; border-bottom: 1px dotted rgba(0,0,0,0.08); }
 .bar-divider { text-align: center; color: #bca07d; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 18px 0 10px; border-top: 1px solid rgba(212,175,55,0.15); padding-top: 14px; }
+.bar-row-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.bar-row-price { font-weight: 800; color: #b31e1e; white-space: nowrap; }
+.bar-qty-row { display: flex; align-items: center; gap: 6px; }
+.bar-qty-btn { width: 24px; height: 24px; border-radius: 50%; border: 2px solid #d4af37; background: #fdf5e6; color: #b31e1e; font-size: 15px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: inherit; line-height: 1; }
+.bar-qty-btn:hover { background: #d4af37; color: #150e0b; }
+.bar-qty-display { font-size: 14px; font-weight: bold; color: #b31e1e; min-width: 16px; text-align: center; }
 .footer { background: #0b0202; color: #d4af37; text-align: center; padding: 30px 20px; font-size: 14px; border-top: 3px solid #d4af37; margin-top: 50px; }
 .footer .note { color: #bca07d; font-size: 13px; font-style: italic; margin-top: 10px; }
 #google_translate_element { display: none !important; }
@@ -468,51 +474,13 @@ html body { margin-top: 0 !important; }
     <button class="sub-tab-btn" onclick="setSubTab('cocktails',this)"><span data-it="🍹 Cocktails" data-fr="🍹 Cocktails" data-en="🍹 Cocktails" data-de="🍹 Cocktails">🍹 Cocktails</span></button>
   </div>
   <div class="sub-section active" id="subsec-caffetteria">
-    <div class="cocktail-list">
-      <div class="price-row"><span data-it="Caffè Espresso" data-fr="Café Espresso" data-en="Espresso Coffee" data-de="Espresso">Caffè Espresso</span><span style="font-weight:800;color:#b31e1e;">€1,50</span></div>
-      <div class="price-row"><span data-it="Caffè Decaffeinato" data-fr="Café Décaféiné" data-en="Decaf Coffee" data-de="Entkoffeinierter Kaffee">Caffè Decaffeinato</span><span style="font-weight:800;color:#b31e1e;">€1,80</span></div>
-      <div class="price-row"><span data-it="Caffè D'Orzo (Piccolo / Grande)" data-fr="Café d'Orge (Petit / Grand)" data-en="Barley Coffee (Small / Large)" data-de="Gerstenkaffee (Klein / Groß)">Caffè D'Orzo (Piccolo / Grande)</span><span style="font-weight:800;color:#b31e1e;">€2,00</span></div>
-      <div class="price-row"><span data-it="Caffè Ginseng Piccolo" data-fr="Café Ginseng Petit" data-en="Ginseng Coffee Small" data-de="Ginseng Kaffee Klein">Caffè Ginseng Piccolo</span><span style="font-weight:800;color:#b31e1e;">€2,00</span></div>
-      <div class="price-row"><span data-it="Caffè Ginseng Grande" data-fr="Café Ginseng Grand" data-en="Ginseng Coffee Large" data-de="Ginseng Kaffee Groß">Caffè Ginseng Grande</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
-      <div class="price-row"><span data-it="Caffè Corretto" data-fr="Café Corretto" data-en="Coffee with Grappa" data-de="Kaffee mit Schnaps">Caffè Corretto</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
-      <div class="price-row"><span>Cappuccino</span><span style="font-weight:800;color:#b31e1e;">€2,00</span></div>
-      <div class="price-row"><span data-it="Caffè Latte / Latte Macchiato" data-fr="Café Latte / Latte Macchiato" data-en="Café Latte / Latte Macchiato" data-de="Café Latte / Latte Macchiato">Caffè Latte / Latte Macchiato</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
-      <div class="price-row"><span data-it="Thè Caldo / Infusi" data-fr="Thé Chaud / Infusions" data-en="Hot Tea / Herbal Tea" data-de="Heißer Tee / Kräutertee">Thè Caldo / Infusi</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
-      <div class="price-row"><span data-it="Cioccolata Calda" data-fr="Chocolat Chaud" data-en="Hot Chocolate" data-de="Heiße Schokolade">Cioccolata Calda</span><span style="font-weight:800;color:#b31e1e;">€2,50</span></div>
-    </div>
+    <div class="cocktail-list" id="bar-list-caffetteria"></div>
   </div>
   <div class="sub-section" id="subsec-bibite">
-    <div class="cocktail-list">
-      <div class="price-row"><span data-it="Acqua 50 cl" data-fr="Eau 50 cl" data-en="Water 50 cl" data-de="Wasser 50 cl">Acqua 50 cl</span><span style="font-weight:800;color:#b31e1e;">€1,50</span></div>
-      <div class="price-row"><span data-it="Acqua 1 lt" data-fr="Eau 1 lt" data-en="Water 1 lt" data-de="Wasser 1 lt">Acqua 1 lt</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
-      <div class="price-row"><span class="notranslate">Coca Cola / Coca Cola Zero</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="price-row"><span class="notranslate">Fanta / Sprite</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="price-row"><span class="notranslate">Estathé Limone / Pesca</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="price-row"><span class="notranslate">Schweppes / Schweppes Lemon</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
-      <div class="price-row"><span class="notranslate">Crodino / Sanbitter</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
-      <div class="bar-divider" data-it="Succhi di Frutta" data-fr="Jus de Fruits" data-en="Fruit Juices" data-de="Fruchtsäfte">Succhi di Frutta</div>
-      <div class="price-row"><span style="font-size:13px;color:#666;" data-it="Pesca · Ananas · Arancia · Albicocca · ACE · Pera" data-fr="Pêche · Ananas · Orange · Abricot · ACE · Poire" data-en="Peach · Pineapple · Orange · Apricot · ACE · Pear" data-de="Pfirsich · Ananas · Orange · Aprikose · ACE · Birne">Pesca · Ananas · Arancia · Albicocca · ACE · Pera</span><span style="font-weight:800;color:#b31e1e;">€3,00</span></div>
-    </div>
+    <div class="cocktail-list" id="bar-list-bibite"></div>
   </div>
   <div class="sub-section" id="subsec-cocktails">
-    <div class="cocktail-list">
-      <div class="cocktail-group">🍺 Birre &amp; Aperitivi Base</div>
-      <div class="price-row"><span data-it="Birra Bottiglia 33 cl" data-fr="Bière Bouteille 33 cl" data-en="Beer Bottle 33 cl" data-de="Bier Flasche 33 cl">Birra Bottiglia 33 cl</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="price-row"><span class="notranslate">Panaché / Monaco</span><span style="font-weight:800;color:#b31e1e;">€5,00</span></div>
-      <div class="price-row"><span class="notranslate">Martini Bianco e Rosso</span><span style="font-weight:800;color:#b31e1e;">€5,00</span></div>
-      <div class="price-row"><span data-it="Digestivi / Distillati" data-fr="Digestifs / Distillats" data-en="Digestifs / Spirits" data-de="Digestifs / Destillate">Digestivi / Distillati</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="price-row"><span data-it="Shot Alcolici" data-fr="Shots Alcoolisés" data-en="Alcohol Shots" data-de="Alkohol-Shots">Shot Alcolici</span><span style="font-weight:800;color:#b31e1e;">€4,00</span></div>
-      <div class="cocktail-group">🥂 Spritz &amp; Cocktails Classici — €6,00</div>
-      <div class="cocktail-name notranslate">Aperol Spritz</div>
-      <div class="cocktail-name notranslate">Campari Spritz</div>
-      <div class="cocktail-name notranslate">Limoncello Spritz</div>
-      <div class="cocktail-name notranslate">Negroni</div>
-      <div class="cocktail-name notranslate">Negroni Sbagliato</div>
-      <div class="cocktail-name notranslate">Americano</div>
-      <div class="cocktail-group">⭐ Premium Cocktails — €8,00</div>
-      <div class="cocktail-name"><span data-it="Whisky & Coca / Rhum & Coca" data-fr="Whisky Coca / Rhum Coca" data-en="Whisky & Coke / Rum & Coke" data-de="Whisky & Cola / Rum & Cola">Whisky &amp; Coca / Rhum &amp; Coca</span></div>
-      <div class="cocktail-name"><span data-it="Gin Tonic / Gin Lemon" data-fr="Gin Tonic / Gin Citron" data-en="Gin & Tonic / Gin & Lemon" data-de="Gin Tonic / Gin Zitrone">Gin Tonic / Gin Lemon</span></div>
-    </div>
+    <div class="cocktail-list" id="bar-list-cocktails"></div>
   </div>
 </div>
 
@@ -759,6 +727,111 @@ const PKG_CONFIG={
     ]}
   ]}
 };
+
+// ── BAR ITEMS (all directly orderable — no popup, simple add/remove) ──
+// Water: removed Acqua 50cl; split 1lt into Naturale/Gassata at €3,00 each.
+const BAR_TRANS={
+  'Caffè Espresso':{fr:'Café Espresso',en:'Espresso Coffee',de:'Espresso'},
+  'Caffè Decaffeinato':{fr:'Café Décaféiné',en:'Decaf Coffee',de:'Entkoffeinierter Kaffee'},
+  "Caffè D'Orzo (Piccolo / Grande)":{fr:"Café d'Orge (Petit / Grand)",en:'Barley Coffee (Small / Large)',de:'Gerstenkaffee (Klein / Groß)'},
+  'Caffè Ginseng Piccolo':{fr:'Café Ginseng Petit',en:'Ginseng Coffee Small',de:'Ginseng Kaffee Klein'},
+  'Caffè Ginseng Grande':{fr:'Café Ginseng Grand',en:'Ginseng Coffee Large',de:'Ginseng Kaffee Groß'},
+  'Caffè Corretto':{fr:'Café Corretto',en:'Coffee with Grappa',de:'Kaffee mit Schnaps'},
+  'Caffè Latte / Latte Macchiato':{fr:'Café Latte / Latte Macchiato',en:'Café Latte / Latte Macchiato',de:'Café Latte / Latte Macchiato'},
+  'Thè Caldo / Infusi':{fr:'Thé Chaud / Infusions',en:'Hot Tea / Herbal Tea',de:'Heißer Tee / Kräutertee'},
+  'Cioccolata Calda':{fr:'Chocolat Chaud',en:'Hot Chocolate',de:'Heiße Schokolade'},
+  'Acqua Naturale 1 lt':{fr:'Eau Plate 1 lt',en:'Still Water 1 lt',de:'Stilles Wasser 1 lt'},
+  'Acqua Gassata 1 lt':{fr:'Eau Gazeuse 1 lt',en:'Sparkling Water 1 lt',de:'Sprudelwasser 1 lt'},
+  'Estathé Limone / Pesca':{fr:'Estathé Citron / Pêche',en:'Estathé Lemon / Peach',de:'Estathé Zitrone / Pfirsich'},
+  'Schweppes / Schweppes Lemon':{fr:'Schweppes / Schweppes Citron',en:'Schweppes / Schweppes Lemon',de:'Schweppes / Schweppes Lemon'},
+  'Crodino / Sanbitter':{fr:'Crodino / Sanbitter',en:'Crodino / Sanbitter',de:'Crodino / Sanbitter'},
+  'Succo di Frutta (Pesca, Ananas, Arancia, Albicocca, ACE, Pera)':{fr:'Jus de Fruits (Pêche, Ananas, Orange, Abricot, ACE, Poire)',en:'Fruit Juice (Peach, Pineapple, Orange, Apricot, ACE, Pear)',de:'Fruchtsaft (Pfirsich, Ananas, Orange, Aprikose, ACE, Birne)'},
+  'Birra Bottiglia 33 cl':{fr:'Bière Bouteille 33 cl',en:'Beer Bottle 33 cl',de:'Bier Flasche 33 cl'},
+  'Digestivi / Distillati':{fr:'Digestifs / Distillats',en:'Digestifs / Spirits',de:'Digestifs / Destillate'},
+  'Shot Alcolici':{fr:'Shots Alcoolisés',en:'Alcohol Shots',de:'Alkohol-Shots'},
+  'Whisky & Coca / Rhum & Coca':{fr:'Whisky Coca / Rhum Coca',en:'Whisky & Coke / Rum & Coke',de:'Whisky & Cola / Rum & Cola'},
+  'Gin Tonic / Gin Lemon':{fr:'Gin Tonic / Gin Citron',en:'Gin & Tonic / Gin & Lemon',de:'Gin Tonic / Gin Zitrone'}
+};
+function barLabel(it){const tr=BAR_TRANS[it];return(tr&&tr[currentLang])||it;}
+
+const BAR_ITEMS={
+  // ── Caffetteria ──
+  caffe_espresso:{name:'Caffè Espresso',price:1.50,sub:'caffetteria'},
+  caffe_decaffeinato:{name:'Caffè Decaffeinato',price:1.80,sub:'caffetteria'},
+  caffe_orzo:{name:"Caffè D'Orzo (Piccolo / Grande)",price:2.00,sub:'caffetteria'},
+  caffe_ginseng_piccolo:{name:'Caffè Ginseng Piccolo',price:2.00,sub:'caffetteria'},
+  caffe_ginseng_grande:{name:'Caffè Ginseng Grande',price:3.00,sub:'caffetteria'},
+  caffe_corretto:{name:'Caffè Corretto',price:2.50,sub:'caffetteria'},
+  cappuccino:{name:'Cappuccino',price:2.00,sub:'caffetteria',notrans:true},
+  caffe_latte:{name:'Caffè Latte / Latte Macchiato',price:2.50,sub:'caffetteria'},
+  te_infusi:{name:'Thè Caldo / Infusi',price:2.50,sub:'caffetteria'},
+  cioccolata_calda:{name:'Cioccolata Calda',price:2.50,sub:'caffetteria'},
+  // ── Bibite ──
+  acqua_naturale_1l:{name:'Acqua Naturale 1 lt',price:3.00,sub:'bibite'},
+  acqua_gassata_1l:{name:'Acqua Gassata 1 lt',price:3.00,sub:'bibite'},
+  coca_cola:{name:'Coca Cola / Coca Cola Zero',price:4.00,sub:'bibite',notrans:true},
+  fanta_sprite:{name:'Fanta / Sprite',price:4.00,sub:'bibite',notrans:true},
+  estathe:{name:'Estathé Limone / Pesca',price:4.00,sub:'bibite'},
+  schweppes:{name:'Schweppes / Schweppes Lemon',price:3.00,sub:'bibite'},
+  crodino_sanbitter:{name:'Crodino / Sanbitter',price:3.00,sub:'bibite'},
+  succo_frutta:{name:'Succo di Frutta (Pesca, Ananas, Arancia, Albicocca, ACE, Pera)',price:3.00,sub:'bibite'},
+  // ── Cocktails / Birre / Aperitivi ──
+  birra_bottiglia:{name:'Birra Bottiglia 33 cl',price:4.00,sub:'cocktails',group:'birre'},
+  panache_monaco:{name:'Panaché / Monaco',price:5.00,sub:'cocktails',group:'birre',notrans:true},
+  martini:{name:'Martini Bianco e Rosso',price:5.00,sub:'cocktails',group:'birre',notrans:true},
+  digestivi:{name:'Digestivi / Distillati',price:4.00,sub:'cocktails',group:'birre'},
+  shot_alcolici:{name:'Shot Alcolici',price:4.00,sub:'cocktails',group:'birre'},
+  aperol_spritz:{name:'Aperol Spritz',price:6.00,sub:'cocktails',group:'spritz',notrans:true},
+  campari_spritz:{name:'Campari Spritz',price:6.00,sub:'cocktails',group:'spritz',notrans:true},
+  limoncello_spritz:{name:'Limoncello Spritz',price:6.00,sub:'cocktails',group:'spritz',notrans:true},
+  negroni:{name:'Negroni',price:6.00,sub:'cocktails',group:'spritz',notrans:true},
+  negroni_sbagliato:{name:'Negroni Sbagliato',price:6.00,sub:'cocktails',group:'spritz',notrans:true},
+  americano:{name:'Americano',price:6.00,sub:'cocktails',group:'spritz',notrans:true},
+  whisky_rhum_coca:{name:'Whisky & Coca / Rhum & Coca',price:8.00,sub:'cocktails',group:'premium'},
+  gin_tonic_lemon:{name:'Gin Tonic / Gin Lemon',price:8.00,sub:'cocktails',group:'premium'}
+};
+const BAR_GROUP_TITLES={
+  birre:{it:'🍺 Birre & Aperitivi Base',fr:'🍺 Bières & Apéritifs',en:'🍺 Beers & Base Aperitifs',de:'🍺 Biere & Basis-Aperitifs'},
+  spritz:{it:'🥂 Spritz & Cocktails Classici — €6,00',fr:'🥂 Spritz & Cocktails Classiques — €6,00',en:'🥂 Spritz & Classic Cocktails — €6,00',de:'🥂 Spritz & Klassische Cocktails — €6,00'},
+  premium:{it:'⭐ Premium Cocktails — €8,00',fr:'⭐ Cocktails Premium — €8,00',en:'⭐ Premium Cocktails — €8,00',de:'⭐ Premium-Cocktails — €8,00'}
+};
+let barQty={};
+function fmtPrice(p){return p.toFixed(2).replace('.',',');}
+function renderBarSection(sub){
+  const container=document.getElementById('bar-list-'+sub);
+  if(!container)return;
+  const entries=Object.keys(BAR_ITEMS).filter(id=>BAR_ITEMS[id].sub===sub);
+  let html='',lastGroup=null;
+  entries.forEach(id=>{
+    const it=BAR_ITEMS[id];
+    if(it.group&&it.group!==lastGroup){
+      lastGroup=it.group;
+      const gt=BAR_GROUP_TITLES[it.group];
+      html+='<div class="cocktail-group">'+((gt&&gt[currentLang])||(gt&&gt.it)||'')+'</div>';
+    }
+    const q=barQty[id]||0;
+    const nameHtml=it.notrans?('<span class="notranslate">'+it.name+'</span>'):barLabel(it.name);
+    html+='<div class="price-row"><span>'+nameHtml+'</span>'+
+      '<div class="bar-row-right"><span class="bar-row-price">€'+fmtPrice(it.price)+'</span>'+
+      '<div class="bar-qty-row"><button class="bar-qty-btn" onclick="changeBarQty(\''+id+'\',-1)">−</button>'+
+      '<span class="bar-qty-display" id="qty-bar-'+id+'">'+q+'</span>'+
+      '<button class="bar-qty-btn" onclick="changeBarQty(\''+id+'\',1)">+</button></div></div></div>';
+  });
+  container.innerHTML=html;
+}
+function renderAllBarSections(){['caffetteria','bibite','cocktails'].forEach(renderBarSection);}
+function changeBarQty(id,delta){
+  const it=BAR_ITEMS[id];if(!it)return;
+  if(delta>0){
+    cart.push({id:++cartIdCounter,itemId:'bar_'+id,name:it.name,price:it.price,course:'bevande',turno:'',person:null,detail:''});
+  }else{
+    const idx=cart.map(c=>c.itemId).lastIndexOf('bar_'+id);
+    if(idx>=0)cart.splice(idx,1);
+  }
+  barQty[id]=cart.filter(c=>c.itemId==='bar_'+id).length;
+  const qd=document.getElementById('qty-bar-'+id);if(qd)qd.textContent=barQty[id];
+  updateCart();
+}
 
 // Cart bucket labels: menu first, then by turno (language-aware), then dolci/gelato/bevande
 const STATIC_BUCKET_MAP={
@@ -1125,6 +1198,10 @@ function updateCart(){
     const qd=document.getElementById('qty-'+id);if(qd)qd.textContent=cart.filter(c=>c.itemId===id).length;
     const b=document.getElementById('btn-'+id);if(b)b.classList.toggle('has-items',cart.some(c=>c.itemId===id));
   });
+  Object.keys(BAR_ITEMS).forEach(id=>{
+    barQty[id]=cart.filter(c=>c.itemId==='bar_'+id).length;
+    const qd=document.getElementById('qty-bar-'+id);if(qd)qd.textContent=barQty[id];
+  });
   renderInlineGelato();
 }
 function removeCartGroup(ids){ids.forEach(id=>{const i=cart.findIndex(c=>c.id===id);if(i>=0)cart.splice(i,1);});updateCart();}
@@ -1204,6 +1281,7 @@ function applyLang(lang){
   });
   const si=document.getElementById('searchInput');
   if(si){const ph=si.getAttribute('data-ph-'+lang);if(ph)si.placeholder=ph;}
+  renderAllBarSections();
 }
 function setLang(lang,el){
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
@@ -1218,7 +1296,7 @@ function setLang(lang,el){
 function refreshDyn(){
   if(popupItemId)renderPopupPersons();
   Object.keys(pkgPersons).forEach(k=>{if(pkgPersons[k]&&pkgPersons[k].length)renderPkgPersons(k);});
-  updateCart();renderInlineGelato();
+  updateCart();renderInlineGelato();renderAllBarSections();
 }
 function toggleDropdown(e){if(e)e.stopPropagation();document.getElementById('langDropdown').classList.toggle('open');}
 function closeDropdown(){document.getElementById('langDropdown').classList.remove('open');}
@@ -1284,7 +1362,7 @@ function populateTableSelect(){
 }
 
 // ── DETERMINE FOOD vs DRINK CATEGORY ──
-// 'bevande' course = drinks (currently only Wine goes through this).
+// 'bevande' course = drinks (wine + all bar items now go through this).
 // Everything else (antipasti/primi/secondi/contorni/dolci/gelato/menu) = food.
 function categoryFor(entry){
   return entry.course==='bevande' ? 'drink' : 'food';
@@ -1372,7 +1450,7 @@ async function applyMenuAvailability(){
 }
 
 // ── INIT ──
-document.addEventListener('DOMContentLoaded',()=>{populateTableSelect();updateCart();renderInlineGelato();applyMenuAvailability();});
+document.addEventListener('DOMContentLoaded',()=>{populateTableSelect();renderAllBarSections();updateCart();renderInlineGelato();applyMenuAvailability();});
 document.addEventListener('click',e=>{
   if(!e.target.closest('.translate-wrap'))closeDropdown();
   const panel=document.getElementById('cart-panel'),fab=document.querySelector('.cart-fab');
