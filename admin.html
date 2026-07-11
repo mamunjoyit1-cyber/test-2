@@ -85,95 +85,11 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 /* PRINT AREA - hidden on screen, shown only when printing */
 #print-area { display: none; }
 @media print {
-  @page {
-  size: 72mm auto;
-  margin: 0;
-}
-
-body {
-  width: 72mm;
-  margin: 0;
-  padding: 0;
-}
-
-* {
-  page-break-before: avoid;
-  page-break-after: avoid;
-  page-break-inside: avoid;
-}
-
-@media print {
+  @page { size: 72mm auto; margin: 0; }
   body * { visibility: hidden; }
   #print-area, #print-area * { visibility: visible; }
   #print-area { display: block !important; position: absolute; top: 0; left: 0; width: 72mm; padding: 4mm; font-family: 'Courier New', monospace; color: #000; }
   .receipt-table-big { text-align: center; font-size: 22px; font-weight: bold; margin-bottom: 4px; letter-spacing: 1px; }
-  function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName,billingItems){
-  const now=new Date();
-  const dateStr=now.toLocaleDateString('it-IT');
-  const timeStr=now.toLocaleTimeString('it-IT');
-
-  let html='<div class="receipt-title">'+job.title+'</div>';
-  html+='<div class="receipt-meta-row"><span>Cameriere</span><span>'+(operatorName||'')+'</span></div>';
-  html+='<div class="receipt-meta-row"><span>Prodotti</span><span>'+items.length+'</span></div>';
-  if(room)html+='<div class="receipt-meta-row"><span>Camera</span><span>'+room+'</span></div>';
-  html+='<div class="receipt-tavolo-box"><span>Tavolo</span><span>'+tbl+'</span></div>';
-  html+='<div class="receipt-divider-line"></div>';
-
-  const byTurno={};
-  items.forEach(it=>{
-    const key=it.turno||'—';
-    if(!byTurno[key])byTurno[key]=[];
-    byTurno[key].push(it);
-  });
-  const sortedTurni=Object.keys(byTurno).sort((a,b)=>{
-    if(a==='—')return 1;
-    if(b==='—')return -1;
-    return parseInt(a,10)-parseInt(b,10);
-  });
-  sortedTurni.forEach(turno=>{
-    if(turno!=='—')html+='<div class="receipt-turno">'+turno+'</div>';
-    const counts=[];
-    byTurno[turno].forEach(it=>{
-      const label=(it.person?it.person+' — ':'')+it.name+(it.detail&&it.name!=='Menù del Lago Bin'?' ('+it.detail+')':'');
-      const found=counts.find(c=>c.label===label);
-      if(found)found.qty++;
-      else counts.push({label,qty:1});
-    });
-    counts.forEach(c=>{
-      html+='<div class="receipt-item"><span class="rqty">'+c.qty+'</span> <span class="rname">'+c.label+'</span></div>';
-    });
-  });
-
-  html+='<div class="receipt-footer-row"><span>'+dateStr+'</span><span>'+timeStr+'</span></div>';
-
-  if(showPrice){
-    const billing=billingItems||items;
-    const total=billing.reduce((s,it)=>s+(Number(it.price)||0),0);
-    html+='<div class="receipt-total">TOTALE: €'+total+'</div>';
-
-    const byPerson={};
-    billing.forEach(it=>{
-      const key=(it.person&&it.person.trim())?it.person.trim():'Senza nome';
-      if(!byPerson[key])byPerson[key]=[];
-      byPerson[key].push(it);
-    });
-    html+='<div class="receipt-divider"></div>';
-    html+='<div class="person-summary-title">📋 Riepilogo per Persona</div>';
-    Object.keys(byPerson).forEach(person=>{
-      const items2=byPerson[person];
-      const subtotal=items2.reduce((s,it)=>s+(Number(it.price)||0),0);
-      html+='<div class="person-summary-block">';
-      html+='<div class="person-summary-name">👤 '+person+'</div>';
-      items2.forEach(it=>{
-        html+='<div class="person-summary-item">'+it.name+(it.name==='Menù del Lago Bin'?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+(it.detail&&it.name!=='Menù del Lago Bin'?' <span class="rdetail">('+it.detail+')</span>':'')+' <span style="float:right;">€'+it.price+'</span></div>';
-      });
-      html+='<div class="person-summary-subtotal">Subtotale: €'+subtotal+'</div>';
-      html+='</div>';
-    });
-    html+='<div class="receipt-online-tag">🌐 ORDINE ONLINE — Da inserire nel gestionale</div>';
-  }
-  return html;
-}
   .receipt-meta-row { font-size: 13px; display: flex; justify-content: space-between; margin-bottom: 2px; }
   .receipt-tavolo-box { border: 2px solid #000; font-size: 18px; font-weight: bold; padding: 3px 6px; margin: 6px 0; display: flex; justify-content: space-between; }
   .receipt-divider-line { border-top: 1px solid #000; margin: 6px 0; }
@@ -545,6 +461,7 @@ function renderOrders(snapshot){
     const earliestTime=docs.map(d=>d.createdAt?.toDate?.()||new Date()).sort((a,b)=>a-b)[0];
     const timeStr=earliestTime?earliestTime.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'}):'';
     const roomVal=docs.find(d=>d.room)?.room||'';
+    const peopleVal=docs.find(d=>d.people)?.people||1;
     tableAnyDocId[tbl]=docs[0].id;
 
     html+='<div class="order-card" data-table="'+tbl+'">';
@@ -552,6 +469,7 @@ function renderOrders(snapshot){
     html+='    <div class="table-room-row">';
     html+='      <div class="table-badge">🪑 <input type="text" value="'+tbl+'" onchange="changeTableNumber(\''+tbl+'\',this.value)"></div>';
     html+='      <div class="table-label" style="font-size:14px;">🔑 Camera <input type="text" value="'+roomVal+'" placeholder="n." style="width:70px;" onchange="changeRoomNumber(\''+tbl+'\',this.value)"></div>';
+    html+='      <div class="table-label" style="font-size:14px;">👥 Persone <input type="number" min="1" value="'+peopleVal+'" style="width:60px;" onchange="changePeopleCount(\''+tbl+'\',this.value)"></div>';
     html+='    </div>';
     html+='    <div class="area-toggle">';
     html+='      <button class="area-btn '+(area==='esterno'?'active':'')+'" onclick="setArea(\''+tbl+'\',\'esterno\')">🌤️ Esterno</button>';
@@ -566,7 +484,7 @@ function renderOrders(snapshot){
     allItems.forEach(it=>{
       html+='<div class="item-row">';
       html+='  <div class="item-info">';
-      html+='    <div class="item-name '+(it.category==='drink'?'drink':'')+'">'+(it.category==='drink'?'🍷':'🍽️')+' '+it.name+(it.turno?' <span style="font-weight:normal;color:#bca07d;">('+it.turno+')</span>':'')+'</div>';
+      html+='    <div class="item-name '+(it.category==='drink'?'drink':'')+'">'+(it.category==='drink'?'🍷':'🍽️')+' '+(it.person?'<span style="color:#d4af37;">👤 '+it.person+'</span> — ':'')+it.name+(it.turno?' <span style="font-weight:normal;color:#bca07d;">('+it.turno+')</span>':'')+'</div>';
       if(it.detail)html+='    <div class="item-detail">'+it.detail+'</div>';
       html+='  </div>';
       html+='  <div class="item-price">€'+it.price+'</div>';
@@ -579,6 +497,7 @@ function renderOrders(snapshot){
     html+='      <select id="newcat-'+tbl+'" onchange="renderProductPicker(\''+tbl+'\')"><option value="">📂 Categoria...</option><option value="antipasti">🥗 Antipasti</option><option value="primi">🍝 Primi</option><option value="secondi">🥩 Secondi</option><option value="contorni">🥦 Contorni</option><option value="dolci">🍰 Dolci</option><option value="gelato">🍨 Gelato</option></select>';
     html+='      <input type="text" id="newsearch-'+tbl+'" placeholder="🔎 Cerca piatto..." oninput="renderProductPicker(\''+tbl+'\')" style="flex:1;">';
     html+='      <select id="newturno-'+tbl+'" title="Turno per il piatto selezionato"><option value="">📋 Turno...</option>'+TURNO_OPTIONS.map(t=>'<option value="'+t+'">'+t+'</option>').join('')+'</select>';
+    html+='      <select id="newperson-'+tbl+'" title="Persona a cui assegnare il piatto"><option value="">👤 Persona...</option>'+Array.from({length:peopleVal},(_,i)=>'Persona '+(i+1)).map(p=>'<option value="'+p+'">'+p+'</option>').join('')+'</select>';
     html+='    </div>';
     html+='    <div id="productlist-'+tbl+'" style="display:flex;flex-direction:column;gap:4px;max-height:160px;overflow-y:auto;margin-top:6px;"></div>';
     html+='    <div id="customize-'+tbl+'"></div>';
@@ -589,6 +508,7 @@ function renderOrders(snapshot){
     html+='        <input type="number" id="newprice-'+tbl+'" placeholder="€" style="width:70px;">';
     html+='        <select id="newmancat-'+tbl+'"><option value="food">🍽️ Cibo</option><option value="drink">🍷 Bevanda</option></select>';
     html+='        <select id="newmanturno-'+tbl+'"><option value="">📋 Turno...</option>'+TURNO_OPTIONS.map(t=>'<option value="'+t+'">'+t+'</option>').join('')+'</select>';
+    html+='        <select id="newmanperson-'+tbl+'"><option value="">👤 Persona...</option>'+Array.from({length:peopleVal},(_,i)=>'Persona '+(i+1)).map(p=>'<option value="'+p+'">'+p+'</option>').join('')+'</select>';
     html+='        <button class="add-item-btn" onclick="addManualItem(\''+tbl+'\',tableAnyDocId[\''+tbl+'\'])">+ Aggiungi</button>';
     html+='      </div>';
     html+='    </div>';
@@ -625,6 +545,16 @@ function changeRoomNumber(tbl,newRoom){
   db.collection('orders').where('table','==',tbl).where('status','==','pending').get().then(snap=>{
     const batch=db.batch();
     snap.forEach(doc=>batch.update(doc.ref,{room:newRoom}));
+    return batch.commit();
+  }).catch(err=>console.error(err));
+}
+
+// ── EDIT: set/change the number of people at a table's pending orders ──
+function changePeopleCount(tbl,newCount){
+  const n=Math.max(1,parseInt(newCount,10)||1);
+  db.collection('orders').where('table','==',tbl).where('status','==','pending').get().then(snap=>{
+    const batch=db.batch();
+    snap.forEach(doc=>batch.update(doc.ref,{people:n}));
     return batch.commit();
   }).catch(err=>console.error(err));
 }
@@ -786,11 +716,13 @@ function finalizeMasterItemAdd(tbl,directItem,directDetail){
   if(!anyDocId)return;
   const turnoEl=document.getElementById('newturno-'+tbl);
   const turno=turnoEl?turnoEl.value:'';
+  const personEl=document.getElementById('newperson-'+tbl);
+  const person=personEl?personEl.value:'';
   const ref=db.collection('orders').doc(anyDocId);
   ref.get().then(doc=>{
     const data=doc.data();
     const items=(data.items||[]).slice();
-    items.push({name:item.name,price:item.price,category:'food',course:item.course,detail,person:'',turno});
+    items.push({name:item.name,price:item.price,category:'food',course:item.course,detail,person,turno});
     const total=items.reduce((s,it)=>s+(Number(it.price)||0),0);
     return ref.update({items,total});
   }).then(()=>{
@@ -808,16 +740,18 @@ function addManualItem(tbl,anyDocId){
   const priceEl=document.getElementById('newprice-'+tbl);
   const catEl=document.getElementById('newmancat-'+tbl);
   const turnoEl=document.getElementById('newmanturno-'+tbl);
+  const personEl=document.getElementById('newmanperson-'+tbl);
   const name=nameEl.value.trim();
   const price=Number(priceEl.value)||0;
   const category=catEl.value;
   const turno=turnoEl?turnoEl.value:'';
+  const person=personEl?personEl.value:'';
   if(!name)return;
   const ref=db.collection('orders').doc(anyDocId);
   ref.get().then(doc=>{
     const data=doc.data();
     const items=(data.items||[]).slice();
-    items.push({name,price,category,course:category==='drink'?'bevande':'manuale',detail:'',person:'',turno});
+    items.push({name,price,category,course:category==='drink'?'bevande':'manuale',detail:'',person,turno});
     const total=items.reduce((s,it)=>s+(Number(it.price)||0),0);
     return ref.update({items,total});
   }).then(()=>{nameEl.value='';priceEl.value='';}).catch(err=>console.error(err));
@@ -834,6 +768,8 @@ function cancelTable(tbl){
 }
 
 // ── PRINT RECEIPT BUILDING ──
+// NOTA: il riepilogo per persona è stato rimosso su richiesta — la ricevuta ora
+// mostra solo la parte superiore (tavolo, articoli per turno, totale).
 function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName,billingItems){
   const now=new Date();
   const dateStr=now.toLocaleDateString('it-IT')+' '+now.toLocaleTimeString('it-IT');
@@ -842,7 +778,6 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName,billingItems
   html+='<div class="receipt-meta">'+(room?'Camera: <b>'+room+'</b><br>':'')+dateStr+(operatorName?'<br>Cameriere: '+operatorName:'')+'</div>';
   // group by turno for readability — applies to EVERY job (full/kitchen/bar), so packages
   // show their component dishes under the correct turno just like à la carte items.
-  // No prices here (kitchen/bar never had them; the full copy now keeps them only in the Riepilogo below).
   const byTurno={};
   items.forEach(it=>{
     const key=it.turno||'—';
@@ -872,29 +807,6 @@ function buildReceiptHTML(job,tbl,items,showPrice,room,operatorName,billingItems
     const billing=billingItems||items;
     const total=billing.reduce((s,it)=>s+(Number(it.price)||0),0);
     html+='<div class="receipt-total">TOTALE: €'+total+'</div>';
-
-    // ── Person-grouped summary — billing copy only, for entering into the main gestionale ──
-    // Uses the ORIGINAL (non-expanded) items so each package shows once, at its real price.
-    const byPerson={};
-    billing.forEach(it=>{
-      const key=(it.person&&it.person.trim())?it.person.trim():'Senza nome';
-      if(!byPerson[key])byPerson[key]=[];
-      byPerson[key].push(it);
-    });
-    html+='<div class="receipt-divider"></div>';
-    html+='<div class="person-summary-title">📋 Riepilogo per Persona</div>';
-    Object.keys(byPerson).forEach(person=>{
-      const items2=byPerson[person];
-      const subtotal=items2.reduce((s,it)=>s+(Number(it.price)||0),0);
-      html+='<div class="person-summary-block">';
-      html+='<div class="person-summary-name">👤 '+person+'</div>';
-      items2.forEach(it=>{
-        html+='<div class="person-summary-item">'+it.name+(it.name==='Menù del Lago Bin'?' <span class="menu-fisso-tag">MENU FISSO</span>':'')+(it.detail&&it.name!=='Menù del Lago Bin'?' <span class="rdetail">('+it.detail+')</span>':'')+' <span style="float:right;">€'+it.price+'</span></div>';
-      });
-      html+='<div class="person-summary-subtotal">Subtotale: €'+subtotal+'</div>';
-      html+='</div>';
-    });
-
     html+='<div class="receipt-online-tag">🌐 ORDINE ONLINE — Da inserire nel gestionale</div>';
   }
   return html;
@@ -934,19 +846,23 @@ function expandForDisplay(rawItems){
   return out;
 }
 
-// ── Build the printer job list (full/kitchen/bar) for a set of items, given an area ──
+// ── Build the printer job list for a set of items, given an area ──
+// NOTA: Cucina e Bar sono temporaneamente DISATTIVATI su richiesta — viene stampata
+// solo la copia completa (Rist. Esterno / Rist. Interno). Per riattivarli, decommenta
+// le righe indicate qui sotto.
 function buildJobsForArea(area,allItems){
   const route=PRINTER_ROUTES[area]||PRINTER_ROUTES.esterno;
   const expandedAll=expandForDisplay(allItems);
-  const expandedFood=expandedAll.filter(it=>it.category!=='drink');
-  const expandedDrink=expandedAll.filter(it=>it.category==='drink');
   const jobs=[
-    {printer:route.full.printer, title:route.full.title, items:expandedAll, billingItems:allItems, showPrice:true},
-    {printer:route.kitchen.printer, title:route.kitchen.title, items:expandedFood, showPrice:false}
+    {printer:route.full.printer, title:route.full.title, items:expandedAll, billingItems:allItems, showPrice:true}
   ];
-  if(route.bar){
-    jobs.push({printer:route.bar.printer, title:route.bar.title, items:expandedDrink, showPrice:false});
-  }
+  // ── Per riattivare la stampa in Cucina/Bar, decommenta questo blocco: ──
+  // const expandedFood=expandedAll.filter(it=>it.category!=='drink');
+  // const expandedDrink=expandedAll.filter(it=>it.category==='drink');
+  // jobs.push({printer:route.kitchen.printer, title:route.kitchen.title, items:expandedFood, showPrice:false});
+  // if(route.bar){
+  //   jobs.push({printer:route.bar.printer, title:route.bar.title, items:expandedDrink, showPrice:false});
+  // }
   return jobs;
 }
 
