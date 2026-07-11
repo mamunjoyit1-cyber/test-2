@@ -205,6 +205,16 @@
     });
   }
 
+  // Order-sent / show-to-waiter overlay confirmation notes — same pattern.
+  if (typeof OVERLAY_NOTE_SENT === 'object' && typeof OVERLAY_NOTE_SHOW === 'object') {
+    Object.keys(translations).forEach(function (code) {
+      var pack = translations[code];
+      if (pack.ordine_inviato_note) OVERLAY_NOTE_SENT[code] = pack.ordine_inviato_note;
+      if (pack.mostra_schermo_note) OVERLAY_NOTE_SHOW[code] = pack.mostra_schermo_note;
+    });
+  }
+
+
   // NOTE: cart/overlay section headers (courseLabel, ALA_CARTA_LABEL) are
   // intentionally left in Italian per restaurant preference — the cart is
   // shown to kitchen/waiter staff and should stay consistent in Italian.
@@ -411,6 +421,14 @@
   function applyStaticUi(pack) {
     setText('.header .subtitle', pack.subtitle);
     setPlaceholder('#searchInput', pack.search_ph);
+
+    // Order-flow elements added after this connector was first written:
+    // table selector, send/show buttons, last-order checkbox.
+    setText('label[for="tableSelect"]', pack.numero_tavolo);
+    setText('#tableSelect option[value=""]', pack.seleziona_tavolo_opt);
+    setText('#waiter-btn', pack.invia_ordine);
+    setText('#show-waiter-btn', pack.mostra_cameriere);
+    setText('#lastOrderCheck + span', pack.ultimo_ordine_label);
 
     Object.keys(TAB_KEYS).forEach(function (tabId) {
       var key = TAB_KEYS[tabId];
