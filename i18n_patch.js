@@ -1,4 +1,6 @@
 // Auto-generated: fills missing translation keys for tr, bg, sk, hr, sr, sl, ar, zh-CN, ja, ko, hi, bn, ur, fa
+// Updated: added numero_tavolo, seleziona_tavolo_opt, invia_ordine, mostra_cameriere,
+// ultimo_ordine_label, ordine_inviato_note, mostra_schermo_note for all 30 languages.
 window.I18N_PATCH = {
   "tr": {
     "alla_carta": "Alakart",
@@ -24,7 +26,12 @@ window.I18N_PATCH = {
     "vino_prompt": "Kaç şişe?",
     "vino_name": "Ev Şarabı",
     "vino_detail": "Şarap listesinden seçilecek",
-    "turno": ["1. Yemek", "2. Yemek", "3. Yemek", "4. Yemek"],
+    "turno": [
+      "1. Yemek",
+      "2. Yemek",
+      "3. Yemek",
+      "4. Yemek"
+    ],
     "sub_default": "Siparişinize ekleyin",
     "sub_gelato": "En fazla 3 çeşit seçin",
     "sub_sorbetto": "Alkollü mü alkolsüz mü?",
@@ -70,7 +77,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Sosis"
     },
     "pkg_section_scelta": "Seçmeli Yemekler",
-    "cottura": ["🔴 Az Pişmiş", "🟠 Mavi (Çok Az)", "🟡 Orta Pişmiş", "✅ İyi Pişmiş"],
+    "cottura": [
+      "🔴 Az Pişmiş",
+      "🟠 Mavi (Çok Az)",
+      "🟡 Orta Pişmiş",
+      "✅ İyi Pişmiş"
+    ],
     "cat_primi": "🍝 İlk Yemekler",
     "dishes": {
       "Antipasto Tipico del Lago Bin": "(Lago Bin'e Özgü Meze)",
@@ -152,7 +164,14 @@ window.I18N_PATCH = {
       "Al Forno": "Fırında",
       "Alla Griglia": "Izgara",
       "Formaggi con Gorgonzola": "Gorgonzolalı Peynir"
-    }
+    },
+    "numero_tavolo": "🪑 Masa Numarası",
+    "seleziona_tavolo_opt": "-- Masa Seçin --",
+    "invia_ordine": "📤 Siparişi Gönder",
+    "mostra_cameriere": "📲 Garsona Göster",
+    "ultimo_ordine_label": "✅ Bu, masanın son siparişidir (başka kimse sipariş vermeyecek)",
+    "ordine_inviato_note": "✅ Sipariş gönderildi! Garson kısa süre içinde alacak.",
+    "mostra_schermo_note": "Bu ekranı garsona gösterin"
   },
   "bg": {
     "alla_carta": "Ала Карт",
@@ -178,7 +197,12 @@ window.I18N_PATCH = {
     "vino_prompt": "Колко бутилки?",
     "vino_name": "Домашно Вино",
     "vino_detail": "За избор от винената карта",
-    "turno": ["1-во Хранене", "2-ро Хранене", "3-то Хранене", "4-то Хранене"],
+    "turno": [
+      "1-во Хранене",
+      "2-ро Хранене",
+      "3-то Хранене",
+      "4-то Хранене"
+    ],
     "wine_full_list": "🍷 Кликнете тук за Дигиталната Винена Карта➔",
     "wines": {
       "Vino Rosso della Casa": "Домашно Червено Вино",
@@ -206,7 +230,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Наденица"
     },
     "pkg_section_scelta": "Ястия по избор",
-    "cottura": ["🔴 Розово", "🟠 Много Розово", "🟡 Средно", "✅ Добре Изпечено"],
+    "cottura": [
+      "🔴 Розово",
+      "🟠 Много Розово",
+      "🟡 Средно",
+      "✅ Добре Изпечено"
+    ],
     "subtitle": "✦ РЕСТОРАНТ ✦",
     "cat_primi": "🍝 Първи Ястия",
     "secondi_sub": "(Гарнитура включена: пържени картофи, печени картофи или зеленчуци на скара)",
@@ -329,7 +358,14 @@ window.I18N_PATCH = {
       "Al Forno": "На Фурна",
       "Alla Griglia": "На Скара",
       "Formaggi con Gorgonzola": "Сирена с Горгонзола"
-    }
+    },
+    "numero_tavolo": "🪑 Номер на Маса",
+    "seleziona_tavolo_opt": "-- Изберете Маса --",
+    "invia_ordine": "📤 Изпрати Поръчката",
+    "mostra_cameriere": "📲 Покажи на Сервитьора",
+    "ultimo_ordine_label": "✅ Това е последната поръчка на масата (никой друг няма да поръчва)",
+    "ordine_inviato_note": "✅ Поръчката е изпратена! Сервитьорът ще я получи скоро.",
+    "mostra_schermo_note": "Покажете този екран на сервитьора"
   },
   "sk": {
     "alla_carta": "Á la carte",
@@ -349,7 +385,12 @@ window.I18N_PATCH = {
     "vino_prompt": "Koľko fliaš?",
     "vino_name": "Domáce Víno",
     "vino_detail": "Na výber z vínneho lístka",
-    "turno": ["1. Chod", "2. Chod", "3. Chod", "4. Chod"],
+    "turno": [
+      "1. Chod",
+      "2. Chod",
+      "3. Chod",
+      "4. Chod"
+    ],
     "wines": {
       "Vino Rosso della Casa": "Domáce Červené Víno",
       "Vino Bianco della Casa": "Domáce Biele Víno",
@@ -376,7 +417,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Klobása"
     },
     "pkg_section_scelta": "Jedlá na výber",
-    "cottura": ["🔴 Krvavé", "🟠 Veľmi Krvavé", "🟡 Stredne Prepečené", "✅ Prepečené"],
+    "cottura": [
+      "🔴 Krvavé",
+      "🟠 Veľmi Krvavé",
+      "🟡 Stredne Prepečené",
+      "✅ Prepečené"
+    ],
     "subtitle": "✦ REŠTAURÁCIA ✦",
     "cat_menu": "🍽️ Naše Menu",
     "cat_antipasti": "🥗 Predjedlá à la Carte",
@@ -527,7 +573,14 @@ window.I18N_PATCH = {
       "Bunet": "(Piemontský Čokoládový Puding)",
       "Macedonia di Frutta": "(Čerstvý Ovocný Šalát)",
       "Assortimento Misto dei Dolci": "(Zmiešaný Dezertný Tanier)"
-    }
+    },
+    "numero_tavolo": "🪑 Číslo Stola",
+    "seleziona_tavolo_opt": "-- Vyberte Stôl --",
+    "invia_ordine": "📤 Odoslať Objednávku",
+    "mostra_cameriere": "📲 Ukázať Čašníkovi",
+    "ultimo_ordine_label": "✅ Toto je posledná objednávka stola (nikto iný už nebude objednávať)",
+    "ordine_inviato_note": "✅ Objednávka odoslaná! Čašník ju čoskoro dostane.",
+    "mostra_schermo_note": "Ukážte túto obrazovku čašníkovi"
   },
   "hr": {
     "alla_carta": "À la carte",
@@ -548,7 +601,12 @@ window.I18N_PATCH = {
     "vino_prompt": "Koliko boca?",
     "vino_name": "Kućno Vino",
     "vino_detail": "Za odabir s vinske karte",
-    "turno": ["1. Jelo", "2. Jelo", "3. Jelo", "4. Jelo"],
+    "turno": [
+      "1. Jelo",
+      "2. Jelo",
+      "3. Jelo",
+      "4. Jelo"
+    ],
     "wine_full_list": "🍷 Kliknite ovdje za Digitalnu Vinsku Kartu➔",
     "wines": {
       "Vino Rosso della Casa": "Kućno Crno Vino",
@@ -576,7 +634,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Kobasica"
     },
     "pkg_section_scelta": "Jela po izboru",
-    "cottura": ["🔴 Krvavo", "🟠 Vrlo Krvavo", "🟡 Srednje Pečeno", "✅ Dobro Pečeno"],
+    "cottura": [
+      "🔴 Krvavo",
+      "🟠 Vrlo Krvavo",
+      "🟡 Srednje Pečeno",
+      "✅ Dobro Pečeno"
+    ],
     "subtitle": "✦ RESTORAN ✦",
     "cat_menu": "🍽️ Naši Jelovnici",
     "cat_antipasti": "🥗 Predjela à la Carte",
@@ -722,11 +785,23 @@ window.I18N_PATCH = {
       "Bunet": "(Piemontski Čokoladni Puding)",
       "Macedonia di Frutta": "(Svježa Voćna Salata)",
       "Assortimento Misto dei Dolci": "(Mješoviti Pladanj Deserata)"
-    }
+    },
+    "numero_tavolo": "🪑 Broj Stola",
+    "seleziona_tavolo_opt": "-- Odaberite Stol --",
+    "invia_ordine": "📤 Pošalji Narudžbu",
+    "mostra_cameriere": "📲 Pokaži Konobaru",
+    "ultimo_ordine_label": "✅ Ovo je posljednja narudžba stola (nitko drugi više neće naručivati)",
+    "ordine_inviato_note": "✅ Narudžba poslana! Konobar će je uskoro primiti.",
+    "mostra_schermo_note": "Pokažite ovaj zaslon konobaru"
   },
   "sr": {
     "alla_carta": "А ла карт",
-    "turno": ["1. Јело", "2. Јело", "3. Јело", "4. Јело"],
+    "turno": [
+      "1. Јело",
+      "2. Јело",
+      "3. Јело",
+      "4. Јело"
+    ],
     "sub_multi": "Изаберите {n} јела за сваку особу",
     "name_ph": "Име (опционо)",
     "con_alcol": "🍷 Са Алкохолом",
@@ -767,7 +842,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Кобасица"
     },
     "pkg_section_scelta": "Јела по избору",
-    "cottura": ["🔴 Крваво", "🟠 Врло Крваво", "🟡 Средње Печено", "✅ Добро Печено"],
+    "cottura": [
+      "🔴 Крваво",
+      "🟠 Врло Крваво",
+      "🟡 Средње Печено",
+      "✅ Добро Печено"
+    ],
     "subtitle": "✦ РЕСТОРАН ✦",
     "cat_menu": "🍽️ Наши Менији",
     "cat_antipasti": "🥗 Предјела à la Carte",
@@ -913,11 +993,23 @@ window.I18N_PATCH = {
       "Bunet": "(Пијемонтски Чоколадни Пудинг)",
       "Macedonia di Frutta": "(Свежа Воћна Салата)",
       "Assortimento Misto dei Dolci": "(Мешовити Тањир Дезерата)"
-    }
+    },
+    "numero_tavolo": "🪑 Број Стола",
+    "seleziona_tavolo_opt": "-- Изаберите Сто --",
+    "invia_ordine": "📤 Пошаљи Наруџбину",
+    "mostra_cameriere": "📲 Покажи Конобару",
+    "ultimo_ordine_label": "✅ Ово је последња наруџбина стола (нико други неће наручивати)",
+    "ordine_inviato_note": "✅ Наруџбина послата! Конобар ће је ускоро примити.",
+    "mostra_schermo_note": "Покажите овај екран конобару"
   },
   "sl": {
     "alla_carta": "À la carte",
-    "turno": ["1. Jed", "2. Jed", "3. Jed", "4. Jed"],
+    "turno": [
+      "1. Jed",
+      "2. Jed",
+      "3. Jed",
+      "4. Jed"
+    ],
     "sub_multi": "Izberite {n} jedi za vsako osebo",
     "name_ph": "Ime (neobvezno)",
     "con_alcol": "🍷 Z Alkoholom",
@@ -958,7 +1050,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Klobasa"
     },
     "pkg_section_scelta": "Jedi po izbiri",
-    "cottura": ["🔴 Krvavo", "🟠 Zelo Krvavo", "🟡 Srednje Pečeno", "✅ Dobro Pečeno"],
+    "cottura": [
+      "🔴 Krvavo",
+      "🟠 Zelo Krvavo",
+      "🟡 Srednje Pečeno",
+      "✅ Dobro Pečeno"
+    ],
     "subtitle": "✦ RESTAVRACIJA ✦",
     "cat_menu": "🍽️ Naši Jedilniki",
     "cat_antipasti": "🥗 Predjedi à la Carte",
@@ -1104,7 +1201,14 @@ window.I18N_PATCH = {
       "Bunet": "(Piemontski Čokoladni Puding)",
       "Macedonia di Frutta": "(Sveža Sadna Solata)",
       "Assortimento Misto dei Dolci": "(Mešani Krožnik Sladic)"
-    }
+    },
+    "numero_tavolo": "🪑 Številka Mize",
+    "seleziona_tavolo_opt": "-- Izberite Mizo --",
+    "invia_ordine": "📤 Pošlji Naročilo",
+    "mostra_cameriere": "📲 Pokaži Natakarju",
+    "ultimo_ordine_label": "✅ To je zadnje naročilo mize (nihče drug ne bo več naročal)",
+    "ordine_inviato_note": "✅ Naročilo poslano! Natakar ga bo kmalu prejel.",
+    "mostra_schermo_note": "Pokažite ta zaslon natakarju"
   },
   "ar": {
     "alla_carta": "قائمة الطعام",
@@ -1154,7 +1258,12 @@ window.I18N_PATCH = {
       "Salsiccia": "نقانق"
     },
     "pkg_section_scelta": "أطباق للاختيار",
-    "cottura": ["🔴 نيء قليلاً", "🟠 نيء جداً", "🟡 متوسط النضج", "✅ ناضج جيداً"],
+    "cottura": [
+      "🔴 نيء قليلاً",
+      "🟠 نيء جداً",
+      "🟡 متوسط النضج",
+      "✅ ناضج جيداً"
+    ],
     "subtitle": "✦ مطعم ✦",
     "tab_primi": "🍝 الطبق الأول",
     "cat_menu": "🍽️ قوائم الطعام لدينا",
@@ -1300,7 +1409,14 @@ window.I18N_PATCH = {
       "Bunet": "(بودينغ الشوكولاتة البيمونتي)",
       "Macedonia di Frutta": "(سلطة فواكه طازجة)",
       "Assortimento Misto dei Dolci": "(تشكيلة حلويات مشكلة)"
-    }
+    },
+    "numero_tavolo": "🪑 رقم الطاولة",
+    "seleziona_tavolo_opt": "-- اختر الطاولة --",
+    "invia_ordine": "📤 إرسال الطلب",
+    "mostra_cameriere": "📲 إظهار للنادل",
+    "ultimo_ordine_label": "✅ هذا آخر طلب لهذه الطاولة (لن يطلب أحد آخر)",
+    "ordine_inviato_note": "✅ تم إرسال الطلب! سيستلمه النادل قريبًا.",
+    "mostra_schermo_note": "أظهر هذه الشاشة للنادل"
   },
   "zh-CN": {
     "alla_carta": "单点菜品",
@@ -1339,7 +1455,12 @@ window.I18N_PATCH = {
       "Salsiccia": "香肠"
     },
     "pkg_section_scelta": "可选菜品",
-    "cottura": ["🔴 三分熟", "🟠 一分熟", "🟡 五分熟", "✅ 全熟"],
+    "cottura": [
+      "🔴 三分熟",
+      "🟠 一分熟",
+      "🟡 五分熟",
+      "✅ 全熟"
+    ],
     "subtitle": "✦ 餐厅 ✦",
     "tab_primi": "🍝 头盘",
     "cat_menu": "🍽️ 我们的套餐",
@@ -1502,7 +1623,14 @@ window.I18N_PATCH = {
       "Bunet": "(皮埃蒙特巧克力布丁)",
       "Macedonia di Frutta": "(新鲜水果沙拉)",
       "Assortimento Misto dei Dolci": "(什锦甜点拼盘)"
-    }
+    },
+    "numero_tavolo": "🪑 桌号",
+    "seleziona_tavolo_opt": "-- 请选择桌号 --",
+    "invia_ordine": "📤 发送订单",
+    "mostra_cameriere": "📲 展示给服务员",
+    "ultimo_ordine_label": "✅ 这是本桌的最后一份订单（不会再有人点餐）",
+    "ordine_inviato_note": "✅ 订单已发送！服务员将很快收到。",
+    "mostra_schermo_note": "请将此屏幕展示给服务员"
   },
   "ja": {
     "alla_carta": "アラカルト",
@@ -1542,7 +1670,12 @@ window.I18N_PATCH = {
       "Salsiccia": "ソーセージ"
     },
     "pkg_section_scelta": "選べる料理",
-    "cottura": ["🔴 レア", "🟠 ブルー(超レア)", "🟡 ミディアム", "✅ ウェルダン"],
+    "cottura": [
+      "🔴 レア",
+      "🟠 ブルー(超レア)",
+      "🟡 ミディアム",
+      "✅ ウェルダン"
+    ],
     "subtitle": "✦ レストラン ✦",
     "tab_primi": "🍝 プリモ",
     "cat_menu": "🍽️ コースメニュー",
@@ -1705,7 +1838,14 @@ window.I18N_PATCH = {
       "Bunet": "(ピエモンテ風チョコレートプリン)",
       "Macedonia di Frutta": "(フレッシュフルーツサラダ)",
       "Assortimento Misto dei Dolci": "(デザート盛り合わせ)"
-    }
+    },
+    "numero_tavolo": "🪑 テーブル番号",
+    "seleziona_tavolo_opt": "-- テーブルを選択 --",
+    "invia_ordine": "📤 注文を送信",
+    "mostra_cameriere": "📲 ウェイターに見せる",
+    "ultimo_ordine_label": "✅ これがこのテーブルの最後の注文です（他に注文する人はいません）",
+    "ordine_inviato_note": "✅ 注文が送信されました！ウェイターがまもなく受け取ります。",
+    "mostra_schermo_note": "この画面をウェイターに見せてください"
   },
   "ko": {
     "alla_carta": "아라카르트",
@@ -1745,7 +1885,12 @@ window.I18N_PATCH = {
       "Salsiccia": "소시지"
     },
     "pkg_section_scelta": "선택 요리",
-    "cottura": ["🔴 레어", "🟠 블루(초레어)", "🟡 미디엄", "✅ 웰던"],
+    "cottura": [
+      "🔴 레어",
+      "🟠 블루(초레어)",
+      "🟡 미디엄",
+      "✅ 웰던"
+    ],
     "subtitle": "✦ 레스토랑 ✦",
     "tab_primi": "🍝 첫 번째 코스",
     "cat_menu": "🍽️ 저희 메뉴",
@@ -1908,7 +2053,14 @@ window.I18N_PATCH = {
       "Bunet": "(피에몬테식 초콜릿 푸딩)",
       "Macedonia di Frutta": "(신선한 과일 샐러드)",
       "Assortimento Misto dei Dolci": "(디저트 모둠 플래터)"
-    }
+    },
+    "numero_tavolo": "🪑 테이블 번호",
+    "seleziona_tavolo_opt": "-- 테이블 선택 --",
+    "invia_ordine": "📤 주문 보내기",
+    "mostra_cameriere": "📲 웨이터에게 보여주기",
+    "ultimo_ordine_label": "✅ 이것이 이 테이블의 마지막 주문입니다 (더 이상 주문할 사람이 없습니다)",
+    "ordine_inviato_note": "✅ 주문이 전송되었습니다! 웨이터가 곧 받을 것입니다.",
+    "mostra_schermo_note": "이 화면을 웨이터에게 보여주세요"
   },
   "hi": {
     "alla_carta": "अ ला कार्टे",
@@ -1924,7 +2076,12 @@ window.I18N_PATCH = {
     "vino_prompt": "कितनी बोतलें?",
     "vino_name": "हाउस वाइन",
     "vino_detail": "वाइन सूची से चुनें",
-    "turno": ["1ला व्यंजन", "2रा व्यंजन", "3रा व्यंजन", "4था व्यंजन"],
+    "turno": [
+      "1ला व्यंजन",
+      "2रा व्यंजन",
+      "3रा व्यंजन",
+      "4था व्यंजन"
+    ],
     "wine_full_list": "🍷 डिजिटल वाइन लिस्ट के लिए यहाँ क्लिक करें➔",
     "wines": {
       "Vino Rosso della Casa": "हाउस रेड वाइन",
@@ -1952,7 +2109,12 @@ window.I18N_PATCH = {
       "Salsiccia": "सॉसेज"
     },
     "pkg_section_scelta": "चुनने के लिए व्यंजन",
-    "cottura": ["🔴 अधपका (रेयर)", "🟠 अत्यधिक अधपका", "🟡 मीडियम", "✅ पूरी तरह पका"],
+    "cottura": [
+      "🔴 अधपका (रेयर)",
+      "🟠 अत्यधिक अधपका",
+      "🟡 मीडियम",
+      "✅ पूरी तरह पका"
+    ],
     "subtitle": "✦ रेस्तरां ✦",
     "tab_primi": "🍝 पहला कोर्स",
     "tab_contorni": "🥦 साइड डिश",
@@ -2101,7 +2263,14 @@ window.I18N_PATCH = {
       "Bunet": "(पीडमॉन्ट चॉकलेट पुडिंग)",
       "Macedonia di Frutta": "(ताज़ा फल सलाद)",
       "Assortimento Misto dei Dolci": "(मिक्स मिठाई प्लेटर)"
-    }
+    },
+    "numero_tavolo": "🪑 टेबल नंबर",
+    "seleziona_tavolo_opt": "-- टेबल चुनें --",
+    "invia_ordine": "📤 ऑर्डर भेजें",
+    "mostra_cameriere": "📲 वेटर को दिखाएं",
+    "ultimo_ordine_label": "✅ यह टेबल का अंतिम ऑर्डर है (अब कोई और ऑर्डर नहीं करेगा)",
+    "ordine_inviato_note": "✅ ऑर्डर भेज दिया गया! वेटर जल्द ही इसे प्राप्त करेगा।",
+    "mostra_schermo_note": "यह स्क्रीन वेटर को दिखाएं"
   },
   "bn": {
     "alla_carta": "আ লা কার্ট",
@@ -2117,7 +2286,12 @@ window.I18N_PATCH = {
     "vino_prompt": "কয়টি বোতল?",
     "vino_name": "হাউস ওয়াইন",
     "vino_detail": "ওয়াইন তালিকা থেকে বেছে নিন",
-    "turno": ["১ম কোর্স", "২য় কোর্স", "৩য় কোর্স", "৪র্থ কোর্স"],
+    "turno": [
+      "১ম কোর্স",
+      "২য় কোর্স",
+      "৩য় কোর্স",
+      "৪র্থ কোর্স"
+    ],
     "wine_full_list": "🍷 ডিজিটাল ওয়াইন তালিকার জন্য এখানে ক্লিক করুন➔",
     "wines": {
       "Vino Rosso della Casa": "হাউস রেড ওয়াইন",
@@ -2145,7 +2319,12 @@ window.I18N_PATCH = {
       "Salsiccia": "সসেজ"
     },
     "pkg_section_scelta": "পছন্দের খাবার",
-    "cottura": ["🔴 হালকা রান্না (রেয়ার)", "🟠 অতি হালকা রান্না", "🟡 মাঝারি রান্না", "✅ পুরোপুরি রান্না"],
+    "cottura": [
+      "🔴 হালকা রান্না (রেয়ার)",
+      "🟠 অতি হালকা রান্না",
+      "🟡 মাঝারি রান্না",
+      "✅ পুরোপুরি রান্না"
+    ],
     "subtitle": "✦ রেস্তোরাঁ ✦",
     "tab_primi": "🍝 প্রথম কোর্স",
     "tab_contorni": "🥦 সাইড ডিশ",
@@ -2294,7 +2473,14 @@ window.I18N_PATCH = {
       "Bunet": "(পিয়েমন্তে চকোলেট পুডিং)",
       "Macedonia di Frutta": "(তাজা ফলের সালাদ)",
       "Assortimento Misto dei Dolci": "(মিশ্র মিষ্টির প্ল্যাটার)"
-    }
+    },
+    "numero_tavolo": "🪑 টেবিল নাম্বার",
+    "seleziona_tavolo_opt": "-- টেবিল সিলেক্ট করুন --",
+    "invia_ordine": "📤 অর্ডার পাঠান",
+    "mostra_cameriere": "📲 ওয়েটারকে দেখান",
+    "ultimo_ordine_label": "✅ এটি টেবিলের শেষ অর্ডার (আর কেউ অর্ডার করবে না)",
+    "ordine_inviato_note": "✅ অর্ডার পাঠানো হয়েছে! ওয়েটার শীঘ্রই এটি পাবেন।",
+    "mostra_schermo_note": "এই স্ক্রিনটি ওয়েটারকে দেখান"
   },
   "ur": {
     "alla_carta": "آلا کارٹ",
@@ -2310,7 +2496,12 @@ window.I18N_PATCH = {
     "vino_prompt": "کتنی بوتلیں؟",
     "vino_name": "ہاؤس وائن",
     "vino_detail": "وائن لسٹ سے منتخب کریں",
-    "turno": ["پہلا کورس", "دوسرا کورس", "تیسرا کورس", "چوتھا کورس"],
+    "turno": [
+      "پہلا کورس",
+      "دوسرا کورس",
+      "تیسرا کورس",
+      "چوتھا کورس"
+    ],
     "wine_full_list": "🍷 ڈیجیٹل وائن لسٹ کے لیے یہاں کلک کریں➔",
     "wines": {
       "Vino Rosso della Casa": "ہاؤس ریڈ وائن",
@@ -2338,7 +2529,12 @@ window.I18N_PATCH = {
       "Salsiccia": "ساسیج"
     },
     "pkg_section_scelta": "انتخاب کے لیے کھانے",
-    "cottura": ["🔴 ہلکا پکا ہوا", "🟠 بہت ہلکا پکا", "🟡 درمیانہ پکا", "✅ اچھی طرح پکا"],
+    "cottura": [
+      "🔴 ہلکا پکا ہوا",
+      "🟠 بہت ہلکا پکا",
+      "🟡 درمیانہ پکا",
+      "✅ اچھی طرح پکا"
+    ],
     "subtitle": "✦ ریستوران ✦",
     "tab_primi": "🍝 پہلا کورس",
     "tab_contorni": "🥦 سائیڈ ڈش",
@@ -2487,7 +2683,14 @@ window.I18N_PATCH = {
       "Bunet": "(پیڈمونٹ چاکلیٹ پڈنگ)",
       "Macedonia di Frutta": "(تازہ پھلوں کا سلاد)",
       "Assortimento Misto dei Dolci": "(مکسڈ مٹھائیوں کا پلیٹر)"
-    }
+    },
+    "numero_tavolo": "🪑 میز نمبر",
+    "seleziona_tavolo_opt": "-- میز منتخب کریں --",
+    "invia_ordine": "📤 آرڈر بھیجیں",
+    "mostra_cameriere": "📲 ویٹر کو دکھائیں",
+    "ultimo_ordine_label": "✅ یہ میز کا آخری آرڈر ہے (اب کوئی اور آرڈر نہیں کرے گا)",
+    "ordine_inviato_note": "✅ آرڈر بھیج دیا گیا! ویٹر جلد ہی اسے وصول کرے گا۔",
+    "mostra_schermo_note": "یہ اسکرین ویٹر کو دکھائیں"
   },
   "fa": {
     "alla_carta": "آلاکارت",
@@ -2503,7 +2706,12 @@ window.I18N_PATCH = {
     "vino_prompt": "چند بطری؟",
     "vino_name": "شراب خانگی",
     "vino_detail": "از لیست شراب انتخاب شود",
-    "turno": ["غذای اول", "غذای دوم", "غذای سوم", "غذای چهارم"],
+    "turno": [
+      "غذای اول",
+      "غذای دوم",
+      "غذای سوم",
+      "غذای چهارم"
+    ],
     "wine_full_list": "🍷 برای لیست شراب دیجیتال اینجا کلیک کنید➔",
     "wines": {
       "Vino Rosso della Casa": "شراب قرمز خانگی",
@@ -2531,7 +2739,12 @@ window.I18N_PATCH = {
       "Salsiccia": "سوسیس"
     },
     "pkg_section_scelta": "غذاهای انتخابی",
-    "cottura": ["🔴 کم‌پز", "🟠 خیلی کم‌پز", "🟡 متوسط", "✅ کاملاً پخته"],
+    "cottura": [
+      "🔴 کم‌پز",
+      "🟠 خیلی کم‌پز",
+      "🟡 متوسط",
+      "✅ کاملاً پخته"
+    ],
     "subtitle": "✦ رستوران ✦",
     "tab_primi": "🍝 دوره اول",
     "tab_contorni": "🥦 پیش‌غذای فرعی",
@@ -2680,7 +2893,14 @@ window.I18N_PATCH = {
       "Bunet": "(پودینگ شکلاتی پیمونته)",
       "Macedonia di Frutta": "(سالاد میوه تازه)",
       "Assortimento Misto dei Dolci": "(بشقاب دسر مخلوط)"
-    }
+    },
+    "numero_tavolo": "🪑 شماره میز",
+    "seleziona_tavolo_opt": "-- میز را انتخاب کنید --",
+    "invia_ordine": "📤 ارسال سفارش",
+    "mostra_cameriere": "📲 نمایش به پیشخدمت",
+    "ultimo_ordine_label": "✅ این آخرین سفارش این میز است (دیگر کسی سفارش نمی‌دهد)",
+    "ordine_inviato_note": "✅ سفارش ارسال شد! پیشخدمت به‌زودی آن را دریافت می‌کند.",
+    "mostra_schermo_note": "این صفحه را به پیشخدمت نشان دهید"
   },
   "es": {
     "alla_carta": "A la Carta",
@@ -2715,7 +2935,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Salchicha"
     },
     "pkg_section_scelta": "Platos a elegir",
-    "cottura": ["🔴 Poco Hecho", "🟠 Muy Poco Hecho", "🟡 Al Punto", "✅ Bien Hecho"],
+    "cottura": [
+      "🔴 Poco Hecho",
+      "🟠 Muy Poco Hecho",
+      "🟡 Al Punto",
+      "✅ Bien Hecho"
+    ],
     "subtitle": "✦ RESTAURANTE ✦",
     "cat_antipasti": "🥗 Entrantes",
     "cat_primi": "🍝 Primeros Platos",
@@ -2879,7 +3104,14 @@ window.I18N_PATCH = {
       "Bunet": "(Pudin de Chocolate Piamontés)",
       "Macedonia di Frutta": "(Macedonia de Frutas)",
       "Assortimento Misto dei Dolci": "(Tabla Mixta de Postres)"
-    }
+    },
+    "numero_tavolo": "🪑 Número de Mesa",
+    "seleziona_tavolo_opt": "-- Selecciona Mesa --",
+    "invia_ordine": "📤 Enviar Pedido",
+    "mostra_cameriere": "📲 Mostrar al Camarero",
+    "ultimo_ordine_label": "✅ Este es el último pedido de la mesa (nadie más necesita pedir)",
+    "ordine_inviato_note": "✅ ¡Pedido enviado! El camarero lo recibirá en breve.",
+    "mostra_schermo_note": "Muestra esta pantalla al camarero"
   },
   "pt": {
     "alla_carta": "À la Carte",
@@ -2914,7 +3146,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Salsicha"
     },
     "pkg_section_scelta": "Pratos à escolha",
-    "cottura": ["🔴 Mal Passado", "🟠 Muito Mal Passado", "🟡 Ao Ponto", "✅ Bem Passado"],
+    "cottura": [
+      "🔴 Mal Passado",
+      "🟠 Muito Mal Passado",
+      "🟡 Ao Ponto",
+      "✅ Bem Passado"
+    ],
     "subtitle": "✦ RESTAURANTE ✦",
     "cat_antipasti": "🥗 Entradas",
     "cat_primi": "🍝 Primeiros Pratos",
@@ -3078,7 +3315,14 @@ window.I18N_PATCH = {
       "Bunet": "(Pudim de Chocolate Piemontês)",
       "Macedonia di Frutta": "(Salada de Frutas Frescas)",
       "Assortimento Misto dei Dolci": "(Tábua Mista de Sobremesas)"
-    }
+    },
+    "numero_tavolo": "🪑 Número da Mesa",
+    "seleziona_tavolo_opt": "-- Selecione a Mesa --",
+    "invia_ordine": "📤 Enviar Pedido",
+    "mostra_cameriere": "📲 Mostrar ao Garçom",
+    "ultimo_ordine_label": "✅ Este é o último pedido da mesa (mais ninguém precisa pedir)",
+    "ordine_inviato_note": "✅ Pedido enviado! O garçom o receberá em breve.",
+    "mostra_schermo_note": "Mostre esta tela ao garçom"
   },
   "ru": {
     "alla_carta": "А-ля карт",
@@ -3113,7 +3357,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Колбаска"
     },
     "pkg_section_scelta": "Блюда на выбор",
-    "cottura": ["🔴 С Кровью", "🟠 Очень Слабой Прожарки", "🟡 Средней Прожарки", "✅ Хорошо Прожаренный"],
+    "cottura": [
+      "🔴 С Кровью",
+      "🟠 Очень Слабой Прожарки",
+      "🟡 Средней Прожарки",
+      "✅ Хорошо Прожаренный"
+    ],
     "subtitle": "✦ РЕСТОРАН ✦",
     "cat_antipasti": "🥗 Закуски",
     "cat_primi": "🍝 Первые Блюда",
@@ -3277,7 +3526,14 @@ window.I18N_PATCH = {
       "Bunet": "(Пьемонтский Шоколадный Пудинг)",
       "Macedonia di Frutta": "(Свежий Фруктовый Салат)",
       "Assortimento Misto dei Dolci": "(Ассорти Десертов)"
-    }
+    },
+    "numero_tavolo": "🪑 Номер столика",
+    "seleziona_tavolo_opt": "-- Выберите столик --",
+    "invia_ordine": "📤 Отправить заказ",
+    "mostra_cameriere": "📲 Показать официанту",
+    "ultimo_ordine_label": "✅ Это последний заказ за столиком (больше никто не будет заказывать)",
+    "ordine_inviato_note": "✅ Заказ отправлен! Официант скоро его получит.",
+    "mostra_schermo_note": "Покажите этот экран официанту"
   },
   "nl": {
     "alla_carta": "À la carte",
@@ -3312,7 +3568,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Worst"
     },
     "pkg_section_scelta": "Gerechten naar keuze",
-    "cottura": ["🔴 Rood (Rare)", "🟠 Zeer Rood (Blue)", "🟡 Medium", "✅ Doorbakken"],
+    "cottura": [
+      "🔴 Rood (Rare)",
+      "🟠 Zeer Rood (Blue)",
+      "🟡 Medium",
+      "✅ Doorbakken"
+    ],
     "subtitle": "✦ RESTAURANT ✦",
     "cat_antipasti": "🥗 Voorgerechten à la Carte",
     "cat_primi": "🍝 Eerste Gangen",
@@ -3476,7 +3737,14 @@ window.I18N_PATCH = {
       "Bunet": "(Piemontese Chocoladepudding)",
       "Macedonia di Frutta": "(Verse Fruitsalade)",
       "Assortimento Misto dei Dolci": "(Gemengde Dessertplank)"
-    }
+    },
+    "numero_tavolo": "🪑 Tafelnummer",
+    "seleziona_tavolo_opt": "-- Selecteer Tafel --",
+    "invia_ordine": "📤 Bestelling Versturen",
+    "mostra_cameriere": "📲 Aan Ober Tonen",
+    "ultimo_ordine_label": "✅ Dit is de laatste bestelling van de tafel (niemand anders hoeft nog te bestellen)",
+    "ordine_inviato_note": "✅ Bestelling verzonden! De ober ontvangt deze binnenkort.",
+    "mostra_schermo_note": "Toon dit scherm aan de ober"
   },
   "pl": {
     "alla_carta": "À la carte",
@@ -3511,7 +3779,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Kiełbaska"
     },
     "pkg_section_scelta": "Dania do wyboru",
-    "cottura": ["🔴 Krwisty", "🟠 Bardzo Krwisty", "🟡 Średnio Wysmażony", "✅ Dobrze Wysmażony"],
+    "cottura": [
+      "🔴 Krwisty",
+      "🟠 Bardzo Krwisty",
+      "🟡 Średnio Wysmażony",
+      "✅ Dobrze Wysmażony"
+    ],
     "subtitle": "✦ RESTAURACJA ✦",
     "cat_antipasti": "🥗 Przystawki à la carte",
     "cat_primi": "🍝 Pierwsze Dania",
@@ -3675,7 +3948,14 @@ window.I18N_PATCH = {
       "Bunet": "(Piemoncki Pudding Czekoladowy)",
       "Macedonia di Frutta": "(Świeża Sałatka Owocowa)",
       "Assortimento Misto dei Dolci": "(Talerz Deserów)"
-    }
+    },
+    "numero_tavolo": "🪑 Numer Stolika",
+    "seleziona_tavolo_opt": "-- Wybierz Stolik --",
+    "invia_ordine": "📤 Wyślij Zamówienie",
+    "mostra_cameriere": "📲 Pokaż Kelnerowi",
+    "ultimo_ordine_label": "✅ To jest ostatnie zamówienie przy stoliku (nikt inny nie musi już zamawiać)",
+    "ordine_inviato_note": "✅ Zamówienie wysłane! Kelner otrzyma je wkrótce.",
+    "mostra_schermo_note": "Pokaż ten ekran kelnerowi"
   },
   "uk": {
     "alla_carta": "А-ля карт",
@@ -3710,7 +3990,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Ковбаска"
     },
     "pkg_section_scelta": "Страви на вибір",
-    "cottura": ["🔴 З Кров'ю", "🟠 Дуже Слабкої Прожарки", "🟡 Середньої Прожарки", "✅ Добре Прожарений"],
+    "cottura": [
+      "🔴 З Кров'ю",
+      "🟠 Дуже Слабкої Прожарки",
+      "🟡 Середньої Прожарки",
+      "✅ Добре Прожарений"
+    ],
     "subtitle": "✦ РЕСТОРАН ✦",
     "cat_antipasti": "🥗 Закуски",
     "cat_primi": "🍝 Перші Страви",
@@ -3874,7 +4159,14 @@ window.I18N_PATCH = {
       "Bunet": "(П'ємонтський Шоколадний Пудинг)",
       "Macedonia di Frutta": "(Свіжий Фруктовий Салат)",
       "Assortimento Misto dei Dolci": "(Асорті Десертів)"
-    }
+    },
+    "numero_tavolo": "🪑 Номер столика",
+    "seleziona_tavolo_opt": "-- Виберіть столик --",
+    "invia_ordine": "📤 Надіслати замовлення",
+    "mostra_cameriere": "📲 Показати офіціанту",
+    "ultimo_ordine_label": "✅ Це останнє замовлення за столиком (більше ніхто не замовлятиме)",
+    "ordine_inviato_note": "✅ Замовлення надіслано! Офіціант скоро його отримає.",
+    "mostra_schermo_note": "Покажіть цей екран офіціанту"
   },
   "ro": {
     "alla_carta": "À la carte",
@@ -3909,7 +4201,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Cârnat"
     },
     "pkg_section_scelta": "Feluri la alegere",
-    "cottura": ["🔴 În Sânge", "🟠 Foarte În Sânge", "🟡 Mediu", "✅ Bine Făcut"],
+    "cottura": [
+      "🔴 În Sânge",
+      "🟠 Foarte În Sânge",
+      "🟡 Mediu",
+      "✅ Bine Făcut"
+    ],
     "subtitle": "✦ RESTAURANT ✦",
     "cat_antipasti": "🥗 Aperitive",
     "cat_primi": "🍝 Feluri Întâi",
@@ -4073,7 +4370,14 @@ window.I18N_PATCH = {
       "Bunet": "(Budincă de Ciocolată Piemonteză)",
       "Macedonia di Frutta": "(Salată de Fructe Proaspete)",
       "Assortimento Misto dei Dolci": "(Platou Mixt de Deserturi)"
-    }
+    },
+    "numero_tavolo": "🪑 Numărul Mesei",
+    "seleziona_tavolo_opt": "-- Selectați Masa --",
+    "invia_ordine": "📤 Trimite Comanda",
+    "mostra_cameriere": "📲 Arată Ospătarului",
+    "ultimo_ordine_label": "✅ Aceasta este ultima comandă a mesei (nimeni altcineva nu mai comandă)",
+    "ordine_inviato_note": "✅ Comandă trimisă! Ospătarul o va primi în curând.",
+    "mostra_schermo_note": "Arătați acest ecran ospătarului"
   },
   "sv": {
     "alla_carta": "À la carte",
@@ -4108,7 +4412,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Korv"
     },
     "pkg_section_scelta": "Rätter att välja",
-    "cottura": ["🔴 Blodig", "🟠 Mycket Blodig", "🟡 Medium", "✅ Genomstekt"],
+    "cottura": [
+      "🔴 Blodig",
+      "🟠 Mycket Blodig",
+      "🟡 Medium",
+      "✅ Genomstekt"
+    ],
     "subtitle": "✦ RESTAURANG ✦",
     "cat_antipasti": "🥗 Förrätter",
     "cat_primi": "🍝 Förstarätter",
@@ -4272,7 +4581,14 @@ window.I18N_PATCH = {
       "Bunet": "(Piemontesisk Chokladpudding)",
       "Macedonia di Frutta": "(Färsk Fruktsallad)",
       "Assortimento Misto dei Dolci": "(Blandad Dessertbricka)"
-    }
+    },
+    "numero_tavolo": "🪑 Bordsnummer",
+    "seleziona_tavolo_opt": "-- Välj Bord --",
+    "invia_ordine": "📤 Skicka Beställning",
+    "mostra_cameriere": "📲 Visa för Servitören",
+    "ultimo_ordine_label": "✅ Detta är bordets sista beställning (ingen mer behöver beställa)",
+    "ordine_inviato_note": "✅ Beställning skickad! Servitören får den strax.",
+    "mostra_schermo_note": "Visa denna skärm för servitören"
   },
   "da": {
     "alla_carta": "À la carte",
@@ -4307,7 +4623,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Pølse"
     },
     "pkg_section_scelta": "Retter at vælge",
-    "cottura": ["🔴 Rød (Rare)", "🟠 Meget Rød (Blue)", "🟡 Medium", "✅ Gennemstegt"],
+    "cottura": [
+      "🔴 Rød (Rare)",
+      "🟠 Meget Rød (Blue)",
+      "🟡 Medium",
+      "✅ Gennemstegt"
+    ],
     "subtitle": "✦ RESTAURANT ✦",
     "cat_antipasti": "🥗 Forretter",
     "cat_primi": "🍝 Første Retter",
@@ -4471,7 +4792,14 @@ window.I18N_PATCH = {
       "Bunet": "(Piemontesisk Chokoladebudding)",
       "Macedonia di Frutta": "(Frisk Frugtsalat)",
       "Assortimento Misto dei Dolci": "(Blandet Dessertbræt)"
-    }
+    },
+    "numero_tavolo": "🪑 Bordnummer",
+    "seleziona_tavolo_opt": "-- Vælg Bord --",
+    "invia_ordine": "📤 Send Bestilling",
+    "mostra_cameriere": "📲 Vis til Tjeneren",
+    "ultimo_ordine_label": "✅ Dette er bordets sidste bestilling (ingen andre skal bestille)",
+    "ordine_inviato_note": "✅ Bestilling sendt! Tjeneren modtager den snart.",
+    "mostra_schermo_note": "Vis denne skærm til tjeneren"
   },
   "no": {
     "alla_carta": "À la carte",
@@ -4506,7 +4834,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Pølse"
     },
     "pkg_section_scelta": "Retter å velge",
-    "cottura": ["🔴 Rød (Rare)", "🟠 Veldig Rød (Blue)", "🟡 Medium", "✅ Gjennomstekt"],
+    "cottura": [
+      "🔴 Rød (Rare)",
+      "🟠 Veldig Rød (Blue)",
+      "🟡 Medium",
+      "✅ Gjennomstekt"
+    ],
     "subtitle": "✦ RESTAURANT ✦",
     "cat_antipasti": "🥗 Forretter",
     "cat_primi": "🍝 Første Retter",
@@ -4670,7 +5003,14 @@ window.I18N_PATCH = {
       "Bunet": "(Piemontesisk Sjokoladepudding)",
       "Macedonia di Frutta": "(Fersk Fruktsalat)",
       "Assortimento Misto dei Dolci": "(Blandet Dessertfat)"
-    }
+    },
+    "numero_tavolo": "🪑 Bordnummer",
+    "seleziona_tavolo_opt": "-- Velg Bord --",
+    "invia_ordine": "📤 Send Bestilling",
+    "mostra_cameriere": "📲 Vis til Servitøren",
+    "ultimo_ordine_label": "✅ Dette er bordets siste bestilling (ingen andre skal bestille)",
+    "ordine_inviato_note": "✅ Bestilling sendt! Servitøren mottar den snart.",
+    "mostra_schermo_note": "Vis denne skjermen til servitøren"
   },
   "fi": {
     "alla_carta": "À la carte",
@@ -4705,7 +5045,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Makkara"
     },
     "pkg_section_scelta": "Valittavat ruokalajit",
-    "cottura": ["🔴 Punainen (Rare)", "🟠 Erittäin Punainen (Blue)", "🟡 Medium", "✅ Kypsä"],
+    "cottura": [
+      "🔴 Punainen (Rare)",
+      "🟠 Erittäin Punainen (Blue)",
+      "🟡 Medium",
+      "✅ Kypsä"
+    ],
     "subtitle": "✦ RAVINTOLA ✦",
     "cat_antipasti": "🥗 Alkuruoat",
     "cat_primi": "🍝 Ensimmäiset Ruokalajit",
@@ -4869,7 +5214,14 @@ window.I18N_PATCH = {
       "Bunet": "(Piemontelainen Suklaavanukas)",
       "Macedonia di Frutta": "(Tuore Hedelmäsalaatti)",
       "Assortimento Misto dei Dolci": "(Sekajälkiruokalautanen)"
-    }
+    },
+    "numero_tavolo": "🪑 Pöydän Numero",
+    "seleziona_tavolo_opt": "-- Valitse Pöytä --",
+    "invia_ordine": "📤 Lähetä Tilaus",
+    "mostra_cameriere": "📲 Näytä Tarjoilijalle",
+    "ultimo_ordine_label": "✅ Tämä on pöydän viimeinen tilaus (kukaan muu ei tilaa enää)",
+    "ordine_inviato_note": "✅ Tilaus lähetetty! Tarjoilija saa sen pian.",
+    "mostra_schermo_note": "Näytä tämä näyttö tarjoilijalle"
   },
   "el": {
     "alla_carta": "Α λα καρτ",
@@ -4904,7 +5256,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Λουκάνικο"
     },
     "pkg_section_scelta": "Πιάτα προς Επιλογή",
-    "cottura": ["🔴 Μισοψημένο", "🟠 Πολύ Μισοψημένο", "🟡 Μέτρια Ψημένο", "✅ Καλοψημένο"],
+    "cottura": [
+      "🔴 Μισοψημένο",
+      "🟠 Πολύ Μισοψημένο",
+      "🟡 Μέτρια Ψημένο",
+      "✅ Καλοψημένο"
+    ],
     "subtitle": "✦ ΕΣΤΙΑΤΟΡΙΟ ✦",
     "cat_antipasti": "🥗 Ορεκτικά",
     "cat_primi": "🍝 Πρώτα Πιάτα",
@@ -5068,7 +5425,14 @@ window.I18N_PATCH = {
       "Bunet": "(Πιεμοντέζικη Σοκολατένια Πουτίγκα)",
       "Macedonia di Frutta": "(Φρέσκια Φρουτοσαλάτα)",
       "Assortimento Misto dei Dolci": "(Μικτό Πιάτο Επιδορπίων)"
-    }
+    },
+    "numero_tavolo": "🪑 Αριθμός Τραπεζιού",
+    "seleziona_tavolo_opt": "-- Επιλέξτε Τραπέζι --",
+    "invia_ordine": "📤 Αποστολή Παραγγελίας",
+    "mostra_cameriere": "📲 Εμφάνιση στον Σερβιτόρο",
+    "ultimo_ordine_label": "✅ Αυτή είναι η τελευταία παραγγελία του τραπεζιού (κανείς άλλος δεν θα παραγγείλει)",
+    "ordine_inviato_note": "✅ Η παραγγελία στάλθηκε! Ο σερβιτόρος θα την λάβει σύντομα.",
+    "mostra_schermo_note": "Δείξτε αυτήν την οθόνη στον σερβιτόρο"
   },
   "cs": {
     "alla_carta": "À la carte",
@@ -5103,7 +5467,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Klobása"
     },
     "pkg_section_scelta": "Jídla na výběr",
-    "cottura": ["🔴 Krvavé", "🟠 Velmi Krvavé", "🟡 Střední Propečení", "✅ Dobře Propečené"],
+    "cottura": [
+      "🔴 Krvavé",
+      "🟠 Velmi Krvavé",
+      "🟡 Střední Propečení",
+      "✅ Dobře Propečené"
+    ],
     "subtitle": "✦ RESTAURACE ✦",
     "cat_antipasti": "🥗 Předkrmy",
     "cat_primi": "🍝 První Chody",
@@ -5267,7 +5636,14 @@ window.I18N_PATCH = {
       "Bunet": "(Piemontský Čokoládový Puding)",
       "Macedonia di Frutta": "(Čerstvý Ovocný Salát)",
       "Assortimento Misto dei Dolci": "(Smíšený Talíř Dezertů)"
-    }
+    },
+    "numero_tavolo": "🪑 Číslo Stolu",
+    "seleziona_tavolo_opt": "-- Vyberte Stůl --",
+    "invia_ordine": "📤 Odeslat Objednávku",
+    "mostra_cameriere": "📲 Ukázat Číšníkovi",
+    "ultimo_ordine_label": "✅ Toto je poslední objednávka stolu (nikdo jiný už nebude objednávat)",
+    "ordine_inviato_note": "✅ Objednávka odeslána! Číšník ji brzy obdrží.",
+    "mostra_schermo_note": "Ukažte tuto obrazovku číšníkovi"
   },
   "hu": {
     "alla_carta": "À la carte",
@@ -5302,7 +5678,12 @@ window.I18N_PATCH = {
       "Salsiccia": "Kolbász"
     },
     "pkg_section_scelta": "Választható Fogások",
-    "cottura": ["🔴 Véres", "🟠 Nagyon Véres", "🟡 Közepesen Átsütött", "✅ Jól Átsütött"],
+    "cottura": [
+      "🔴 Véres",
+      "🟠 Nagyon Véres",
+      "🟡 Közepesen Átsütött",
+      "✅ Jól Átsütött"
+    ],
     "subtitle": "✦ ÉTTEREM ✦",
     "cat_antipasti": "🥗 Előételek",
     "cat_primi": "🍝 Első Fogások",
@@ -5466,7 +5847,14 @@ window.I18N_PATCH = {
       "Bunet": "(Piemonti Csokoládépuding)",
       "Macedonia di Frutta": "(Friss Gyümölcssaláta)",
       "Assortimento Misto dei Dolci": "(Vegyes Desszerttál)"
-    }
+    },
+    "numero_tavolo": "🪑 Asztal Száma",
+    "seleziona_tavolo_opt": "-- Válasszon Asztalt --",
+    "invia_ordine": "📤 Rendelés Küldése",
+    "mostra_cameriere": "📲 Mutasd a Pincérnek",
+    "ultimo_ordine_label": "✅ Ez az asztal utolsó rendelése (senki más nem rendel többé)",
+    "ordine_inviato_note": "✅ Rendelés elküldve! A pincér hamarosan megkapja.",
+    "mostra_schermo_note": "Mutassa ezt a képernyőt a pincérnek"
   },
   "vi": {
     "alla_carta": "Gọi Món",
@@ -5670,7 +6058,14 @@ window.I18N_PATCH = {
       "Bistecca": "Bít Tết",
       "Rostelle": "Cuộn Chiên",
       "Salsiccia": "Xúc Xích"
-    }
+    },
+    "numero_tavolo": "🪑 Số Bàn",
+    "seleziona_tavolo_opt": "-- Chọn Bàn --",
+    "invia_ordine": "📤 Gửi Đơn Hàng",
+    "mostra_cameriere": "📲 Hiển Thị Cho Phục Vụ",
+    "ultimo_ordine_label": "✅ Đây là đơn hàng cuối cùng của bàn (không ai khác sẽ đặt thêm)",
+    "ordine_inviato_note": "✅ Đơn hàng đã được gửi! Nhân viên phục vụ sẽ nhận được ngay.",
+    "mostra_schermo_note": "Hiển thị màn hình này cho nhân viên phục vụ"
   },
   "th": {
     "alla_carta": "อาลาคาร์ท",
@@ -5874,6 +6269,13 @@ window.I18N_PATCH = {
       "Bistecca": "สเต็ก",
       "Rostelle": "ม้วนทอด",
       "Salsiccia": "ไส้กรอก"
-    }
+    },
+    "numero_tavolo": "🪑 หมายเลขโต๊ะ",
+    "seleziona_tavolo_opt": "-- เลือกโต๊ะ --",
+    "invia_ordine": "📤 ส่งคำสั่งซื้อ",
+    "mostra_cameriere": "📲 แสดงให้พนักงานเสิร์ฟ",
+    "ultimo_ordine_label": "✅ นี่คือคำสั่งซื้อสุดท้ายของโต๊ะนี้ (จะไม่มีใครสั่งเพิ่มอีก)",
+    "ordine_inviato_note": "✅ ส่งคำสั่งซื้อแล้ว! พนักงานเสิร์ฟจะได้รับในไม่ช้า",
+    "mostra_schermo_note": "แสดงหน้าจอนี้ให้พนักงานเสิร์ฟดู"
   }
 };
