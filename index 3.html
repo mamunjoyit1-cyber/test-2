@@ -748,10 +748,8 @@ const PKG_CONFIG={
 const BAR_TRANS={
   'Caffè Espresso':{fr:'Café Espresso',en:'Espresso Coffee',de:'Espresso'},
   'Caffè Decaffeinato':{fr:'Café Décaféiné',en:'Decaf Coffee',de:'Entkoffeinierter Kaffee'},
-  "Caffè D'Orzo Piccolo":{fr:"Café d'Orge Petit",en:'Barley Coffee Small',de:'Gerstenkaffee Klein'},
-  "Caffè D'Orzo Grande":{fr:"Café d'Orge Grand",en:'Barley Coffee Large',de:'Gerstenkaffee Groß'},
-  'Caffè Ginseng Piccolo':{fr:'Café Ginseng Petit',en:'Ginseng Coffee Small',de:'Ginseng Kaffee Klein'},
-  'Caffè Ginseng Grande':{fr:'Café Ginseng Grand',en:'Ginseng Coffee Large',de:'Ginseng Kaffee Groß'},
+  "Caffè D'Orzo":{fr:"Café d'Orge",en:'Barley Coffee',de:'Gerstenkaffee'},
+  'Caffè Ginseng':{fr:'Café Ginseng',en:'Ginseng Coffee',de:'Ginseng Kaffee'},
   'Caffè Corretto':{fr:'Café Corretto',en:'Coffee with Grappa',de:'Kaffee mit Schnaps'},
   'Caffè Latte':{fr:'Café Latte',en:'Café Latte',de:'Café Latte'},
   'Latte Macchiato':{fr:'Latte Macchiato',en:'Latte Macchiato',de:'Latte Macchiato'},
@@ -792,14 +790,14 @@ function openBarItemPopup(id){
   const it=BAR_ITEMS[id];if(!it)return;
   barPopupItemId=id;barPopupFlavor=null;
   document.getElementById('popup-title').textContent=barLabel(it.name);
-  document.getElementById('popup-subtitle').textContent = it.popupType==='flavor' ? t('gusti_hint') : '';
+  document.getElementById('popup-subtitle').textContent = '';
   document.getElementById('popup-confirm').textContent=t('conferma_btn');
   const ap=document.getElementById('popup-add-person');if(ap)ap.style.display='none';
   const c=document.getElementById('popup-persons');
   c.innerHTML='';
   const div=document.createElement('div');div.className='person-row';
   if(it.popupType==='flavor'){
-    div.innerHTML='<div class="person-fields"><div class="sauce-label-sm">'+t('gusti_label')+'</div><div class="chip-group" id="bar-flavor-chips"></div></div>';
+    div.innerHTML='<div class="person-fields"><div class="sauce-label-sm">🧃 Gusto:</div><div class="chip-group" id="bar-flavor-chips"></div></div>';
   }else if(it.popupType==='note'){
     div.innerHTML='<div class="person-fields"><div class="sauce-label-sm">'+t('condimento_label')+'</div><textarea id="bar-note-input" class="name-input" rows="3" style="resize:vertical;"></textarea></div>';
   }
@@ -844,10 +842,8 @@ function closeAnyPopup(){ if(barPopupItemId){closeBarItemPopup();}else{closePopu
 const BAR_ITEMS={
   caffe_espresso:{name:'Caffè Espresso',price:1.50,sub:'caffetteria'},
   caffe_decaffeinato:{name:'Caffè Decaffeinato',price:1.80,sub:'caffetteria'},
-  caffe_orzo_piccolo:{name:"Caffè D'Orzo Piccolo",price:2.00,sub:'caffetteria'},
-  caffe_orzo_grande:{name:"Caffè D'Orzo Grande",price:2.50,sub:'caffetteria'},
-  caffe_ginseng_piccolo:{name:'Caffè Ginseng Piccolo',price:2.00,sub:'caffetteria'},
-  caffe_ginseng_grande:{name:'Caffè Ginseng Grande',price:3.00,sub:'caffetteria'},
+  caffe_orzo:{name:"Caffè D'Orzo",price:2.00,sub:'caffetteria'},
+  caffe_ginseng:{name:'Caffè Ginseng',price:2.50,sub:'caffetteria'},
   caffe_corretto:{name:'Caffè Corretto',price:2.50,sub:'caffetteria',popupType:'note'},
   cappuccino:{name:'Cappuccino',price:2.00,sub:'caffetteria',notrans:true},
   caffe_latte:{name:'Caffè Latte',price:2.50,sub:'caffetteria'},
