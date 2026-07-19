@@ -531,7 +531,7 @@ html body { margin-top: 0 !important; }
     <div id="popup-persons"></div>
     <button class="add-person-btn" id="popup-add-person" onclick="popupAddPerson()">+ Aggiungi persona</button>
     <button class="popup-confirm-btn not-ready" id="popup-confirm" onclick="popupConfirm()">✓ Conferma Ordine</button>
-    <span class="popup-cancel" onclick="closePopup()">Annulla / Cancel</span>
+    <span class="popup-cancel" onclick="closeAnyPopup()">Annulla / Cancel</span>
   </div>
 </div>
 
@@ -766,12 +766,9 @@ const BAR_TRANS={
   'Schweppes Lemon':{fr:'Schweppes Citron',en:'Schweppes Lemon',de:'Schweppes Lemon'},
   'Crodino':{fr:'Crodino',en:'Crodino',de:'Crodino'},
   'Sanbitter':{fr:'Sanbitter',en:'Sanbitter',de:'Sanbitter'},
-  'Succo di Frutta Pesca':{fr:"Jus de Pêche",en:'Peach Juice',de:'Pfirsichsaft'},
-  'Succo di Frutta Ananas':{fr:"Jus d'Ananas",en:'Pineapple Juice',de:'Ananassaft'},
-  'Succo di Frutta Arancia':{fr:"Jus d'Orange",en:'Orange Juice',de:'Orangensaft'},
-  'Succo di Frutta Albicocca':{fr:"Jus d'Abricot",en:'Apricot Juice',de:'Aprikosensaft'},
-  'Succo di Frutta ACE':{fr:'Jus ACE',en:'ACE Juice',de:'ACE-Saft'},
-  'Succo di Frutta Pera':{fr:'Jus de Poire',en:'Pear Juice',de:'Birnensaft'},
+  'Succo di Frutta':{fr:'Jus de Fruits',en:'Fruit Juice',de:'Fruchtsaft'},
+  'Ricard':{fr:'Ricard',en:'Ricard',de:'Ricard'},
+  'Whiskey':{fr:'Whiskey',en:'Whiskey',de:'Whiskey'},
   'Birra Bottiglia 33 cl':{fr:'Bière Bouteille 33 cl',en:'Beer Bottle 33 cl',de:'Bier Flasche 33 cl'},
   'Digestivi':{fr:'Digestifs',en:'Digestifs',de:'Digestifs'},
   'Distillati':{fr:'Distillats',en:'Spirits',de:'Destillate'},
@@ -782,6 +779,67 @@ const BAR_TRANS={
   'Gin Lemon':{fr:'Gin Citron',en:'Gin & Lemon',de:'Gin Zitrone'}
 };
 function barLabel(it){const tr=BAR_TRANS[it];return(tr&&tr[currentLang])||it;}
+  const SUCCO_FLAVORS=[
+  {it:'Pesca',fr:'Pêche',en:'Peach',de:'Pfirsich'},
+  {it:'Ananas',fr:'Ananas',en:'Pineapple',de:'Ananas'},
+  {it:'Arancia',fr:'Orange',en:'Orange',de:'Orange'},
+  {it:'Albicocca',fr:'Abricot',en:'Apricot',de:'Aprikose'},
+  {it:'ACE',fr:'ACE',en:'ACE',de:'ACE'},
+  {it:'Pera',fr:'Poire',en:'Pear',de:'Birne'}
+];
+let barPopupItemId=null,barPopupFlavor=null;
+function openBarItemPopup(id){
+  const it=BAR_ITEMS[id];if(!it)return;
+  barPopupItemId=id;barPopupFlavor=null;
+  document.getElementById('popup-title').textContent=barLabel(it.name);
+  document.getElementById('popup-subtitle').textContent = it.popupType==='flavor' ? t('gusti_hint') : '';
+  document.getElementById('popup-confirm').textContent=t('conferma_btn');
+  const ap=document.getElementById('popup-add-person');if(ap)ap.style.display='none';
+  const c=document.getElementById('popup-persons');
+  c.innerHTML='';
+  const div=document.createElement('div');div.className='person-row';
+  if(it.popupType==='flavor'){
+    div.innerHTML='<div class="person-fields"><div class="sauce-label-sm">'+t('gusti_label')+'</div><div class="chip-group" id="bar-flavor-chips"></div></div>';
+  }else if(it.popupType==='note'){
+    div.innerHTML='<div class="person-fields"><div class="sauce-label-sm">'+t('condimento_label')+'</div><textarea id="bar-note-input" class="name-input" rows="3" style="resize:vertical;"></textarea></div>';
+  }
+  c.appendChild(div);
+  if(it.popupType==='flavor')renderBarFlavorChips();
+  updateBarPopupConfirm();
+  document.getElementById('popup-confirm').setAttribute('onclick','confirmBarItemPopup()');
+  document.getElementById('popup-overlay').classList.add('open');
+}
+function renderBarFlavorChips(){
+  const box=document.getElementById('bar-flavor-chips');if(!box)return;
+  box.innerHTML=SUCCO_FLAVORS.map(f=>'<button class="chip'+(barPopupFlavor===f.it?' selected':'')+'" onclick="selectBarFlavor(\''+f.it+'\')">'+(f[currentLang]||f.it)+'</button>').join('');
+}
+function selectBarFlavor(fl){barPopupFlavor=fl;renderBarFlavorChips();updateBarPopupConfirm();}
+function updateBarPopupConfirm(){
+  const it=BAR_ITEMS[barPopupItemId];
+  let ok=true;
+  if(it&&it.popupType==='flavor')ok=!!barPopupFlavor;
+  const btn=document.getElementById('popup-confirm');
+  if(btn)btn.className='popup-confirm-btn '+(ok?'ready':'not-ready');
+}
+function confirmBarItemPopup(){
+  const it=BAR_ITEMS[barPopupItemId];if(!it)return;
+  if(it.popupType==='flavor'&&!barPopupFlavor)return;
+  let detail='';
+  if(it.popupType==='flavor')detail=barPopupFlavor;
+  else if(it.popupType==='note'){const ta=document.getElementById('bar-note-input');detail=ta?ta.value.trim():'';}
+  cart.push({id:++cartIdCounter,itemId:'bar_'+barPopupItemId,name:it.name,price:it.price,course:'bevande',turno:'',person:null,detail:detail});
+  barQty[barPopupItemId]=cart.filter(c=>c.itemId==='bar_'+barPopupItemId).length;
+  const qd=document.getElementById('qty-bar-'+barPopupItemId);if(qd)qd.textContent=barQty[barPopupItemId];
+  closeBarItemPopup();
+  updateCart();
+}
+function closeBarItemPopup(){
+  document.getElementById('popup-overlay').classList.remove('open');
+  const ap=document.getElementById('popup-add-person');if(ap)ap.style.display='';
+  const btn=document.getElementById('popup-confirm');if(btn)btn.setAttribute('onclick','popupConfirm()');
+  barPopupItemId=null;barPopupFlavor=null;
+}
+function closeAnyPopup(){ if(barPopupItemId){closeBarItemPopup();}else{closePopup();} }
 
 const BAR_ITEMS={
   caffe_espresso:{name:'Caffè Espresso',price:1.50,sub:'caffetteria'},
@@ -790,7 +848,7 @@ const BAR_ITEMS={
   caffe_orzo_grande:{name:"Caffè D'Orzo Grande",price:2.50,sub:'caffetteria'},
   caffe_ginseng_piccolo:{name:'Caffè Ginseng Piccolo',price:2.00,sub:'caffetteria'},
   caffe_ginseng_grande:{name:'Caffè Ginseng Grande',price:3.00,sub:'caffetteria'},
-  caffe_corretto:{name:'Caffè Corretto',price:2.50,sub:'caffetteria'},
+  caffe_corretto:{name:'Caffè Corretto',price:2.50,sub:'caffetteria',popupType:'note'},
   cappuccino:{name:'Cappuccino',price:2.00,sub:'caffetteria',notrans:true},
   caffe_latte:{name:'Caffè Latte',price:2.50,sub:'caffetteria'},
   latte_macchiato:{name:'Latte Macchiato',price:2.50,sub:'caffetteria'},
@@ -809,20 +867,17 @@ const BAR_ITEMS={
   schweppes_lemon:{name:'Schweppes Lemon',price:3.00,sub:'bibite'},
   crodino:{name:'Crodino',price:3.00,sub:'bibite'},
   sanbitter:{name:'Sanbitter',price:3.00,sub:'bibite'},
-  succo_pesca:{name:'Succo di Frutta Pesca',price:3.00,sub:'bibite'},
-  succo_ananas:{name:'Succo di Frutta Ananas',price:3.00,sub:'bibite'},
-  succo_arancia:{name:'Succo di Frutta Arancia',price:3.00,sub:'bibite'},
-  succo_albicocca:{name:'Succo di Frutta Albicocca',price:3.00,sub:'bibite'},
-  succo_ace:{name:'Succo di Frutta ACE',price:3.00,sub:'bibite'},
-  succo_pera:{name:'Succo di Frutta Pera',price:3.00,sub:'bibite'},
+  succo_frutta:{name:'Succo di Frutta',price:3.00,sub:'bibite',popupType:'flavor'},
   birra_bottiglia:{name:'Birra Bottiglia 33 cl',price:4.00,sub:'cocktails',group:'birre'},
   panache:{name:'Panaché',price:5.00,sub:'cocktails',group:'birre',notrans:true},
   monaco:{name:'Monaco',price:5.00,sub:'cocktails',group:'birre',notrans:true},
   martini_bianco:{name:'Martini Bianco',price:5.00,sub:'cocktails',group:'birre',notrans:true},
   martini_rosso:{name:'Martini Rosso',price:5.00,sub:'cocktails',group:'birre',notrans:true},
-  digestivi:{name:'Digestivi',price:4.00,sub:'cocktails',group:'birre'},
+  digestivi:{name:'Digestivi',price:4.00,sub:'cocktails',group:'birre',popupType:'note'},
   distillati:{name:'Distillati',price:4.00,sub:'cocktails',group:'birre'},
-  shot_alcolici:{name:'Shot Alcolici',price:4.00,sub:'cocktails',group:'birre'},
+  shot_alcolici:{name:'Shot Alcolici',price:4.00,sub:'cocktails',group:'birre',popupType:'note'},
+  ricard:{name:'Ricard',price:4.00,sub:'cocktails',group:'birre'},
+  whiskey:{name:'Whiskey',price:5.00,sub:'cocktails',group:'birre'},
   aperol_spritz:{name:'Aperol Spritz',price:6.00,sub:'cocktails',group:'spritz',notrans:true},
   campari_spritz:{name:'Campari Spritz',price:6.00,sub:'cocktails',group:'spritz',notrans:true},
   limoncello_spritz:{name:'Limoncello Spritz',price:6.00,sub:'cocktails',group:'spritz',notrans:true},
@@ -855,11 +910,12 @@ function renderBarSection(sub){
     }
     const q=barQty[id]||0;
     const nameHtml=it.notrans?('<span class="notranslate">'+it.name+'</span>'):barLabel(it.name);
+    const plusAction = it.popupType ? ("openBarItemPopup('"+id+"')") : ("changeBarQty('"+id+"',1)");
     html+='<div class="price-row"><span>'+nameHtml+'</span>'+
       '<div class="bar-row-right"><span class="bar-row-price">€'+fmtPrice(it.price)+'</span>'+
       '<div class="bar-qty-row"><button class="bar-qty-btn" onclick="changeBarQty(\''+id+'\',-1)">−</button>'+
       '<span class="bar-qty-display" id="qty-bar-'+id+'">'+q+'</span>'+
-      '<button class="bar-qty-btn" onclick="changeBarQty(\''+id+'\',1)">+</button></div></div></div>';
+      '<button class="bar-qty-btn" onclick="'+plusAction+'">+</button></div></div></div>';
   });
   container.innerHTML=html;
 }
@@ -1011,7 +1067,7 @@ function openPopup(id){
   document.getElementById('popup-overlay').classList.add('open');
 }
 function closePopup(){document.getElementById('popup-overlay').classList.remove('open');popupItemId=null;popupPersons=[];}
-function handleOverlayClick(e){if(e.target===document.getElementById('popup-overlay'))closePopup();}
+function handleOverlayClick(e){if(e.target===document.getElementById('popup-overlay'))closeAnyPopup();}
 function popupAddPerson(){
   const pid=++popupPersonCounter,item=ITEMS[popupItemId];
   const isDessert=item.course==='dolci'||item.course==='gelato';
