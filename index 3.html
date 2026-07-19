@@ -974,6 +974,17 @@ function openViniFrame(){
   document.getElementById('vini-frame-overlay').classList.add('open');
 }
 function closeViniFrame(){document.getElementById('vini-frame-overlay').classList.remove('open');}
+  window.addEventListener('message', function(event){
+  if(!event.data || event.data.type !== 'wineCartUpdate') return;
+  const id=event.data.id, name=event.data.name, price=event.data.price, delta=event.data.delta;
+  if(delta > 0){
+    cart.push({id:++cartIdCounter, itemId:'winesync_'+id, name:name, price:price, course:'bevande', turno:'—', person:null, detail:''});
+  }else{
+    const idx=cart.map(c=>c.itemId).lastIndexOf('winesync_'+id);
+    if(idx>=0)cart.splice(idx,1);
+  }
+  updateCart();
+});
 function selectVino(name,tipo,price){
   vinoSelected={name,tipo,price};vinoQty=1;
   // Hide list, show qty picker
