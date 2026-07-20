@@ -1016,15 +1016,31 @@ function openViniFrame(){
 }
 function closeViniFrame(){document.getElementById('vini-frame-overlay').classList.remove('open');}
   window.addEventListener('message', function(event){
-  if(!event.data || event.data.type !== 'wineCartUpdate') return;
-  const id=event.data.id, name=event.data.name, price=event.data.price, delta=event.data.delta;
-  if(delta > 0){
-    cart.push({id:++cartIdCounter, itemId:'winesync_'+id, name:name, price:price, course:'bevande', turno:'—', person:null, detail:''});
-  }else{
-    const idx=cart.map(c=>c.itemId).lastIndexOf('winesync_'+id);
-    if(idx>=0)cart.splice(idx,1);
+  if(!event.data) return;
+  if(event.data.type === 'wineCartUpdate'){
+    const id=event.data.id, name=event.data.name, price=event.data.price, delta=event.data.delta;
+    if(delta > 0){
+      cart.push({id:++cartIdCounter, itemId:'winesync_'+id, name:name, price:price, course:'bevande', turno:'—', person:null, detail:''});
+    }else{
+      const idx=cart.map(c=>c.itemId).lastIndexOf('winesync_'+id);
+      if(idx>=0)cart.splice(idx,1);
+    }
+    updateCart();
   }
-  updateCart();
+  if(event.data.type === 'submitOrderRequest'){
+    const tableSel=document.getElementById('tableSelect');
+    if(tableSel)tableSel.value=event.data.table;
+    sendOrder();
+  }
+});
+function syncCartToIframe(){
+  const frame=document.getElementById('vini-frame-iframe');
+  if(frame&&frame.contentWindow){
+    try{ frame.contentWindow.postMessage({type:'fullCartSync', cart:cart}, '*'); }catch(e){}
+  }
+}
+document.getElementById('vini-frame-iframe').addEventListener('load', function(){
+  syncCartToIframe();
 });
 function selectVino(name,tipo,price){
   vinoSelected={name,tipo,price};vinoQty=1;
@@ -1376,6 +1392,7 @@ function updateCart(){
     const qd=document.getElementById('qty-housewine-'+id);if(qd)qd.textContent=q;
   });
   renderInlineGelato();
+  syncCartToIframe();
 }
 function removeCartGroup(ids){ids.forEach(id=>{const i=cart.findIndex(c=>c.id===id);if(i>=0)cart.splice(i,1);});updateCart();}
 function removeOneCartItem(gk){for(let i=cart.length-1;i>=0;i--){const e=cart[i];if(e.itemId+'||'+(e.detail||'')+'||'+(e.person||'')+'||'+(e.turno||'')===gk){cart.splice(i,1);break;}}updateCart();}
