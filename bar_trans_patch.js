@@ -1,7 +1,7 @@
 /**
  * bar_trans_patch.js
  * ---------------------------------------------------------------
- * Extends BAR_TRANS with all 28 extra languages.
+ * Extends BAR_TRANS with all 30 extra languages.
  * Includes: single Caffè D'Orzo / Ginseng (no Piccolo/Grande),
  * single Succo di Frutta (flavor picked via popup), Ricard, Whiskey.
  * Paste this AFTER the existing BAR_TRANS / BAR_ITEMS block.
@@ -657,7 +657,7 @@
       'Whiskey': 'ويسكي',
       'Whisky & Coca': 'ويسكي & كولا',
       'Rhum & Coca': 'روم & كولا',
-      'Gin Tonic': 'جن & توник',
+      'Gin Tonic': 'جن & توني',
       'Gin Lemon': 'جن & ليمون'
     },
     'zh-CN': {
@@ -876,6 +876,68 @@
       'Rhum & Coca': 'رام & کولا',
       'Gin Tonic': 'جین تونیک',
       'Gin Lemon': 'جین لیمون'
+    },
+    'vi': {
+      'Caffè Espresso': 'Cà Phê Espresso',
+      'Caffè Decaffeinato': 'Cà Phê Không Caffeine',
+      'Caffè D\'Orzo': 'Cà Phê Lúa Mạch',
+      'Caffè Ginseng': 'Cà Phê Nhân Sâm',
+      'Caffè Corretto': 'Cà Phê Pha Rượu Grappa',
+      'Caffè Latte': 'Cà Phê Sữa',
+      'Latte Macchiato': 'Latte Macchiato',
+      'Thè Caldo': 'Trà Nóng',
+      'Infusi': 'Trà Thảo Mộc',
+      'Cioccolata Calda': 'Sô Cô La Nóng',
+      'Acqua Naturale 1 lt': 'Nước Lọc 1 lít',
+      'Acqua Gassata 1 lt': 'Nước Có Ga 1 lít',
+      'Estathé Limone': 'Trà Đá Chanh',
+      'Estathé Pesca': 'Trà Đá Đào',
+      'Schweppes': 'Schweppes',
+      'Schweppes Lemon': 'Schweppes Chanh',
+      'Crodino': 'Crodino',
+      'Sanbitter': 'Sanbitter',
+      'Succo di Frutta': 'Nước Ép Trái Cây',
+      'Birra Bottiglia 33 cl': 'Bia Chai 33 cl',
+      'Digestivi': 'Rượu Tiêu Hóa',
+      'Distillati': 'Rượu Chưng Cất',
+      'Shot Alcolici': 'Shot Rượu',
+      'Ricard': 'Ricard',
+      'Whiskey': 'Whiskey',
+      'Whisky & Coca': 'Whisky & Coca',
+      'Rhum & Coca': 'Rum & Coca',
+      'Gin Tonic': 'Gin Tonic',
+      'Gin Lemon': 'Gin Chanh'
+    },
+    'th': {
+      'Caffè Espresso': 'กาแฟเอสเปรสโซ',
+      'Caffè Decaffeinato': 'กาแฟไร้คาเฟอีน',
+      'Caffè D\'Orzo': 'กาแฟข้าวบาร์เลย์',
+      'Caffè Ginseng': 'กาแฟโสม',
+      'Caffè Corretto': 'กาแฟใส่กราปปา',
+      'Caffè Latte': 'คาเฟ่ลาเต้',
+      'Latte Macchiato': 'ลาเต้มัคคิอาโต้',
+      'Thè Caldo': 'ชาร้อน',
+      'Infusi': 'ชาสมุนไพร',
+      'Cioccolata Calda': 'ช็อกโกแลตร้อน',
+      'Acqua Naturale 1 lt': 'น้ำเปล่า 1 ลิตร',
+      'Acqua Gassata 1 lt': 'น้ำอัดลม 1 ลิตร',
+      'Estathé Limone': 'ชาเย็นมะนาว',
+      'Estathé Pesca': 'ชาเย็นพีช',
+      'Schweppes': 'ชเวปส์',
+      'Schweppes Lemon': 'ชเวปส์มะนาว',
+      'Crodino': 'โครดิโน',
+      'Sanbitter': 'ซานบิทเทอร์',
+      'Succo di Frutta': 'น้ำผลไม้',
+      'Birra Bottiglia 33 cl': 'เบียร์ขวด 33 ซล.',
+      'Digestivi': 'เครื่องดื่มช่วยย่อย',
+      'Distillati': 'สุรากลั่น',
+      'Shot Alcolici': 'ช็อตแอลกอฮอล์',
+      'Ricard': 'ริการ์ด',
+      'Whiskey': 'วิสกี้',
+      'Whisky & Coca': 'วิสกี้ & โคล่า',
+      'Rhum & Coca': 'รัม & โคล่า',
+      'Gin Tonic': 'จิน โทนิค',
+      'Gin Lemon': 'จิน มะนาว'
     }
   };
 
@@ -895,7 +957,7 @@
   }
 
   // ------------------------------------------------------------
-  // BAR_GROUP_TITLES — same 28 languages for the 3 section headers
+  // BAR_GROUP_TITLES — same 30 languages for the 3 section headers
   // ------------------------------------------------------------
   var GROUP_PATCH = {
     'nl': { birre: '🍺 Bieren & Basisaperitieven', spritz: '🥂 Spritz & Klassieke Cocktails — €6,00', premium: '⭐ Premium Cocktails — €8,00' },
@@ -903,7 +965,7 @@
     'pt': { birre: '🍺 Cervejas & Aperitivos Base', spritz: '🥂 Spritz & Cocktails Clássicos — €6,00', premium: '⭐ Cocktails Premium — €8,00' },
     'ru': { birre: '🍺 Пиво и Базовые Аперитивы', spritz: '🥂 Спритц и Классические Коктейли — €6,00', premium: '⭐ Премиум Коктейли — €8,00' },
     'pl': { birre: '🍺 Piwa i Podstawowe Aperitify', spritz: '🥂 Spritz i Klasyczne Koktajle — €6,00', premium: '⭐ Koktajle Premium — €8,00' },
-    'uk': { birre: '🍺 Пиво та Базові Аперитиви', spritz: '🥂 Спритц і Класичні Коктейлі — €6,00', premium: '⭐ Преміум Коктейлі — €8,00' },
+    'uk': { birre: '🍺 Пиво та Базові Аперитиви', spritz: '🥂 Спритц і Класичні Коктейлі — €6,00', premium: '⭐ Преміум Коктейлі — €6,00' },
     'ro': { birre: '🍺 Beri & Aperitive de Bază', spritz: '🥂 Spritz & Cocktailuri Clasice — €6,00', premium: '⭐ Cocktailuri Premium — €8,00' },
     'sv': { birre: '🍺 Öl & Grundaperitif', spritz: '🥂 Spritz & Klassiska Cocktails — €6,00', premium: '⭐ Premium Cocktails — €8,00' },
     'da': { birre: '🍺 Øl & Grundaperitif', spritz: '🥂 Spritz & Klassiske Cocktails — €6,00', premium: '⭐ Premium Cocktails — €8,00' },
@@ -925,7 +987,9 @@
     'hi': { birre: '🍺 बीयर और बेसिक एपेरिटिफ़', spritz: '🥂 स्प्रिट्ज़ और क्लासिक कॉकटेल — €6.00', premium: '⭐ प्रीमियम कॉकटेल — €8.00' },
     'bn': { birre: '🍺 বিয়ার এবং বেসিক এপেরিটিফ', spritz: '🥂 স্প্রিৎজ এবং ক্লাসিক ককটেল — €৬.০০', premium: '⭐ প্রিমিয়াম ককটেল — €৮.০০' },
     'ur': { birre: '🍺 بیئر اور بنیادی ایپریٹف', spritz: '🥂 اسپرٹز اور کلاسک کاکٹیل — €6.00', premium: '⭐ پریمیم کاکٹیل — €8.00' },
-    'fa': { birre: '🍺 آبجو و اپریتیف پایه', spritz: '🥂 اسپریتز و کوکتل‌های کلاسیک — €6.00', premium: '⭐ کوکتل‌های ممتاز — €8.00' }
+    'fa': { birre: '🍺 آبجو و اپریتیف پایه', spritz: '🥂 اسپریتز و کوکتل‌های کلاسیک — €6.00', premium: '⭐ کوکتل‌های ممتاز — €8.00' },
+    'vi': { birre: '🍺 Bia & Khai Vị Cơ Bản', spritz: '🥂 Spritz & Cocktail Cổ Điển — €6.00', premium: '⭐ Cocktail Cao Cấp — €8.00' },
+    'th': { birre: '🍺 เบียร์ & อาเปอริทีฟพื้นฐาน', spritz: '🥂 สปริตซ์ & ค็อกเทลคลาสสิก — €6.00', premium: '⭐ ค็อกเทลพรีเมียม — €8.00' }
   };
   if (typeof BAR_GROUP_TITLES !== 'undefined') {
     Object.keys(GROUP_PATCH).forEach(function (lang) {
