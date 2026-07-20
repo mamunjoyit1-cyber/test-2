@@ -879,13 +879,17 @@
     }
   };
 
-  // Merge into existing BAR_TRANS
+  // Merge into existing BAR_TRANS (correct axis: dish-name -> lang -> translation)
   if (typeof BAR_TRANS !== 'undefined') {
+    var mergedCount = 0;
     Object.keys(PATCH).forEach(function (lang) {
-      if (!BAR_TRANS[lang]) BAR_TRANS[lang] = {};
-      Object.assign(BAR_TRANS[lang], PATCH[lang]);
+      Object.keys(PATCH[lang]).forEach(function (dishName) {
+        if (!BAR_TRANS[dishName]) BAR_TRANS[dishName] = {};
+        BAR_TRANS[dishName][lang] = PATCH[lang][dishName];
+        mergedCount++;
+      });
     });
-    console.log('[bar_trans_patch] Merged ' + Object.keys(PATCH).length + ' languages into BAR_TRANS.');
+    console.log('[bar_trans_patch] Merged ' + mergedCount + ' dish translations across ' + Object.keys(PATCH).length + ' languages into BAR_TRANS.');
   } else {
     console.warn('[bar_trans_patch] BAR_TRANS not found — load this AFTER the BAR_TRANS block.');
   }
