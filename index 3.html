@@ -814,6 +814,13 @@ function barLabel(it){const tr=BAR_TRANS[it];return(tr&&tr[currentLang])||it;}
   {it:'Pera',fr:'Poire',en:'Pear',de:'Birne'}
 ];
 let barPopupItemId=null,barPopupFlavor=null;
+  const DIGESTIVI_OPTIONS=['Limoncello','Grappa','Montenegro','Amaro','Amaretto','Sambuca'];
+let barPopupDigestivo=null;
+function renderDigestivoChips(){
+  const box=document.getElementById('bar-digestivo-chips');if(!box)return;
+  box.innerHTML=DIGESTIVI_OPTIONS.map(d=>'<button class="chip'+(barPopupDigestivo===d?' selected':'')+'" onclick="selectBarDigestivo(\''+d+'\')">'+d+'</button>').join('');
+}
+function selectBarDigestivo(d){barPopupDigestivo=d;renderDigestivoChips();updateBarPopupConfirm();}
 function openBarItemPopup(id){
   const it=BAR_ITEMS[id];if(!it)return;
   barPopupItemId=id;barPopupFlavor=null;
@@ -826,11 +833,14 @@ function openBarItemPopup(id){
   const div=document.createElement('div');div.className='person-row';
   if(it.popupType==='flavor'){
     div.innerHTML='<div class="person-fields"><div class="sauce-label-sm">🧃 Gusto:</div><div class="chip-group" id="bar-flavor-chips"></div></div>';
+  }else if(it.popupType==='digestivo'){
+    div.innerHTML='<div class="person-fields"><div class="sauce-label-sm">🥃 Scegli:</div><div class="chip-group" id="bar-digestivo-chips"></div></div>';
   }else if(it.popupType==='note'){
     div.innerHTML='<div class="person-fields"><div class="sauce-label-sm">'+t('condimento_label')+'</div><textarea id="bar-note-input" class="name-input" rows="3" style="resize:vertical;"></textarea></div>';
   }
   c.appendChild(div);
   if(it.popupType==='flavor')renderBarFlavorChips();
+  if(it.popupType==='digestivo')renderDigestivoChips();
   updateBarPopupConfirm();
   document.getElementById('popup-confirm').setAttribute('onclick','confirmBarItemPopup()');
   document.getElementById('popup-overlay').classList.add('open');
@@ -844,14 +854,17 @@ function updateBarPopupConfirm(){
   const it=BAR_ITEMS[barPopupItemId];
   let ok=true;
   if(it&&it.popupType==='flavor')ok=!!barPopupFlavor;
+  if(it&&it.popupType==='digestivo')ok=!!barPopupDigestivo;
   const btn=document.getElementById('popup-confirm');
   if(btn)btn.className='popup-confirm-btn '+(ok?'ready':'not-ready');
 }
 function confirmBarItemPopup(){
   const it=BAR_ITEMS[barPopupItemId];if(!it)return;
   if(it.popupType==='flavor'&&!barPopupFlavor)return;
+  if(it.popupType==='digestivo'&&!barPopupDigestivo)return;
   let detail='';
   if(it.popupType==='flavor')detail=barPopupFlavor;
+  else if(it.popupType==='digestivo')detail=barPopupDigestivo;
   else if(it.popupType==='note'){const ta=document.getElementById('bar-note-input');detail=ta?ta.value.trim():'';}
   cart.push({id:++cartIdCounter,itemId:'bar_'+barPopupItemId,name:it.name,price:it.price,course:'bevande',turno:'',person:null,detail:detail});
   barQty[barPopupItemId]=cart.filter(c=>c.itemId==='bar_'+barPopupItemId).length;
@@ -863,7 +876,7 @@ function closeBarItemPopup(){
   document.getElementById('popup-overlay').classList.remove('open');
   const ap=document.getElementById('popup-add-person');if(ap)ap.style.display='';
   const btn=document.getElementById('popup-confirm');if(btn)btn.setAttribute('onclick','popupConfirm()');
-  barPopupItemId=null;barPopupFlavor=null;
+  barPopupItemId=null;barPopupFlavor=null;barPopupDigestivo=null;
 }
 function closeAnyPopup(){ if(barPopupItemId){closeBarItemPopup();}else{closePopup();} }
 
@@ -897,7 +910,7 @@ const BAR_ITEMS={
   monaco:{name:'Monaco',price:5.00,sub:'cocktails',group:'birre',notrans:true},
   martini_bianco:{name:'Martini Bianco',price:5.00,sub:'cocktails',group:'birre',notrans:true},
   martini_rosso:{name:'Martini Rosso',price:5.00,sub:'cocktails',group:'birre',notrans:true},
-  digestivi:{name:'Digestivi',price:4.00,sub:'cocktails',group:'birre',popupType:'note'},
+  digestivi:{name:'Digestivi',price:4.00,sub:'cocktails',group:'birre',popupType:'digestivo'},
   distillati:{name:'Distillati',price:4.00,sub:'cocktails',group:'birre'},
   shot_alcolici:{name:'Shot Alcolici',price:4.00,sub:'cocktails',group:'birre',popupType:'note'},
   ricard:{name:'Ricard',price:4.00,sub:'cocktails',group:'birre'},
