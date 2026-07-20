@@ -551,20 +551,48 @@ html body { margin-top: 0 !important; }
     <div class="vini-modal-sub" data-it="Scegli il vino o apri la lista completa" data-fr="Choisissez le vin ou ouvrez la liste complète" data-en="Choose a wine or open the full list" data-de="Wein wählen oder vollständige Liste öffnen">Scegli il vino o apri la lista completa</div>
     <!-- House wines list -->
     <div id="vini-list" style="background:#1a110e;border-radius:12px;padding:10px 14px;margin-bottom:14px;text-align:left;">
-      <div style="font-size:10px;color:#d4af37;font-weight:bold;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;" data-it="Vini della Casa — Calice" data-fr="Vins Maison — Verre" data-en="House Wines — Glass" data-de="Hausweine — Glas">Vini della Casa — Calice</div>
-      <div class="vini-row" onclick="selectVino('Vino Rosso della Casa','Calice',3)">
-        <span>🍷 <span data-it="Vino Rosso della Casa" data-fr="Vin Rouge Maison" data-en="House Red Wine" data-de="Hauswein Rot">Vino Rosso della Casa</span></span><span class="vini-price">€3,00</span>
-      </div>
-      <div class="vini-row" onclick="selectVino('Vino Bianco della Casa','Calice',3)">
-        <span>🥂 <span data-it="Vino Bianco della Casa" data-fr="Vin Blanc Maison" data-en="House White Wine" data-de="Hauswein Weiß">Vino Bianco della Casa</span></span><span class="vini-price">€3,00</span>
-      </div>
-      <div class="vini-row" onclick="selectVino('Vino Rosato della Casa','Calice',3)">
-        <span>🌸 <span data-it="Vino Rosato della Casa" data-fr="Vin Rosé Maison" data-en="House Rosé Wine" data-de="Hauswein Rosé">Vino Rosato della Casa</span></span><span class="vini-price">€3,00</span>
-      </div>
-      <div class="vini-row" onclick="selectVino('Prosecco DOC','Calice',5)">
-        <span>🥂 Prosecco DOC</span><span class="vini-price">€5,00</span>
+  <div style="font-size:10px;color:#d4af37;font-weight:bold;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;" data-it="Vini della Casa — Calice" data-fr="Vins Maison — Verre" data-en="House Wines — Glass" data-de="Hausweine — Glas">Vini della Casa — Calice</div>
+  <div class="vini-row" style="cursor:default;">
+    <span>🍷 <span data-it="Vino Rosso della Casa" data-fr="Vin Rouge Maison" data-en="House Red Wine" data-de="Hauswein Rot">Vino Rosso della Casa</span></span>
+    <div class="bar-row-right"><span class="vini-price">€3,00</span>
+      <div class="bar-qty-row">
+        <button class="bar-qty-btn" onclick="changeHouseWineQty('rosso',-1)">−</button>
+        <span class="bar-qty-display" id="qty-housewine-rosso">0</span>
+        <button class="bar-qty-btn" onclick="changeHouseWineQty('rosso',1)">+</button>
       </div>
     </div>
+  </div>
+  <div class="vini-row" style="cursor:default;">
+    <span>🥂 <span data-it="Vino Bianco della Casa" data-fr="Vin Blanc Maison" data-en="House White Wine" data-de="Hauswein Weiß">Vino Bianco della Casa</span></span>
+    <div class="bar-row-right"><span class="vini-price">€3,00</span>
+      <div class="bar-qty-row">
+        <button class="bar-qty-btn" onclick="changeHouseWineQty('bianco',-1)">−</button>
+        <span class="bar-qty-display" id="qty-housewine-bianco">0</span>
+        <button class="bar-qty-btn" onclick="changeHouseWineQty('bianco',1)">+</button>
+      </div>
+    </div>
+  </div>
+  <div class="vini-row" style="cursor:default;">
+    <span>🌸 <span data-it="Vino Rosato della Casa" data-fr="Vin Rosé Maison" data-en="House Rosé Wine" data-de="Hauswein Rosé">Vino Rosato della Casa</span></span>
+    <div class="bar-row-right"><span class="vini-price">€3,00</span>
+      <div class="bar-qty-row">
+        <button class="bar-qty-btn" onclick="changeHouseWineQty('rosato',-1)">−</button>
+        <span class="bar-qty-display" id="qty-housewine-rosato">0</span>
+        <button class="bar-qty-btn" onclick="changeHouseWineQty('rosato',1)">+</button>
+      </div>
+    </div>
+  </div>
+  <div class="vini-row" style="cursor:default;">
+    <span>🥂 Prosecco DOC</span>
+    <div class="bar-row-right"><span class="vini-price">€5,00</span>
+      <div class="bar-qty-row">
+        <button class="bar-qty-btn" onclick="changeHouseWineQty('prosecco',-1)">−</button>
+        <span class="bar-qty-display" id="qty-housewine-prosecco">0</span>
+        <button class="bar-qty-btn" onclick="changeHouseWineQty('prosecco',1)">+</button>
+      </div>
+    </div>
+  </div>
+</div>
     <button type="button" class="vini-modal-btn primary vini-cta-pulse" onclick="openViniFrame()" data-it="🍷 Apri la Carta dei Vini Digitale➔" data-fr="🍷 Ouvrir la Carte des Vins Digitale➔" data-en="🍷 Open the Digital Wine List➔" data-de="🍷 Digitale Weinkarte öffnen➔">🍷 Apri la Carta dei Vini Digitale➔</button>
     <span class="vini-modal-close" onclick="closeViniModal()" data-it="Annulla" data-fr="Annuler" data-en="Cancel" data-de="Abbrechen">Annulla</span>
   </div>
@@ -1020,11 +1048,24 @@ function confirmVino(){
   for(let i=0;i<vinoQty;i++)cart.push({id:++cartIdCounter,itemId:'vino_'+vinoSelected.name.replace(/\s/g,'_'),name:vinoSelected.name,price:vinoSelected.price,course:'bevande',turno:'—',person:null,detail:vinoSelected.tipo});
   closeViniModal();updateCart();
 }
-function backToViniList(){
-  vinoSelected=null;vinoQty=1;
-  document.getElementById('vini-list').style.display='block';
-  const qr=document.getElementById('vini-qty-picker');if(qr)qr.remove();
-  const cb=document.getElementById('vini-confirm-area');if(cb)cb.remove();
+// ── HOUSE WINES: direct +/- add to cart, no popup ──
+const HOUSE_WINES={
+  rosso:{name:'Vino Rosso della Casa',price:3,tipo:'Calice'},
+  bianco:{name:'Vino Bianco della Casa',price:3,tipo:'Calice'},
+  rosato:{name:'Vino Rosato della Casa',price:3,tipo:'Calice'},
+  prosecco:{name:'Prosecco DOC',price:5,tipo:'Calice'}
+};
+function changeHouseWineQty(id,delta){
+  const w=HOUSE_WINES[id];if(!w)return;
+  if(delta>0){
+    cart.push({id:++cartIdCounter,itemId:'housewine_'+id,name:w.name,price:w.price,course:'bevande',turno:'—',person:null,detail:w.tipo});
+  }else{
+    const idx=cart.map(c=>c.itemId).lastIndexOf('housewine_'+id);
+    if(idx>=0)cart.splice(idx,1);
+  }
+  const q=cart.filter(c=>c.itemId==='housewine_'+id).length;
+  const qd=document.getElementById('qty-housewine-'+id);if(qd)qd.textContent=q;
+  updateCart();
 }
 
 // ── GELATO INLINE (FIX: translated chips) ──
@@ -1316,6 +1357,10 @@ function updateCart(){
   Object.keys(BAR_ITEMS).forEach(id=>{
     barQty[id]=cart.filter(c=>c.itemId==='bar_'+id).length;
     const qd=document.getElementById('qty-bar-'+id);if(qd)qd.textContent=barQty[id];
+  });
+  Object.keys(HOUSE_WINES).forEach(id=>{
+    const q=cart.filter(c=>c.itemId==='housewine_'+id).length;
+    const qd=document.getElementById('qty-housewine-'+id);if(qd)qd.textContent=q;
   });
   renderInlineGelato();
 }
