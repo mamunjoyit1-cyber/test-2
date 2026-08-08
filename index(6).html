@@ -253,6 +253,15 @@ html body { margin-top: 0 !important; }
 .vini-frame-close { background: transparent; border: 1.5px solid #d4af37; color: #d4af37; border-radius: 20px; padding: 7px 16px; font-size: 13px; font-weight: bold; cursor: pointer; font-family: inherit; }
 .vini-frame-close:hover { background: #d4af37; color: #150e0b; }
 .vini-frame-iframe { flex: 1; width: 100%; border: none; background: #fff; }
+.hb-row { display: flex; justify-content: space-between; align-items: center; background: #1a110e; border: 1.5px solid rgba(212,175,55,0.4); border-radius: 12px; padding: 12px 14px; margin-bottom: 10px; transition: all 0.2s; }
+.hb-row.has-qty { border-color: #d4af37; background: #241a14; }
+.hb-label { font-size: 14.5px; font-weight: bold; color: #f9f1e2; text-align: left; }
+.hb-price { font-size: 12px; color: #bca07d; display: block; margin-top: 2px; font-weight: normal; }
+.hb-qty-row { display: flex; align-items: center; gap: 10px; }
+.hb-qty-btn { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #d4af37; background: rgba(212,175,55,0.12); color: #d4af37; font-size: 18px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; font-family: inherit; }
+.hb-qty-btn:hover { background: #d4af37; color: #150e0b; }
+.hb-qty-num { font-size: 16px; font-weight: bold; color: #d4af37; min-width: 22px; text-align: center; }
+.vini-modal-btn.primary.not-ready { opacity: 0.4; pointer-events: none; }
 </style>
 </head>
 <body>
@@ -548,15 +557,10 @@ html body { margin-top: 0 !important; }
   <div class="vini-modal-box" style="max-width:340px;">
     <div class="vini-calice">🍷</div>
     <div class="vini-modal-title" id="house-bottle-popup-title" data-it="Vino della Casa" data-fr="Vin Maison" data-en="House Wine" data-de="Hauswein">Vino della Casa</div>
-    <div class="vini-modal-sub" data-it="Scegli il colore" data-fr="Choisissez la couleur" data-en="Choose the color" data-de="Farbe wählen">Scegli il colore</div>
+    <div class="vini-modal-sub" data-it="Scegli quantità per colore" data-fr="Choisissez la quantité par couleur" data-en="Choose quantity per color" data-de="Menge pro Farbe wählen">Scegli quantità per colore</div>
 
-    <div class="chip-group" id="house-bottle-color-chips" style="justify-content:center;margin-bottom:16px;"></div>
-
-    <div class="vini-qty-row">
-      <button class="vini-qty-btn" onclick="changeHouseBottleQty(-1)">−</button>
-      <span class="vini-qty-num" id="house-bottle-qty-display">1</span>
-      <button class="vini-qty-btn" onclick="changeHouseBottleQty(1)">+</button>
-    </div>
+    <div id="house-bottle-color-rows" style="margin-bottom:6px;"></div>
+    <div id="house-bottle-total-hint" style="color:#bca07d;font-size:12px;margin:8px 0 14px;"></div>
 
     <button type="button" class="vini-modal-btn primary" id="house-bottle-confirm-btn" onclick="confirmHouseBottlePopup()" data-it="✓ Aggiungi al Carrello" data-fr="✓ Ajouter au Panier" data-en="✓ Add to Order" data-de="✓ Zum Warenkorb">✓ Aggiungi al Carrello</button>
     <span class="vini-modal-close" onclick="closeHouseBottlePopup()" data-it="✕ Chiudi" data-fr="✕ Fermer" data-en="✕ Close" data-de="✕ Schließen">✕ Chiudi</span>
@@ -571,8 +575,8 @@ html body { margin-top: 0 !important; }
     <!-- House wines list -->
     <div id="vini-list" style="background:#1a110e;border-radius:12px;padding:10px 14px;margin-bottom:14px;text-align:left;">
   <div style="font-size:10px;color:#d4af37;font-weight:bold;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;" data-it="Vini della Casa — Calice" data-fr="Vins Maison — Verre" data-en="House Wines — Glass" data-de="Hausweine — Glas">Vini della Casa — Calice</div>
-  <div class="vini-row" style="cursor:default;">
-    <span>🍷 <span data-it="Vino Rosso della Casa" data-fr="Vin Rouge Maison" data-en="House Red Wine" data-de="Hauswein Rot">Vino Rosso della Casa</span></span>
+  <div class="vini-row" style="cursor:default;align-items:flex-start;">
+    <span>🍷 <span data-it="Vino Rosso della Casa" data-fr="Vin Rouge Maison" data-en="House Red Wine" data-de="Hauswein Rot">Vino Rosso della Casa</span><br><span style="font-size:11px;color:#bca07d;font-style:italic;" data-it="Uve: Barbera" data-fr="Cépages: Barbera" data-en="Grapes: Barbera" data-de="Rebsorten: Barbera">Uve: Barbera</span></span>
     <div class="bar-row-right"><span class="vini-price">€3,00</span>
       <div class="bar-qty-row">
         <button class="bar-qty-btn" onclick="changeHouseWineQty('rosso',-1)">−</button>
@@ -581,8 +585,8 @@ html body { margin-top: 0 !important; }
       </div>
     </div>
   </div>
-  <div class="vini-row" style="cursor:default;">
-    <span>🥂 <span data-it="Vino Bianco della Casa" data-fr="Vin Blanc Maison" data-en="House White Wine" data-de="Hauswein Weiß">Vino Bianco della Casa</span></span>
+  <div class="vini-row" style="cursor:default;align-items:flex-start;">
+    <span>🥂 <span data-it="Vino Bianco della Casa" data-fr="Vin Blanc Maison" data-en="House White Wine" data-de="Hauswein Weiß">Vino Bianco della Casa</span><br><span style="font-size:11px;color:#bca07d;font-style:italic;" data-it="Uve: Pinot Grigio" data-fr="Cépages: Pinot Grigio" data-en="Grapes: Pinot Grigio" data-de="Rebsorten: Pinot Grigio">Uve: Pinot Grigio</span></span>
     <div class="bar-row-right"><span class="vini-price">€3,00</span>
       <div class="bar-qty-row">
         <button class="bar-qty-btn" onclick="changeHouseWineQty('bianco',-1)">−</button>
@@ -591,8 +595,8 @@ html body { margin-top: 0 !important; }
       </div>
     </div>
   </div>
-  <div class="vini-row" style="cursor:default;">
-    <span>🌸 <span data-it="Vino Rosato della Casa" data-fr="Vin Rosé Maison" data-en="House Rosé Wine" data-de="Hauswein Rosé">Vino Rosato della Casa</span></span>
+  <div class="vini-row" style="cursor:default;align-items:flex-start;">
+    <span>🌸 <span data-it="Vino Rosato della Casa" data-fr="Vin Rosé Maison" data-en="House Rosé Wine" data-de="Hauswein Rosé">Vino Rosato della Casa</span><br><span style="font-size:11px;color:#bca07d;font-style:italic;" data-it="Uve: Raboso" data-fr="Cépages: Raboso" data-en="Grapes: Raboso" data-de="Rebsorten: Raboso">Uve: Raboso</span></span>
     <div class="bar-row-right"><span class="vini-price">€3,00</span>
       <div class="bar-qty-row">
         <button class="bar-qty-btn" onclick="changeHouseWineQty('rosato',-1)">−</button>
@@ -608,6 +612,16 @@ html body { margin-top: 0 !important; }
         <button class="bar-qty-btn" onclick="changeHouseWineQty('prosecco',-1)">−</button>
         <span class="bar-qty-display" id="qty-housewine-prosecco">0</span>
         <button class="bar-qty-btn" onclick="changeHouseWineQty('prosecco',1)">+</button>
+      </div>
+    </div>
+  </div>
+  <div class="vini-row" style="cursor:default;align-items:flex-start;">
+    <span>🥂 <span data-it="Bollicine" data-fr="Bollicine" data-en="Bollicine" data-de="Bollicine">Bollicine</span><br><span style="font-size:11px;color:#bca07d;font-style:italic;" data-it="Uve: Chardonnay Veneto" data-fr="Cépages: Chardonnay Veneto" data-en="Grapes: Chardonnay Veneto" data-de="Rebsorten: Chardonnay Veneto">Uve: Chardonnay Veneto</span></span>
+    <div class="bar-row-right"><span class="vini-price">€5,00</span>
+      <div class="bar-qty-row">
+        <button class="bar-qty-btn" onclick="changeHouseWineQty('bollicine',-1)">−</button>
+        <span class="bar-qty-display" id="qty-housewine-bollicine">0</span>
+        <button class="bar-qty-btn" onclick="changeHouseWineQty('bollicine',1)">+</button>
       </div>
     </div>
   </div>
@@ -696,13 +710,16 @@ const SAUCE_TRANS={
   'Gnocchi Formaggi': {fr:'Gnocchi Fromages',en:'Cheese Gnocchi',  de:'Käse-Gnocchi'},
   'Gnocchi Burro e Salvia':{fr:'Gnocchi Beurre et Sauge',en:'Gnocchi Butter & Sage',de:'Gnocchi Butter & Salbei'},
   'Risotto Frutti di Mare':{fr:'Risotto Fruits de Mer',en:'Seafood Risotto',de:'Meeresfrüchte-Risotto'},
-  'Formaggi con Gorgonzola':{fr:'Fromages et Gorgonzola',en:'Cheeses & Gorgonzola',de:'Käse & Gorgonzola'}
+  'Formaggi con Gorgonzola':{fr:'Fromages et Gorgonzola',en:'Cheeses & Gorgonzola',de:'Käse & Gorgonzola'},
+  'Pescato':{fr:'Poisson',en:'Fish',de:'Fisch'},
+  'Gamberoni':{fr:'Gambas',en:'King Prawns',de:'Riesengarnelen'}
 };
 // Show sauce in current language (for popup display)
 function sauceLabel(it){const tr=SAUCE_TRANS[it];return(tr&&tr[currentLang])||it;}
 // Always Italian for cart storage
 function sauceItLabel(it){return it;}
 const COTTURA_OPTIONS=['🔴 Al Sangue','🟠 Blue','🟡 Media Cottura','✅ Ben Cotto']; const COTTURA_TRANS={   '🔴 Al Sangue':{fr:'🔴 Saignant',en:'🔴 Rare',de:'🔴 Blutig'},   '🟠 Blue':{fr:'🟠 Bleu',en:'🟠 Blue',de:'🟠 Blutig-Roh'},   '🟡 Media Cottura':{fr:'🟡 À Point',en:'🟡 Medium',de:'🟡 Medium'},   '✅ Ben Cotto':{fr:'✅ Bien Cuit',en:'✅ Well Done',de:'✅ Durchgebraten'} }; function cotturaLabel(it){const tr=COTTURA_TRANS[it];return(tr&&tr[currentLang])||it;}
+const PESCE_TIPO_LABEL={it:'🐟 Scegli:',fr:'🐟 Choisissez:',en:'🐟 Choose:',de:'🐟 Wählen:'};
 
 const ITEMS={
   antipasto_tipico:{name:'Antipasto Tipico del Lago Bin',price:15,course:'antipasti',sauces:[]},
@@ -731,7 +748,7 @@ const ITEMS={
   grigliata:{name:'Grigliata Mista di Carne',price:20,course:'secondi',sauces:[]},
   roastbeef:{name:'Roast Beef',price:18,course:'secondi',sauces:[]},
   filetto:{name:'Filetto di Manzo',price:25,course:'secondi',sauces:['Pepe Verde','Gorgonzola','Griglia'],cottura:true},
-  pescato:{name:'Pescato o Gamberoni',price:18,course:'secondi',sauces:['Al Forno','Alla Griglia']},
+  pescato:{name:'Pescato o Gamberoni',price:18,course:'secondi',sauces:['Al Forno','Alla Griglia'],tipo:['Pescato','Gamberoni']},
   grigliata_pesce:{name:'Grigliata Mista di Pesce',price:25,course:'secondi',sauces:[]},
   formaggi:{name:'Assortimento di Formaggi',price:10,course:'contorni',sauces:[]},
   verdure:{name:'Grigliata di Verdure',price:10,course:'contorni',sauces:[]},
@@ -1107,7 +1124,8 @@ const HOUSE_WINES={
   rosso:{name:'Vino Rosso della Casa',price:3,tipo:'Calice'},
   bianco:{name:'Vino Bianco della Casa',price:3,tipo:'Calice'},
   rosato:{name:'Vino Rosato della Casa',price:3,tipo:'Calice'},
-  prosecco:{name:'Prosecco DOC',price:5,tipo:'Calice'}
+  prosecco:{name:'Prosecco DOC',price:5,tipo:'Calice'},
+  bollicine:{name:'Bollicine',price:5,tipo:'Calice'}
 };
 function changeHouseWineQty(id,delta){
   const w=HOUSE_WINES[id];if(!w)return;
@@ -1134,61 +1152,66 @@ const BOTTLE_COLOR_LABELS = {
   de:{ rosso:'🍷 Rot',   bianco:'🥂 Weiß',   rose:'🌸 Rosé' }
 };
 let houseBottlePopupSize = null;
-let houseBottleSelectedColor = null;
-let houseBottleQty = 1;
+let houseBottleQtyMap = { rosso:0, bianco:0, rose:0 };
 
 function openHouseWineBottlePopup(size){
   document.getElementById('vini-modal').classList.remove('open'); // close the Carta dei Vini list underneath first
   houseBottlePopupSize = size;
-  houseBottleSelectedColor = null;
-  houseBottleQty = 1;
+  houseBottleQtyMap = { rosso:0, bianco:0, rose:0 };
   const sizeLabel = size === '0.5' ? '0,5L' : '0,25L';
   document.getElementById('house-bottle-popup-title').textContent = 'Vino della Casa ' + sizeLabel;
-  renderHouseBottleColorChips();
-  updateHouseBottleQtyDisplay();
+  renderHouseBottleColorRows();
   document.getElementById('house-bottle-popup-overlay').classList.add('open');
 }
 function closeHouseBottlePopup(){
   document.getElementById('house-bottle-popup-overlay').classList.remove('open');
   houseBottlePopupSize = null;
 }
-function renderHouseBottleColorChips(){
-  const box = document.getElementById('house-bottle-color-chips');
+function renderHouseBottleColorRows(){
+  const box = document.getElementById('house-bottle-color-rows');
   if(!box) return;
   const price = HOUSE_WINE_BOTTLE_PRICES[houseBottlePopupSize];
   const labels = BOTTLE_COLOR_LABELS[currentLang] || BOTTLE_COLOR_LABELS.it;
   box.innerHTML = ['rosso','bianco','rose'].map(color=>{
-    const sel = houseBottleSelectedColor === color;
-    return '<button class="chip'+(sel?' selected':'')+'" onclick="selectHouseBottleColor(\''+color+'\')">'+labels[color]+' — €'+price+',00</button>';
+    const q = houseBottleQtyMap[color];
+    return '<div class="hb-row'+(q>0?' has-qty':'')+'">'
+      + '<div class="hb-label">'+labels[color]+'<span class="hb-price">€'+price+',00</span></div>'
+      + '<div class="hb-qty-row">'
+      + '<button class="hb-qty-btn" onclick="changeHouseBottleColorQty(\''+color+'\',-1)">−</button>'
+      + '<span class="hb-qty-num" id="hb-qty-'+color+'">'+q+'</span>'
+      + '<button class="hb-qty-btn" onclick="changeHouseBottleColorQty(\''+color+'\',1)">+</button>'
+      + '</div></div>';
   }).join('');
+  updateHouseBottleTotalHint();
 }
-function selectHouseBottleColor(color){
-  houseBottleSelectedColor = color;
-  renderHouseBottleColorChips();
+function changeHouseBottleColorQty(color, delta){
+  houseBottleQtyMap[color] = Math.max(0, houseBottleQtyMap[color] + delta);
+  renderHouseBottleColorRows();
 }
-function changeHouseBottleQty(delta){
-  houseBottleQty = Math.max(1, Math.min(10, houseBottleQty + delta));
-  updateHouseBottleQtyDisplay();
-}
-function updateHouseBottleQtyDisplay(){
-  const el = document.getElementById('house-bottle-qty-display');
-  if(el) el.textContent = houseBottleQty;
+function updateHouseBottleTotalHint(){
+  const price = HOUSE_WINE_BOTTLE_PRICES[houseBottlePopupSize];
+  const total = houseBottleQtyMap.rosso + houseBottleQtyMap.bianco + houseBottleQtyMap.rose;
+  const hint = document.getElementById('house-bottle-total-hint');
+  const btn = document.getElementById('house-bottle-confirm-btn');
+  if(hint) hint.textContent = total>0 ? (total+' bottiglie selezionate — €'+(total*price)+',00') : '';
+  if(btn) btn.classList.toggle('not-ready', total===0);
 }
 function confirmHouseBottlePopup(){
-  if(!houseBottleSelectedColor) return; // must pick a color first
   const size = houseBottlePopupSize;
   const price = HOUSE_WINE_BOTTLE_PRICES[size];
   const sizeLabel = size === '0.5' ? '0,5L' : '0,25L';
-  for(let i=0;i<houseBottleQty;i++){
-    cart.push({id:++cartIdCounter, itemId:'housebottle_'+size+'_'+houseBottleSelectedColor, name:'Vino della Casa '+sizeLabel, price:price, course:'bevande', turno:'—', person:null, detail:BOTTLE_COLOR_LABELS_IT[houseBottleSelectedColor], isWine:true});
+  let addedAny = false;
+  ['rosso','bianco','rose'].forEach(color=>{
+    const qty = houseBottleQtyMap[color];
+    for(let i=0;i<qty;i++){
+      cart.push({id:++cartIdCounter, itemId:'housebottle_'+size+'_'+color, name:'Vino della Casa '+sizeLabel, price:price, course:'bevande', turno:'—', person:null, detail:BOTTLE_COLOR_LABELS_IT[color], isWine:true});
+      addedAny = true;
+    }
+  });
+  if(addedAny){
+    closeHouseBottlePopup();
+    updateCart();
   }
-  updateCart();
-  // Reset the selection (not the popup) so a second color can be added
-  // immediately — tap "Chiudi" when finished.
-  houseBottleSelectedColor = null;
-  houseBottleQty = 1;
-  renderHouseBottleColorChips();
-  updateHouseBottleQtyDisplay();
 }
 // ── GELATO INLINE (FIX: translated chips) ──
 function renderInlineGelato(){
@@ -1241,7 +1264,7 @@ function handleOverlayClick(e){if(e.target===document.getElementById('popup-over
 function popupAddPerson(){
   const pid=++popupPersonCounter,item=ITEMS[popupItemId];
   const isDessert=item.course==='dolci'||item.course==='gelato';
-  popupPersons.push({pid,name:'',sauce:(item.sauces.length===0&&!item.isGelato&&!item.isSorbetto)?'none':null,multiSauces:item.multiSelect?[]:null,cottura:item.cottura?null:'none',flavors:[],sorbettoType:item.isSorbetto?null:'none',portata:isDessert?'Dessert':null});
+  popupPersons.push({pid,name:'',sauce:(item.sauces.length===0&&!item.isGelato&&!item.isSorbetto)?'none':null,multiSauces:item.multiSelect?[]:null,cottura:item.cottura?null:'none',tipo:item.tipo?null:'none',flavors:[],sorbettoType:item.isSorbetto?null:'none',portata:isDessert?'Dessert':null});
   renderPopupPersons();
 }
 function renderPopupPersons(){
@@ -1268,6 +1291,13 @@ function renderPopupPersons(){
       sauce='<div class="sauce-label-sm">'+t('condimento_label')+'</div><div class="chip-group">'+
         item.sauces.map(s=>'<button class="chip'+(p.sauce===s?' selected':'')+'" onclick="popupSelectSauce('+p.pid+',\''+s+'\')">'+sauceLabel(s)+'</button>').join('')+'</div>';
     }
+    let tipo='';
+    if(item.tipo){
+      const tipoLbl=(PESCE_TIPO_LABEL[currentLang]||PESCE_TIPO_LABEL.it);
+      tipo='<div class="cottura-selector"><div class="cottura-label">'+tipoLbl+'</div><div class="cottura-chips">'+
+        item.tipo.map(tp=>'<button class="cottura-chip'+(p.tipo===tp?' selected':'')+'" onclick="popupSetTipo('+p.pid+',\''+tp+'\')">'+sauceLabel(tp)+'</button>').join('')+
+        '</div>'+(!p.tipo?'<div style="font-size:11px;color:#b31e1e;font-style:italic;margin-top:4px;">'+t('seleziona_gusto').replace(t('gusti_label')||'','')+'</div>':'')+'</div>';
+    }
     let cottura='';
     if(item.cottura)cottura='<div class="cottura-selector"><div class="cottura-label">'+t('cottura_label')+'</div><div class="cottura-chips">'+COTTURA_OPTIONS.map(c=>'<button class="cottura-chip'+(p.cottura===c?' selected':'')+'" onclick="popupSetCottura('+p.pid+',\''+c.replace(/'/g,"\\'")+'\')">'+cotturaLabel(c)+'</button>').join('')+'</div></div>';
     let portata='';
@@ -1277,13 +1307,14 @@ function renderPopupPersons(){
         TURNO_IT.map((itKey,i)=>'<button class="portata-chip'+(p.portata===itKey?' selected':'')+'" onclick="popupSetPortata('+p.pid+',\''+itKey+'\')">'+tLabels[i]+'</button>').join('')+
         '</div>'+(!p.portata?'<div style="font-size:11px;color:#b31e1e;font-style:italic;margin-top:4px;">'+t('seleziona_turno')+'</div>':'')+'</div>';
     }
-    div.innerHTML='<div class="person-icon">'+(idx+1)+'</div><div class="person-fields"><input class="name-input" type="text" placeholder="'+t('name_ph')+'" value="'+p.name+'" oninput="setPopupName('+p.pid+',this.value)">'+sauce+cottura+portata+'</div>'+(popupPersons.length>1?'<button class="remove-person-btn" onclick="removePopupPerson('+p.pid+')">✕</button>':'');
+    div.innerHTML='<div class="person-icon">'+(idx+1)+'</div><div class="person-fields"><input class="name-input" type="text" placeholder="'+t('name_ph')+'" value="'+p.name+'" oninput="setPopupName('+p.pid+',this.value)">'+tipo+sauce+cottura+portata+'</div>'+(popupPersons.length>1?'<button class="remove-person-btn" onclick="removePopupPerson('+p.pid+')">✕</button>':'');
     c.appendChild(div);
   });
   updatePopupConfirm();
 }
 function setPopupName(pid,v){const p=popupPersons.find(x=>x.pid===pid);if(p)p.name=v;}
 function popupSelectSauce(pid,s){const p=popupPersons.find(x=>x.pid===pid);if(p)p.sauce=s;renderPopupPersons();}
+function popupSetTipo(pid,tp){const p=popupPersons.find(x=>x.pid===pid);if(p)p.tipo=tp;renderPopupPersons();}
 function popupToggleMultiSauce(pid,s){const p=popupPersons.find(x=>x.pid===pid);if(!p)return;const item=ITEMS[popupItemId];if(p.multiSauces.includes(s))p.multiSauces=p.multiSauces.filter(x=>x!==s);else if(p.multiSauces.length<item.multiSelect)p.multiSauces.push(s);renderPopupPersons();}
 function togglePopupFlavor(pid,f){const p=popupPersons.find(x=>x.pid===pid);if(!p)return;if(p.flavors.includes(f))p.flavors=p.flavors.filter(x=>x!==f);else if(p.flavors.length<3)p.flavors.push(f);renderPopupPersons();}
 function popupSetSorbetto(pid,tp){const p=popupPersons.find(x=>x.pid===pid);if(p)p.sorbettoType=tp;renderPopupPersons();}
@@ -1296,6 +1327,7 @@ function isPersonOk(p,item){
   if(item.multiSelect&&p.multiSauces.length<item.multiSelect)return false;
   if(!item.multiSelect&&item.sauces.length>0&&!p.sauce)return false;
   if(item.cottura&&p.cottura===null)return false;
+  if(item.tipo&&p.tipo===null)return false;
   if(!p.portata)return false;
   return true;
 }
@@ -1312,14 +1344,17 @@ function popupConfirm(){
     if(item.isGelato)d.push(p.flavors.join(', '));
     else if(item.isSorbetto)d.push(p.sorbettoType);
     else if(item.multiSelect&&p.multiSauces.length)d.push(p.multiSauces.join(' + '));
-    else if(p.sauce&&p.sauce!=='none')d.push(p.sauce);
+    else{
+      if(item.tipo&&p.tipo&&p.tipo!=='none')d.push(p.tipo);
+      if(p.sauce&&p.sauce!=='none')d.push(p.sauce);
+    }
     if(item.cottura&&p.cottura&&p.cottura!=='none')d.push('Cottura: '+p.cottura);
     cart.push({id:++cartIdCounter,itemId:popupItemId,name:item.name,price:item.price,course:item.course,turno:p.portata,person:p.name||null,detail:d.join(' · ')});
   });
   closePopup();updateCart();
 }
 
-function changeSimplePkgQty(key,delta){   const cfg=PKG_CONFIG[key];   if(delta>0){     cart.push({id:++cartIdCounter,itemId:'pkg_'+key,name:cfg.label,price:cfg.price,course:'menu',person:null,detail:t('cinque_portate')});   }else{     const idx=cart.map(c=>c.itemId).lastIndexOf('pkg_'+key);     if(idx>=0)cart.splice(idx,1);   }   updateCart();   const qd=document.getElementById('qty-pkg-'+key);   if(qd)qd.textContent=cart.filter(c=>c.itemId==='pkg_'+key).length; } // ── PACKAGES ──
+function changeSimplePkgQty(key,delta){   const cfg=PKG_CONFIG[key];   if(delta>0){     cart.push({id:++cartIdCounter,isPkg:true,itemId:'pkg_'+key,name:cfg.label,price:cfg.price,course:'menu',person:null,detail:''});   }else{     const idx=cart.map(c=>c.itemId).lastIndexOf('pkg_'+key);     if(idx>=0)cart.splice(idx,1);   }   updateCart();   const qd=document.getElementById('qty-pkg-'+key);   if(qd)qd.textContent=cart.filter(c=>c.itemId==='pkg_'+key).length; } // ── PACKAGES ──
 function togglePkgAccordion(key,btn){
   const acc=document.getElementById('acc-'+key),open=acc.classList.contains('open');
   Object.keys(PKG_CONFIG).forEach(k=>{
@@ -1534,6 +1569,7 @@ function setTab(tab,el){
   else{document.querySelectorAll('.tab-btn').forEach(b=>{if((b.getAttribute('onclick')||'').includes("'"+tab+"'"))b.classList.add('active');});}
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   const sec=document.getElementById('sec-'+tab);if(sec)sec.classList.add('active');
+  if(tab==='bar')renderAllBarSections();
   const tw=document.querySelector('.tabs-wrap');if(tw)window.scrollTo({top:tw.offsetTop-10,behavior:'smooth'});
 }
 function setSubTab(name,el){
@@ -1580,7 +1616,7 @@ function refreshDyn(){
   if(popupItemId)renderPopupPersons();
   Object.keys(pkgPersons).forEach(k=>{if(pkgPersons[k]&&pkgPersons[k].length)renderPkgPersons(k);});
   updateCart();renderInlineGelato();renderAllBarSections();
-  if(houseBottlePopupSize)renderHouseBottleColorChips();
+  if(houseBottlePopupSize)renderHouseBottleColorRows();
 }
 function toggleDropdown(e){if(e)e.stopPropagation();document.getElementById('langDropdown').classList.toggle('open');}
 function closeDropdown(){document.getElementById('langDropdown').classList.remove('open');}
@@ -1665,6 +1701,15 @@ async function sendOrder(){
   }
   if(!cart.length)return;
 
+  const hasBevande=cart.some(e=>e.course==='bevande');
+  if(!hasBevande){
+    const proceed=confirm(currentLang==='it'?'⚠️ Non hai aggiunto nessuna bevanda. Vuoi inviare comunque l\'ordine?':
+          currentLang==='fr'?'⚠️ Vous n\'avez ajouté aucune boisson. Voulez-vous quand même envoyer la commande?':
+          currentLang==='de'?'⚠️ Sie haben kein Getränk hinzugefügt. Möchten Sie die Bestellung trotzdem senden?':
+          '⚠️ You haven\'t added any drinks. Do you want to send the order anyway?');
+    if(!proceed)return;
+  }
+
   const btn=document.getElementById('waiter-btn');
   const originalText=btn.textContent;
   btn.disabled=true;
@@ -1736,6 +1781,7 @@ async function applyMenuAvailability(){
 
 // ── INIT ──
 document.addEventListener('DOMContentLoaded',()=>{populateTableSelect();renderAllBarSections();updateCart();renderInlineGelato();applyMenuAvailability();});
+window.addEventListener('load',()=>{renderAllBarSections();});
 document.addEventListener('click',e=>{
   if(!e.target.closest('.translate-wrap'))closeDropdown();
   const panel=document.getElementById('cart-panel'),fab=document.querySelector('.cart-fab');
