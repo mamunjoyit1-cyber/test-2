@@ -575,35 +575,8 @@ html body { margin-top: 0 !important; }
     <!-- House wines list -->
     <div id="vini-list" style="background:#1a110e;border-radius:12px;padding:10px 14px;margin-bottom:14px;text-align:left;">
   <div style="font-size:10px;color:#d4af37;font-weight:bold;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;" data-it="Vini della Casa — Calice" data-fr="Vins Maison — Verre" data-en="House Wines — Glass" data-de="Hausweine — Glas">Vini della Casa — Calice</div>
-  <div class="vini-row" style="cursor:default;align-items:flex-start;">
-    <span>🍷 <span data-it="Vino Rosso della Casa" data-fr="Vin Rouge Maison" data-en="House Red Wine" data-de="Hauswein Rot">Vino Rosso della Casa</span><br><span style="font-size:11px;color:#bca07d;font-style:italic;" data-it="Uve: Barbera" data-fr="Cépages: Barbera" data-en="Grapes: Barbera" data-de="Rebsorten: Barbera">Uve: Barbera</span></span>
-    <div class="bar-row-right"><span class="vini-price">€3,00</span>
-      <div class="bar-qty-row">
-        <button class="bar-qty-btn" onclick="changeHouseWineQty('rosso',-1)">−</button>
-        <span class="bar-qty-display" id="qty-housewine-rosso">0</span>
-        <button class="bar-qty-btn" onclick="changeHouseWineQty('rosso',1)">+</button>
-      </div>
-    </div>
-  </div>
-  <div class="vini-row" style="cursor:default;align-items:flex-start;">
-    <span>🥂 <span data-it="Vino Bianco della Casa" data-fr="Vin Blanc Maison" data-en="House White Wine" data-de="Hauswein Weiß">Vino Bianco della Casa</span><br><span style="font-size:11px;color:#bca07d;font-style:italic;" data-it="Uve: Pinot Grigio" data-fr="Cépages: Pinot Grigio" data-en="Grapes: Pinot Grigio" data-de="Rebsorten: Pinot Grigio">Uve: Pinot Grigio</span></span>
-    <div class="bar-row-right"><span class="vini-price">€3,00</span>
-      <div class="bar-qty-row">
-        <button class="bar-qty-btn" onclick="changeHouseWineQty('bianco',-1)">−</button>
-        <span class="bar-qty-display" id="qty-housewine-bianco">0</span>
-        <button class="bar-qty-btn" onclick="changeHouseWineQty('bianco',1)">+</button>
-      </div>
-    </div>
-  </div>
-  <div class="vini-row" style="cursor:default;align-items:flex-start;">
-    <span>🌸 <span data-it="Vino Rosato della Casa" data-fr="Vin Rosé Maison" data-en="House Rosé Wine" data-de="Hauswein Rosé">Vino Rosato della Casa</span><br><span style="font-size:11px;color:#bca07d;font-style:italic;" data-it="Uve: Raboso" data-fr="Cépages: Raboso" data-en="Grapes: Raboso" data-de="Rebsorten: Raboso">Uve: Raboso</span></span>
-    <div class="bar-row-right"><span class="vini-price">€3,00</span>
-      <div class="bar-qty-row">
-        <button class="bar-qty-btn" onclick="changeHouseWineQty('rosato',-1)">−</button>
-        <span class="bar-qty-display" id="qty-housewine-rosato">0</span>
-        <button class="bar-qty-btn" onclick="changeHouseWineQty('rosato',1)">+</button>
-      </div>
-    </div>
+  <div class="vini-row" onclick="openHouseWineBottlePopup('calice')">
+    <span>🍷 <span data-it="Vino della Casa (Calice)" data-fr="Vin Maison (Verre)" data-en="House Wine (Glass)" data-de="Hauswein (Glas)">Vino della Casa (Calice)</span></span><span class="vini-price">€3,00</span>
   </div>
   <div class="vini-row" style="cursor:default;">
     <span>🥂 Prosecco DOC</span>
@@ -1139,27 +1112,28 @@ function changeHouseWineQty(id,delta){
   const qd=document.getElementById('qty-housewine-'+id);if(qd)qd.textContent=q;
   updateCart();
 }
-// ── HOUSE WINE BOTTLES (0.5L / 0.25L) — chip-style color select (tap to pick,
-// tap another to switch — same interaction as the sauce chips) + one shared
-// qty stepper. Confirm adds the selection then resets so another color can
-// be added right after, without needing to reopen the popup.
-const HOUSE_WINE_BOTTLE_PRICES = { '0.5': 8, '0.25': 6 };
-const BOTTLE_COLOR_LABELS_IT = { rosso:'Rosso', bianco:'Bianco', rose:'Rosé' };
+// ── HOUSE WINE COLOR POPUP — shared by Calice, 0.5L bottle, 0.25L bottle.
+// Each opens the same popup with per-color qty rows (Rosso/Bianco/Rosato),
+// each row showing its uve (grape variety) and price for that kind.
+const HOUSE_WINE_KIND_PRICES = { calice: 3, '0.5': 8, '0.25': 6 };
+const HOUSE_WINE_KIND_TITLE_SUFFIX = { calice: '(Calice)', '0.5': '0,5L', '0.25': '0,25L' };
+const BOTTLE_COLOR_LABELS_IT = { rosso:'Rosso', bianco:'Bianco', rosato:'Rosato' };
 const BOTTLE_COLOR_LABELS = {
-  it:{ rosso:'🍷 Rosso', bianco:'🥂 Bianco', rose:'🌸 Rosé' },
-  fr:{ rosso:'🍷 Rouge', bianco:'🥂 Blanc', rose:'🌸 Rosé' },
-  en:{ rosso:'🍷 Red',   bianco:'🥂 White',  rose:'🌸 Rosé' },
-  de:{ rosso:'🍷 Rot',   bianco:'🥂 Weiß',   rose:'🌸 Rosé' }
+  it:{ rosso:'🍷 Rosso', bianco:'🥂 Bianco', rosato:'🌸 Rosato' },
+  fr:{ rosso:'🍷 Rouge', bianco:'🥂 Blanc', rosato:'🌸 Rosé' },
+  en:{ rosso:'🍷 Red',   bianco:'🥂 White',  rosato:'🌸 Rosé' },
+  de:{ rosso:'🍷 Rot',   bianco:'🥂 Weiß',   rosato:'🌸 Rosé' }
 };
+const HOUSE_WINE_UVE = { rosso:'Barbera', bianco:'Pinot Grigio', rosato:'Raboso' };
+const UVE_LABEL_WORD = { it:'Uve', fr:'Cépages', en:'Grapes', de:'Rebsorten' };
 let houseBottlePopupSize = null;
-let houseBottleQtyMap = { rosso:0, bianco:0, rose:0 };
+let houseBottleQtyMap = { rosso:0, bianco:0, rosato:0 };
 
-function openHouseWineBottlePopup(size){
+function openHouseWineBottlePopup(kind){
   document.getElementById('vini-modal').classList.remove('open'); // close the Carta dei Vini list underneath first
-  houseBottlePopupSize = size;
-  houseBottleQtyMap = { rosso:0, bianco:0, rose:0 };
-  const sizeLabel = size === '0.5' ? '0,5L' : '0,25L';
-  document.getElementById('house-bottle-popup-title').textContent = 'Vino della Casa ' + sizeLabel;
+  houseBottlePopupSize = kind;
+  houseBottleQtyMap = { rosso:0, bianco:0, rosato:0 };
+  document.getElementById('house-bottle-popup-title').textContent = 'Vino della Casa ' + HOUSE_WINE_KIND_TITLE_SUFFIX[kind];
   renderHouseBottleColorRows();
   document.getElementById('house-bottle-popup-overlay').classList.add('open');
 }
@@ -1170,12 +1144,13 @@ function closeHouseBottlePopup(){
 function renderHouseBottleColorRows(){
   const box = document.getElementById('house-bottle-color-rows');
   if(!box) return;
-  const price = HOUSE_WINE_BOTTLE_PRICES[houseBottlePopupSize];
+  const price = HOUSE_WINE_KIND_PRICES[houseBottlePopupSize];
   const labels = BOTTLE_COLOR_LABELS[currentLang] || BOTTLE_COLOR_LABELS.it;
-  box.innerHTML = ['rosso','bianco','rose'].map(color=>{
+  const uveWord = UVE_LABEL_WORD[currentLang] || UVE_LABEL_WORD.it;
+  box.innerHTML = ['rosso','bianco','rosato'].map(color=>{
     const q = houseBottleQtyMap[color];
     return '<div class="hb-row'+(q>0?' has-qty':'')+'">'
-      + '<div class="hb-label">'+labels[color]+'<span class="hb-price">€'+price+',00</span></div>'
+      + '<div class="hb-label">'+labels[color]+'<span class="hb-price">'+uveWord+': '+HOUSE_WINE_UVE[color]+' · €'+price+',00</span></div>'
       + '<div class="hb-qty-row">'
       + '<button class="hb-qty-btn" onclick="changeHouseBottleColorQty(\''+color+'\',-1)">−</button>'
       + '<span class="hb-qty-num" id="hb-qty-'+color+'">'+q+'</span>'
@@ -1189,28 +1164,35 @@ function changeHouseBottleColorQty(color, delta){
   renderHouseBottleColorRows();
 }
 function updateHouseBottleTotalHint(){
-  const price = HOUSE_WINE_BOTTLE_PRICES[houseBottlePopupSize];
-  const total = houseBottleQtyMap.rosso + houseBottleQtyMap.bianco + houseBottleQtyMap.rose;
+  const price = HOUSE_WINE_KIND_PRICES[houseBottlePopupSize];
+  const total = houseBottleQtyMap.rosso + houseBottleQtyMap.bianco + houseBottleQtyMap.rosato;
   const hint = document.getElementById('house-bottle-total-hint');
   const btn = document.getElementById('house-bottle-confirm-btn');
-  if(hint) hint.textContent = total>0 ? (total+' bottiglie selezionate — €'+(total*price)+',00') : '';
+  const unitWord = houseBottlePopupSize==='calice' ? 'calici' : 'bottiglie';
+  if(hint) hint.textContent = total>0 ? (total+' '+unitWord+' selezionate — €'+(total*price)+',00') : '';
   if(btn) btn.classList.toggle('not-ready', total===0);
 }
 function confirmHouseBottlePopup(){
-  const size = houseBottlePopupSize;
-  const price = HOUSE_WINE_BOTTLE_PRICES[size];
-  const sizeLabel = size === '0.5' ? '0,5L' : '0,25L';
+  const kind = houseBottlePopupSize;
+  const price = HOUSE_WINE_KIND_PRICES[kind];
   let addedAny = false;
-  ['rosso','bianco','rose'].forEach(color=>{
+  ['rosso','bianco','rosato'].forEach(color=>{
     const qty = houseBottleQtyMap[color];
     for(let i=0;i<qty;i++){
-      cart.push({id:++cartIdCounter, itemId:'housebottle_'+size+'_'+color, name:'Vino della Casa '+sizeLabel, price:price, course:'bevande', turno:'—', person:null, detail:BOTTLE_COLOR_LABELS_IT[color], isWine:true});
+      if(kind==='calice'){
+        const cname = color==='rosso'?'Vino Rosso della Casa':color==='bianco'?'Vino Bianco della Casa':'Vino Rosato della Casa';
+        cart.push({id:++cartIdCounter, itemId:'housewine_'+color, name:cname, price:price, course:'bevande', turno:'—', person:null, detail:'Calice', isWine:true});
+      }else{
+        const sizeLabel = kind === '0.5' ? '0,5L' : '0,25L';
+        cart.push({id:++cartIdCounter, itemId:'housebottle_'+kind+'_'+color, name:'Vino della Casa '+sizeLabel, price:price, course:'bevande', turno:'—', person:null, detail:BOTTLE_COLOR_LABELS_IT[color], isWine:true});
+      }
       addedAny = true;
     }
   });
   if(addedAny){
     closeHouseBottlePopup();
     updateCart();
+
   }
 }
 // ── GELATO INLINE (FIX: translated chips) ──
