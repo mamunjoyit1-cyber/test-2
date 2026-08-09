@@ -3,7 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lago Bin – Menu Premium</title> <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%237e93a8'/%3E%3Ctext x='50' y='68' font-family='Georgia,Palatino,serif' font-size='48' font-weight='700' fill='%23ffffff' text-anchor='middle'%3ELB%3C/text%3E%3C/svg%3E"> <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%237e93a8'/%3E%3Ctext x='50' y='68' font-family='Georgia,Palatino,serif' font-size='48' font-weight='700' fill='%23ffffff' text-anchor='middle'%3ELB%3C/text%3E%3C/svg%3E">
+<title>Lago Bin – Menu Premium</title>
+<meta name="theme-color" content="#150e0b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Lago Bin">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Lago%20Bin%22%2C%22short_name%22%3A%22Lago%20Bin%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23150e0b%22%2C%22theme_color%22%3A%22%23150e0b%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2Bxmlns%253D%2527http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg%2527%2BviewBox%253D%25270%2B0%2B100%2B100%2527%253E%253Ccircle%2Bcx%253D%252750%2527%2Bcy%253D%252750%2527%2Br%253D%252748%2527%2Bfill%253D%2527%25237e93a8%2527%252F%253E%253Ctext%2Bx%253D%252750%2527%2By%253D%252768%2527%2Bfont-family%253D%2527Georgia%252CPalatino%252Cserif%2527%2Bfont-size%253D%252748%2527%2Bfont-weight%253D%2527700%2527%2Bfill%253D%2527%2523ffffff%2527%2Btext-anchor%253D%2527middle%2527%253ELB%253C%252Ftext%253E%253C%252Fsvg%253E%22%2C%22sizes%22%3A%22192x192%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%7D%5D%7D">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%237e93a8'/%3E%3Ctext x='50' y='68' font-family='Georgia,Palatino,serif' font-size='48' font-weight='700' fill='%23ffffff' text-anchor='middle'%3ELB%3C/text%3E%3C/svg%3E"> <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%237e93a8'/%3E%3Ctext x='50' y='68' font-family='Georgia,Palatino,serif' font-size='48' font-weight='700' fill='%23ffffff' text-anchor='middle'%3ELB%3C/text%3E%3C/svg%3E">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; color: #f9f1e2; -webkit-font-smoothing: antialiased; }
@@ -60,6 +67,8 @@ body { font-family: 'Palatino Linotype', Palatino, serif; background: #150e0b; c
 .qty-btn:hover { background: #d4af37; color: #150e0b; }
 .qty-display { font-size: 16px; font-weight: bold; color: #b31e1e; min-width: 20px; text-align: center; }
 .item-flavours { margin-top: 14px; padding-top: 12px; border-top: 1px dashed rgba(212,175,55,0.4); }
+.item-photo { width: 100%; height: 190px; object-fit: cover; border-radius: 12px; margin-bottom: 16px; display: block; }
+.pkg-photo { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; margin-bottom: 18px; display: block; }
 .flavour-label { font-size: 12px; font-weight: bold; color: #b31e1e; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
 .flavour-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .flavour-chip { border: 1.5px solid #c5a880; border-radius: 8px; background: #fdf5e6; color: #1a0505; font-size: 12px; font-weight: bold; padding: 6px 10px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
@@ -262,6 +271,16 @@ html body { margin-top: 0 !important; }
 .hb-qty-btn:hover { background: #d4af37; color: #150e0b; }
 .hb-qty-num { font-size: 16px; font-weight: bold; color: #d4af37; min-width: 22px; text-align: center; }
 .vini-modal-btn.primary.not-ready { opacity: 0.4; pointer-events: none; }
+body.text-large .item-name { font-size: 22px; }
+body.text-large .item-desc { font-size: 16.5px; }
+body.text-large .item-price { font-size: 20px; }
+body.text-large .cat-title { font-size: 29px; }
+body.text-large .pkg-name { font-size: 22px; }
+body.text-large .pkg-desc { font-size: 16.5px; }
+body.text-large .pkg-price { font-size: 20px; }
+body.text-large .price-row { font-size: 17px; }
+body.text-large .cocktail-group { font-size: 14px; }
+body.text-large .add-order-btn { font-size: 14.5px; }
 </style>
 </head>
 <body>
@@ -331,8 +350,11 @@ html body { margin-top: 0 !important; }
 
 <!-- SEARCH -->
 <div class="search-bar-wrap">
-  <div class="search-bar-inner">
-    <input id="searchInput" type="text" placeholder="🔍 Cerca nel menù... / Search menu..." data-ph-it="🔍 Cerca nel menù... / Search menu..." data-ph-fr="🔍 Rechercher dans le menu..." data-ph-en="🔍 Search the menu..." data-ph-de="🔍 Im Menü suchen..." oninput="searchMenu(this.value)"/>
+  <div style="display:flex;gap:8px;align-items:center;max-width:500px;margin:0 auto;">
+    <div class="search-bar-inner" style="flex:1;margin:0;">
+      <input id="searchInput" type="text" placeholder="🔍 Cerca nel menù... / Search menu..." data-ph-it="🔍 Cerca nel menù... / Search menu..." data-ph-fr="🔍 Rechercher dans le menu..." data-ph-en="🔍 Search the menu..." data-ph-de="🔍 Im Menü suchen..." oninput="searchMenu(this.value)"/>
+    </div>
+    <button id="fontToggleBtn" onclick="toggleFontSize()" title="Testo più grande / Larger text" style="flex-shrink:0;background:rgba(255,255,255,0.08);color:#f9f1e2;border:1px solid #d4af37;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:bold;cursor:pointer;font-family:inherit;">🔤A+</button>
   </div>
   <div id="searchResults"></div>
 </div>
@@ -357,6 +379,7 @@ html body { margin-top: 0 !important; }
 <div class="section active" id="sec-menu_packages">
   <h2 class="cat-title" data-it="🍽️ I Nostri Menù" data-fr="🍽️ Nos Menus" data-en="🍽️ Our Set Menus" data-de="🍽️ Unsere Menüs">🍽️ I Nostri Menù</h2>
   <div class="pkg-item">
+    <img class="pkg-photo" src="images/menu-lago-bin.jpg" alt="Menù del Lago Bin" loading="lazy">
     <div class="pkg-header">
       <div><div class="pkg-name">Menù del Lago Bin</div><div class="pkg-desc" data-it="Con i nostri Piatti Tipici e la Formula &quot;Tutto Compreso&quot; (1 bott. Vino della Casa ogni 4 pers.) — 5 Portate Selezionate dalla Cucina" data-fr="Formule &quot;Tout Inclus&quot; (1 bouteille Vin Maison / 4 pers.) — 5 Plats Sélectionnés par la Cuisine" data-en="&quot;All Inclusive&quot; Formula (1 bottle House Wine per 4 persons) — 5 Courses Selected by the Kitchen" data-de="&quot;Alles Inklusive&quot; (1 Flasche Hauswein / 4 Pers.) — 5 von der Küche ausgewählte Gänge">Con i nostri Piatti Tipici e la Formula "Tutto Compreso" (1 bott. Vino della Casa ogni 4 pers.) — 5 Portate Selezionate dalla Cucina</div></div>
       <div class="pkg-right"><div class="pkg-price">€45,00</div><div class="qty-row"><button class="qty-btn" onclick="changeSimplePkgQty('lago_bin',-1)">−</button><span class="qty-display" id="qty-pkg-lago_bin">0</span><button class="qty-btn" onclick="changeSimplePkgQty('lago_bin',1)">+</button></div></div>
@@ -389,7 +412,7 @@ html body { margin-top: 0 !important; }
 <!-- ANTIPASTI -->
 <div class="section" id="sec-antipasti">
   <h2 class="cat-title" data-it="🥗 Antipasti à la Carte" data-fr="🥗 Entrées à la Carte" data-en="🥗 Starters à la Carte" data-de="🥗 Vorspeisen à la Carte">🥗 Antipasti à la Carte</h2>
-  <div class="item" id="item-antipasto_tipico"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Antipasto Tipico del Lago Bin</span><span class="sub-trans" data-it="" data-fr="(Assortiment Typique du Lago Bin)" data-en="(Typical Lago Bin Starter)" data-de="(Typische Lago Bin Vorspeise)"></span></div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('antipasto_tipico',-1)">−</button><span class="qty-display" id="qty-antipasto_tipico">0</span><button class="qty-btn" onclick="changeQty('antipasto_tipico',1)">+</button></div><button class="add-order-btn" id="btn-antipasto_tipico" onclick="openPopup('antipasto_tipico')">+ Aggiungi</button></div></div></div>
+  <div class="item" id="item-antipasto_tipico"><img class="item-photo" src="images/antipasto-tipico.jpg" alt="Antipasto Tipico del Lago Bin" loading="lazy"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Antipasto Tipico del Lago Bin</span><span class="sub-trans" data-it="" data-fr="(Assortiment Typique du Lago Bin)" data-en="(Typical Lago Bin Starter)" data-de="(Typische Lago Bin Vorspeise)"></span></div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('antipasto_tipico',-1)">−</button><span class="qty-display" id="qty-antipasto_tipico">0</span><button class="qty-btn" onclick="changeQty('antipasto_tipico',1)">+</button></div><button class="add-order-btn" id="btn-antipasto_tipico" onclick="openPopup('antipasto_tipico')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-salumiere"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Assortimento del Salumiere</span><span class="sub-trans" data-it="" data-fr="(Charcuterie fine sélectionnée)" data-en="(Mixed Premium Charcuterie Platter)" data-de="(Gemischte Aufschnittplatte)"></span></div></div><div class="item-right"><div class="item-price">€15,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('salumiere',-1)">−</button><span class="qty-display" id="qty-salumiere">0</span><button class="qty-btn" onclick="changeQty('salumiere',1)">+</button></div><button class="add-order-btn" id="btn-salumiere" onclick="openPopup('salumiere')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-prosciutto"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Prosciutto di Parma con Melone o Grana</span><span class="sub-trans" data-it="" data-fr="(Jambon de Parme avec Melon ou Grana)" data-en="(Parma Ham with Melon or Grana Cheese)" data-de="(Parmaschinken mit Melone oder Grana-Käse)"></span></div></div><div class="item-right"><div class="item-price">€13,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('prosciutto',-1)">−</button><span class="qty-display" id="qty-prosciutto">0</span><button class="qty-btn" onclick="changeQty('prosciutto',1)">+</button></div><button class="add-order-btn" id="btn-prosciutto" onclick="openPopup('prosciutto')">+ Aggiungi</button></div></div></div>
   <div class="item" id="item-misto_caldo"><div class="item-top-row"><div class="item-left"><div class="item-name"><span class="notranslate">Antipasto Misto "Caldo e Freddo" (per 2 pers.)</span><span class="sub-trans" data-it="" data-fr="(Entrée Mixte Chaud et Froid - 2 pers.)" data-en="(Mixed Hot and Cold Starter - for 2 people)" data-de="(Gemischte warme und kalte Vorspeise - 2 Pers.)"></span></div></div><div class="item-right"><div class="item-price">€25,00</div><div class="qty-row"><button class="qty-btn" onclick="changeQty('misto_caldo',-1)">−</button><span class="qty-display" id="qty-misto_caldo">0</span><button class="qty-btn" onclick="changeQty('misto_caldo',1)">+</button></div><button class="add-order-btn" id="btn-misto_caldo" onclick="openPopup('misto_caldo')">+ Aggiungi</button></div></div></div>
@@ -528,6 +551,8 @@ html body { margin-top: 0 !important; }
   </label>
   <button class="waiter-btn" id="waiter-btn" disabled onclick="sendOrder()" data-it="📤 Invia Ordine" data-fr="📤 Envoyer la Commande" data-en="📤 Send Order" data-de="📤 Bestellung Senden">📤 Invia Ordine</button>
   <button class="waiter-btn" id="show-waiter-btn" disabled onclick="showOverlay()" style="background:transparent;border:1px solid #d4af37;color:#d4af37;margin-top:8px;" data-it="📲 Mostra al Cameriere" data-fr="📲 Montrer au Serveur" data-en="📲 Show to Waiter" data-de="📲 Dem Kellner zeigen">📲 Mostra al Cameriere</button>
+  <button class="waiter-btn" id="repeat-order-btn" style="display:none;background:transparent;border:1px dashed #d4af37;color:#bca07d;margin-top:8px;font-size:12px;" onclick="repeatLastOrder()" data-it="🔁 Ripeti l'Ultimo Ordine" data-fr="🔁 Répéter la Dernière Commande" data-en="🔁 Repeat Last Order" data-de="🔁 Letzte Bestellung wiederholen">🔁 Ripeti l'Ultimo Ordine</button>
+  <button class="waiter-btn" id="clear-cart-btn" disabled style="background:transparent;border:1px solid #b31e1e;color:#b31e1e;margin-top:8px;font-size:12px;" onclick="clearCart()" data-it="🗑️ Svuota Carrello" data-fr="🗑️ Vider le Panier" data-en="🗑️ Clear Cart" data-de="🗑️ Warenkorb leeren">🗑️ Svuota Carrello</button>
 </div>
 
 <!-- POPUP -->
@@ -1007,6 +1032,82 @@ function courseLabel(bid){
 }
 
 let cart=[],cartIdCounter=0,pkgPersons={},pkgPersonCounter=0;
+
+// ── CART PERSISTENCE (survives accidental page refresh / connection drop) ──
+const CART_STORAGE_KEY='lagobin_cart_v1';
+const CART_COUNTER_STORAGE_KEY='lagobin_cart_counter_v1';
+function saveCartToStorage(){
+  try{
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+    localStorage.setItem(CART_COUNTER_STORAGE_KEY, String(cartIdCounter));
+  }catch(e){ /* storage unavailable — cart just won't persist, no crash */ }
+}
+function loadCartFromStorage(){
+  try{
+    const raw=localStorage.getItem(CART_STORAGE_KEY);
+    if(raw){
+      const parsed=JSON.parse(raw);
+      if(Array.isArray(parsed))cart=parsed;
+    }
+    const savedCounter=localStorage.getItem(CART_COUNTER_STORAGE_KEY);
+    if(savedCounter)cartIdCounter=parseInt(savedCounter)||0;
+  }catch(e){ /* corrupted or unavailable storage — start with an empty cart */ }
+}
+// ── LARGE TEXT MODE (accessibility, e.g. for older customers) ──
+const FONT_SIZE_STORAGE_KEY='lagobin_large_text_v1';
+function applyFontSizePref(){
+  let large=false;
+  try{ large=localStorage.getItem(FONT_SIZE_STORAGE_KEY)==='1'; }catch(e){}
+  document.body.classList.toggle('text-large', large);
+  const btn=document.getElementById('fontToggleBtn');
+  if(btn)btn.textContent = large ? '🔤A−' : '🔤A+';
+}
+function toggleFontSize(){
+  let large=false;
+  try{ large=localStorage.getItem(FONT_SIZE_STORAGE_KEY)==='1'; }catch(e){}
+  large=!large;
+  try{ localStorage.setItem(FONT_SIZE_STORAGE_KEY, large?'1':'0'); }catch(e){}
+  applyFontSizePref();
+}
+function clearCart(){
+  if(!cart.length)return;
+  const ok=confirm(currentLang==='it'?'Svuotare il carrello?':
+        currentLang==='fr'?'Vider le panier?':
+        currentLang==='de'?'Warenkorb leeren?':
+        'Clear the cart?');
+  if(!ok)return;
+  cart.length=0;
+  pkgPersons={};
+  document.querySelectorAll('.pkg-accordion.open').forEach(a=>a.classList.remove('open'));
+  updateCart();
+}
+
+// ── QUICK REORDER: remembers the last successfully submitted order on this
+// device so a returning customer can resend it in one tap. ──
+const LAST_ORDER_STORAGE_KEY='lagobin_last_order_v1';
+function saveLastOrderToStorage(cartSnapshot){
+  try{ localStorage.setItem(LAST_ORDER_STORAGE_KEY, JSON.stringify(cartSnapshot)); }catch(e){}
+  refreshRepeatOrderButton();
+}
+function refreshRepeatOrderButton(){
+  const btn=document.getElementById('repeat-order-btn');
+  if(!btn)return;
+  let hasLastOrder=false;
+  try{ hasLastOrder=!!localStorage.getItem(LAST_ORDER_STORAGE_KEY); }catch(e){}
+  btn.style.display=hasLastOrder?'block':'none';
+}
+function repeatLastOrder(){
+  let saved=null;
+  try{ saved=JSON.parse(localStorage.getItem(LAST_ORDER_STORAGE_KEY)||'null'); }catch(e){}
+  if(!saved||!Array.isArray(saved)||!saved.length)return;
+  saved.forEach(e=>{
+    const copy={...e,id:++cartIdCounter};
+    delete copy.pkgPid; // repeated packages become plain re-added entries, not tied to an accordion state
+    cart.push(copy);
+  });
+  updateCart();
+  toggleCart();
+}
 let popupItemId=null,popupPersons=[],popupPersonCounter=0;
 let inlineGelatoFlavors=[],sorbettoType=null;
 
@@ -1480,14 +1581,14 @@ function updateCart(){
         '<button class="cart-qty-btn" onclick="'+minus+'">−</button>'+
         '<span class="cart-qty-num">'+g.count+'</span>'+
         (g.isPkg?'<span style="width:20px;display:inline-block;"></span>':'<button class="cart-qty-btn" onclick="'+plus+'">+</button>')+
-        '<span class="cart-price">€'+g.totalPrice+'</span>'+
+        '<span class="cart-price">€'+fmtPrice(g.totalPrice)+'</span>'+
         '<button class="cart-remove-btn" onclick="'+rem+'">✕</button>'+
         '</div></div>';
     });
   });
-  const cc=document.getElementById('cart-content'),tc=document.getElementById('cart-total'),wb=document.getElementById('waiter-btn'),swb=document.getElementById('show-waiter-btn');
-  if(hasContent){cc.innerHTML=html;tc.style.display='flex';document.getElementById('total-amount').textContent='€'+totalPrice;wb.disabled=false;if(swb)swb.disabled=false;}
-  else{cc.innerHTML='<div class="cart-empty">'+t('nessun_articolo')+'</div>';tc.style.display='none';wb.disabled=true;if(swb)swb.disabled=true;}
+  const cc=document.getElementById('cart-content'),tc=document.getElementById('cart-total'),wb=document.getElementById('waiter-btn'),swb=document.getElementById('show-waiter-btn'),ccb=document.getElementById('clear-cart-btn');
+  if(hasContent){cc.innerHTML=html;tc.style.display='flex';document.getElementById('total-amount').textContent='€'+fmtPrice(totalPrice);wb.disabled=false;if(swb)swb.disabled=false;if(ccb)ccb.disabled=false;}
+  else{cc.innerHTML='<div class="cart-empty">'+t('nessun_articolo')+'</div>';tc.style.display='none';wb.disabled=true;if(swb)swb.disabled=true;if(ccb)ccb.disabled=true;}
   document.getElementById('cart-badge').textContent=totalItems;
   Object.keys(ITEMS).forEach(id=>{
     const qd=document.getElementById('qty-'+id);if(qd)qd.textContent=cart.filter(c=>c.itemId===id).length;
@@ -1503,6 +1604,7 @@ function updateCart(){
   });
   renderInlineGelato();
   syncCartToIframe();
+  saveCartToStorage();
 }
 function removeCartGroup(ids){ids.forEach(id=>{const i=cart.findIndex(c=>c.id===id);if(i>=0)cart.splice(i,1);});updateCart();}
 function removeOneCartItem(gk){for(let i=cart.length-1;i>=0;i--){const e=cart[i];if(e.itemId+'||'+(e.detail||'')+'||'+(e.person||'')+'||'+(e.turno||'')===gk){cart.splice(i,1);break;}}updateCart();}
@@ -1534,10 +1636,10 @@ function showOverlay(cartSnapshot,wasSent){
   order.forEach(bid=>{
     const entries=buckets[bid];if(!entries||!entries.length)return;
     if(bid.startsWith('turno:')&&!window.__alaCartaShownOv){html+='<div class="overlay-section-title" style="border-bottom:none;margin-bottom:2px;">🥗 '+(ALA_CARTA_LABEL[currentLang]||ALA_CARTA_LABEL.it)+'</div>';window.__alaCartaShownOv=true;}html+='<div class="overlay-section"><div class="overlay-section-title" style="'+(bid.startsWith('turno:')?'font-size:13px;padding-left:14px;':'')+'">'+courseLabel(bid)+'</div>';
-    entries.forEach(e=>{total+=e.price;html+='<div class="overlay-dish"><div><div class="overlay-dish-name">'+(e.person?e.person+' — ':'')+e.name+'</div>'+(e.detail?'<div class="'+(e.isPkg?'overlay-dish-detail-pkg':'overlay-dish-detail')+'">'+e.detail+'</div>':'')+'</div><div class="overlay-dish-price">€'+e.price+'</div></div>';});
+    entries.forEach(e=>{total+=e.price;html+='<div class="overlay-dish"><div><div class="overlay-dish-name">'+(e.person?e.person+' — ':'')+e.name+'</div>'+(e.detail?'<div class="'+(e.isPkg?'overlay-dish-detail-pkg':'overlay-dish-detail')+'">'+e.detail+'</div>':'')+'</div><div class="overlay-dish-price">€'+fmtPrice(e.price)+'</div></div>';});
     html+='</div>';
   });
-  html+='<div class="overlay-total-box"><div class="overlay-total-label">'+t('totale_stimato')+'</div><div class="overlay-total-amount">€'+total+'</div></div>';
+  html+='<div class="overlay-total-box"><div class="overlay-total-label">'+t('totale_stimato')+'</div><div class="overlay-total-amount">€'+fmtPrice(total)+'</div></div>';
   document.getElementById('overlay-content').innerHTML=html;
   document.getElementById('overlay').classList.add('open');
   document.getElementById('cart-panel').classList.remove('open');
@@ -1723,6 +1825,7 @@ async function sendOrder(){
 
   try{
     await db.collection('orders').add(orderData);
+    saveLastOrderToStorage(cartSnapshot);
     cart.length=0;
     updateCart();
     tableSel.value='';
@@ -1762,7 +1865,7 @@ async function applyMenuAvailability(){
 }
 
 // ── INIT ──
-document.addEventListener('DOMContentLoaded',()=>{populateTableSelect();renderAllBarSections();updateCart();renderInlineGelato();applyMenuAvailability();});
+document.addEventListener('DOMContentLoaded',()=>{loadCartFromStorage();applyFontSizePref();populateTableSelect();renderAllBarSections();updateCart();renderInlineGelato();applyMenuAvailability();refreshRepeatOrderButton();});
 window.addEventListener('load',()=>{renderAllBarSections();});
 document.addEventListener('click',e=>{
   if(!e.target.closest('.translate-wrap'))closeDropdown();
